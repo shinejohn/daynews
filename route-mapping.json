@@ -1,0 +1,498 @@
+{
+  "routes": [
+    {
+      "path": "/editor/:articleId",
+      "nextPath": "/editor/[articleId]",
+      "component": "EditorPage",
+      "file": "src/app/editor/[articleId]/page.tsx"
+    },
+    {
+      "path": "*",
+      "nextPath": "*",
+      "component": "EmergencyFallback",
+      "file": "src/app*/page.tsx"
+    },
+    {
+      "path": "/",
+      "nextPath": "/",
+      "component": "HomePage",
+      "file": "src/app/page.tsx"
+    },
+    {
+      "path": "/home",
+      "nextPath": "/home",
+      "component": "HomePage",
+      "file": "src/app/home/page.tsx"
+    },
+    {
+      "path": "/national",
+      "nextPath": "/national",
+      "component": "NationalHomePage",
+      "file": "src/app/national/page.tsx"
+    },
+    {
+      "path": "/journalists",
+      "nextPath": "/journalists",
+      "component": "JournalistsAdminPage",
+      "file": "src/app/journalists/page.tsx"
+    },
+    {
+      "path": "/profile",
+      "nextPath": "/profile",
+      "component": "UserProfilePage",
+      "file": "src/app/profile/page.tsx"
+    },
+    {
+      "path": "/settings",
+      "nextPath": "/settings",
+      "component": "UserSettingsPage",
+      "file": "src/app/settings/page.tsx"
+    },
+    {
+      "path": "/publish",
+      "nextPath": "/publish",
+      "component": "PublishPromotePage",
+      "file": "src/app/publish/page.tsx"
+    },
+    {
+      "path": "/createNews",
+      "nextPath": "/createNews",
+      "component": "CreateNewsPage",
+      "file": "src/app/createNews/page.tsx"
+    },
+    {
+      "path": "/announcementCreator",
+      "nextPath": "/announcementCreator",
+      "component": "AnnouncementCreatorPage",
+      "file": "src/app/announcementCreator/page.tsx"
+    },
+    {
+      "path": "/couponCreator",
+      "nextPath": "/couponCreator",
+      "component": "CouponCreatorPage",
+      "file": "src/app/couponCreator/page.tsx"
+    },
+    {
+      "path": "/announcements",
+      "nextPath": "/announcements",
+      "component": "AnnouncementsPage",
+      "file": "src/app/announcements/page.tsx"
+    },
+    {
+      "path": "/classifieds",
+      "nextPath": "/classifieds",
+      "component": "ClassifiedsPage",
+      "file": "src/app/classifieds/page.tsx"
+    },
+    {
+      "path": "/classifiedDetail",
+      "nextPath": "/classifiedDetail",
+      "component": "ClassifiedDetailPage",
+      "file": "src/app/classifiedDetail/page.tsx"
+    },
+    {
+      "path": "/postListing",
+      "nextPath": "/postListing",
+      "component": "PostListingPage",
+      "file": "src/app/postListing/page.tsx"
+    },
+    {
+      "path": "/classifieds/select-communities",
+      "nextPath": "/classifieds/select-communities",
+      "component": "SelectCommunitiesPage",
+      "file": "src/app/classifieds/select-communities/page.tsx"
+    },
+    {
+      "path": "/classifieds/select-timeframe",
+      "nextPath": "/classifieds/select-timeframe",
+      "component": "SelectTimeframePage",
+      "file": "src/app/classifieds/select-timeframe/page.tsx"
+    },
+    {
+      "path": "/classifieds/payment",
+      "nextPath": "/classifieds/payment",
+      "component": "PaymentPage",
+      "file": "src/app/classifieds/payment/page.tsx"
+    },
+    {
+      "path": "/classifieds/confirmation",
+      "nextPath": "/classifieds/confirmation",
+      "component": "ConfirmationPage",
+      "file": "src/app/classifieds/confirmation/page.tsx"
+    },
+    {
+      "path": "/classifieds/rerun",
+      "nextPath": "/classifieds/rerun",
+      "component": "RerunAdPage",
+      "file": "src/app/classifieds/rerun/page.tsx"
+    },
+    {
+      "path": "/coupons",
+      "nextPath": "/coupons",
+      "component": "CouponsPage",
+      "file": "src/app/coupons/page.tsx"
+    },
+    {
+      "path": "/businessDirectory",
+      "nextPath": "/businessDirectory",
+      "component": "BusinessDirectoryPage",
+      "file": "src/app/businessDirectory/page.tsx"
+    },
+    {
+      "path": "/eventsCalendar",
+      "nextPath": "/eventsCalendar",
+      "component": "EventsCalendarPage",
+      "file": "src/app/eventsCalendar/page.tsx"
+    },
+    {
+      "path": "/eventCreator",
+      "nextPath": "/eventCreator",
+      "component": "EventCreatorPage",
+      "file": "src/app/eventCreator/page.tsx"
+    },
+    {
+      "path": "/search",
+      "nextPath": "/search",
+      "component": "SearchResultsPage",
+      "file": "src/app/search/page.tsx"
+    },
+    {
+      "path": "/tag",
+      "nextPath": "/tag",
+      "component": "TagPage",
+      "file": "src/app/tag/page.tsx"
+    },
+    {
+      "path": "/citySelection",
+      "nextPath": "/citySelection",
+      "component": "CitySelectionPage",
+      "file": "src/app/citySelection/page.tsx"
+    },
+    {
+      "path": "/archive",
+      "nextPath": "/archive",
+      "component": "ArchiveBrowserPage",
+      "file": "src/app/archive/page.tsx"
+    },
+    {
+      "path": "/trending",
+      "nextPath": "/trending",
+      "component": "TrendingPage",
+      "file": "src/app/trending/page.tsx"
+    },
+    {
+      "path": "/about",
+      "nextPath": "/about",
+      "component": "AboutUsPage",
+      "file": "src/app/about/page.tsx"
+    },
+    {
+      "path": "/contact",
+      "nextPath": "/contact",
+      "component": "ContactUsPage",
+      "file": "src/app/contact/page.tsx"
+    },
+    {
+      "path": "/eventDetail",
+      "nextPath": "/eventDetail",
+      "component": "EventDetailPage",
+      "file": "src/app/eventDetail/page.tsx"
+    },
+    {
+      "path": "/advertisingDetail",
+      "nextPath": "/advertisingDetail",
+      "component": "AdvertisingDetailPage",
+      "file": "src/app/advertisingDetail/page.tsx"
+    },
+    {
+      "path": "/announcementDetail",
+      "nextPath": "/announcementDetail",
+      "component": "AnnouncementDetailPage",
+      "file": "src/app/announcementDetail/page.tsx"
+    },
+    {
+      "path": "/couponDetail",
+      "nextPath": "/couponDetail",
+      "component": "CouponDetailPage",
+      "file": "src/app/couponDetail/page.tsx"
+    },
+    {
+      "path": "/register",
+      "nextPath": "/register",
+      "component": "UserRegistrationPage",
+      "file": "src/app/register/page.tsx"
+    },
+    {
+      "path": "/memorials",
+      "nextPath": "/memorials",
+      "component": "MemorialsPage",
+      "file": "src/app/memorials/page.tsx"
+    },
+    {
+      "path": "/memorialDetail",
+      "nextPath": "/memorialDetail",
+      "component": "MemorialDetailPage",
+      "file": "src/app/memorialDetail/page.tsx"
+    },
+    {
+      "path": "/legalNoticeCreator",
+      "nextPath": "/legalNoticeCreator",
+      "component": "LegalNoticeCreatorPage",
+      "file": "src/app/legalNoticeCreator/page.tsx"
+    },
+    {
+      "path": "/legalNoticesList",
+      "nextPath": "/legalNoticesList",
+      "component": "LegalNoticesListPage",
+      "file": "src/app/legalNoticesList/page.tsx"
+    },
+    {
+      "path": "/legalNoticeDetail",
+      "nextPath": "/legalNoticeDetail",
+      "component": "LegalNoticeDetailPage",
+      "file": "src/app/legalNoticeDetail/page.tsx"
+    },
+    {
+      "path": "/create-article",
+      "nextPath": "/create-article",
+      "component": "CreateArticlePage",
+      "file": "src/app/create-article/page.tsx"
+    },
+    {
+      "path": "/create-article/metadata",
+      "nextPath": "/create-article/metadata",
+      "component": "ArticleMetadataPage",
+      "file": "src/app/create-article/metadata/page.tsx"
+    },
+    {
+      "path": "/create-article/seo",
+      "nextPath": "/create-article/seo",
+      "component": "ArticleSeoPage",
+      "file": "src/app/create-article/seo/page.tsx"
+    },
+    {
+      "path": "/create-article/review",
+      "nextPath": "/create-article/review",
+      "component": "ArticleReviewPage",
+      "file": "src/app/create-article/review/page.tsx"
+    },
+    {
+      "path": "/review/queue",
+      "nextPath": "/review/queue",
+      "component": "CommunityReviewQueuePage",
+      "file": "src/app/review/queue/page.tsx"
+    },
+    {
+      "path": "/author/:authorId",
+      "nextPath": "/author/[authorId]",
+      "component": "AuthorProfilePage",
+      "file": "src/app/author/[authorId]/page.tsx"
+    },
+    {
+      "path": "/author/profile-creator",
+      "nextPath": "/author/profile-creator",
+      "component": "AuthorProfileCreatorPage",
+      "file": "src/app/author/profile-creator/page.tsx"
+    },
+    {
+      "path": "/authors",
+      "nextPath": "/authors",
+      "component": "AuthorsPage",
+      "file": "src/app/authors/page.tsx"
+    },
+    {
+      "path": "/authors-report",
+      "nextPath": "/authors-report",
+      "component": "AuthorsReportPage",
+      "file": "src/app/authors-report/page.tsx"
+    },
+    {
+      "path": "/page-directory",
+      "nextPath": "/page-directory",
+      "component": "PageDirectory",
+      "file": "src/app/page-directory/page.tsx"
+    },
+    {
+      "path": "/community-ads",
+      "nextPath": "/community-ads",
+      "component": "CommunityAdsPage",
+      "file": "src/app/community-ads/page.tsx"
+    },
+    {
+      "path": "/admin-dashboard",
+      "nextPath": "/admin-dashboard",
+      "component": "AdminDashboard",
+      "file": "src/app/admin-dashboard/page.tsx"
+    },
+    {
+      "path": "/content-management",
+      "nextPath": "/content-management",
+      "component": "ContentManagement",
+      "file": "src/app/content-management/page.tsx"
+    },
+    {
+      "path": "/revenue-analytics",
+      "nextPath": "/revenue-analytics",
+      "component": "RevenueAnalytics",
+      "file": "src/app/revenue-analytics/page.tsx"
+    },
+    {
+      "path": "/ai-agent-control",
+      "nextPath": "/ai-agent-control",
+      "component": "AIAgentControl",
+      "file": "src/app/ai-agent-control/page.tsx"
+    },
+    {
+      "path": "/moderation-queue",
+      "nextPath": "/moderation-queue",
+      "component": "ModerationQueue",
+      "file": "src/app/moderation-queue/page.tsx"
+    },
+    {
+      "path": "/community-deployment",
+      "nextPath": "/community-deployment",
+      "component": "CommunityDeploymentWizard",
+      "file": "src/app/community-deployment/page.tsx"
+    },
+    {
+      "path": "/photos",
+      "nextPath": "/photos",
+      "component": "PhotoGalleryPage",
+      "file": "src/app/photos/page.tsx"
+    },
+    {
+      "path": "/photos/upload",
+      "nextPath": "/photos/upload",
+      "component": "PhotoUploadPage",
+      "file": "src/app/photos/upload/page.tsx"
+    },
+    {
+      "path": "/photos/:photoId",
+      "nextPath": "/photos/[photoId]",
+      "component": "PhotoDetailPage",
+      "file": "src/app/photos/[photoId]/page.tsx"
+    },
+    {
+      "path": "/business/:slug",
+      "nextPath": "/business/[slug]",
+      "component": "BusinessProfilePage",
+      "file": "src/app/business/[slug]/page.tsx"
+    },
+    {
+      "path": "/business/create",
+      "nextPath": "/business/create",
+      "component": "BusinessProfileCreator",
+      "file": "src/app/business/create/page.tsx"
+    },
+    {
+      "path": "/business/premium-enrollment",
+      "nextPath": "/business/premium-enrollment",
+      "component": "PremiumEnrollment",
+      "file": "src/app/business/premium-enrollment/page.tsx"
+    },
+    {
+      "path": "/business/premium-success",
+      "nextPath": "/business/premium-success",
+      "component": "PremiumSuccess",
+      "file": "src/app/business/premium-success/page.tsx"
+    },
+    {
+      "path": "/business-dashboard",
+      "nextPath": "/business-dashboard",
+      "component": "BusinessDashboard",
+      "file": "src/app/business-dashboard/page.tsx"
+    },
+    {
+      "path": "/sports",
+      "nextPath": "/sports",
+      "component": "SportsPage",
+      "file": "src/app/sports/page.tsx"
+    },
+    {
+      "path": "/life",
+      "nextPath": "/life",
+      "component": "LifePage",
+      "file": "src/app/life/page.tsx"
+    },
+    {
+      "path": "/opinion",
+      "nextPath": "/opinion",
+      "component": "OpinionPage",
+      "file": "src/app/opinion/page.tsx"
+    },
+    {
+      "path": "/careers",
+      "nextPath": "/careers",
+      "component": "CareersPage",
+      "file": "src/app/careers/page.tsx"
+    },
+    {
+      "path": "/ethics-policy",
+      "nextPath": "/ethics-policy",
+      "component": "EthicsPolicyPage",
+      "file": "src/app/ethics-policy/page.tsx"
+    },
+    {
+      "path": "/subscription-options",
+      "nextPath": "/subscription-options",
+      "component": "SubscriptionOptionsPage",
+      "file": "src/app/subscription-options/page.tsx"
+    },
+    {
+      "path": "/newsroom",
+      "nextPath": "/newsroom",
+      "component": "NewsroomPage",
+      "file": "src/app/newsroom/page.tsx"
+    },
+    {
+      "path": "/privacy-policy",
+      "nextPath": "/privacy-policy",
+      "component": "PrivacyPolicyPage",
+      "file": "src/app/privacy-policy/page.tsx"
+    },
+    {
+      "path": "/terms-of-service",
+      "nextPath": "/terms-of-service",
+      "component": "TermsOfServicePage",
+      "file": "src/app/terms-of-service/page.tsx"
+    },
+    {
+      "path": "/cookie-policy",
+      "nextPath": "/cookie-policy",
+      "component": "CookiePolicyPage",
+      "file": "src/app/cookie-policy/page.tsx"
+    },
+    {
+      "path": "/accessibility",
+      "nextPath": "/accessibility",
+      "component": "AccessibilityPage",
+      "file": "src/app/accessibility/page.tsx"
+    },
+    {
+      "path": "/do-not-sell-my-information",
+      "nextPath": "/do-not-sell-my-information",
+      "component": "DoNotSellPage",
+      "file": "src/app/do-not-sell-my-information/page.tsx"
+    },
+    {
+      "path": "/editor/:articleId",
+      "nextPath": "/editor/[articleId]",
+      "component": "EditorPage",
+      "file": "src/app/editor/[articleId]/page.tsx"
+    },
+    {
+      "path": "*",
+      "nextPath": "*",
+      "component": "EmergencyFallback",
+      "file": "src/app*/page.tsx"
+    },
+    {
+      "path": "/services-pricing",
+      "nextPath": "/services-pricing",
+      "component": "ServicesAndPricingPage",
+      "file": "src/app/services-pricing/page.tsx"
+    }
+  ],
+  "totalRoutes": 82,
+  "generated": "2025-08-14T17:57:08.614Z"
+}

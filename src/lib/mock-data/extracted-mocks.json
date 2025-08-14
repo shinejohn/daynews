@@ -1,0 +1,202 @@
+[
+  {
+    "component": "CreateNewsPage",
+    "data": "{\n    title: '',\n    subtitle: '',\n    category: '',\n    tags: [],\n    content: '',\n    imageDescription: '',\n    location: '',\n    sourceReference: ''\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "CreateNewsPage",
+    "data": "{\n    subtitle: 0,\n    content: 0\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "CreateNewsPage",
+    "data": "{\n    isValidated: false,\n    moderationPassed: false,\n    sourcesValidated: false,\n    finalDecision: 'pending',\n    moderationNotes: 'The article contains inappropriate language, lacks clarity, and does not provide relevant or detailed information for the local community. The tone is unprofessional, and the content does not clearly relate to a specific event or topic.',\n    suggestedFixes: 'Remove offensive language, clarify the main topic or event, provide relevant details about the subject (e.g., why Shine is the best), and ensure the content is appropriate and informative for the local audience.',\n    sourceValid: false,\n    validationNotes: '',\n    confidenceLevel: 'low' // low, medium, high\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "UserSettingsPage",
+    "data": "{\n    name: 'John Doe',\n    email: 'john.doe@example.com',\n    phone: '(727) 555-1234',\n    location: 'Clearwater, FL',\n    address1: '123 Main Street',\n    address2: 'Apt 4B',\n    joinDate: 'January 2023',\n    bio: 'Community member interested in local events and news.',\n    profileImage: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',\n    coverImage: 'https://images.unsplash.com/photo-1557683316-973673baf926?ixlib=rb-1.2.1&auto=format&fit=crop&w=1280&q=80',\n    social: {\n      website: 'johndoe.com',\n      twitter: '@johndoe',\n      facebook: 'johndoe',\n      linkedin: 'johndoe'\n    }",
+    "type": "useState"
+  },
+  {
+    "component": "UserSettingsPage",
+    "data": "{\n    ...userData\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "AboutUsPage",
+    "data": "{\n    storiesPublished: 0,\n    communitiesServed: 0,\n    readersReached: 0,\n    localBusinessesSupported: 0\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "CommunityDeploymentWizard",
+    "data": "{\n    communityName: '',\n    state: 'Florida',\n    population: '',\n    targetSubscribers: '',\n    dataSource: 'census',\n    aiJournalists: 5\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "CommunityAdsPage",
+    "data": "{\n    title: '',\n    image: null,\n    bodyText: '',\n    callToAction: 'Learn More',\n    destinationUrl: ''\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "TargetCommunities",
+    "data": "{\n    category: '',\n    size: '',\n    engagement: '',\n    priceRange: [5, 100]\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "AnnouncementCreatorPage",
+    "data": "{\n    title: '',\n    content: '',\n    category: '',\n    location: '',\n    eventDate: '',\n    image: null\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "ArchiveBrowserPage",
+    "data": "{\n    dateRange: {\n      start: null,\n      end: null\n    }",
+    "type": "useState"
+  },
+  {
+    "component": "ArchiveBrowserPage",
+    "data": "{\n    totalArticles: 0,\n    earliestDate: null,\n    mostActiveDay: null,\n    popularTopics: []\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "ArchiveSearch",
+    "data": "{\n    start: '',\n    end: ''\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "ArticleComments",
+    "data": "[{\n    id: 1,\n    author: 'Local Resident',\n    verified: true,\n    content: \"I'm glad they're maintaining the millage rate, but with property values increasing so much, we're still effectively paying more in taxes. I'd like to see more transparency about how these infrastructure funds are being allocated.\",\n    time: '5 hours ago',\n    likes: 45,\n    replies: [{\n      id: 2,\n      author: 'David Chen',\n      badge: 'Business Owner',\n      content: 'The infrastructure improvements are much needed though. Have you seen the condition of some of our roads? The stormwater system also needs a major upgrade before the next hurricane season.',\n      time: '3 hours ago',\n      likes: 12\n    }]",
+    "type": "useState"
+  },
+  {
+    "component": "ArticleDetailPage",
+    "data": "{\n    helpful: 127,\n    love: 45,\n    surprising: 23\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "ArticleDetailPage",
+    "data": "{\n    factual: 4.5,\n    likeable: 4.2,\n    bias: 3.8,\n    objective: 4.1\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "AIAssistantPanel",
+    "data": "[{\n    role: 'assistant',\n    content: \"Hi! I'm your AI newsroom assistant. I'm here to help you create engaging content for your community. What are you writing about today?\"\n  }]",
+    "type": "useState"
+  },
+  {
+    "component": "UserRegistrationPage",
+    "data": "{\n    firstName: '',\n    lastName: '',\n    email: '',\n    password: '',\n    agreeTerms: false,\n    agreeMarketing: false\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "BusinessDirectoryPage",
+    "data": "{\n    openNow: false,\n    deliveryAvailable: false,\n    newBusinesses: false,\n    distance: 10,\n    priceRange: [],\n    minRating: 0\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "CitySearch",
+    "data": "[{\n        id: 'clearwater-fl',\n        name: 'Clearwater',\n        state: 'FL',\n        population: 115,\n        '975': '',\n        activeStories: 143,\n        coordinates: '{ lat: 27.9659',\n        lng: '-82.8001 }'\n      }, {\n        id: 'clearwater-beach-fl',\n        name: 'Clearwater Beach',\n        state: 'FL',\n        population: 2,\n        '321': '',\n        activeStories: 87,\n        coordinates: '{ lat: 27.9775',\n        lng: '-82.8328 }'\n      }, {\n        id: 'clearwater-ks',\n        name: 'Clearwater',\n        state: 'KS',\n        population: 2,\n        '481': '',\n        activeStories: 14,\n        coordinates: '{ lat: 37.5042',\n        lng: '-97.5045 }'\n      }, {\n        id: 'clearfield-pa',\n        name: 'Clearfield',\n        state: 'PA',\n        population: 5,\n        '962': '',\n        activeStories: 32,\n        coordinates: '{ lat: 41.0292',\n        lng: '-78.4408 }'\n      }, {\n        id: 'clear-lake-ia',\n        name: 'Clear Lake',\n        state: 'IA',\n        population: 7,\n        '687': '',\n        activeStories: 28,\n        coordinates: '{ lat: 43.1366',\n        lng: '-93.3652 }'\n      }]",
+    "type": "constant"
+  },
+  {
+    "component": "CitySelectionPage",
+    "data": "[{\n        id: 'clearwater-fl',\n        name: 'Clearwater',\n        state: 'FL',\n        image: 'https://images.unsplash.com/photo-1593134257782-e89567b7718a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',\n        population: 115,\n        '975': '',\n        activeStories: 143,\n        distance: 0,\n        coordinates: '{ lat: 27.9659',\n        lng: '-82.8001 }',\n        isFollowed: true\n      }, {\n        id: 'dunedin-fl',\n        name: 'Dunedin',\n        state: 'FL',\n        image: 'https://images.unsplash.com/photo-1591991564021-0662a8573199?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',\n        population: 36,\n        '06': 8,\n        activeStories: 87,\n        distance: 3.8,\n        coordinates: '{ lat: 28.0197',\n        lng: '-82.7717 }',\n        isFollowed: false\n      }, {\n        id: 'palm-harbor-fl',\n        name: 'Palm Harbor',\n        state: 'FL',\n        image: 'https://images.unsplash.com/photo-1604537466608-109fa2f16c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',\n        population: 60,\n        '236': '',\n        activeStories: 62,\n        distance: 5.2,\n        coordinates: '{ lat: 28.0781',\n        lng: '-82.7663 }',\n        isFollowed: false\n      }, {\n        id: 'safety-harbor-fl',\n        name: 'Safety Harbor',\n        state: 'FL',\n        image: 'https://images.unsplash.com/photo-1590059590921-f0c2f8b6b1a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',\n        population: 17,\n        '872': '',\n        activeStories: 43,\n        distance: 6.1,\n        coordinates: '{ lat: 28.0064',\n        lng: '-82.6956 }',\n        isFollowed: false\n      }, {\n        id: 'largo-fl',\n        name: 'Largo',\n        state: 'FL',\n        image: 'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',\n        population: 84,\n        '948': '',\n        activeStories: 95,\n        distance: 7.3,\n        coordinates: '{ lat: 27.9095',\n        lng: '-82.7873 }',\n        isFollowed: false\n      }, {\n        id: 'oldsmar-fl',\n        name: 'Oldsmar',\n        state: 'FL',\n        image: 'https://images.unsplash.com/photo-1546370118-a67c2df04f7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',\n        population: 14,\n        '898': '',\n        activeStories: 31,\n        distance: 8.7,\n        coordinates: '{ lat: 28.0342',\n        lng: '-82.6773 }',\n        isFollowed: false\n      }]",
+    "type": "constant"
+  },
+  {
+    "component": "CitySelectionPage",
+    "data": "[{\n        id: 'tampa-fl',\n        name: 'Tampa',\n        state: 'FL',\n        image: 'https://images.unsplash.com/photo-1580743244072-b8a0a46bc7af?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',\n        population: 384,\n        '959': '',\n        activeStories: 423,\n        trending: true,\n        isFollowed: false\n      }, {\n        id: 'st-petersburg-fl',\n        name: 'St. Petersburg',\n        state: 'FL',\n        image: 'https://images.unsplash.com/photo-1590059590921-f0c2f8b6b1a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',\n        population: 258,\n        '308': '',\n        activeStories: 312,\n        trending: false,\n        isFollowed: false\n      }, {\n        id: 'orlando-fl',\n        name: 'Orlando',\n        state: 'FL',\n        image: 'https://images.unsplash.com/photo-1575089776834-8be34696ffb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',\n        population: 307,\n        '573': '',\n        activeStories: 387,\n        trending: true,\n        isFollowed: false\n      }, {\n        id: 'miami-fl',\n        name: 'Miami',\n        state: 'FL',\n        image: 'https://images.unsplash.com/photo-1514214246283-d427a95c5d2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',\n        population: 442,\n        '241': '',\n        activeStories: 489,\n        trending: false,\n        isFollowed: false\n      }, {\n        id: 'jacksonville-fl',\n        name: 'Jacksonville',\n        state: 'FL',\n        image: 'https://images.unsplash.com/photo-1605723517503-3cadb5818a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',\n        population: 911,\n        '507': '',\n        activeStories: 356,\n        trending: false,\n        isFollowed: false\n      }, {\n        id: 'fort-lauderdale-fl',\n        name: 'Fort Lauderdale',\n        state: 'FL',\n        image: 'https://images.unsplash.com/photo-1627083692505-4a2cb42d1d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',\n        population: 182,\n        '760': '',\n        activeStories: 278,\n        trending: true,\n        isFollowed: false\n      }]",
+    "type": "constant"
+  },
+  {
+    "component": "AdvancedFilters",
+    "data": "{\n    price: true,\n    condition: true,\n    distance: true,\n    posted: true,\n    other: true\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "PaymentPage",
+    "data": "{\n    cardNumber: '',\n    cardName: '',\n    expiryDate: '',\n    cvv: ''\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "PostListingPage",
+    "data": "{\n    title: '',\n    category: '',\n    subcategory: '',\n    price: '',\n    description: '',\n    location: '',\n    images: []\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "SelectCommunitiesPage",
+    "data": "[{\n        id: 'clearwater',\n        name: 'Clearwater',\n        state: 'FL',\n        members: 24500,\n        active: true,\n        description: 'The official community for Clearwater, Florida residents.',\n        image: 'https://images.unsplash.com/photo-1593534560771-4f0fc0cabd94?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'\n      }, {\n        id: 'dunedin',\n        name: 'Dunedin',\n        state: 'FL',\n        members: 18300,\n        active: true,\n        description: 'Connect with neighbors in Dunedin, Florida.',\n        image: 'https://images.unsplash.com/photo-1534430480872-3498386e7856?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'\n      }, {\n        id: 'stpetersburg',\n        name: 'St. Petersburg',\n        state: 'FL',\n        members: 32700,\n        active: true,\n        description: 'St. Petersburg community news, events, and classifieds.',\n        image: 'https://images.unsplash.com/photo-1580742471944-c1c187a943e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'\n      }, {\n        id: 'tampa',\n        name: 'Tampa',\n        state: 'FL',\n        members: 41200,\n        active: true,\n        description: 'Tampa Bay area community board.',\n        image: 'https://images.unsplash.com/photo-1606922619305-aae5c19a6593?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'\n      }, {\n        id: 'palmharbor',\n        name: 'Palm Harbor',\n        state: 'FL',\n        members: 15800,\n        active: true,\n        description: 'Palm Harbor community discussion and marketplace.',\n        image: 'https://images.unsplash.com/photo-1584467541268-b040f83be3fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'\n      }, {\n        id: 'sarasota',\n        name: 'Sarasota',\n        state: 'FL',\n        members: 28900,\n        active: true,\n        description: 'Sarasota community for local residents.',\n        image: 'https://images.unsplash.com/photo-1543039625-14cbd3802e7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'\n      }, {\n        id: 'largo',\n        name: 'Largo',\n        state: 'FL',\n        members: 13600,\n        active: true,\n        description: 'Largo, FL community board and marketplace.',\n        image: 'https://images.unsplash.com/photo-1517404215738-15263e9f9178?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'\n      }, {\n        id: 'oldsmar',\n        name: 'Oldsmar',\n        state: 'FL',\n        members: 9200,\n        active: true,\n        description: 'Oldsmar community news and discussion.',\n        image: 'https://images.unsplash.com/photo-1565005691280-74f498c3e0b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'\n      }, {\n        id: 'safetyharbor',\n        name: 'Safety Harbor',\n        state: 'FL',\n        members: 11400,\n        active: true,\n        description: 'Safety Harbor local community and events.',\n        image: 'https://images.unsplash.com/photo-1567601169793-2c546f9d5526?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'\n      }]",
+    "type": "constant"
+  },
+  {
+    "component": "DoNotSellPage",
+    "data": "{\n    firstName: '',\n    lastName: '',\n    email: '',\n    requestType: 'doNotSell',\n    details: '',\n    verifyIdentity: false\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "QuickContactForm",
+    "data": "{\n    name: '',\n    email: '',\n    subject: '',\n    message: '',\n    attachment: null\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "CouponCreatorPage",
+    "data": "{\n    title: '',\n    description: '',\n    businessName: '',\n    location: '',\n    discount: '',\n    discountType: 'percentage',\n    startDate: '',\n    endDate: '',\n    terms: '',\n    image: null\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "SidePanel",
+    "data": "[{\n    id: 1,\n    title: 'Clearwater City Website',\n    url: 'https://www.clearwatercity.gov/community-center'\n  }, {\n    id: 2,\n    title: 'Community Center Plans',\n    url: 'https://www.clearwatercity.gov/plans/community-center-2023'\n  }]",
+    "type": "useState"
+  },
+  {
+    "component": "SidePanel",
+    "data": "{\n    keyword: false,\n    description: false,\n    url: false,\n    wordCount: false,\n    images: false\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "EventCreatorPage",
+    "data": "{\n    title: '',\n    description: '',\n    category: 'community',\n    startDate: '',\n    startTime: '',\n    endDate: '',\n    endTime: '',\n    location: 'Clearwater, FL',\n    address: '',\n    isVirtual: false,\n    virtualLink: '',\n    ticketPrice: '',\n    ticketType: 'free',\n    maxAttendees: '',\n    contactEmail: '',\n    contactPhone: '',\n    organizerName: '',\n    photos: []\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "EventDetailPage",
+    "data": "{\n    helpful: 42,\n    love: 27,\n    attending: 68\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "EventsCalendarPage",
+    "data": "[{\n  id: 1,\n  title: 'Clearwater Jazz Holiday',\n  date: '2025-08-15',\n  time: '2025-08-15T18:00:00',\n  endTime: '2025-08-15T23:00:00',\n  location: 'Coachman Park',\n  address: '301 Drew St, Clearwater, FL 33755',\n  coordinates: {\n    lat: 27.9659,\n    lng: -82.8001\n  },\n  description: 'The Clearwater Jazz Holiday is a world-class music festival featuring jazz, blues, and rock performances.',\n  image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',\n  price: 45,\n  category: 'music',\n  featured: true,\n  attendees: 17,\n  organizer: 'Clearwater Jazz Holiday Foundation'\n}, {\n  id: 2,\n  title: 'Farmers Market',\n  date: '2025-08-10',\n  time: '2025-08-10T09:00:00',\n  endTime: '2025-08-10T14:00:00',\n  location: 'Downtown Clearwater',\n  address: '400 Cleveland St, Clearwater, FL 33755',\n  coordinates: {\n    lat: 27.9651,\n    lng: -82.8003\n  },\n  description: 'Shop local produce, artisanal foods, and handcrafted goods at the weekly farmers market.',\n  image: 'https://images.unsplash.com/photo-1488459716781-31db52582fe9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',\n  price: 0,\n  category: 'food',\n  featured: false,\n  attendees: 42,\n  organizer: 'City of Clearwater'\n}, {\n  id: 3,\n  title: 'Beach Cleanup Day',\n  date: '2025-08-12',\n  time: '2025-08-12T08:00:00',\n  endTime: '2025-08-12T12:00:00',\n  location: 'Clearwater Beach',\n  address: '160 Gulfview Blvd, Clearwater, FL 33767',\n  coordinates: {\n    lat: 27.9775,\n    lng: -82.8271\n  },\n  description: 'Join your neighbors in keeping our beaches clean and beautiful. Equipment provided.',\n  image: 'https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',\n  price: 0,\n  category: 'community',\n  featured: false,\n  attendees: 28,\n  organizer: 'Keep Clearwater Beautiful'\n}, {\n  id: 4,\n  title: 'Art Walk',\n  date: '2025-08-20',\n  time: '2025-08-20T18:00:00',\n  endTime: '2025-08-20T21:00:00',\n  location: 'Cleveland Street District',\n  address: 'Cleveland St, Clearwater, FL 33755',\n  coordinates: {\n    lat: 27.9654,\n    lng: -82.8009\n  },\n  description: 'Explore local art galleries and meet the artists during this monthly event.',\n  image: 'https://images.unsplash.com/photo-1563784462041-5f97ac9523dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',\n  price: 0,\n  category: 'arts',\n  featured: false,\n  attendees: 35,\n  organizer: 'Clearwater Arts Alliance'\n}, {\n  id: 5,\n  title: 'Summer Concert Series',\n  date: '2025-08-22',\n  time: '2025-08-22T19:00:00',\n  endTime: '2025-08-22T22:00:00',\n  location: 'Pier 60',\n  address: '1 Causeway Blvd, Clearwater, FL 33767',\n  coordinates: {\n    lat: 27.9769,\n    lng: -82.8277\n  },\n  description: 'Enjoy live music by local bands with a beautiful sunset backdrop.',\n  image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',\n  price: 0,\n  category: 'music',\n  featured: true,\n  attendees: 64,\n  organizer: 'City of Clearwater'\n}, {\n  id: 6,\n  title: 'Youth Soccer Tournament',\n  date: '2025-09-05',\n  time: '2025-09-05T10:00:00',\n  endTime: '2025-09-05T16:00:00',\n  location: 'Eddie C. Moore Complex',\n  address: '3050 Drew St, Clearwater, FL 33759',\n  coordinates: {\n    lat: 27.9686,\n    lng: -82.7136\n  },\n  description: 'Annual youth soccer tournament featuring teams from across the region.',\n  image: 'https://images.unsplash.com/photo-1517466787929-bc90951d0974?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',\n  price: 0,\n  category: 'sports',\n  featured: false,\n  attendees: 120,\n  organizer: 'Clearwater Youth Soccer Association'\n}, {\n  id: 7,\n  title: 'Food Truck Rally',\n  date: '2025-09-10',\n  time: '2025-09-10T17:00:00',\n  endTime: '2025-09-10T22:00:00',\n  location: 'Coachman Park',\n  address: '301 Drew St, Clearwater, FL 33755',\n  coordinates: {\n    lat: 27.9659,\n    lng: -82.8005\n  },\n  description: \"Sample cuisine from the area's best food trucks with live music and family activities.\",\n  image: 'https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',\n  price: 0,\n  category: 'food',\n  featured: true,\n  attendees: 85,\n  organizer: 'Tampa Bay Food Truck Rally'\n}, {\n  id: 8,\n  title: 'Family Movie Night',\n  date: '2025-09-15',\n  time: '2025-09-15T20:00:00',\n  endTime: '2025-09-15T22:30:00',\n  location: 'Countryside Recreation Center',\n  address: '2640 Sabal Springs Dr, Clearwater, FL 33761',\n  coordinates: {\n    lat: 28.0097,\n    lng: -82.7371\n  },\n  description: 'Bring blankets and chairs for an outdoor screening of a family-friendly movie.',\n  image: 'https://images.unsplash.com/photo-1585647347483-22b66260dfff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',\n  price: 0,\n  category: 'family',\n  featured: false,\n  attendees: 47,\n  organizer: 'Clearwater Parks & Recreation'\n}, {\n  id: 9,\n  title: 'Business Networking Breakfast',\n  date: '2025-09-18',\n  time: '2025-09-18T07:30:00',\n  endTime: '2025-09-18T09:00:00',\n  location: 'Clearwater Chamber of Commerce',\n  address: '600 Cleveland St, Clearwater, FL 33755',\n  coordinates: {\n    lat: 27.9654,\n    lng: -82.8\n  },\n  description: 'Connect with local business leaders and entrepreneurs at this monthly networking event.',\n  image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',\n  price: 15,\n  category: 'business',\n  featured: false,\n  attendees: 32,\n  organizer: 'Clearwater Chamber of Commerce'\n}, {\n  id: 10,\n  title: 'Adult Education Workshop: Digital Skills',\n  date: '2025-09-22',\n  time: '2025-09-22T18:00:00',\n  endTime: '2025-09-22T20:00:00',\n  location: 'Clearwater Public Library',\n  address: '100 N Osceola Ave, Clearwater, FL 33755',\n  coordinates: {\n    lat: 27.9661,\n    lng: -82.8008\n  },\n  description: 'Free workshop teaching essential digital skills for career advancement and personal use.',\n  image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',\n  price: 0,\n  category: 'education',\n  featured: false,\n  attendees: 25,\n  organizer: 'Clearwater Public Library System'\n}]",
+    "type": "constant"
+  },
+  {
+    "component": "LegalNoticeCreatorPage",
+    "data": "{\n    legal: false,\n    public: false,\n    authority: false\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "LegalNoticeDetailPage",
+    "data": "{\n        id: 'ln-2024-001234',\n        type: 'FORECLOSURE NOTICE',\n        status: 'ACTIVE',\n        caseNumber: '2024-CA-001234',\n        publishDate: 'August 1, 2024',\n        expiryDate: 'August 31, 2024',\n        court: 'Circuit Court, Pinellas County, Florida',\n        plaintiffName: 'First National Bank of Clearwater',\n        defendantName: 'John & Jane Doe',\n        attorneyName: 'Smith & Associates, P.A.',\n        attorneyPhone: '(727) 555-1234',\n        attorneyEmail: 'legal@smithassociates.com',\n        propertyAddress: '123 Main Street, Clearwater, FL 33755',\n        legalDescription: 'Lot 7, Block 3, CLEARWATER HEIGHTS, according to the map or plat thereof as recorded in Plat Book 15, Page 32, Public Records of Pinellas County, Florida.',\n        hearingDate: 'September 15, 2024',\n        hearingTime: '9:00 AM',\n        hearingLocation: 'Pinellas County Justice Center, Courtroom 14, 14250 49th Street North, Clearwater, FL 33762',\n        fullText: `NOTICE OF FORECLOSURE SALE\nNOTICE IS HEREBY GIVEN pursuant to a Final Judgment of Mortgage Foreclosure dated July 15, 2024, and entered in Case No. 2024-CA-001234 of the Circuit Court of the Sixth Judicial Circuit in and for Pinellas County, Florida wherein FIRST NATIONAL BANK OF CLEARWATER is the Plaintiff and JOHN DOE and JANE DOE are the Defendants, the Clerk of the Court will sell to the highest and best bidder for cash at www.pinellas.realforeclose.com at 10:00AM on September 15, 2024, the following described property as set forth in said Final Judgment:\nLot 7, Block 3, CLEARWATER HEIGHTS, according to the map or plat thereof as recorded in Plat Book 15, Page 32, Public Records of Pinellas County, Florida.\nCommonly known as: 123 Main Street, Clearwater, FL 33755\nAny person claiming an interest in the surplus from the sale, if any, other than the property owner as of the date of the Lis Pendens must file a claim within sixty (60) days after the sale.\nIf you are a person with a disability who needs any accommodation in order to participate in this proceeding, you are entitled, at no cost to you, to the provision of certain assistance. Please contact the Human Rights Office, 400 S. Ft. Harrison Ave., Suite 300, Clearwater, FL 33756, (727) 464-4062, at least 7 days before your scheduled court appearance, or immediately upon receiving this notification if the time before the scheduled appearance is less than 7 days; if you are hearing or voice impaired, call 711.\nDated this 1st day of August, 2024.\nSmith & Associates, P.A.\nAttorney for Plaintiff\n123 Legal Lane, Suite 400\nClearwater, FL 33756\nPhone: (727) 555-1234\nEmail: legal@smithassociates.com`,\n        views: 124,\n        lastUpdated: 'August 2, 2024'\n      }",
+    "type": "constant"
+  },
+  {
+    "component": "LegalNoticeDetailPage",
+    "data": "[{\n        id: 'ln-2024-001235',\n        type: 'FORECLOSURE NOTICE',\n        caseNumber: '2024-CA-001235',\n        publishDate: 'July 29, 2024',\n        expiryDate: 'August 29, 2024',\n        court: 'Circuit Court, Pinellas County, Florida',\n        preview: 'Property: 456 Oak Avenue, Clearwater, FL 33756'\n      }, {\n        id: 'ln-2024-001236',\n        type: 'FORECLOSURE NOTICE',\n        caseNumber: '2024-CA-001236',\n        publishDate: 'July 25, 2024',\n        expiryDate: 'August 25, 2024',\n        court: 'Circuit Court, Pinellas County, Florida',\n        preview: 'Property: 789 Pine Street, Clearwater, FL 33755'\n      }, {\n        id: 'ln-2024-001237',\n        type: 'PROBATE NOTICE',\n        caseNumber: '2024-CP-001237',\n        publishDate: 'July 30, 2024',\n        expiryDate: 'August 30, 2024',\n        court: 'Circuit Court, Pinellas County, Florida',\n        preview: 'Estate of: Sarah Johnson'\n      }]",
+    "type": "constant"
+  },
+  {
+    "component": "LegalNoticesListPage",
+    "data": "{\n    type: '',\n    status: '',\n    dateRange: 'all',\n    location: ''\n  }",
+    "type": "useState"
+  },
+  {
+    "component": "CommunitySwitcher",
+    "data": "[{\n    id: 'clearwater-fl-us',\n    name: 'Clearwater',\n    state: 'FL',\n    country: 'US'\n  }, {\n    id: 'dunedin-fl-us',\n    name: 'Dunedin',\n    state: 'FL',\n    country: 'US'\n  }, {\n    id: 'tampa-fl-us',\n    name: 'Tampa',\n    state: 'FL',\n    country: 'US'\n  }, {\n    id: 'st-petersburg-fl-us',\n    name: 'St. Petersburg',\n    state: 'FL',\n    country: 'US'\n  }, {\n    id: 'sarasota-fl-us',\n    name: 'Sarasota',\n    state: 'FL',\n    country: 'US'\n  }, {\n    id: 'orlando-fl-us',\n    name: 'Orlando',\n    state: 'FL',\n    country: 'US'\n  }, {\n    id: 'miami-fl-us',\n    name: 'Miami',\n    state: 'FL',\n    country: 'US'\n  }, {\n    id: 'jacksonville-fl-us',\n    name: 'Jacksonville',\n    state: 'FL',\n    country: 'US'\n  }, {\n    id: 'gainesville-fl-us',\n    name: 'Gainesville',\n    state: 'FL',\n    country: 'US'\n  }, {\n    id: 'tallahassee-fl-us',\n    name: 'Tallahassee',\n    state: 'FL',\n    country: 'US'\n  }, {\n    id: 'pensacola-fl-us',\n    name: 'Pensacola',\n    state: 'FL',\n    country: 'US'\n  }, {\n    id: 'fort-lauderdale-fl-us',\n    name: 'Fort Lauderdale',\n    state: 'FL',\n    country: 'US'\n  }, {\n    id: 'naples-fl-us',\n    name: 'Naples',\n    state: 'FL',\n    country: 'US'\n  }, {\n    id: 'fort-myers-fl-us',\n    name: 'Fort Myers',\n    state: 'FL',\n    country: 'US'\n  }, {\n    id: 'key-west-fl-us',\n    name: 'Key West',\n    state: 'FL',\n    country: 'US'\n  },\n  // Add communities from other states\n  {\n    id: 'atlanta-ga-us',\n    name: 'Atlanta',\n    state: 'GA',\n    country: 'US'\n  }, {\n    id: 'new-york-ny-us',\n    name: 'New York',\n    state: 'NY',\n    country: 'US'\n  }, {\n    id: 'los-angeles-ca-us',\n    name: 'Los Angeles',\n    state: 'CA',\n    country: 'US'\n  }, {\n    id: 'chicago-il-us',\n    name: 'Chicago',\n    state: 'IL',\n    country: 'US'\n  }, {\n    id: 'houston-tx-us',\n    name: 'Houston',\n    state: 'TX',\n    country: 'US'\n  }]",
+    "type": "constant"
+  },
+  {
+    "component": "SearchResultsPage",
+    "data": "['farmers market', 'school board meeting', 'road construction', 'local elections', 'community events']",
+    "type": "useState"
+  }
+]
