@@ -4,7 +4,8 @@ const fs = require('fs');
 const path = require('path');
 
 // Load route mapping
-const routeMapping = JSON.parse(fs.readFileSync('./route-mapping.json', 'utf8'));
+const routeMappingData = JSON.parse(fs.readFileSync('./route-mapping.json', 'utf8'));
+const routeMapping = routeMappingData.routes || routeMappingData;
 
 // ISR/SSR/CSR route configurations
 const routeConfigs = {
@@ -44,6 +45,126 @@ function getRouteConfig(path) {
   return { type: 'isr', revalidate: 3600 };
 }
 
+function getComponentPath(component) {
+  // Map components to their actual file paths within components directory
+  const componentPaths = {
+    // About section
+    'AboutUsPage': 'about/AboutUsPage',
+    
+    // Admin section
+    'AdminDashboard': 'admin/AdminDashboard',
+    'AIAgentControl': 'admin/AIAgentControl',
+    'ContentManagement': 'admin/ContentManagement',
+    'ModerationQueue': 'admin/ModerationQueue',
+    'RevenueAnalytics': 'admin/RevenueAnalytics',
+    
+    // Ads section
+    'CommunityAdsPage': 'ads/CommunityAdsPage',
+    
+    // Advertising section
+    'AdvertisingDetailPage': 'advertising/AdvertisingDetailPage',
+    
+    // Announcements section
+    'AnnouncementCreatorPage': 'announcements/AnnouncementCreatorPage',
+    'AnnouncementDetailPage': 'announcements/AnnouncementDetailPage',
+    
+    // Archive section
+    'ArchiveBrowserPage': 'archive/ArchiveBrowserPage',
+    
+    // Auth section
+    'UserRegistrationPage': 'auth/UserRegistrationPage',
+    
+    // Authors section
+    'AuthorsPage': 'authors/AuthorsPage',
+    
+    // Business section
+    'BusinessDirectoryPage': 'business/BusinessDirectoryPage',
+    
+    // City section
+    'CitySelectionPage': 'city/CitySelectionPage',
+    
+    // Classifieds section
+    'ClassifiedsPage': 'classifieds/ClassifiedsPage',
+    'ClassifiedDetailPage': 'classifieds/ClassifiedDetailPage',
+    'ConfirmationPage': 'classifieds/ConfirmationPage',
+    'PaymentPage': 'classifieds/PaymentPage',
+    'RerunAdPage': 'classifieds/RerunAdPage',
+    'SelectCommunitiesPage': 'classifieds/SelectCommunitiesPage',
+    'SelectTimeframePage': 'classifieds/SelectTimeframePage',
+    
+    // Company section
+    'AccessibilityPage': 'company/AccessibilityPage',
+    'CareersPage': 'company/CareersPage',
+    'CookiePolicyPage': 'company/CookiePolicyPage',
+    'DoNotSellPage': 'company/DoNotSellPage',
+    'EthicsPolicyPage': 'company/EthicsPolicyPage',
+    'NewsroomPage': 'company/NewsroomPage',
+    'PrivacyPolicyPage': 'company/PrivacyPolicyPage',
+    'ServicesAndPricingPage': 'company/ServicesAndPricingPage',
+    'SubscriptionOptionsPage': 'company/SubscriptionOptionsPage',
+    'TermsOfServicePage': 'company/TermsOfServicePage',
+    
+    // Contact section
+    'ContactUsPage': 'contact/ContactUsPage',
+    
+    // Coupons section
+    'CouponCreatorPage': 'coupons/CouponCreatorPage',
+    'CouponDetailPage': 'coupons/CouponDetailPage',
+    
+    // Events section
+    'EventCreatorPage': 'events/EventCreatorPage',
+    'EventDetailPage': 'events/EventDetailPage',
+    'EventsCalendarPage': 'events/EventsCalendarPage',
+    
+    // Legal section
+    'LegalNoticeCreatorPage': 'legal/LegalNoticeCreatorPage',
+    'LegalNoticeDetailPage': 'legal/LegalNoticeDetailPage',
+    'LegalNoticesListPage': 'legal/LegalNoticesListPage',
+    
+    // Life section
+    'LifePage': 'life/LifePage',
+    
+    // Memorials section
+    'MemorialDetailPage': 'memorials/MemorialDetailPage',
+    'MemorialsPage': 'memorials/MemorialsPage',
+    
+    // Opinion section
+    'OpinionPage': 'opinion/OpinionPage',
+    
+    // Photos section
+    'PhotoDetailPage': 'photos/PhotoDetailPage',
+    'PhotoGalleryPage': 'photos/PhotoGalleryPage',
+    'PhotoUploadPage': 'photos/PhotoUploadPage',
+    
+    // Search section
+    'SearchResultsPage': 'search/SearchResultsPage',
+    
+    // Sports section
+    'SportsPage': 'sports/SportsPage',
+    
+    // Trending section
+    'TrendingPage': 'trending/TrendingPage',
+    
+    // Tags section  
+    'TagPage': 'tags/TagPage',
+    
+    // Pages section
+    'EditorPage': 'pages/EditorPage',
+    
+    // Utility section
+    'PageDirectory': 'utility/PageDirectory',
+    
+    // Classifieds continued
+    'PostListingPage': 'classifieds/PostListingPage',
+    
+    // Admin continued
+    'CommunityDeploymentWizard': 'admin/CommunityDeploymentWizard'
+  };
+  
+  // Return the path or default to the component name (for root level components)
+  return componentPaths[component] || component;
+}
+
 function generatePageContent(component, routePath) {
   const config = getRouteConfig(routePath);
   let content = '';
@@ -73,8 +194,40 @@ export const revalidate = false;
 `;
   }
   
-  // Import and render component
-  content += `import ${component} from '@/components/${component}';
+  // Import and render component with validation
+  const componentPath = getComponentPath(component);
+  
+  // Validate component exists and check its export type
+  const fullComponentPath = path.join(__dirname, '..', 'src', 'components', componentPath + '.tsx');
+  let importType = 'named'; // default
+  
+  if (fs.existsSync(fullComponentPath)) {
+    const componentContent = fs.readFileSync(fullComponentPath, 'utf8');
+    
+    // Check export patterns to determine correct import type
+    const hasNamedExport = componentContent.includes(`export const ${component}`) ||
+                          componentContent.includes(`export function ${component}`);
+    const hasDefaultExport = componentContent.includes(`export default ${component}`) ||
+                            componentContent.includes('export default function') ||
+                            componentContent.includes(`export { ${component} as default }`);
+    
+    if (hasDefaultExport) {
+      importType = 'default';
+    } else if (!hasNamedExport && !hasDefaultExport) {
+      console.warn(`  ⚠️  Warning: Component ${component} not found in ${componentPath}.tsx`);
+    }
+  } else {
+    console.warn(`  ⚠️  Warning: Component file not found: ${fullComponentPath}`);
+  }
+  
+  // Generate appropriate import
+  if (importType === 'default') {
+    content += `import ${component} from '@/components/${componentPath}';`;
+  } else {
+    content += `import { ${component} } from '@/components/${componentPath}';`;
+  }
+  
+  content += `
 
 export default function Page() {
   return <${component} />;
@@ -88,15 +241,15 @@ console.log('Creating Next.js page routes...\n');
 let created = 0;
 let skipped = 0;
 
-Object.entries(routeMapping).forEach(([reactPath, mapping]) => {
+routeMapping.forEach((mapping) => {
   // Skip unknown components and catch-all routes
-  if (mapping.component === 'Unknown' || reactPath === '*') {
+  if (mapping.component === 'Unknown' || mapping.component === 'EmergencyFallback' || mapping.path === '*') {
     return;
   }
   
   // Fix the file path - remove leading slash and fix parameter syntax
   let filePath = mapping.file;
-  if (filePath.startsWith('/')) {
+  if (filePath && filePath.startsWith('/')) {
     filePath = filePath.slice(1);
   }
   
@@ -125,10 +278,10 @@ Object.entries(routeMapping).forEach(([reactPath, mapping]) => {
   }
   
   // Create page content
-  const pageContent = generatePageContent(mapping.component, reactPath);
+  const pageContent = generatePageContent(mapping.component, mapping.path);
   
   fs.writeFileSync(pagePath, pageContent);
-  console.log(`  ✓ Created ${filePath} (${getRouteConfig(reactPath).type.toUpperCase()})`);
+  console.log(`  ✓ Created ${filePath} (${getRouteConfig(mapping.path).type.toUpperCase()})`);
   created++;
 });
 

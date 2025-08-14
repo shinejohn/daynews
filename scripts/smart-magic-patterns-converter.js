@@ -236,7 +236,16 @@ function convertComponent(sourceFile, targetFile) {
     console.log(`  ✓ Added 'use client' directive`);
   }
   
-  // Step 4: Save the converted file
+  // Step 4: Ensure proper exports - add default export if needed for Next.js compatibility
+  const componentName = path.basename(targetFile, '.tsx');
+  if (!content.includes(`export default ${componentName}`) && 
+      !content.includes('export default function') &&
+      content.includes(`export const ${componentName}`)) {
+    content += `\n\n// Default export for Next.js page compatibility\nexport default ${componentName};\n`;
+    console.log(`  ✓ Added default export for ${componentName}`);
+  }
+  
+  // Step 5: Save the converted file
   const targetDir = path.dirname(targetFile);
   if (!fs.existsSync(targetDir)) {
     fs.mkdirSync(targetDir, { recursive: true });

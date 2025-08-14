@@ -4,7 +4,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { Calendar, MapPin, Clock, Users, Share2, Bookmark, ExternalLink, ChevronLeft, Heart, Mail, Phone, Globe, MessageSquare, AlertCircle, Tag, ThumbsUp, ChevronRight, X, Copy, Home } from 'lucide-react';
 import { useLocationDetection } from '../location/LocationDetector';
-import { mockEvents } from './EventsCalendarPage';
 import { SaveModal } from '../modals/SaveModal';
 import { ShareModal } from '../modals/ShareModal';
 export const EventDetailPage = () => {
@@ -36,11 +35,11 @@ export const EventDetailPage = () => {
   const searchParams = new URLSearchParams(location.search);
   const eventId = parseInt(searchParams.get('id') || '1');
   // Find the event in mock data
-  const event = mockEvents.find(e => e.id === eventId) || mockEvents[0];
+  const event = [].find(e => e.id === eventId) || [][0];
   // Related events - just get 3 other events
-  const relatedEvents = mockEvents.filter(e => e.id !== eventId && e.category === event.category).slice(0, 3);
+  const relatedEvents = [].filter(e => e.id !== eventId && e.category === event.category).slice(0, 3);
   // Next event - for the bottom preview
-  const nextEvent = mockEvents.find(e => e.id !== eventId) || mockEvents[0];
+  const nextEvent = [].find(e => e.id !== eventId) || [][0];
   // Scroll to section handler
   const scrollToSection = sectionId => {
     const sectionRef = {
