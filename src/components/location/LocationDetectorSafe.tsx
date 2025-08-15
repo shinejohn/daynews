@@ -1,5 +1,5 @@
 'use client';
-// Converted from Magic Patterns
+
 import React, { useEffect, useState, createContext, useContext } from 'react';
 
 type LocationData = {
@@ -25,70 +25,77 @@ const DEFAULT_LOCATION: LocationData = {
   longitude: -82.8001
 };
 
-// Create context without default value
+// Default context value
+const DEFAULT_CONTEXT: LocationContextType = {
+  locationData: DEFAULT_LOCATION,
+  loading: false,
+  error: null
+};
+
 const LocationContext = createContext<LocationContextType | undefined>(undefined);
 
-// Safe hook that returns default values if context is not available
+// Safe hook that won't throw if used outside provider
 export const useLocationDetection = (): LocationContextType => {
   const context = useContext(LocationContext);
   
   // If no context is available, return default values
-  // This prevents errors when components are rendered without the provider
   if (!context) {
-    return {
-      locationData: DEFAULT_LOCATION,
-      loading: false,
-      error: null
-    };
+    return DEFAULT_CONTEXT;
   }
   
   return context;
 };
+
 export const LocationDetector: React.FC<{
   children: React.ReactNode;
-}> = ({
-  children
-}) => {
+}> = ({ children }) => {
   const [locationData, setLocationData] = useState<LocationData | null>(DEFAULT_LOCATION);
   const [loading, setLoading] = useState(false); // Start with false since we have default data
   const [error, setError] = useState<string | null>(null);
-  
+
   useEffect(() => {
     let mounted = true;
+    
     const detectLocation = async () => {
       try {
-        // Set default location immediately to prevent race conditions
+        // Set default location immediately
         if (mounted) {
           setLocationData(DEFAULT_LOCATION);
         }
+        
         // In a real app, this would make an API call to get actual location
-        // For now, we're just using the default after a small delay to simulate an API call
+        // For now, we're just using the default
         setTimeout(() => {
           if (mounted) {
             setLoading(false);
           }
-        }, 500);
+        }, 100);
       } catch (err) {
         if (mounted) {
           console.error('Location detection error:', err);
           setError('Failed to detect location');
-          // Even on error, set default location to prevent UI issues
           setLocationData(DEFAULT_LOCATION);
           setLoading(false);
         }
       }
     };
+    
     detectLocation();
+    
     return () => {
       mounted = false;
     };
   }, []);
-  const value = {
+
+  const value: LocationContextType = {
     locationData,
     loading,
     error
   };
-  return<LocationContext.Provider value={value}>
+
+  return (
+    <LocationContext.Provider value={value}>
       {children}
-    </LocationContext.Provider>;
+    </LocationContext.Provider>
+  );
 };
