@@ -33,14 +33,38 @@ export const EventDetailPage = () =>{
   } = useLocationDetection();
   const city = locationData?.city || 'Clearwater';
   // Get event ID from URL query params
-  const searchParams = new URLSearchParams(window.location.search);
-  const eventId = parseInt(searchParams.get('id') || '1');
+  const [eventId, setEventId] = useState(1);
+  
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const searchParams = new URLSearchParams(window.location.search);
+      const id = parseInt(searchParams.get('id') || '1');
+      setEventId(id);
+    }
+  }, []);
+  // Mock event data
+  const mockEvents = [{
+    id: 1,
+    title: 'Clearwater Beach Sunset Festival',
+    category: 'Festival',
+    date: 'August 15, 2023',
+    time: '6:00 PM - 10:00 PM',
+    location: 'Clearwater Beach',
+    address: 'Clearwater Beach Walk, Clearwater, FL 33767',
+    image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+    description: 'Join us for the annual Clearwater Beach Sunset Festival featuring live music, food vendors, and artisan crafts.',
+    price: 'Free',
+    organizer: 'Clearwater Parks & Recreation',
+    contact: '(727) 555-0123',
+    website: 'clearwaterbeach.com/sunset-festival'
+  }];
+  
   // Find the event in mock data
-  const event = [].find(e => e.id === eventId) || [][0];
+  const event = mockEvents.find(e => e.id === eventId) || mockEvents[0];
   // Related events - just get 3 other events
-  const relatedEvents = [].filter(e => e.id !== eventId && e.category === event.category).slice(0, 3);
+  const relatedEvents = mockEvents.filter(e => e.id !== eventId && e.category === event?.category).slice(0, 3);
   // Next event - for the bottom preview
-  const nextEvent = [].find(e => e.id !== eventId) || [][0];
+  const nextEvent = mockEvents.find(e => e.id !== eventId) || mockEvents[0];
   // Scroll to section handler
   const scrollToSection = sectionId => {
     const sectionRef = {

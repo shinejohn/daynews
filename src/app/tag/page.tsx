@@ -1,6 +1,6 @@
 // ISR Configuration
 export const revalidate = 60; // seconds
-export const dynamic = 'force-static';
+export const dynamic = 'force-dynamic'; // Changed to support QueryClient
 
 import { TagPage } from '@/components/tags/TagPage';
 

@@ -32,7 +32,7 @@ export const RerunAdPage = () =>{
     }
     // Initialize with the communities from the original ad
     setCurrentCommunities(selectedCommunities);
-  }, [adId, formData, selectedCommunities, navigate]);
+  }, [adId, formData, selectedCommunities, router]);
   const handleBack = () => {
     router.push('/profile');
   };

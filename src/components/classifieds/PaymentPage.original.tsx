@@ -37,9 +37,9 @@ export const PaymentPage = () =>{
       router.push('/postListing');
       return;
     }
-  }, [formData, selectedCommunities, navigate]);
+  }, [formData, selectedCommunities, router]);
   const handleBack = () => {
-    router.push(-1);
+    router.back();
   };
   const handleInputChange = e => {
     const {

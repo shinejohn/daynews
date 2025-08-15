@@ -75,7 +75,7 @@ export const PhotoUploadPage = () =>{
   };
   // Cancel upload and go back
   const handleCancel = () => {
-    router.push(-1);
+    router.back();
   };
   return<div className="flex-1 overflow-auto bg-gray-50">
       <PageHeader />

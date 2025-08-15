@@ -64,7 +64,7 @@ export const AdvertisingDetailPage = () =>{
     }, 500);
   }, [location]);
   const goBack = () => {
-    router.push(-1);
+    router.back();
   };
   if (loading) {
     return<div className="container mx-auto px-4 py-8 flex items-center justify-center min-h-screen">

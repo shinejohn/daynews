@@ -106,7 +106,7 @@ export const MemorialDetailPage = () =>{
       }]);
       setLoading(false);
     }, 800);
-  }, [location, navigate]);
+  }, [location, router]);
   const handleCategoryChange = category => {
     setActiveCategory(category);
   };

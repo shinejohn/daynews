@@ -3,6 +3,14 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ArrowDown, ArrowUp, BarChart, Bell, Bot, Briefcase, Building, Calendar, ChevronDown, CreditCard, DollarSign, Download, Filter, Grid, HelpCircle, Layers, Newspaper, Percent, Settings, Shield, Tag, TrendingDown, TrendingUp, User, Users } from 'lucide-react';
+
+// Get growth color helper function
+const getGrowthColor = (value: number) => {
+  if (value > 0) return '#00FF88';
+  if (value < 0) return '#FF3366';
+  return 'white';
+};
+
 // Sample data for revenue analytics
 const revenueData = {
   overview: {
@@ -145,12 +153,6 @@ export const RevenueAnalytics = () =>{
       return <ArrowDown className={`text-[#FF3366] w-${size} h-${size}`} />;
     }
     return null;
-  };
-  // Get growth color
-  const getGrowthColor = value => {
-    if (value > 0) return '#00FF88';
-    if (value< 0) return '#FF3366';
-    return 'white';
   };
   return <div className="min-h-screen bg-[#0A0A0B] text-white relative">
       {/* Grid pattern overlay */}

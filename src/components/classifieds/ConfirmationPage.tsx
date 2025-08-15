@@ -6,24 +6,23 @@ import { ArrowRight, Calendar, CheckCircle, Clock, Download, ExternalLink, Mail,
 export const ConfirmationPage = () =>{
   const router = useRouter();
   const pathname = usePathname();
-  const {
-    formData,
-    selectedCommunities,
-    duration,
-    startDate,
-    endDate,
-    totalPrice,
-    orderId,
-    paymentMethod,
-    isRerun
-  } = {} as any; // TODO: Convert location.state to searchParams or context
+  // TODO: Convert location.state to searchParams or context
+  const formData = null;
+  const selectedCommunities = [];
+  const duration = 1;
+  const startDate = new Date();
+  const endDate = new Date();
+  const totalPrice = 0;
+  const orderId = 'ORDER123';
+  const paymentMethod = 'card';
+  const isRerun = false;
   useEffect(() => {
     // If no data was passed, redirect back
     if (!formData || !selectedCommunities) {
       router.push('/postListing');
       return;
     }
-  }, [formData, selectedCommunities, navigate]);
+  }, [formData, selectedCommunities, router]);
   const formatDate = date => {
     return new Date(date).toLocaleDateString('en-US', {
       year: 'numeric',

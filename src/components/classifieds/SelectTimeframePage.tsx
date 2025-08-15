@@ -6,15 +6,10 @@ import { AlertCircle, ArrowLeft, ArrowRight, Calendar, Check, Clock, DollarSign,
 export const SelectTimeframePage = () =>{
   const router = useRouter();
   const pathname = usePathname();
-  const {
-    formData,
-    selectedCommunities,
-    isRerun
-  } = {} as any || { // TODO: Convert location.state to searchParams or context
-    formData: null,
-    selectedCommunities: [],
-    isRerun: false
-  };
+  // TODO: Convert location.state to searchParams or context
+  const formData = null;
+  const selectedCommunities = [];
+  const isRerun = false;
   const [selectedDuration, setSelectedDuration] = useState(1); // Default 1 month
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(() => {
@@ -28,9 +23,9 @@ export const SelectTimeframePage = () =>{
       router.push('/postListing');
       return;
     }
-  }, [formData, selectedCommunities, navigate]);
+  }, [formData, selectedCommunities, router]);
   const handleBack = () => {
-    router.push(-1);
+    router.back();
   };
   const handleContinue = () => {
     router.push('/classifieds/payment', {

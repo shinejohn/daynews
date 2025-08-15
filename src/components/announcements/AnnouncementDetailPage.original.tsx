@@ -113,7 +113,7 @@ export const AnnouncementDetailPage = () =>{
       }]);
       setLoading(false);
     }, 800);
-  }, [location, navigate]);
+  }, [location, router]);
   const goBack = () => {
     router.push('/announcements');
   };

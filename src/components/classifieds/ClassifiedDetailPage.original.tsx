@@ -29,7 +29,7 @@ export const ClassifiedDetailPage = () =>{
     } else {
       router.push('/classifieds');
     }
-  }, [location, navigate]);
+  }, [location, router]);
   const getMockClassified = id => {
     // This would be replaced with an API call in a real application
     const classifieds = [{

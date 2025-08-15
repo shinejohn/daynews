@@ -28,9 +28,9 @@ export const SelectTimeframePage = () =>{
       router.push('/postListing');
       return;
     }
-  }, [formData, selectedCommunities, navigate]);
+  }, [formData, selectedCommunities, router]);
   const handleBack = () => {
-    router.push(-1);
+    router.back();
   };
   const handleContinue = () => {
     router.push('/classifieds/payment', {

@@ -100,7 +100,7 @@ export const SelectCommunitiesPage = () =>{
       }
       setLoading(false);
     }, 1000);
-  }, [formData, isRerun, preselectedCommunities, navigate]);
+  }, [formData, isRerun, preselectedCommunities, router]);
   const handleSearchChange = e => {
     setSearchQuery(e.target.value);
   };
@@ -113,7 +113,7 @@ export const SelectCommunitiesPage = () =>{
   };
   const filteredCommunities = communityList.filter(community => community.name.toLowerCase().includes(searchQuery.toLowerCase()) || community.description.toLowerCase().includes(searchQuery.toLowerCase()));
   const handleBack = () => {
-    router.push(-1);
+    router.back();
   };
   const handleContinue = () => {
     if (selectedCommunities.length === 0) {

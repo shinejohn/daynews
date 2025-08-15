@@ -115,7 +115,7 @@ export const PhotoDetailPage = () =>{
     router.push(`/photos/edit/${photoId}`);
   };
   const handleGoBack = () => {
-    router.push(-1);
+    router.back();
   };
   if (loading) {
     return<div className="flex-1 overflow-auto bg-gray-50">

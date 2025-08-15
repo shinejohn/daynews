@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
-import { ChevronRight, Info, User, Users } from 'lucide-react';
+import { AlertCircle, ChevronRight, Info, Search, User, Users } from 'lucide-react';
 export const SelectCommunitiesPage = () =>{
   const router = useRouter();
   const [selectedCommunities, setSelectedCommunities] = useState([]);
@@ -11,6 +11,11 @@ export const SelectCommunitiesPage = () =>{
   const [searchQuery, setSearchQuery] = useState('');
   const [communityList, setCommunityList] = useState([]);
   const [loading, setLoading] = useState(true);
+  
+  // TODO: Convert location.state to searchParams or context
+  const formData = null;
+  const isRerun = false;
+  const preselectedCommunities = [];
   useEffect(() => {
     // If no form data was passed, redirect back to the post listing page
     if (!formData) {
@@ -51,7 +56,7 @@ export const SelectCommunitiesPage = () =>{
       }
       setLoading(false);
     }, 1000);
-  }, [formData, isRerun, preselectedCommunities, navigate]);
+  }, [formData, isRerun, preselectedCommunities, router]);
   const handleSearchChange = e => {
     setSearchQuery(e.target.value);
   };
@@ -64,7 +69,7 @@ export const SelectCommunitiesPage = () =>{
   };
   const filteredCommunities = communityList.filter(community => community.name.toLowerCase().includes(searchQuery.toLowerCase()) || community.description.toLowerCase().includes(searchQuery.toLowerCase()));
   const handleBack = () => {
-    router.push(-1);
+    router.back();
   };
   const handleContinue = () => {
     if (selectedCommunities.length === 0) {

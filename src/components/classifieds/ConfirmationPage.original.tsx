@@ -23,7 +23,7 @@ export const ConfirmationPage = () =>{
       router.push('/postListing');
       return;
     }
-  }, [formData, selectedCommunities, navigate]);
+  }, [formData, selectedCommunities, router]);
   const formatDate = date => {
     return new Date(date).toLocaleDateString('en-US', {
       year: 'numeric',

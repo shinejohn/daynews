@@ -6,21 +6,14 @@ import { AlertCircle, ArrowLeft, ArrowRight, Check, CreditCard, DollarSign, Lock
 export const PaymentPage = () =>{
   const router = useRouter();
   const pathname = usePathname();
-  const {
-    formData,
-    selectedCommunities,
-    duration,
-    startDate,
-    endDate,
-    totalPrice,
-    isRerun
-  } = {} as any || { // TODO: Convert location.state to searchParams or context
-    formData: null,
-    selectedCommunities: [],
-    duration: 1,
-    totalPrice: 0,
-    isRerun: false
-  };
+  // TODO: Convert location.state to searchParams or context
+  const formData = null;
+  const selectedCommunities = [];
+  const duration = 1;
+  const startDate = new Date();
+  const endDate = new Date();
+  const totalPrice = 0;
+  const isRerun = false;
   const [paymentMethod, setPaymentMethod] = useState('creditCard');
   const [cardInfo, setCardInfo] = useState({
     cardNumber: '',
@@ -37,9 +30,9 @@ export const PaymentPage = () =>{
       router.push('/postListing');
       return;
     }
-  }, [formData, selectedCommunities, navigate]);
+  }, [formData, selectedCommunities, router]);
   const handleBack = () => {
-    router.push(-1);
+    router.back();
   };
   const handleInputChange = e => {
     const {
