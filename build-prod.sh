@@ -19,6 +19,14 @@ echo "📋 Copying server files..."
 cp -r server dist/
 cp package*.json dist/
 
+# Copy public assets if any
+if [ -d "public" ]; then
+  cp -r public dist/
+fi
+
+# Ensure cache directory exists
+mkdir -p dist/cache
+
 # Create production env template
 cat > dist/.env.production << EOL
 # Production Environment

@@ -73,6 +73,15 @@ async function createServer() {
   // Store ISR engine for API access
   app.locals.isr = isrEngine
   
+  // Health check for Railway
+  app.get('/health', (req, res) => {
+    res.json({ 
+      status: 'healthy',
+      cache: isrEngine.cache.stats(),
+      uptime: process.uptime()
+    })
+  })
+  
   // API routes
   app.use('/api', apiRouter)
   
