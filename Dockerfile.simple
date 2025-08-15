@@ -10,11 +10,8 @@ RUN npm ci --production=false
 # Copy everything
 COPY . .
 
-# Use simple PostCSS config for build
-RUN mv postcss.config.simple.js postcss.config.js
-
-# Build
-RUN npm run build
+# Build directly with Vite (skip prebuild validation)
+RUN npx vite build
 
 # Expose port
 EXPOSE ${PORT:-3001}

@@ -1,8 +1,0 @@
-{
-  "src/entry/entry-server.tsx": {
-    "file": "entry-server.js",
-    "name": "entry-server",
-    "src": "src/entry/entry-server.tsx",
-    "isEntry": true
-  }
-}
