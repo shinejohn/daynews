@@ -1166,7 +1166,7 @@ export const routeConfig = {
     "/ads/communityads",
     "/about/aboutus",
     "/"
-  ,
+  ],
   "csrRoutes": [],
   "ttlConfig": {
     "/settings": 300,
@@ -1306,25 +1306,25 @@ export const routeConfig = {
       "/classifieds/confirmation",
       "/classifieds",
       "/classified/:id"
-    
+    ]
   }
 };
 
 // Cache invalidation rules based on database triggers
 export const invalidationRules = {
-  'news:publish': ['/news', '/', '/author/:authorId',
-  'event:update': ['/events', '/event/:slug', '/events/calendar',
-  'business:review': ['/business/:slug', '/businesses', '/reviews',
-  'deal:activate': ['/deals', '/business/:slug',
+  'news:publish': ['/news', '/', '/author/:authorId'],
+  'event:update': ['/events', '/event/:slug', '/events/calendar'],
+  'business:review': ['/business/:slug', '/businesses', '/reviews'],
+  'deal:activate': ['/deals', '/business/:slug'],
   'announcement:create': ['/announcements', '/'],
-  'hub:post': ['/hub/:slug', '/'
+  'hub:post': ['/hub/:slug', '/']
 };
 
 export function getRouteConfig(route) {
   // Handle dynamic routes
   for (const [pattern, config] of Object.entries(routeConfig.routes)) {
     if (pattern.includes(':')) {
-      const regex = new RegExp('^' + pattern.replace(/:^/+/g, ':^/+') + '$');
+      const regex = new RegExp('^' + pattern.replace(/:([^/]+)/g, '([^/]+)') + '$');
       if (regex.test(route)) {
         return config;
       }
@@ -1351,7 +1351,7 @@ export function getInvalidationTargets(type, action, data = {}) {
   
   return patterns.map(pattern => {
     // Replace placeholders with actual values
-    return pattern.replace(/:(w+)/g, (match, param) => {
+    return pattern.replace(/:(\w+)/g, (match, param) => {
       return data[param] || match;
     });
   });

@@ -14,7 +14,9 @@ RUN npm ci --production=false
 COPY . .
 
 # Build the application (run commands directly instead of script)
-RUN npm run build:client && npm run build:server && \
+RUN mkdir -p dist && \
+    npm run build:client && \
+    npm run build:server && \
     cp -r server dist/ && \
     cp package*.json dist/ && \
     mkdir -p dist/cache
