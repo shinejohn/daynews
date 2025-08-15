@@ -1,6 +1,5 @@
-// Converted from Magic Patterns
 import React from 'react';
-import { Clock, Flag, MapPin, MessageCircle, Shield, Star } from 'lucide-react';
+import { MapPin, Clock, Star, MessageCircle, Shield, Flag } from 'lucide-react';
 export const ListingGrid = ({
   listings
 }) => {
@@ -100,5 +99,7 @@ const CategoryBadge = ({
     services: 'Services',
     community: 'Community'
   };
-  return<div className={`px-2 py-1 rounded text-xs font-medium ${styles[category] || 'bg-gray-100 text-gray-700'}`}>{labels[category] || 'General'}</div>;
+  return <div className={`px-2 py-1 rounded text-xs font-medium ${styles[category] || 'bg-gray-100 text-gray-700'}`}>
+      {labels[category] || 'General'}
+    </div>;
 };

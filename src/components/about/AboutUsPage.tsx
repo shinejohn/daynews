@@ -1,5 +1,3 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useEffect, useState } from 'react';
 import { PageHeader } from '../PageHeader';
 import { HeroSection } from './HeroSection';

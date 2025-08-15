@@ -1,7 +1,5 @@
-'use client';
-// Converted from Magic Patterns
 import React from 'react';
-import { Calendar, Heart, MapPin, MessageSquare, User } from 'lucide-react';
+import { Heart, MessageSquare, Calendar, MapPin, User } from 'lucide-react';
 export const PhotoList = ({
   photos,
   onPhotoClick
@@ -24,11 +22,13 @@ export const PhotoList = ({
                 </div>
                 <div className="flex items-center mr-4">
                   <Calendar className="h-4 w-4 mr-1" />
-                  <span>{new Date(photo.date).toLocaleDateString('en-US', {
+                  <span>
+                    {new Date(photo.date).toLocaleDateString('en-US', {
                   month: 'short',
                   day: 'numeric',
                   year: 'numeric'
-                })}</span>
+                })}
+                  </span>
                 </div>
                 <div className="flex items-center">
                   <MapPin className="h-4 w-4 mr-1" />

@@ -1,7 +1,5 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useState } from 'react';
-import { ChevronRight, Heart, MapPin, Share2, ThumbsUp } from 'lucide-react';
+import { MapPin, ChevronRight, Heart, ThumbsUp, Share2 } from 'lucide-react';
 import { ShareModal } from './modals/ShareModal';
 export const EventCard = ({
   location,
@@ -68,7 +66,8 @@ export const EventCard = ({
         </div>
       </div>
       {/* Share Modal */}
-      {showShareModal && <ShareModal onClose={() =>setShowShareModal(false)} article={{
+      {showShareModal && <ShareModal onClose={() => setShowShareModal(false)} article={{
       title: title || 'Event'
-    }} />}</div>;
+    }} />}
+    </div>;
 };

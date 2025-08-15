@@ -1,7 +1,5 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useNavigate } from 'react-router-dom';
 import { HeroSection } from './hero/HeroSection';
 import { CategoryTabs } from './CategoryTabs';
 import { MarketplaceSection } from './MarketplaceSection';
@@ -24,8 +22,8 @@ import { EventsPreview } from './previews/EventsPreview';
 import { LegalNoticesPreview } from './previews/LegalNoticesPreview';
 import { useLocationDetection } from './location/LocationDetector';
 import { NationalNewsMasthead } from './navigation/NationalNewsMasthead';
-export const NationalHomePage = () =>{
-  const router = useRouter();
+export const NationalHomePage = () => {
+  const navigate = useNavigate();
   const [greeting, setGreeting] = useState('');
   const [activeReaders, setActiveReaders] = useState(1247);
   const [activeTab, setActiveTab] = useState('News');
@@ -39,7 +37,7 @@ export const NationalHomePage = () =>{
   // Set time-based greeting
   useEffect(() => {
     const hour = new Date().getHours();
-    if (hour >= 5 && hour< 12) {
+    if (hour >= 5 && hour < 12) {
       setGreeting('Good Morning');
     } else if (hour >= 12 && hour < 18) {
       setGreeting('Good Afternoon');
@@ -47,7 +45,7 @@ export const NationalHomePage = () =>{
       setGreeting('Good Evening');
     }
     // Simulate fluctuating reader count
-    const interval = setInterval(() =>{
+    const interval = setInterval(() => {
       setActiveReaders(prev => Math.floor(Math.random() * 20) - 10 + prev);
     }, 5000);
     return () => clearInterval(interval);
@@ -62,7 +60,7 @@ export const NationalHomePage = () =>{
   // Function to handle ad clicks
   const handleAdClick = page => {
     if (page) {
-      router.push(`/${page}`);
+      navigate(`/${page}`);
     }
   };
   // Toggle between regular view and newspaper view
@@ -81,7 +79,7 @@ export const NationalHomePage = () =>{
   // Override the default categories for national news
   const nationalNewsCategories = ['Politics', 'Economy', 'Health', 'Technology'];
   const additionalNationalCategories = ['International', 'Science', 'Education', 'Entertainment', 'Environment', 'Sports', 'Defense', 'Justice'];
-  return<div className="min-h-screen bg-bg-primary w-full overflow-x-hidden">
+  return <div className="min-h-screen bg-bg-primary w-full overflow-x-hidden">
       {/* Custom National News Masthead */}
       <NationalNewsMasthead />
       <main className="overflow-auto">
@@ -96,7 +94,9 @@ export const NationalHomePage = () =>{
                   <button onClick={handleShowArticleDetail} className="bg-news-primary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-news-primary-dark transition-colors">
                     View Article
                   </button>
-                  <button onClick={toggleNewspaperView} className="bg-news-primary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-news-primary-dark transition-colors">{showNewspaperView ? 'Regular View' : 'Newspaper View'}</button>
+                  <button onClick={toggleNewspaperView} className="bg-news-primary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-news-primary-dark transition-colors">
+                    {showNewspaperView ? 'Regular View' : 'Newspaper View'}
+                  </button>
                 </div>
               </div>
               {showNewspaperView ? <ScrollableNewspaper category={selectedCategory} isNational={true} /> : <>
@@ -106,7 +106,9 @@ export const NationalHomePage = () =>{
                       <HeroStory category={selectedCategory} onArticleClick={handleShowArticleDetail} isNational={true} />
                       <section>
                         <div className="flex items-center justify-between mb-4">
-                          <h2 className="font-display text-xl font-bold text-news-primary border-b-2 border-news-primary inline-block">Today's Essential Reads</h2>
+                          <h2 className="font-display text-xl font-bold text-news-primary border-b-2 border-news-primary inline-block">
+                            Today's Essential Reads
+                          </h2>
                         </div>
                         <EssentialReads category={selectedCategory} onArticleClick={handleShowArticleDetail} isNational={true} />
                       </section>
@@ -123,7 +125,9 @@ export const NationalHomePage = () =>{
                           <h2 className="font-display text-xl font-bold text-news-primary border-b-2 border-news-primary inline-block">
                             Photo Gallery
                           </h2>
-                          <p className="text-sm text-gray-500">From {locationData?.city || 'Clearwater'}</p>
+                          <p className="text-sm text-gray-500">
+                            From {locationData?.city || 'Clearwater'}
+                          </p>
                         </div>
                         <PhotoGallerySection />
                       </section>
@@ -151,7 +155,9 @@ export const NationalHomePage = () =>{
                           <h2 className="font-display text-xl font-bold text-news-primary border-b-2 border-news-primary inline-block">
                             Local Events
                           </h2>
-                          <p className="text-sm text-gray-500">In {locationData?.city || 'Clearwater'}</p>
+                          <p className="text-sm text-gray-500">
+                            In {locationData?.city || 'Clearwater'}
+                          </p>
                         </div>
                         <LocalEventsSection />
                       </section>
@@ -172,7 +178,9 @@ export const NationalHomePage = () =>{
                           <h3 className="font-display text-sm font-bold text-news-primary">
                             Local Marketplace
                           </h3>
-                          <p className="text-xs text-gray-500">{locationData?.city || 'Clearwater'}</p>
+                          <p className="text-xs text-gray-500">
+                            {locationData?.city || 'Clearwater'}
+                          </p>
                         </div>
                         <MarketplaceSection />
                       </div>
@@ -181,12 +189,16 @@ export const NationalHomePage = () =>{
                           <h3 className="font-display text-sm font-bold text-news-primary">
                             Local Announcements
                           </h3>
-                          <p className="text-xs text-gray-500">{locationData?.city || 'Clearwater'}</p>
+                          <p className="text-xs text-gray-500">
+                            {locationData?.city || 'Clearwater'}
+                          </p>
                         </div>
                         <AnnouncementsSection />
                       </div>
                     </div>
-                  </div>{/* Full width "More News" section */}<section className="mt-12 mb-8">
+                  </div>
+                  {/* Full width "More News" section */}
+                  <section className="mt-12 mb-8">
                     <div className="flex items-center justify-between mb-6">
                       <h2 className="font-display text-2xl font-bold text-news-primary">
                         More National News
@@ -202,39 +214,51 @@ export const NationalHomePage = () =>{
                     {/* Marketplace Preview */}
                     <section>
                       <div className="flex items-center justify-between mb-6">
-                        <h2 className="font-display text-2xl font-bold text-news-primary">{locationData?.city || 'Clearwater'} Marketplace</h2>
-                        <button className="text-sm text-news-primary font-medium flex items-center" onClick={() =>handleAdClick('marketplace')}>
-                          View All</button>
+                        <h2 className="font-display text-2xl font-bold text-news-primary">
+                          {locationData?.city || 'Clearwater'} Marketplace
+                        </h2>
+                        <button className="text-sm text-news-primary font-medium flex items-center" onClick={() => handleAdClick('marketplace')}>
+                          View All
+                        </button>
                       </div>
-                      <MarketplacePreview onViewAll={() =>handleAdClick('marketplace')} onAdClick={handleAdClick} /></section>
+                      <MarketplacePreview onViewAll={() => handleAdClick('marketplace')} onAdClick={handleAdClick} />
+                    </section>
                     {/* Coupons Preview */}
                     <section>
                       <div className="flex items-center justify-between mb-6">
                         <h2 className="font-display text-2xl font-bold text-news-primary">
                           Local Coupons & Deals
                         </h2>
-                        <button className="text-sm text-news-primary font-medium flex items-center" onClick={() =>handleAdClick('coupons')}>
-                          View All</button>
+                        <button className="text-sm text-news-primary font-medium flex items-center" onClick={() => handleAdClick('coupons')}>
+                          View All
+                        </button>
                       </div>
-                      <CouponsPreview onViewAll={() =>handleAdClick('coupons')} /></section>
+                      <CouponsPreview onViewAll={() => handleAdClick('coupons')} />
+                    </section>
                     {/* Events Preview */}
                     <section>
                       <div className="flex items-center justify-between mb-6">
-                        <h2 className="font-display text-2xl font-bold text-news-primary">{locationData?.city || 'Clearwater'} Upcoming Events</h2>
-                        <button className="text-sm text-news-primary font-medium flex items-center" onClick={() =>handleAdClick('eventsCalendar')}>
-                          View All</button>
+                        <h2 className="font-display text-2xl font-bold text-news-primary">
+                          {locationData?.city || 'Clearwater'} Upcoming Events
+                        </h2>
+                        <button className="text-sm text-news-primary font-medium flex items-center" onClick={() => handleAdClick('eventsCalendar')}>
+                          View All
+                        </button>
                       </div>
-                      <EventsPreview onViewAll={() =>handleAdClick('eventsCalendar')} /></section>
+                      <EventsPreview onViewAll={() => handleAdClick('eventsCalendar')} />
+                    </section>
                     {/* Legal Notices Preview */}
                     <section>
                       <div className="flex items-center justify-between mb-6">
                         <h2 className="font-display text-2xl font-bold text-news-primary">
                           Local Legal Notices
                         </h2>
-                        <button className="text-sm text-news-primary font-medium flex items-center" onClick={() =>handleAdClick('legalNoticesList')}>
-                          View All</button>
+                        <button className="text-sm text-news-primary font-medium flex items-center" onClick={() => handleAdClick('legalNoticesList')}>
+                          View All
+                        </button>
                       </div>
-                      <LegalNoticesPreview onViewAll={() =>handleAdClick('legalNoticesList')} onNoticeClick={noticeId => router.push('/legalNoticeDetail')} /></section>
+                      <LegalNoticesPreview onViewAll={() => handleAdClick('legalNoticesList')} onNoticeClick={noticeId => navigate('/legalNoticeDetail')} />
+                    </section>
                   </div>
                   {/* Newsletter subscription */}
                   <section className="my-16 bg-news-primary-light bg-opacity-10 rounded-lg p-8">
@@ -248,11 +272,12 @@ export const NationalHomePage = () =>{
                       </p>
                       <div className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
                         <input type="email" placeholder="Your email address" className="flex-1 px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-news-primary" />
-                        <button onClick={() =>{
+                        <button onClick={() => {
                     alert('Thank you for subscribing!');
                     // In a real app, this would submit the form
                   }} className="bg-news-primary text-white px-6 py-3 rounded-md font-medium hover:bg-news-primary-dark transition-colors">
-                          Subscribe</button>
+                          Subscribe
+                        </button>
                       </div>
                       <p className="text-xs text-gray-500 mt-4">
                         By subscribing, you agree to our Privacy Policy and

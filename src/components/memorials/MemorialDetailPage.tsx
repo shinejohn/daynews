@@ -1,17 +1,13 @@
-'use client';
-// Converted from Magic Patterns
-import React, { useEffect, useState, useRef } from 'react';
-import { supabase } from '@/lib/supabase/client';
-// ssr-csr=ssr
-// []=yes
-// []=yes
-
-import { useRouter, usePathname } from 'next/navigation';
-import { ArrowLeft, BookOpen, Calendar, ChevronRight, Clock, Copy, ExternalLink, Flower, Gift, Heart, Home, Mail, MapPin, MessageCircle, Send, Share2, ThumbsUp, X } from 'lucide-react';
+import React, { useEffect, useState, useRef, memo } from 'react';
+// ISRCSR=ISR
+// mockdata=yes
+// mockdataon=yes
+import { useNavigate, useLocation } from 'react-router-dom';
+import { ArrowLeft, Calendar, MapPin, Clock, Share2, Heart, MessageCircle, Flower, ThumbsUp, Gift, Send, ChevronRight, Home, ExternalLink, Copy, X, Mail, BookOpen } from 'lucide-react';
 import { NewspaperMasthead } from '../navigation/NewspaperMasthead';
-export const MemorialDetailPage = () =>{
-  const router = useRouter();
-  const pathname = usePathname();
+export const MemorialDetailPage = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [activeCategory, setActiveCategory] = useState('Memorials');
   const [readingProgress, setReadingProgress] = useState(0);
@@ -52,12 +48,11 @@ export const MemorialDetailPage = () =>{
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   useEffect(() => {
-    if (typeof window === 'undefined') return;
     // Parse query parameters
-    const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(location.search);
     const id = params.get('id');
     if (!id) {
-      router.push('/memorials');
+      navigate('/memorials');
       return;
     }
     // Simulate loading memorial data
@@ -108,15 +103,15 @@ export const MemorialDetailPage = () =>{
       }]);
       setLoading(false);
     }, 800);
-  }, [router]);
+  }, [location, navigate]);
   const handleCategoryChange = category => {
     setActiveCategory(category);
   };
   const handleMainSectionChange = section => {
-    router.push(`/${section}`);
+    navigate(`/${section}`);
   };
   const goBack = () => {
-    router.push('/memorials');
+    navigate('/memorials');
   };
   const handleLike = () => {
     if (liked) {
@@ -149,14 +144,14 @@ export const MemorialDetailPage = () =>{
     alert('Share functionality would be implemented here');
   };
   const navigateToAdvertisingDetail = () => {
-    router.push('/advertisingDetail');
+    navigate('/advertisingDetail');
   };
   const dismissNextMemorial = () => {
     setShowNextMemorial(false);
   };
   if (loading) {
-    return<div className="flex-1 overflow-auto bg-gray-50">
-        <div>TODO: StickyNav</div>
+    return <div className="flex-1 overflow-auto bg-gray-50">
+        <StickyNav scrolled={scrolled} activeCategory={activeCategory} onCategoryChange={handleCategoryChange} onMainSectionChange={handleMainSectionChange} />
         <div className="container mx-auto px-4 py-8 mt-28 flex items-center justify-center min-h-[50vh]">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-news-primary mx-auto"></div>
@@ -167,13 +162,15 @@ export const MemorialDetailPage = () =>{
   }
   if (!memorial) {
     return <div className="flex-1 overflow-auto bg-gray-50">
-        <div>TODO: StickyNav</div>
+        <StickyNav scrolled={scrolled} activeCategory={activeCategory} onCategoryChange={handleCategoryChange} onMainSectionChange={handleMainSectionChange} />
         <div className="container mx-auto px-4 py-8 mt-28">
           <div className="bg-white rounded-lg shadow-md p-8 text-center">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
               Memorial Not Found
             </h2>
-            <p className="text-gray-600 mb-6">The memorial you're looking for doesn't exist or has been removed.</p>
+            <p className="text-gray-600 mb-6">
+              The memorial you're looking for doesn't exist or has been removed.
+            </p>
             <button onClick={goBack} className="bg-news-primary text-white px-4 py-2 rounded-md hover:bg-news-primary-dark transition-colors">
               Return to Memorials
             </button>
@@ -198,11 +195,12 @@ export const MemorialDetailPage = () =>{
               <span>Home</span>
             </a>
             <ChevronRight className="h-3 w-3 mx-1" />
-            <a href="#" className="hover:underline" onClick={e =>{
+            <a href="#" className="hover:underline" onClick={e => {
             e.preventDefault();
-            router.push('/memorials');
+            navigate('/memorials');
           }}>
-              Memorials</a>
+              Memorials
+            </a>
             <ChevronRight className="h-3 w-3 mx-1" />
             <span className="text-gray-700">{memorial.name}</span>
           </div>
@@ -317,7 +315,8 @@ export const MemorialDetailPage = () =>{
                   <div className="prose max-w-none mb-8">
                     <h3 className="text-xl font-bold text-gray-900 mb-4">
                       Obituary
-                    </h3>{memorial.obituary.split('\n\n').map((paragraph, idx) =><p key={idx} className="mb-4 text-gray-700 leading-relaxed">
+                    </h3>
+                    {memorial.obituary.split('\n\n').map((paragraph, idx) => <p key={idx} className="mb-4 text-gray-700 leading-relaxed">
                         {paragraph}
                       </p>)}
                   </div>
@@ -434,7 +433,8 @@ export const MemorialDetailPage = () =>{
               Other Recent Memorials
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() =>router.push('/memorialDetail?id=2')}><div className="p-4">
+              <div className="bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => navigate('/memorialDetail?id=2')}>
+                <div className="p-4">
                   <div className="h-40 rounded-md overflow-hidden mb-3">
                     <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Robert James Thompson" className="w-full h-full object-cover grayscale" />
                   </div>
@@ -451,7 +451,8 @@ export const MemorialDetailPage = () =>{
                   </div>
                 </div>
               </div>
-              <div className="bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() =>router.push('/memorialDetail?id=3')}><div className="p-4">
+              <div className="bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => navigate('/memorialDetail?id=3')}>
+                <div className="p-4">
                   <div className="h-40 rounded-md overflow-hidden mb-3">
                     <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Elizabeth Anne Parker" className="w-full h-full object-cover grayscale" />
                   </div>
@@ -468,7 +469,8 @@ export const MemorialDetailPage = () =>{
                   </div>
                 </div>
               </div>
-              <div className="bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() =>router.push('/memorialDetail?id=4')}><div className="p-4">
+              <div className="bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => navigate('/memorialDetail?id=4')}>
+                <div className="p-4">
                   <div className="h-40 rounded-md overflow-hidden mb-3">
                     <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Thomas William Brown" className="w-full h-full object-cover grayscale" />
                   </div>
@@ -504,8 +506,9 @@ export const MemorialDetailPage = () =>{
               </div>
             </div>
             <div className="flex items-center">
-              <button className="bg-news-primary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-news-primary-dark mr-2" onClick={() =>router.push('/memorialDetail?id=2')}>
-                View Memorial</button>
+              <button className="bg-news-primary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-news-primary-dark mr-2" onClick={() => navigate('/memorialDetail?id=2')}>
+                View Memorial
+              </button>
               <button className="p-2 rounded-full hover:bg-gray-100" onClick={dismissNextMemorial}>
                 <X className="h-5 w-5 text-gray-600" />
               </button>

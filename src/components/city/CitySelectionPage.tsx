@@ -1,7 +1,4 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabase/client';
 import { PageHeader } from '../PageHeader';
 import { CurrentCityHeader } from './CurrentCityHeader';
 import { NearbyCitiesGrid } from './NearbyCitiesGrid';
@@ -9,7 +6,7 @@ import { CitySearch } from './CitySearch';
 import { PopularCities } from './PopularCities';
 import { MultiCitySettings } from './MultiCitySettings';
 import { useLocationDetection } from '../location/LocationDetector';
-export const CitySelectionPage = () =>{
+export const CitySelectionPage = () => {
   const {
     locationData,
     updateLocation
@@ -26,31 +23,81 @@ export const CitySelectionPage = () =>{
     // Simulate API delay
     setTimeout(() => {
       // Mock nearby cities data
-      const [[], setMockNearbyCities] = useState([]);
-  const [loading, setLoading] = useState(true);
-  
-  useEffect(() => {
-    const fetchMockNearbyCities = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('news')
-          .select('*')
-          .order('created_at', { ascending: false });
-        
-        if (error) throw error;
-        setMockNearbyCities(data || []);
-      } catch (error) {
-        console.error('Error fetching news:', error);
-        setMockNearbyCities([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-    
-    fetchMockNearbyCities();
-  }, []);
+      const mockNearbyCities = [{
+        id: 'clearwater-fl',
+        name: 'Clearwater',
+        state: 'FL',
+        image: 'https://images.unsplash.com/photo-1593134257782-e89567b7718a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+        population: 115,
+        '975': '',
+        activeStories: 143,
+        distance: 0,
+        coordinates: '{ lat: 27.9659',
+        lng: '-82.8001 }',
+        isFollowed: true
+      }, {
+        id: 'dunedin-fl',
+        name: 'Dunedin',
+        state: 'FL',
+        image: 'https://images.unsplash.com/photo-1591991564021-0662a8573199?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+        population: 36,
+        '06': 8,
+        activeStories: 87,
+        distance: 3.8,
+        coordinates: '{ lat: 28.0197',
+        lng: '-82.7717 }',
+        isFollowed: false
+      }, {
+        id: 'palm-harbor-fl',
+        name: 'Palm Harbor',
+        state: 'FL',
+        image: 'https://images.unsplash.com/photo-1604537466608-109fa2f16c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+        population: 60,
+        '236': '',
+        activeStories: 62,
+        distance: 5.2,
+        coordinates: '{ lat: 28.0781',
+        lng: '-82.7663 }',
+        isFollowed: false
+      }, {
+        id: 'safety-harbor-fl',
+        name: 'Safety Harbor',
+        state: 'FL',
+        image: 'https://images.unsplash.com/photo-1590059590921-f0c2f8b6b1a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+        population: 17,
+        '872': '',
+        activeStories: 43,
+        distance: 6.1,
+        coordinates: '{ lat: 28.0064',
+        lng: '-82.6956 }',
+        isFollowed: false
+      }, {
+        id: 'largo-fl',
+        name: 'Largo',
+        state: 'FL',
+        image: 'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+        population: 84,
+        '948': '',
+        activeStories: 95,
+        distance: 7.3,
+        coordinates: '{ lat: 27.9095',
+        lng: '-82.7873 }',
+        isFollowed: false
+      }, {
+        id: 'oldsmar-fl',
+        name: 'Oldsmar',
+        state: 'FL',
+        image: 'https://images.unsplash.com/photo-1546370118-a67c2df04f7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+        population: 14,
+        '898': '',
+        activeStories: 31,
+        distance: 8.7,
+        coordinates: '{ lat: 28.0342',
+        lng: '-82.6773 }',
+        isFollowed: false
+      }];
       // Mock popular cities data
-      const [] = [{
+      const mockPopularCities = [{
         id: 'tampa-fl',
         name: 'Tampa',
         state: 'FL',
@@ -112,9 +159,9 @@ export const CitySelectionPage = () =>{
         isFollowed: false
       }];
       // Set initial followed cities (just the current one)
-      const initialFollowedCities = [[][0]];
-      setNearbyCities([]);
-      setPopularCities([]);
+      const initialFollowedCities = [mockNearbyCities[0]];
+      setNearbyCities(mockNearbyCities);
+      setPopularCities(mockPopularCities);
       setFollowedCities(initialFollowedCities);
       setLoading(false);
     }, 1000);
@@ -161,7 +208,7 @@ export const CitySelectionPage = () =>{
     setMultiCityMode(!multiCityMode);
   };
   if (loading) {
-    return<div className="flex-1 overflow-auto bg-gray-50">
+    return <div className="flex-1 overflow-auto bg-gray-50">
         <PageHeader />
         <div className="mx-auto max-w-7xl px-4 py-6">
           <div className="animate-pulse">
@@ -194,9 +241,13 @@ export const CitySelectionPage = () =>{
         </div>
         {/* Request Coverage */}
         <div className="mt-12 bg-white rounded-lg shadow-sm border border-gray-200 p-6 text-center">
-          <h3 className="text-xl font-bold text-gray-900 mb-2">Don't see your community?</h3>
-          <p className="text-gray-600 mb-4 max-w-md mx-auto">We're expanding our coverage all the time. Let us know where you'd
-            like to see Day.news next!</p>
+          <h3 className="text-xl font-bold text-gray-900 mb-2">
+            Don't see your community?
+          </h3>
+          <p className="text-gray-600 mb-4 max-w-md mx-auto">
+            We're expanding our coverage all the time. Let us know where you'd
+            like to see Day.news next!
+          </p>
           <button className="bg-news-primary hover:bg-news-primary-dark text-white font-medium px-6 py-3 rounded-md transition-colors">
             Request Coverage for Your Community
           </button>

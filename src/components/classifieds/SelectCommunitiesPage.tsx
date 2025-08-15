@@ -1,62 +1,104 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabase/client';
-import { useRouter } from 'next/navigation';
-import { AlertCircle, ChevronRight, Info, Search, User, Users } from 'lucide-react';
-export const SelectCommunitiesPage = () =>{
-  const router = useRouter();
+import { useNavigate } from 'react-router-dom';
+import { Info, MapPin, ChevronRight } from 'lucide-react';
+export const SelectCommunitiesPage = () => {
+  const navigate = useNavigate();
   const [selectedCommunities, setSelectedCommunities] = useState([]);
   const [availableCommunities, setAvailableCommunities] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [communityList, setCommunityList] = useState([]);
   const [loading, setLoading] = useState(true);
-  
-  // TODO: Convert location.state to searchParams or context
-  const formData = null;
-  const isRerun = false;
-  const preselectedCommunities = [];
   useEffect(() => {
     // If no form data was passed, redirect back to the post listing page
     if (!formData) {
-      router.push('/postListing');
+      navigate('/postListing');
       return;
     }
     // Simulate loading communities from API
     setLoading(true);
     setTimeout(() => {
       // Mock community data
-      const [[], setMockCommunities] = useState([]);
-  const [loading, setLoading] = useState(true);
-  
-  useEffect(() => {
-    const fetchMockCommunities = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('marketplace_items')
-          .select('*')
-          .order('created_at', { ascending: false });
-        
-        if (error) throw error;
-        setMockCommunities(data || []);
-      } catch (error) {
-        console.error('Error fetching marketplace_items:', error);
-        setMockCommunities([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-    
-    fetchMockCommunities();
-  }, []);
-      setCommunityList([]);
+      const mockCommunities = [{
+        id: 'clearwater',
+        name: 'Clearwater',
+        state: 'FL',
+        members: 24500,
+        active: true,
+        description: 'The official community for Clearwater, Florida residents.',
+        image: 'https://images.unsplash.com/photo-1593534560771-4f0fc0cabd94?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+      }, {
+        id: 'dunedin',
+        name: 'Dunedin',
+        state: 'FL',
+        members: 18300,
+        active: true,
+        description: 'Connect with neighbors in Dunedin, Florida.',
+        image: 'https://images.unsplash.com/photo-1534430480872-3498386e7856?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+      }, {
+        id: 'stpetersburg',
+        name: 'St. Petersburg',
+        state: 'FL',
+        members: 32700,
+        active: true,
+        description: 'St. Petersburg community news, events, and classifieds.',
+        image: 'https://images.unsplash.com/photo-1580742471944-c1c187a943e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+      }, {
+        id: 'tampa',
+        name: 'Tampa',
+        state: 'FL',
+        members: 41200,
+        active: true,
+        description: 'Tampa Bay area community board.',
+        image: 'https://images.unsplash.com/photo-1606922619305-aae5c19a6593?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+      }, {
+        id: 'palmharbor',
+        name: 'Palm Harbor',
+        state: 'FL',
+        members: 15800,
+        active: true,
+        description: 'Palm Harbor community discussion and marketplace.',
+        image: 'https://images.unsplash.com/photo-1584467541268-b040f83be3fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+      }, {
+        id: 'sarasota',
+        name: 'Sarasota',
+        state: 'FL',
+        members: 28900,
+        active: true,
+        description: 'Sarasota community for local residents.',
+        image: 'https://images.unsplash.com/photo-1543039625-14cbd3802e7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+      }, {
+        id: 'largo',
+        name: 'Largo',
+        state: 'FL',
+        members: 13600,
+        active: true,
+        description: 'Largo, FL community board and marketplace.',
+        image: 'https://images.unsplash.com/photo-1517404215738-15263e9f9178?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+      }, {
+        id: 'oldsmar',
+        name: 'Oldsmar',
+        state: 'FL',
+        members: 9200,
+        active: true,
+        description: 'Oldsmar community news and discussion.',
+        image: 'https://images.unsplash.com/photo-1565005691280-74f498c3e0b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+      }, {
+        id: 'safetyharbor',
+        name: 'Safety Harbor',
+        state: 'FL',
+        members: 11400,
+        active: true,
+        description: 'Safety Harbor local community and events.',
+        image: 'https://images.unsplash.com/photo-1567601169793-2c546f9d5526?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+      }];
+      setCommunityList(mockCommunities);
       // If preselected communities were passed (for rerun), set them
       if (isRerun && preselectedCommunities && preselectedCommunities.length > 0) {
         setSelectedCommunities(preselectedCommunities.map(community => community.id));
       }
       setLoading(false);
     }, 1000);
-  }, [formData, isRerun, preselectedCommunities, router]);
+  }, [formData, isRerun, preselectedCommunities, navigate]);
   const handleSearchChange = e => {
     setSearchQuery(e.target.value);
   };
@@ -69,7 +111,7 @@ export const SelectCommunitiesPage = () =>{
   };
   const filteredCommunities = communityList.filter(community => community.name.toLowerCase().includes(searchQuery.toLowerCase()) || community.description.toLowerCase().includes(searchQuery.toLowerCase()));
   const handleBack = () => {
-    router.back();
+    navigate(-1);
   };
   const handleContinue = () => {
     if (selectedCommunities.length === 0) {
@@ -79,7 +121,7 @@ export const SelectCommunitiesPage = () =>{
     // Get the full community objects for the selected IDs
     const selectedCommunityObjects = communityList.filter(community => selectedCommunities.includes(community.id));
     // Navigate to timeframe selection with both form data and selected communities
-    router.push('/classifieds/select-timeframe', {
+    navigate('/classifieds/select-timeframe', {
       state: {
         formData,
         selectedCommunities: selectedCommunityObjects,
@@ -91,7 +133,7 @@ export const SelectCommunitiesPage = () =>{
   const calculatePrice = () => {
     const basePrice = 10; // $10 for up to 3 communities
     const additionalCommunityPrice = 2; // $2 per additional community
-    if (selectedCommunities.length<= 3) {
+    if (selectedCommunities.length <= 3) {
       return basePrice;
     } else {
       return basePrice + (selectedCommunities.length - 3) * additionalCommunityPrice;
@@ -130,11 +172,12 @@ export const SelectCommunitiesPage = () =>{
           <p className="text-gray-600">Loading communities...</p>
         </div> : <>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-            {filteredCommunities.map(community => <div key={community.id} onClick={() =>toggleCommunity(community.id)} className={`border rounded-lg overflow-hidden cursor-pointer transition-all ${selectedCommunities.includes(community.id) ? 'border-news-primary bg-blue-50' : 'border-gray-200 hover:border-gray-300'}`} role="checkbox" aria-checked={selectedCommunities.includes(community.id)} tabIndex={0} onKeyPress={e => {
+            {filteredCommunities.map(community => <div key={community.id} onClick={() => toggleCommunity(community.id)} className={`border rounded-lg overflow-hidden cursor-pointer transition-all ${selectedCommunities.includes(community.id) ? 'border-news-primary bg-blue-50' : 'border-gray-200 hover:border-gray-300'}`} role="checkbox" aria-checked={selectedCommunities.includes(community.id)} tabIndex={0} onKeyPress={e => {
           if (e.key === 'Enter' || e.key === ' ') {
             toggleCommunity(community.id);
           }
-        }}><div className="flex p-4">
+        }}>
+                <div className="flex p-4">
                   <div className="w-16 h-16 rounded-md overflow-hidden mr-4 flex-shrink-0">
                     <img src={community.image} alt={`${community.name} community`} className="w-full h-full object-cover" />
                   </div>
@@ -162,8 +205,9 @@ export const SelectCommunitiesPage = () =>{
               <p className="text-gray-500">
                 No communities found matching your search.
               </p>
-              <button onClick={() =>setSearchQuery('')} className="text-news-primary mt-2 hover:underline" aria-label="Clear search">
-                Clear search</button>
+              <button onClick={() => setSearchQuery('')} className="text-news-primary mt-2 hover:underline" aria-label="Clear search">
+                Clear search
+              </button>
             </div>}
         </>}
       {/* Selected communities summary */}
@@ -181,11 +225,12 @@ export const SelectCommunitiesPage = () =>{
           const community = communityList.find(c => c.id === communityId);
           return community ? <div key={community.id} className="bg-gray-100 rounded-full px-3 py-1 text-sm flex items-center">
                   <span className="text-gray-800">{community.name}</span>
-                  <button onClick={e =>{
+                  <button onClick={e => {
               e.stopPropagation();
               toggleCommunity(community.id);
             }} className="ml-2 text-gray-500 hover:text-gray-700" aria-label={`Remove ${community.name} from selection`}>
-                    ✕</button>
+                    ✕
+                  </button>
                 </div> : null;
         })}
           </div> : <div className="bg-yellow-50 border border-yellow-200 rounded-md p-4 mb-4">
@@ -199,10 +244,12 @@ export const SelectCommunitiesPage = () =>{
           </div>}
       </div>
       <div className="mt-8 flex justify-between">
-        <button onClick={() =>router.push('/postListing')} className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
-          Back</button>
-        <button onClick={() =>router.push('/classifieds/select-timeframe')} className="px-4 py-2 bg-news-primary text-white rounded-md hover:bg-news-primary-dark flex items-center" disabled={selectedCommunities.length === 0}>
-          Continue<ChevronRight className="ml-1 h-4 w-4" />
+        <button onClick={() => navigate('/postListing')} className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
+          Back
+        </button>
+        <button onClick={() => navigate('/classifieds/select-timeframe')} className="px-4 py-2 bg-news-primary text-white rounded-md hover:bg-news-primary-dark flex items-center" disabled={selectedCommunities.length === 0}>
+          Continue
+          <ChevronRight className="ml-1 h-4 w-4" />
         </button>
       </div>
     </div>;

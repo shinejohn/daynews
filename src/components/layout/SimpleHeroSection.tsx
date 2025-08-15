@@ -1,4 +1,3 @@
-// Converted from Magic Patterns
 import React from 'react';
 interface SimpleHeroSectionProps {
   title?: string;

@@ -1,10 +1,8 @@
-'use client';
-// Converted from Magic Patterns
 import React from 'react';
-import { Building, Calendar, CheckCircle, FileText, Info, Newspaper, ShoppingBag, Tag } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-export const ServicesAndPricingPage = () =>{
-  const router = useRouter();
+import { FileText, Building, ShoppingBag, Tag, Newspaper, Calendar, CheckCircle, Info } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+export const ServicesAndPricingPage = () => {
+  const navigate = useNavigate();
   const services = [{
     id: 'free',
     title: 'Free Services',
@@ -14,17 +12,20 @@ export const ServicesAndPricingPage = () =>{
       description: 'Share local news and stories with the community',
       price: 'FREE',
       route: '/create-article',
-      icon:<FileText className="h-5 w-5" />}, {
+      icon: <FileText className="h-5 w-5" />
+    }, {
       name: 'Make an Announcement',
       description: 'Share important community announcements',
       price: 'FREE',
       route: '/announcementCreator',
-      icon:<Newspaper className="h-5 w-5" />}, {
+      icon: <Newspaper className="h-5 w-5" />
+    }, {
       name: 'Schedule an Event (Non-profit)',
       description: 'List your non-profit or community organization event',
       price: 'FREE',
       route: '/eventCreator',
-      icon:<Calendar className="h-5 w-5" />}]
+      icon: <Calendar className="h-5 w-5" />
+    }]
   }, {
     id: 'paid',
     title: 'Paid Services',
@@ -35,13 +36,15 @@ export const ServicesAndPricingPage = () =>{
       price: '$19',
       duration: '30 days',
       route: '/postListing',
-      icon:<ShoppingBag className="h-5 w-5" />}, {
+      icon: <ShoppingBag className="h-5 w-5" />
+    }, {
       name: 'List Your Business Profile',
       description: 'Create a detailed business profile in our directory',
       price: '$29/month',
       alternatePrice: '$299/year (save $49)',
       route: '/business/create',
-      icon:<Building className="h-5 w-5" />}, {
+      icon: <Building className="h-5 w-5" />
+    }, {
       name: 'Advertise in the Community',
       description: 'Get your business in front of local customers',
       price: 'From $99/month',
@@ -56,25 +59,29 @@ export const ServicesAndPricingPage = () =>{
         price: '$499/month'
       }],
       route: '/advertisingDetail',
-      icon:<Newspaper className="h-5 w-5" />}, {
+      icon: <Newspaper className="h-5 w-5" />
+    }, {
       name: 'Offer a Coupon',
       description: 'Promote special offers to the community',
       price: '$49/month',
       description2: 'per coupon',
       route: '/couponCreator',
-      icon:<Tag className="h-5 w-5" />}, {
+      icon: <Tag className="h-5 w-5" />
+    }, {
       name: 'Post a Legal Notice',
       description: 'Publish required legal notifications',
       price: '$75-$150',
       description2: 'based on word count',
       route: '/legalNoticeCreator',
-      icon:<FileText className="h-5 w-5" />}, {
+      icon: <FileText className="h-5 w-5" />
+    }, {
       name: 'Schedule a Commercial Event',
       description: 'List your business event or ticketed function',
       price: '$29',
       duration: 'per event',
       route: '/eventCreator',
-      icon:<Calendar className="h-5 w-5" />}]
+      icon: <Calendar className="h-5 w-5" />
+    }]
   }];
   const packages = [{
     title: 'Local Business Package',
@@ -91,7 +98,7 @@ export const ServicesAndPricingPage = () =>{
     cta: 'Get Started',
     popular: false
   }];
-  return<div className="flex-1 overflow-auto bg-gray-50">
+  return <div className="flex-1 overflow-auto bg-gray-50">
       <div className="bg-news-primary text-white py-12">
         <div className="container mx-auto px-4">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">
@@ -122,8 +129,9 @@ export const ServicesAndPricingPage = () =>{
                 <p className="text-gray-600 mb-4">{item.description}</p>
                 <div className="flex items-center justify-between mt-auto">
                   <span className="text-green-600 font-bold">{item.price}</span>
-                  <button onClick={() =>router.push(item.route)} className="px-4 py-2 bg-news-primary text-white rounded-md hover:bg-news-primary-dark transition-colors text-sm">
-                    Get Started</button>
+                  <button onClick={() => navigate(item.route)} className="px-4 py-2 bg-news-primary text-white rounded-md hover:bg-news-primary-dark transition-colors text-sm">
+                    Get Started
+                  </button>
                 </div>
               </div>)}
           </div>
@@ -170,8 +178,9 @@ export const ServicesAndPricingPage = () =>{
                         </li>)}
                     </ul>
                   </div>}
-                <button onClick={() =>router.push(item.route)} className="w-full px-4 py-2 bg-news-primary text-white rounded-md hover:bg-news-primary-dark transition-colors text-sm">
-                  Get Started</button>
+                <button onClick={() => navigate(item.route)} className="w-full px-4 py-2 bg-news-primary text-white rounded-md hover:bg-news-primary-dark transition-colors text-sm">
+                  Get Started
+                </button>
               </div>)}
           </div>
         </section>

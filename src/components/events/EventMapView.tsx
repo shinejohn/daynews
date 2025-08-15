@@ -1,6 +1,5 @@
-// Converted from Magic Patterns
 import React from 'react';
-import { Info, MapPin } from 'lucide-react';
+import { MapPin, Info } from 'lucide-react';
 export const EventMapView = ({
   events
 }) => {
@@ -30,18 +29,22 @@ export const EventMapView = ({
                     </div>
                     <div className="flex items-center text-xs text-gray-500 mb-1">
                       <MapPin className="h-3 w-3 mr-1" />
-                      <span>{new Date(event.date).toLocaleDateString('en-US', {
+                      <span>
+                        {new Date(event.date).toLocaleDateString('en-US', {
                       weekday: 'short',
                       month: 'short',
                       day: 'numeric'
-                    })}</span>
+                    })}
+                      </span>
                     </div>
                     <div className="flex items-center text-xs text-gray-500 mb-2">
                       <MapPin className="h-3 w-3 mr-1" />
-                      <span>{new Date(event.time).toLocaleTimeString('en-US', {
+                      <span>
+                        {new Date(event.time).toLocaleTimeString('en-US', {
                       hour: 'numeric',
                       minute: '2-digit'
-                    })}</span>
+                    })}
+                      </span>
                     </div>
                     <button className="w-full bg-news-primary text-white text-xs py-1.5 rounded">
                       View Details

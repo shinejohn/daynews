@@ -1,38 +1,203 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabase/client';
-import { useRouter } from 'next/navigation';
+import { useNavigate } from 'react-router-dom';
 import { HeroSection } from '../hero/HeroSection';
 import { useLocationDetection } from '../location/LocationDetector';
-import { ArrowDownAZ, ArrowUpAZ, Calendar, ChevronRight, Clock, ExternalLink, MapPin, Search, SlidersHorizontal, Tag, User, Users, X } from 'lucide-react';
+import { Calendar, MapPin, Clock, Users, Tag, ChevronRight, Search, SlidersHorizontal, ArrowDownAZ, ArrowUpAZ, X, ExternalLink } from 'lucide-react';
 import { EventTypeFilters, EventType } from './EventTypeFilters';
 // Mock events data
-export const [[], setMockEvents] = useState([]);
-  const [loading, setLoading] = useState(true);
-  
-  useEffect(() =>{
-    const fetchMockEvents = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('events')
-          .select('*')
-          .order('created_at', { ascending: false });
-        
-        if (error) throw error;
-        setMockEvents(data || []);
-      } catch (error) {
-        console.error('Error fetching events:', error);
-        setMockEvents([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-    
-    fetchMockEvents();
-  }, []);
+export const mockEvents = [{
+  id: 1,
+  title: 'Clearwater Jazz Holiday',
+  date: '2025-08-15',
+  time: '2025-08-15T18:00:00',
+  endTime: '2025-08-15T23:00:00',
+  location: 'Coachman Park',
+  address: '301 Drew St, Clearwater, FL 33755',
+  coordinates: {
+    lat: 27.9659,
+    lng: -82.8001
+  },
+  description: 'The Clearwater Jazz Holiday is a world-class music festival featuring jazz, blues, and rock performances.',
+  image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+  price: 45,
+  category: 'music',
+  featured: true,
+  attendees: 17,
+  organizer: 'Clearwater Jazz Holiday Foundation'
+}, {
+  id: 2,
+  title: 'Farmers Market',
+  date: '2025-08-10',
+  time: '2025-08-10T09:00:00',
+  endTime: '2025-08-10T14:00:00',
+  location: 'Downtown Clearwater',
+  address: '400 Cleveland St, Clearwater, FL 33755',
+  coordinates: {
+    lat: 27.9651,
+    lng: -82.8003
+  },
+  description: 'Shop local produce, artisanal foods, and handcrafted goods at the weekly farmers market.',
+  image: 'https://images.unsplash.com/photo-1488459716781-31db52582fe9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+  price: 0,
+  category: 'food',
+  featured: false,
+  attendees: 42,
+  organizer: 'City of Clearwater'
+}, {
+  id: 3,
+  title: 'Beach Cleanup Day',
+  date: '2025-08-12',
+  time: '2025-08-12T08:00:00',
+  endTime: '2025-08-12T12:00:00',
+  location: 'Clearwater Beach',
+  address: '160 Gulfview Blvd, Clearwater, FL 33767',
+  coordinates: {
+    lat: 27.9775,
+    lng: -82.8271
+  },
+  description: 'Join your neighbors in keeping our beaches clean and beautiful. Equipment provided.',
+  image: 'https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+  price: 0,
+  category: 'community',
+  featured: false,
+  attendees: 28,
+  organizer: 'Keep Clearwater Beautiful'
+}, {
+  id: 4,
+  title: 'Art Walk',
+  date: '2025-08-20',
+  time: '2025-08-20T18:00:00',
+  endTime: '2025-08-20T21:00:00',
+  location: 'Cleveland Street District',
+  address: 'Cleveland St, Clearwater, FL 33755',
+  coordinates: {
+    lat: 27.9654,
+    lng: -82.8009
+  },
+  description: 'Explore local art galleries and meet the artists during this monthly event.',
+  image: 'https://images.unsplash.com/photo-1563784462041-5f97ac9523dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+  price: 0,
+  category: 'arts',
+  featured: false,
+  attendees: 35,
+  organizer: 'Clearwater Arts Alliance'
+}, {
+  id: 5,
+  title: 'Summer Concert Series',
+  date: '2025-08-22',
+  time: '2025-08-22T19:00:00',
+  endTime: '2025-08-22T22:00:00',
+  location: 'Pier 60',
+  address: '1 Causeway Blvd, Clearwater, FL 33767',
+  coordinates: {
+    lat: 27.9769,
+    lng: -82.8277
+  },
+  description: 'Enjoy live music by local bands with a beautiful sunset backdrop.',
+  image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+  price: 0,
+  category: 'music',
+  featured: true,
+  attendees: 64,
+  organizer: 'City of Clearwater'
+}, {
+  id: 6,
+  title: 'Youth Soccer Tournament',
+  date: '2025-09-05',
+  time: '2025-09-05T10:00:00',
+  endTime: '2025-09-05T16:00:00',
+  location: 'Eddie C. Moore Complex',
+  address: '3050 Drew St, Clearwater, FL 33759',
+  coordinates: {
+    lat: 27.9686,
+    lng: -82.7136
+  },
+  description: 'Annual youth soccer tournament featuring teams from across the region.',
+  image: 'https://images.unsplash.com/photo-1517466787929-bc90951d0974?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+  price: 0,
+  category: 'sports',
+  featured: false,
+  attendees: 120,
+  organizer: 'Clearwater Youth Soccer Association'
+}, {
+  id: 7,
+  title: 'Food Truck Rally',
+  date: '2025-09-10',
+  time: '2025-09-10T17:00:00',
+  endTime: '2025-09-10T22:00:00',
+  location: 'Coachman Park',
+  address: '301 Drew St, Clearwater, FL 33755',
+  coordinates: {
+    lat: 27.9659,
+    lng: -82.8005
+  },
+  description: "Sample cuisine from the area's best food trucks with live music and family activities.",
+  image: 'https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+  price: 0,
+  category: 'food',
+  featured: true,
+  attendees: 85,
+  organizer: 'Tampa Bay Food Truck Rally'
+}, {
+  id: 8,
+  title: 'Family Movie Night',
+  date: '2025-09-15',
+  time: '2025-09-15T20:00:00',
+  endTime: '2025-09-15T22:30:00',
+  location: 'Countryside Recreation Center',
+  address: '2640 Sabal Springs Dr, Clearwater, FL 33761',
+  coordinates: {
+    lat: 28.0097,
+    lng: -82.7371
+  },
+  description: 'Bring blankets and chairs for an outdoor screening of a family-friendly movie.',
+  image: 'https://images.unsplash.com/photo-1585647347483-22b66260dfff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+  price: 0,
+  category: 'family',
+  featured: false,
+  attendees: 47,
+  organizer: 'Clearwater Parks & Recreation'
+}, {
+  id: 9,
+  title: 'Business Networking Breakfast',
+  date: '2025-09-18',
+  time: '2025-09-18T07:30:00',
+  endTime: '2025-09-18T09:00:00',
+  location: 'Clearwater Chamber of Commerce',
+  address: '600 Cleveland St, Clearwater, FL 33755',
+  coordinates: {
+    lat: 27.9654,
+    lng: -82.8
+  },
+  description: 'Connect with local business leaders and entrepreneurs at this monthly networking event.',
+  image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+  price: 15,
+  category: 'business',
+  featured: false,
+  attendees: 32,
+  organizer: 'Clearwater Chamber of Commerce'
+}, {
+  id: 10,
+  title: 'Adult Education Workshop: Digital Skills',
+  date: '2025-09-22',
+  time: '2025-09-22T18:00:00',
+  endTime: '2025-09-22T20:00:00',
+  location: 'Clearwater Public Library',
+  address: '100 N Osceola Ave, Clearwater, FL 33755',
+  coordinates: {
+    lat: 27.9661,
+    lng: -82.8008
+  },
+  description: 'Free workshop teaching essential digital skills for career advancement and personal use.',
+  image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+  price: 0,
+  category: 'education',
+  featured: false,
+  attendees: 25,
+  organizer: 'Clearwater Public Library System'
+}];
 export const EventsCalendarPage = () => {
-  const router = useRouter();
+  const navigate = useNavigate();
   const [greeting, setGreeting] = useState('');
   const [activeReaders, setActiveReaders] = useState(247);
   const [events, setEvents] = useState([]);
@@ -48,7 +213,7 @@ export const EventsCalendarPage = () => {
   // Set time-based greeting
   useEffect(() => {
     const hour = new Date().getHours();
-    if (hour >= 5 && hour< 12) {
+    if (hour >= 5 && hour < 12) {
       setGreeting('Good Morning');
     } else if (hour >= 12 && hour < 18) {
       setGreeting('Good Afternoon');
@@ -56,18 +221,18 @@ export const EventsCalendarPage = () => {
       setGreeting('Good Evening');
     }
     // Simulate fluctuating reader count
-    const interval = setInterval(() =>{
+    const interval = setInterval(() => {
       setActiveReaders(prev => Math.floor(Math.random() * 20) - 10 + prev);
     }, 5000);
     return () => clearInterval(interval);
   }, []);
   // Handle navigation to event detail page
   const handleEventClick = eventId => {
-    router.push(`/eventDetail?id=${eventId}`);
+    navigate(`/eventDetail?id=${eventId}`);
   };
   // Handle ad click
   const handleAdClick = () => {
-    router.push('/advertisingDetail');
+    navigate('/advertisingDetail');
   };
   // Load events data
   useEffect(() => {
@@ -75,7 +240,7 @@ export const EventsCalendarPage = () => {
     setLoading(true);
     setTimeout(() => {
       // Sort events by date
-      const sortedEvents = [...[]].sort((a, b) => {
+      const sortedEvents = [...mockEvents].sort((a, b) => {
         return new Date(a.date).getTime() - new Date(b.date).getTime();
       });
       setEvents(sortedEvents);
@@ -179,7 +344,7 @@ export const EventsCalendarPage = () => {
         return 'Sort By';
     }
   };
-  return<div className="flex-1 overflow-auto bg-gray-50">
+  return <div className="flex-1 overflow-auto bg-gray-50">
       <HeroSection greeting={greeting} location={locationData?.city || 'Clearwater'} activeReaders={activeReaders} />
       <div className="container mx-auto px-4 py-6">
         <div className="flex justify-between items-center mb-6">
@@ -202,7 +367,8 @@ export const EventsCalendarPage = () => {
             </div>
             {/* Sort dropdown */}
             <div className="relative">
-              <button onClick={() =>setShowSortOptions(!showSortOptions)} className="flex items-center justify-between w-full md:w-64 px-4 py-2.5 bg-white border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50" aria-label="Sort options" aria-expanded={showSortOptions} data-testid="sort-button"><div className="flex items-center">
+              <button onClick={() => setShowSortOptions(!showSortOptions)} className="flex items-center justify-between w-full md:w-64 px-4 py-2.5 bg-white border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50" aria-label="Sort options" aria-expanded={showSortOptions} data-testid="sort-button">
+                <div className="flex items-center">
                   <SlidersHorizontal className="h-5 w-5 mr-2 text-gray-500" />
                   <span>{getSortOptionText()}</span>
                 </div>
@@ -210,35 +376,44 @@ export const EventsCalendarPage = () => {
               </button>
               {showSortOptions && <div className="absolute z-10 mt-1 w-full bg-white rounded-lg shadow-lg border border-gray-200" data-testid="sort-options">
                   <div className="py-1">
-                    <button onClick={() =>handleSortChange('date-asc')} className={`flex items-center w-full px-4 py-2 text-left hover:bg-gray-100 ${sortOption === 'date-asc' ? 'bg-gray-100 font-medium' : ''}`}><Calendar className="h-4 w-4 mr-2 text-gray-500" />
+                    <button onClick={() => handleSortChange('date-asc')} className={`flex items-center w-full px-4 py-2 text-left hover:bg-gray-100 ${sortOption === 'date-asc' ? 'bg-gray-100 font-medium' : ''}`}>
+                      <Calendar className="h-4 w-4 mr-2 text-gray-500" />
                       Date (Earliest First)
                     </button>
-                    <button onClick={() =>handleSortChange('date-desc')} className={`flex items-center w-full px-4 py-2 text-left hover:bg-gray-100 ${sortOption === 'date-desc' ? 'bg-gray-100 font-medium' : ''}`}><Calendar className="h-4 w-4 mr-2 text-gray-500" />
+                    <button onClick={() => handleSortChange('date-desc')} className={`flex items-center w-full px-4 py-2 text-left hover:bg-gray-100 ${sortOption === 'date-desc' ? 'bg-gray-100 font-medium' : ''}`}>
+                      <Calendar className="h-4 w-4 mr-2 text-gray-500" />
                       Date (Latest First)
                     </button>
-                    <button onClick={() =>handleSortChange('title-asc')} className={`flex items-center w-full px-4 py-2 text-left hover:bg-gray-100 ${sortOption === 'title-asc' ? 'bg-gray-100 font-medium' : ''}`}><ArrowDownAZ className="h-4 w-4 mr-2 text-gray-500" />
+                    <button onClick={() => handleSortChange('title-asc')} className={`flex items-center w-full px-4 py-2 text-left hover:bg-gray-100 ${sortOption === 'title-asc' ? 'bg-gray-100 font-medium' : ''}`}>
+                      <ArrowDownAZ className="h-4 w-4 mr-2 text-gray-500" />
                       Title (A-Z)
                     </button>
-                    <button onClick={() =>handleSortChange('title-desc')} className={`flex items-center w-full px-4 py-2 text-left hover:bg-gray-100 ${sortOption === 'title-desc' ? 'bg-gray-100 font-medium' : ''}`}><ArrowUpAZ className="h-4 w-4 mr-2 text-gray-500" />
+                    <button onClick={() => handleSortChange('title-desc')} className={`flex items-center w-full px-4 py-2 text-left hover:bg-gray-100 ${sortOption === 'title-desc' ? 'bg-gray-100 font-medium' : ''}`}>
+                      <ArrowUpAZ className="h-4 w-4 mr-2 text-gray-500" />
                       Title (Z-A)
                     </button>
-                    <button onClick={() =>handleSortChange('price-asc')} className={`flex items-center w-full px-4 py-2 text-left hover:bg-gray-100 ${sortOption === 'price-asc' ? 'bg-gray-100 font-medium' : ''}`}><Tag className="h-4 w-4 mr-2 text-gray-500" />
+                    <button onClick={() => handleSortChange('price-asc')} className={`flex items-center w-full px-4 py-2 text-left hover:bg-gray-100 ${sortOption === 'price-asc' ? 'bg-gray-100 font-medium' : ''}`}>
+                      <Tag className="h-4 w-4 mr-2 text-gray-500" />
                       Price (Low to High)
                     </button>
-                    <button onClick={() =>handleSortChange('price-desc')} className={`flex items-center w-full px-4 py-2 text-left hover:bg-gray-100 ${sortOption === 'price-desc' ? 'bg-gray-100 font-medium' : ''}`}><Tag className="h-4 w-4 mr-2 text-gray-500" />
+                    <button onClick={() => handleSortChange('price-desc')} className={`flex items-center w-full px-4 py-2 text-left hover:bg-gray-100 ${sortOption === 'price-desc' ? 'bg-gray-100 font-medium' : ''}`}>
+                      <Tag className="h-4 w-4 mr-2 text-gray-500" />
                       Price (High to Low)
                     </button>
-                    <button onClick={() =>handleSortChange('popularity')} className={`flex items-center w-full px-4 py-2 text-left hover:bg-gray-100 ${sortOption === 'popularity' ? 'bg-gray-100 font-medium' : ''}`}><Users className="h-4 w-4 mr-2 text-gray-500" />
+                    <button onClick={() => handleSortChange('popularity')} className={`flex items-center w-full px-4 py-2 text-left hover:bg-gray-100 ${sortOption === 'popularity' ? 'bg-gray-100 font-medium' : ''}`}>
+                      <Users className="h-4 w-4 mr-2 text-gray-500" />
                       Popularity
                     </button>
                   </div>
                 </div>}
             </div>
-          </div>{/* Search results info */}
-          {(searchQuery || activeEventType !== 'all') &&<div className="mt-3 pt-3 border-t border-gray-200 text-sm text-gray-600">Found {filteredEvents.length}{' '}
+          </div>
+          {/* Search results info */}
+          {(searchQuery || activeEventType !== 'all') && <div className="mt-3 pt-3 border-t border-gray-200 text-sm text-gray-600">
+              Found {filteredEvents.length}{' '}
               {filteredEvents.length === 1 ? 'event' : 'events'}
-              {searchQuery &&<>matching "{searchQuery}"</>}
-              {activeEventType !== 'all' &&<>in category "{activeEventType}"</>}
+              {searchQuery && <> matching "{searchQuery}"</>}
+              {activeEventType !== 'all' && <> in category "{activeEventType}"</>}
             </div>}
         </div>
 
@@ -288,8 +463,10 @@ export const EventsCalendarPage = () => {
                       </div>
                       <div className="flex items-center text-gray-600">
                         <Clock className="h-4 w-4 mr-2 text-gray-400" />
-                        <span>{formatEventTime(event.time)} -{' '}
-                          {formatEventTime(event.endTime)}</span>
+                        <span>
+                          {formatEventTime(event.time)} -{' '}
+                          {formatEventTime(event.endTime)}
+                        </span>
                       </div>
                       <div className="flex items-center text-gray-600">
                         <MapPin className="h-4 w-4 mr-2 text-gray-400" />
@@ -306,7 +483,9 @@ export const EventsCalendarPage = () => {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
                         <Tag className="h-4 w-4 mr-2 text-gray-400" />
-                        <span className="text-gray-600">{event.price === 0 ? 'Free' : `$${event.price}`}</span>
+                        <span className="text-gray-600">
+                          {event.price === 0 ? 'Free' : `$${event.price}`}
+                        </span>
                       </div>
                       <button className="inline-flex items-center px-4 py-2 bg-news-primary text-white rounded hover:bg-news-primary-dark transition-colors" onClick={e => {
                   e.stopPropagation();
@@ -326,13 +505,17 @@ export const EventsCalendarPage = () => {
             <h3 className="text-xl font-bold text-gray-700 mb-2">
               No events found
             </h3>
-            <p className="text-gray-500 mb-4">{searchQuery || activeEventType !== 'all' ? `We couldn't find any events matching your criteria` : 'There are no upcoming events at this time'}</p>{(searchQuery || activeEventType !== 'all') &&<div className="flex justify-center gap-3">
+            <p className="text-gray-500 mb-4">
+              {searchQuery || activeEventType !== 'all' ? `We couldn't find any events matching your criteria` : 'There are no upcoming events at this time'}
+            </p>
+            {(searchQuery || activeEventType !== 'all') && <div className="flex justify-center gap-3">
                 {searchQuery && <button onClick={clearSearch} className="inline-flex items-center px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition-colors">
                     Clear Search
                     <X className="h-4 w-4 ml-1" />
                   </button>}
-                {activeEventType !== 'all' &&<button onClick={() =>setActiveEventType('all')} className="inline-flex items-center px-4 py-2 bg-news-primary text-white rounded hover:bg-news-primary-dark transition-colors">
-                    Show All Events<Calendar className="h-4 w-4 ml-1" />
+                {activeEventType !== 'all' && <button onClick={() => setActiveEventType('all')} className="inline-flex items-center px-4 py-2 bg-news-primary text-white rounded hover:bg-news-primary-dark transition-colors">
+                    Show All Events
+                    <Calendar className="h-4 w-4 ml-1" />
                   </button>}
               </div>}
           </div>}

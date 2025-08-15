@@ -1,11 +1,9 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useState } from 'react';
 import { Search, X } from 'lucide-react';
 interface SearchInputProps {
   placeholder?: string;
   value: string;
-  onChange: (value: string) =>void;
+  onChange: (value: string) => void;
   onSubmit?: (e: React.FormEvent) => void;
   className?: string;
   showClearButton?: boolean;
@@ -67,7 +65,7 @@ export const SearchInput = ({
   const handleClear = () => {
     onChange('');
   };
-  return<form onSubmit={handleSubmit} className={`relative ${className}`}>
+  return <form onSubmit={handleSubmit} className={`relative ${className}`}>
       <input type="text" placeholder={placeholder} value={value} onChange={e => onChange(e.target.value)} className={`w-full ${getRoundedClass()} ${getSizeClass()} border border-gray-300 focus:outline-none focus:ring-2 focus:ring-news-primary`} />
       <Search className={`absolute ${getIconSizeClass()} top-1/2 transform -translate-y-1/2 text-gray-400`} />
       {showClearButton && value && <button type="button" onClick={handleClear} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600">

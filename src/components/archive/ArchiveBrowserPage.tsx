@@ -1,7 +1,4 @@
-'use client';
-// Converted from Magic Patterns
-import React, { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabase/client';
+import React, { useEffect, useState, memo } from 'react';
 import { PageHeader } from '../PageHeader';
 import { TimelineNavigator } from './TimelineNavigator';
 import { ArchiveCalendar } from './ArchiveCalendar';
@@ -10,8 +7,8 @@ import { CollectionThemes } from './CollectionThemes';
 import { ArchiveSearch } from './ArchiveSearch';
 import { HistoricalFeatures } from './HistoricalFeatures';
 import { useLocationDetection } from '../location/LocationDetector';
-import { BookOpen, ChevronDown, Clock, Filter } from 'lucide-react';
-export const ArchiveBrowserPage = () =>{
+import { ChevronDown, Calendar, Clock, BookOpen, Filter } from 'lucide-react';
+export const ArchiveBrowserPage = () => {
   const {
     locationData
   } = useLocationDetection();
@@ -72,8 +69,8 @@ export const ArchiveBrowserPage = () =>{
     setIsLoading(true);
     // Simulate API delay
     setTimeout(() => {
-      const [] = generateMockArchiveResults(selectedDate, searchParams, activeCollection);
-      setArchiveResults([]);
+      const mockResults = generateMockArchiveResults(selectedDate, searchParams, activeCollection);
+      setArchiveResults(mockResults);
       setIsLoading(false);
     }, 1200);
   }, [selectedDate, searchParams, activeCollection]);
@@ -109,21 +106,27 @@ export const ArchiveBrowserPage = () =>{
   const toggleHistoricalContext = () => {
     setShowHistoricalContext(!showHistoricalContext);
   };
-  return<div className={`flex-1 overflow-auto ${sepiaMode ? 'bg-amber-50' : 'bg-gray-50'}`}>
+  return <div className={`flex-1 overflow-auto ${sepiaMode ? 'bg-amber-50' : 'bg-gray-50'}`}>
       <PageHeader />
       <div className="mx-auto max-w-7xl px-4 py-6">
         {/* Archive Header */}
         <div className={`rounded-lg shadow-md p-6 mb-6 ${sepiaMode ? 'bg-amber-100 border border-amber-200' : 'bg-white border border-gray-200'}`}>
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
             <div>
-              <h1 className="font-display text-3xl font-bold text-gray-900 mb-2">{locationData?.city || 'Clearwater'} News Archives</h1>
-              <p className="text-gray-600">Explore {archiveStats.totalArticles.toLocaleString()} articles
+              <h1 className="font-display text-3xl font-bold text-gray-900 mb-2">
+                {locationData?.city || 'Clearwater'} News Archives
+              </h1>
+              <p className="text-gray-600">
+                Explore {archiveStats.totalArticles.toLocaleString()} articles
                 from{' '}
                 {archiveStats.earliestDate ? archiveStats.earliestDate.getFullYear() : '1925'}{' '}
-                to present</p>
+                to present
+              </p>
             </div>
             <div className="mt-4 md:mt-0 flex flex-wrap gap-2">
-              <button className={`px-4 py-2 rounded-md text-sm font-medium ${sepiaMode ? 'bg-amber-200 text-amber-800' : 'bg-gray-100 text-gray-700'}`} onClick={toggleSepiaMode}>{sepiaMode ? 'Modern View' : 'Vintage View'}</button>
+              <button className={`px-4 py-2 rounded-md text-sm font-medium ${sepiaMode ? 'bg-amber-200 text-amber-800' : 'bg-gray-100 text-gray-700'}`} onClick={toggleSepiaMode}>
+                {sepiaMode ? 'Modern View' : 'Vintage View'}
+              </button>
               <div className="relative group">
                 <button className="px-4 py-2 bg-news-primary text-white rounded-md text-sm font-medium flex items-center">
                   <BookOpen className="h-4 w-4 mr-1.5" />
@@ -132,15 +135,20 @@ export const ArchiveBrowserPage = () =>{
                 </button>
                 <div className="absolute right-0 mt-1 w-48 bg-white rounded-md shadow-lg border border-gray-200 hidden group-hover:block z-10">
                   <div className="py-1">
-                    <button className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() =>setSelectedView('timeline')}>
-                      Timeline View</button>
-                    <button className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() =>setSelectedView('calendar')}>
-                      Calendar View</button>
-                    <button className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() =>setSelectedView('newspaper')}>
-                      Newspaper View</button>
+                    <button className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setSelectedView('timeline')}>
+                      Timeline View
+                    </button>
+                    <button className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setSelectedView('calendar')}>
+                      Calendar View
+                    </button>
+                    <button className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => setSelectedView('newspaper')}>
+                      Newspaper View
+                    </button>
                     <div className="border-t border-gray-100 my-1"></div>
                     <button className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center" onClick={toggleHistoricalContext}>
-                      <span className="mr-2">{showHistoricalContext ? '✓' : ''}</span>
+                      <span className="mr-2">
+                        {showHistoricalContext ? '✓' : ''}
+                      </span>
                       Show Historical Context
                     </button>
                   </div>
@@ -154,7 +162,8 @@ export const ArchiveBrowserPage = () =>{
           <div className="lg:col-span-1 space-y-6">
             {/* View selector for mobile */}
             <div className="lg:hidden mb-4">
-              <select value={selectedView} onChange={e =>setSelectedView(e.target.value)} className="w-full rounded-md border border-gray-300 p-2"><option value="timeline">Timeline View</option>
+              <select value={selectedView} onChange={e => setSelectedView(e.target.value)} className="w-full rounded-md border border-gray-300 p-2">
+                <option value="timeline">Timeline View</option>
                 <option value="calendar">Calendar View</option>
                 <option value="newspaper">Newspaper View</option>
               </select>
@@ -218,29 +227,7 @@ const generateMockArchiveResults = (selectedDate, searchParams, activeCollection
 const generateThisDayResults = selectedDate => {
   const month = selectedDate.getMonth();
   const day = selectedDate.getDate();
-  const [years, setYears] = useState([]);
-  const [loading, setLoading] = useState(true);
-  
-  useEffect(() => {
-    const fetchYears = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('events')
-          .select('*')
-          .order('created_at', { ascending: false });
-        
-        if (error) throw error;
-        setYears(data || []);
-      } catch (error) {
-        console.error('Error fetching events:', error);
-        setYears([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-    
-    fetchYears();
-  }, []);
+  const years = [1930, 1945, 1960, 1975, 1990, 2005, 2020];
   return years.map(year => {
     const date = new Date(year, month, day);
     return {

@@ -1,19 +1,17 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useNavigate } from 'react-router-dom';
 import { Plus, X } from 'lucide-react';
-export const AddEventButton = () =>{
+export const AddEventButton = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const router = useRouter();
+  const navigate = useNavigate();
   const toggleOpen = () => {
     setIsOpen(!isOpen);
   };
   const handleCreateEvent = () => {
-    router.push('/eventCreator');
+    navigate('/eventCreator');
     setIsOpen(false);
   };
-  return<div className="fixed bottom-20 right-6 z-40">
+  return <div className="fixed bottom-20 right-6 z-40">
       {/* Quick actions panel */}
       {isOpen && <div className="bg-white rounded-lg shadow-lg mb-4 overflow-hidden border border-gray-200 w-64">
           <div className="p-3 border-b border-gray-200 bg-news-primary text-white">

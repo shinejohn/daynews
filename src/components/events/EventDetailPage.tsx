@@ -1,15 +1,13 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useEffect, useState, useRef } from 'react';
-import { supabase } from '@/lib/supabase/client';
-import { useRouter, usePathname } from 'next/navigation';
-import { AlertCircle, Bookmark, Calendar, ChevronLeft, ChevronRight, Clock, Copy, ExternalLink, Globe, Heart, Home, Mail, MapPin, MessageSquare, Phone, Share2, Tag, ThumbsUp, User, Users, X } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { Calendar, MapPin, Clock, Users, Share2, Bookmark, ExternalLink, ChevronLeft, Heart, Mail, Phone, Globe, MessageSquare, AlertCircle, Tag, ThumbsUp, ChevronRight, X, Copy, Home } from 'lucide-react';
 import { useLocationDetection } from '../location/LocationDetector';
+import { mockEvents } from './EventsCalendarPage';
 import { SaveModal } from '../modals/SaveModal';
 import { ShareModal } from '../modals/ShareModal';
-export const EventDetailPage = () =>{
-  const router = useRouter();
-  const pathname = usePathname();
+export const EventDetailPage = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [readingProgress, setReadingProgress] = useState(0);
   const [saved, setSaved] = useState(false);
   const [interested, setInterested] = useState(false);
@@ -33,36 +31,12 @@ export const EventDetailPage = () =>{
   } = useLocationDetection();
   const city = locationData?.city || 'Clearwater';
   // Get event ID from URL query params
-  const [eventId, setEventId] = useState(1);
-  
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const searchParams = new URLSearchParams(window.location.search);
-      const id = parseInt(searchParams.get('id') || '1');
-      setEventId(id);
-    }
-  }, []);
-  // Mock event data
-  const mockEvents = [{
-    id: 1,
-    title: 'Clearwater Beach Sunset Festival',
-    category: 'Festival',
-    date: 'August 15, 2023',
-    time: '6:00 PM - 10:00 PM',
-    location: 'Clearwater Beach',
-    address: 'Clearwater Beach Walk, Clearwater, FL 33767',
-    image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-    description: 'Join us for the annual Clearwater Beach Sunset Festival featuring live music, food vendors, and artisan crafts.',
-    price: 'Free',
-    organizer: 'Clearwater Parks & Recreation',
-    contact: '(727) 555-0123',
-    website: 'clearwaterbeach.com/sunset-festival'
-  }];
-  
+  const searchParams = new URLSearchParams(location.search);
+  const eventId = parseInt(searchParams.get('id') || '1');
   // Find the event in mock data
   const event = mockEvents.find(e => e.id === eventId) || mockEvents[0];
   // Related events - just get 3 other events
-  const relatedEvents = mockEvents.filter(e => e.id !== eventId && e.category === event?.category).slice(0, 3);
+  const relatedEvents = mockEvents.filter(e => e.id !== eventId && e.category === event.category).slice(0, 3);
   // Next event - for the bottom preview
   const nextEvent = mockEvents.find(e => e.id !== eventId) || mockEvents[0];
   // Scroll to section handler
@@ -98,35 +72,25 @@ export const EventDetailPage = () =>{
           setShowNextEvent(false);
         }
         // Update active section based on scroll position
-        const [sections, setSections] = useState([]);
-  const [loading, setLoading] = useState(true);
-  
-  useEffect(() => {
-    const fetchSections = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('events')
-          .select('*')
-          .order('created_at', { ascending: false });
-        
-        if (error) throw error;
-        setSections(data || []);
-      } catch (error) {
-        console.error('Error fetching events:', error);
-        setSections([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-    
-    fetchSections();
-  }, []);
+        const sections = [{
+          id: 'details',
+          ref: detailsRef
+        }, {
+          id: 'description',
+          ref: descriptionRef
+        }, {
+          id: 'location',
+          ref: locationRef
+        }, {
+          id: 'organizer',
+          ref: organizerRef
+        }];
         // Find the section that is currently in view
         for (let i = sections.length - 1; i >= 0; i--) {
           const section = sections[i];
           if (section.ref.current) {
             const rect = section.ref.current.getBoundingClientRect();
-            if (rect.top<= 150) {
+            if (rect.top <= 150) {
               setActiveSection(section.id);
               break;
             }
@@ -135,7 +99,7 @@ export const EventDetailPage = () =>{
       }
     };
     window.addEventListener('scroll', handleScroll);
-    return () =>window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   // Handle save/bookmark
   const handleSave = () => {
@@ -167,7 +131,7 @@ export const EventDetailPage = () =>{
   };
   // Handle ad click
   const handleAdClick = () => {
-    router.push('/advertisingDetail');
+    navigate('/advertisingDetail');
   };
   // Dismiss next event preview
   const dismissNextEvent = () => {
@@ -175,7 +139,7 @@ export const EventDetailPage = () =>{
   };
   // Navigate to another event
   const goToEvent = id => {
-    router.push(`/eventDetail?id=${id}`);
+    navigate(`/eventDetail?id=${id}`);
     window.scrollTo(0, 0);
   };
   // Format date for display
@@ -195,7 +159,7 @@ export const EventDetailPage = () =>{
       minute: '2-digit'
     });
   };
-  return<div className="min-h-screen bg-gray-50 w-full">
+  return <div className="min-h-screen bg-gray-50 w-full">
       {/* Reading progress indicator */}
       <div className="fixed top-0 left-0 right-0 z-50 h-1 bg-gray-200">
         <div className="h-full bg-news-primary transition-all duration-300" style={{
@@ -227,8 +191,10 @@ export const EventDetailPage = () =>{
                 </div>
                 <div className="flex items-center">
                   <Clock className="h-4 w-4 mr-1" />
-                  <span>{formatEventTime(event.time)} -{' '}
-                    {formatEventTime(event.endTime)}</span>
+                  <span>
+                    {formatEventTime(event.time)} -{' '}
+                    {formatEventTime(event.endTime)}
+                  </span>
                 </div>
                 <div className="flex items-center">
                   <MapPin className="h-4 w-4 mr-1" />
@@ -244,18 +210,20 @@ export const EventDetailPage = () =>{
         <div className="container mx-auto px-4 py-6">
           {/* Breadcrumbs */}
           <div className="flex items-center text-sm text-gray-500 mb-6">
-            <a href="#" className="hover:underline flex items-center" onClick={e =>{
+            <a href="#" className="hover:underline flex items-center" onClick={e => {
             e.preventDefault();
-            router.push('/');
-          }}><Home className="h-3 w-3 mr-1" />
+            navigate('/');
+          }}>
+              <Home className="h-3 w-3 mr-1" />
               <span>Home</span>
             </a>
             <ChevronRight className="h-3 w-3 mx-1" />
-            <a href="#" className="hover:underline" onClick={e =>{
+            <a href="#" className="hover:underline" onClick={e => {
             e.preventDefault();
-            router.push('/eventsCalendar');
+            navigate('/eventsCalendar');
           }}>
-              Events</a>
+              Events
+            </a>
             <ChevronRight className="h-3 w-3 mx-1" />
             <span className="text-gray-700">{event.title}</span>
           </div>
@@ -269,28 +237,32 @@ export const EventDetailPage = () =>{
                       On this page
                     </h4>
                     <nav className="space-y-3">
-                      <a href="#details" className={`flex items-center text-sm ${activeSection === 'details' ? 'text-news-primary font-medium' : 'text-gray-600 hover:text-news-primary'}`} onClick={e =>{
+                      <a href="#details" className={`flex items-center text-sm ${activeSection === 'details' ? 'text-news-primary font-medium' : 'text-gray-600 hover:text-news-primary'}`} onClick={e => {
                       e.preventDefault();
                       scrollToSection('details');
-                    }}><div className={`w-1 h-5 ${activeSection === 'details' ? 'bg-news-primary' : 'bg-transparent'} rounded-full mr-2`}></div>
+                    }}>
+                        <div className={`w-1 h-5 ${activeSection === 'details' ? 'bg-news-primary' : 'bg-transparent'} rounded-full mr-2`}></div>
                         Event Details
                       </a>
-                      <a href="#description" className={`flex items-center text-sm ${activeSection === 'description' ? 'text-news-primary font-medium' : 'text-gray-600 hover:text-news-primary'}`} onClick={e =>{
+                      <a href="#description" className={`flex items-center text-sm ${activeSection === 'description' ? 'text-news-primary font-medium' : 'text-gray-600 hover:text-news-primary'}`} onClick={e => {
                       e.preventDefault();
                       scrollToSection('description');
-                    }}><div className={`w-1 h-5 ${activeSection === 'description' ? 'bg-news-primary' : 'bg-transparent'} rounded-full mr-2`}></div>
+                    }}>
+                        <div className={`w-1 h-5 ${activeSection === 'description' ? 'bg-news-primary' : 'bg-transparent'} rounded-full mr-2`}></div>
                         Description
                       </a>
-                      <a href="#location" className={`flex items-center text-sm ${activeSection === 'location' ? 'text-news-primary font-medium' : 'text-gray-600 hover:text-news-primary'}`} onClick={e =>{
+                      <a href="#location" className={`flex items-center text-sm ${activeSection === 'location' ? 'text-news-primary font-medium' : 'text-gray-600 hover:text-news-primary'}`} onClick={e => {
                       e.preventDefault();
                       scrollToSection('location');
-                    }}><div className={`w-1 h-5 ${activeSection === 'location' ? 'bg-news-primary' : 'bg-transparent'} rounded-full mr-2`}></div>
+                    }}>
+                        <div className={`w-1 h-5 ${activeSection === 'location' ? 'bg-news-primary' : 'bg-transparent'} rounded-full mr-2`}></div>
                         Location
                       </a>
-                      <a href="#organizer" className={`flex items-center text-sm ${activeSection === 'organizer' ? 'text-news-primary font-medium' : 'text-gray-600 hover:text-news-primary'}`} onClick={e =>{
+                      <a href="#organizer" className={`flex items-center text-sm ${activeSection === 'organizer' ? 'text-news-primary font-medium' : 'text-gray-600 hover:text-news-primary'}`} onClick={e => {
                       e.preventDefault();
                       scrollToSection('organizer');
-                    }}><div className={`w-1 h-5 ${activeSection === 'organizer' ? 'bg-news-primary' : 'bg-transparent'} rounded-full mr-2`}></div>
+                    }}>
+                        <div className={`w-1 h-5 ${activeSection === 'organizer' ? 'bg-news-primary' : 'bg-transparent'} rounded-full mr-2`}></div>
                         Organizer
                       </a>
                     </nav>
@@ -301,13 +273,17 @@ export const EventDetailPage = () =>{
                     </h4>
                     <div className="space-y-3">
                       <button onClick={handleSave} className="flex items-center text-sm text-gray-600 hover:text-news-primary">
-                        <Bookmark className={`h-4 w-4 mr-2 ${saved ? 'fill-current text-news-primary' : ''}`} />{saved ? 'Saved' : 'Save Event'}</button>
+                        <Bookmark className={`h-4 w-4 mr-2 ${saved ? 'fill-current text-news-primary' : ''}`} />
+                        {saved ? 'Saved' : 'Save Event'}
+                      </button>
                       <button onClick={handleShare} className="flex items-center text-sm text-gray-600 hover:text-news-primary">
                         <Share2 className="h-4 w-4 mr-2" />
                         Share Event
                       </button>
                       <button onClick={handleInterested} className="flex items-center text-sm text-gray-600 hover:text-news-primary">
-                        <Heart className={`h-4 w-4 mr-2 ${interested ? 'fill-current text-news-primary' : ''}`} />{interested ? 'Interested' : 'Mark Interested'}</button>
+                        <Heart className={`h-4 w-4 mr-2 ${interested ? 'fill-current text-news-primary' : ''}`} />
+                        {interested ? 'Interested' : 'Mark Interested'}
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -371,15 +347,19 @@ export const EventDetailPage = () =>{
                         <div className="text-gray-600 text-sm">
                           {formatEventDate(event.date)}
                         </div>
-                        <div className="text-gray-600 text-sm">{formatEventTime(event.time)} -{' '}
-                          {formatEventTime(event.endTime)}</div>
+                        <div className="text-gray-600 text-sm">
+                          {formatEventTime(event.time)} -{' '}
+                          {formatEventTime(event.endTime)}
+                        </div>
                       </div>
                     </div>
                     <div className="flex items-start">
                       <Tag className="h-5 w-5 text-gray-500 mt-0.5 flex-shrink-0" />
                       <div className="ml-3">
                         <div className="font-medium text-gray-900">Price</div>
-                        <div className="text-gray-600 text-sm">{event.price === 0 ? 'Free' : `$${event.price}`}</div>
+                        <div className="text-gray-600 text-sm">
+                          {event.price === 0 ? 'Free' : `$${event.price}`}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -419,12 +399,16 @@ export const EventDetailPage = () =>{
                 </h2>
                 <div className="prose max-w-none">
                   <p className="text-gray-700">{event.description}</p>
-                  <p className="text-gray-700 mt-4">Join us for this amazing event in {city}! There will be
+                  <p className="text-gray-700 mt-4">
+                    Join us for this amazing event in {city}! There will be
                     something for everyone to enjoy. Don't miss out on what
-                    promises to be one of the highlight events of the year.</p>
-                  <p className="text-gray-700 mt-4">Tickets are {event.price === 0 ? 'free' : `$${event.price}`}{' '}
+                    promises to be one of the highlight events of the year.
+                  </p>
+                  <p className="text-gray-700 mt-4">
+                    Tickets are {event.price === 0 ? 'free' : `$${event.price}`}{' '}
                     and can be purchased online or at the door. Early
-                    registration is recommended as space may be limited.</p>
+                    registration is recommended as space may be limited.
+                  </p>
                 </div>
               </div>
               {/* Location Map Placeholder */}
@@ -484,11 +468,13 @@ export const EventDetailPage = () =>{
               {/* Reaction bar */}
               <div className="mt-8 pt-4 border-t border-gray-200">
                 <div className="flex flex-wrap gap-3">
-                  <button className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full hover:bg-gray-200" onClick={() =>handleReaction('helpful')}><ThumbsUp className="h-4 w-4" />
+                  <button className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full hover:bg-gray-200" onClick={() => handleReaction('helpful')}>
+                    <ThumbsUp className="h-4 w-4" />
                     <span>Helpful</span>
                     <span className="text-gray-500">{reactions.helpful}</span>
                   </button>
-                  <button className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full hover:bg-gray-200" onClick={() =>handleReaction('love')}><Heart className="h-4 w-4" />
+                  <button className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full hover:bg-gray-200" onClick={() => handleReaction('love')}>
+                    <Heart className="h-4 w-4" />
                     <span>Love</span>
                     <span className="text-gray-500">{reactions.love}</span>
                   </button>
@@ -543,8 +529,9 @@ export const EventDetailPage = () =>{
                       </div>
                     </div>)}
                 </div>
-                <button className="text-news-primary text-sm font-medium mt-4 hover:underline w-full text-center" onClick={() =>router.push('/eventsCalendar')}>
-                  View All Events</button>
+                <button className="text-news-primary text-sm font-medium mt-4 hover:underline w-full text-center" onClick={() => navigate('/eventsCalendar')}>
+                  View All Events
+                </button>
               </div>
               {/* Weather Widget Placeholder */}
               <div className="bg-white rounded-lg border border-gray-200 p-6 mb-6">

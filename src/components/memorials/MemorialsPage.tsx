@@ -1,11 +1,9 @@
-'use client';
-// Converted from Magic Patterns
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { Calendar, ChevronDown, Clock, ExternalLink, Filter, Flower, Heart, MapPin, MessageCircle, PlusCircle, Search } from 'lucide-react';
+import React, { useEffect, useState, memo } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { MapPin, Share2, Heart, MessageCircle, Calendar, PlusCircle, Flower, Clock, Search, Filter, ChevronDown, ExternalLink } from 'lucide-react';
 import { NewspaperMasthead } from '../navigation/NewspaperMasthead';
-export const MemorialsPage = () =>{
-  const router = useRouter();
+export const MemorialsPage = () => {
+  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [activeCategory, setActiveCategory] = useState('Memorials');
   const [searchQuery, setSearchQuery] = useState('');
@@ -105,20 +103,20 @@ export const MemorialsPage = () =>{
     setActiveCategory(category);
   };
   const handleMainSectionChange = section => {
-    router.push(`/${section}`);
+    navigate(`/${section}`);
   };
   const handleMemorialClick = id => {
-    router.push(`/memorialDetail?id=${id}`);
+    navigate(`/memorialDetail?id=${id}`);
   };
   const handleCreateMemorial = () => {
     // Navigate to memorial creation page
-    router.push('/createMemorial');
+    navigate('/createMemorial');
   };
   const navigateToAdvertisingDetail = () => {
-    router.push('/advertisingDetail');
+    navigate('/advertisingDetail');
   };
-  return<div className="flex-1 overflow-auto bg-gray-50">
-      <div>TODO: StickyNav</div>
+  return <div className="flex-1 overflow-auto bg-gray-50">
+      <StickyNav scrolled={scrolled} activeCategory={activeCategory} onCategoryChange={handleCategoryChange} onMainSectionChange={handleMainSectionChange} />
       <div className="container mx-auto px-4 py-6 mt-28">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl font-bold text-gray-900">In Memoriam</h1>
@@ -227,8 +225,10 @@ export const MemorialsPage = () =>{
                           <div className="flex items-center text-sm">
                             <Clock className="h-4 w-4 mr-1 text-gray-500" />
                             <span className="font-medium">Service:</span>
-                            <span className="ml-1 text-gray-600">{memorial.serviceDate} at{' '}
-                              {memorial.serviceLocation}</span>
+                            <span className="ml-1 text-gray-600">
+                              {memorial.serviceDate} at{' '}
+                              {memorial.serviceLocation}
+                            </span>
                           </div>
                         </div>
                         <div className="flex items-center justify-between">

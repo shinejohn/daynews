@@ -1,6 +1,5 @@
-// Converted from Magic Patterns
 import React from 'react';
-import { Clock, ExternalLink, Flag, MapPin, MessageCircle, Shield, Star } from 'lucide-react';
+import { MapPin, Clock, Star, MessageCircle, Shield, Flag, ExternalLink } from 'lucide-react';
 export const ListingList = ({
   listings
 }) => {
@@ -114,7 +113,9 @@ const CategoryBadge = ({
     services: 'Services',
     community: 'Community'
   };
-  return<div className={`px-2 py-1 rounded text-xs font-medium ${styles[category] || 'bg-gray-100 text-gray-700'}`}>{labels[category] || 'General'}</div>;
+  return <div className={`px-2 py-1 rounded text-xs font-medium ${styles[category] || 'bg-gray-100 text-gray-700'}`}>
+      {labels[category] || 'General'}
+    </div>;
 };
 // Helper component for condition badges
 const ConditionBadge = ({
@@ -134,5 +135,7 @@ const ConditionBadge = ({
     fair: 'Fair',
     salvage: 'Salvage'
   };
-  return<div className={`px-2 py-0.5 rounded text-xs font-medium border ${styles[condition] || 'bg-gray-100 text-gray-700 border-gray-200'}`}>Condition: {labels[condition] || 'Unknown'}</div>;
+  return <div className={`px-2 py-0.5 rounded text-xs font-medium border ${styles[condition] || 'bg-gray-100 text-gray-700 border-gray-200'}`}>
+      Condition: {labels[condition] || 'Unknown'}
+    </div>;
 };

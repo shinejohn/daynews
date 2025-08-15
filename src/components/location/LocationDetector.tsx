@@ -1,7 +1,4 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useEffect, useState, createContext, useContext } from 'react';
-
 type LocationData = {
   city: string;
   state: string;
@@ -9,39 +6,18 @@ type LocationData = {
   latitude: number;
   longitude: number;
 };
-
 type LocationContextType = {
   locationData: LocationData | null;
   loading: boolean;
   error: string | null;
 };
-
-// Default location data
-const DEFAULT_LOCATION: LocationData = {
-  city: 'Clearwater',
-  state: 'FL',
-  country: 'USA',
-  latitude: 27.9659,
-  longitude: -82.8001
-};
-
-// Create context without default value
-const LocationContext = createContext<LocationContextType | undefined>(undefined);
-
-// Safe hook that returns default values if context is not available
-export const useLocationDetection = (): LocationContextType => {
+const LocationContext = createContext<LocationContextType>({
+  locationData: null,
+  loading: true,
+  error: null
+});
+export const useLocationDetection = () => {
   const context = useContext(LocationContext);
-  
-  // If no context is available, return default values
-  // This prevents errors when components are rendered without the provider
-  if (!context) {
-    return {
-      locationData: DEFAULT_LOCATION,
-      loading: false,
-      error: null
-    };
-  }
-  
   return context;
 };
 export const LocationDetector: React.FC<{
@@ -49,17 +25,24 @@ export const LocationDetector: React.FC<{
 }> = ({
   children
 }) => {
-  const [locationData, setLocationData] = useState<LocationData | null>(DEFAULT_LOCATION);
-  const [loading, setLoading] = useState(false); // Start with false since we have default data
+  const [locationData, setLocationData] = useState<LocationData | null>(null);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  
   useEffect(() => {
     let mounted = true;
     const detectLocation = async () => {
       try {
+        // Default location data to use immediately
+        const defaultLocation = {
+          city: 'Clearwater',
+          state: 'FL',
+          country: 'USA',
+          latitude: 27.9659,
+          longitude: -82.8001
+        };
         // Set default location immediately to prevent race conditions
         if (mounted) {
-          setLocationData(DEFAULT_LOCATION);
+          setLocationData(defaultLocation);
         }
         // In a real app, this would make an API call to get actual location
         // For now, we're just using the default after a small delay to simulate an API call
@@ -73,7 +56,13 @@ export const LocationDetector: React.FC<{
           console.error('Location detection error:', err);
           setError('Failed to detect location');
           // Even on error, set default location to prevent UI issues
-          setLocationData(DEFAULT_LOCATION);
+          setLocationData({
+            city: 'Clearwater',
+            state: 'FL',
+            country: 'USA',
+            latitude: 27.9659,
+            longitude: -82.8001
+          });
           setLoading(false);
         }
       }
@@ -88,7 +77,7 @@ export const LocationDetector: React.FC<{
     loading,
     error
   };
-  return<LocationContext.Provider value={value}>
+  return <LocationContext.Provider value={value}>
       {children}
     </LocationContext.Provider>;
 };

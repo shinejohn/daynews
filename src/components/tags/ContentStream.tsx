@@ -1,6 +1,5 @@
-// Converted from Magic Patterns
 import React from 'react';
-import { ArrowRight, Calendar, Clock, Heart, MapPin, MessageCircle, Star, Store, Tag } from 'lucide-react';
+import { Calendar, MapPin, User, Clock, Heart, MessageCircle, Tag, ArrowRight, Star, Store } from 'lucide-react';
 export const ContentStream = ({
   content
 }) => {
@@ -25,7 +24,7 @@ const ContentCard = ({
 }) => {
   switch (item.type) {
     case 'article':
-      return<div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+      return <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
           <div className="flex flex-col md:flex-row">
             {item.image && <div className="md:w-1/3 h-48 md:h-auto">
                 <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
@@ -62,7 +61,9 @@ const ContentCard = ({
                 </div>
                 <div className="flex flex-wrap">
                   {item.tags?.slice(0, 2).map((tag, index) => <span key={index} className="inline-flex items-center text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full mr-1 mb-1">
-                      <Tag className="h-3 w-3 mr-1" />{tag.split('-').join(' ')}</span>)}
+                      <Tag className="h-3 w-3 mr-1" />
+                      {tag.split('-').join(' ')}
+                    </span>)}
                   {item.tags?.length > 2 && <span className="text-xs text-gray-500 px-1">
                       +{item.tags.length - 2} more
                     </span>}
@@ -72,7 +73,7 @@ const ContentCard = ({
           </div>
         </div>;
     case 'event':
-      return<div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+      return <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
           <div className="flex flex-col md:flex-row">
             {item.image && <div className="md:w-1/3 h-48 md:h-auto">
                 <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
@@ -103,7 +104,9 @@ const ContentCard = ({
                 </div>
                 <div className="flex flex-wrap">
                   {item.tags?.slice(0, 2).map((tag, index) => <span key={index} className="inline-flex items-center text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full mr-1 mb-1">
-                      <Tag className="h-3 w-3 mr-1" />{tag.split('-').join(' ')}</span>)}
+                      <Tag className="h-3 w-3 mr-1" />
+                      {tag.split('-').join(' ')}
+                    </span>)}
                   {item.tags?.length > 2 && <span className="text-xs text-gray-500 px-1">
                       +{item.tags.length - 2} more
                     </span>}
@@ -113,7 +116,7 @@ const ContentCard = ({
           </div>
         </div>;
     case 'business':
-      return<div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+      return <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
           <div className="flex flex-col md:flex-row">
             {item.image && <div className="md:w-1/3 h-48 md:h-auto">
                 <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
@@ -149,7 +152,9 @@ const ContentCard = ({
               <div className="flex justify-end">
                 <div className="flex flex-wrap">
                   {item.tags?.slice(0, 3).map((tag, index) => <span key={index} className="inline-flex items-center text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full mr-1 mb-1">
-                      <Tag className="h-3 w-3 mr-1" />{tag.split('-').join(' ')}</span>)}
+                      <Tag className="h-3 w-3 mr-1" />
+                      {tag.split('-').join(' ')}
+                    </span>)}
                 </div>
               </div>
             </div>

@@ -1,11 +1,9 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useEffect, useState } from 'react';
 import { TrendingUp, ArrowUp, ArrowDown, Clock } from 'lucide-react';
 export const TrendingNowLive = ({
   topics,
   timePeriod
-}) =>{
+}) => {
   const [animatedTopics, setAnimatedTopics] = useState(topics);
   // Simulate real-time updates to the trending topics
   useEffect(() => {
@@ -17,10 +15,10 @@ export const TrendingNowLive = ({
             const adjustment = Math.floor(Math.random() * 3) - 1; // -1, 0, or 1
             const newCount = Math.max(topic.count + adjustment, 0);
             // Randomly adjust the velocity
-            const velocityChange = Math.random()< 0.3 ? Math.floor(Math.random() * 3) - 1 : 0;
+            const velocityChange = Math.random() < 0.3 ? Math.floor(Math.random() * 3) - 1 : 0;
             const newVelocity = Math.max(topic.velocity + velocityChange, 1);
             // Potentially change direction
-            const newDirection = adjustment >0 ? 'up' : adjustment< 0 ? 'down' : topic.direction;
+            const newDirection = adjustment > 0 ? 'up' : adjustment < 0 ? 'down' : topic.direction;
             return {
               ...topic,
               count: newCount,
@@ -65,7 +63,7 @@ const TrendingTopicCard = ({
     for (let i = 0; i < numPoints; i++) {
       const x = i / (numPoints - 1) * width;
       // Calculate y based on momentum and direction
-      const variation = Math.random() * 4 - 2; // Random variation between -2 and 2
+      let variation = Math.random() * 4 - 2; // Random variation between -2 and 2
       // Direction influences the trend
       const directionFactor = direction === 'up' ? 1 : -1;
       // Momentum influences the magnitude
@@ -89,7 +87,8 @@ const TrendingTopicCard = ({
             <span className="text-gray-600 mr-2">
               {topic.count} {getActivityLabel(timePeriod)}
             </span>
-            <div className={`flex items-center ${topic.direction === 'up' ? 'text-green-600' : 'text-red-600'}`}>{topic.direction === 'up' ?<ArrowUp className="h-3 w-3 mr-1" /> : <ArrowDown className="h-3 w-3 mr-1" />}
+            <div className={`flex items-center ${topic.direction === 'up' ? 'text-green-600' : 'text-red-600'}`}>
+              {topic.direction === 'up' ? <ArrowUp className="h-3 w-3 mr-1" /> : <ArrowDown className="h-3 w-3 mr-1" />}
               <span>{topic.velocity}/hr</span>
             </div>
           </div>
@@ -98,8 +97,9 @@ const TrendingTopicCard = ({
         <div className="relative h-5 w-16">
           <svg className="w-full h-full" viewBox="0 0 60 20">
             <polyline points={sparkLinePoints} fill="none" stroke={topic.direction === 'up' ? '#10b981' : '#ef4444'} strokeWidth="1.5" />
-          </svg>{/* Animated pulse for real-time indicator */}
-          {timePeriod === 'now' &&<div className="absolute top-0 right-0 h-2 w-2">
+          </svg>
+          {/* Animated pulse for real-time indicator */}
+          {timePeriod === 'now' && <div className="absolute top-0 right-0 h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
             </div>}

@@ -1,11 +1,8 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useState } from 'react';
-import { supabase } from '@/lib/supabase/client';
-import { useRouter } from 'next/navigation';
-import { AlertCircle, ArrowLeft, Building, Camera, CheckOff, Facebook, Globe, Home, Linkedin, Mail, MapPin, Phone, Save, Twitter, User, X } from 'lucide-react';
-export const UserSettingsPage = () =>{
-  const router = useRouter();
+import { useNavigate } from 'react-router-dom';
+import { User, Mail, Phone, MapPin, Calendar, Settings, Save, X, Camera, Bell, Lock, Eye, EyeOff, Shield, Globe, Twitter, Facebook, Linkedin, ArrowLeft, Check, AlertCircle, Home, Building } from 'lucide-react';
+export const UserSettingsPage = () => {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('profile');
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   // Mock user data - in a real app, this would come from an API or auth context
@@ -146,14 +143,15 @@ export const UserSettingsPage = () =>{
     }, 3000);
   };
   const handleCancel = () => {
-    router.push('/profile');
+    navigate('/profile');
   };
-  return<div className="flex-1 bg-gray-50 min-h-screen">
+  return <div className="flex-1 bg-gray-50 min-h-screen">
       <div className="container mx-auto px-4 py-8 max-w-6xl">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center">
-            <button onClick={() =>router.push('/profile')} className="mr-4 p-2 rounded-full hover:bg-gray-200 transition-colors"><ArrowLeft className="h-5 w-5 text-gray-600" />
+            <button onClick={() => navigate('/profile')} className="mr-4 p-2 rounded-full hover:bg-gray-200 transition-colors">
+              <ArrowLeft className="h-5 w-5 text-gray-600" />
             </button>
             <div>
               <h1 className="text-2xl font-bold text-gray-900">
@@ -183,7 +181,8 @@ export const UserSettingsPage = () =>{
                 Your profile has been updated with the new information.
               </p>
             </div>
-            <button onClick={() =>setShowSuccessMessage(false)} className="ml-auto p-1.5 rounded-full hover:bg-green-100"><X className="h-4 w-4 text-green-500" />
+            <button onClick={() => setShowSuccessMessage(false)} className="ml-auto p-1.5 rounded-full hover:bg-green-100">
+              <X className="h-4 w-4 text-green-500" />
             </button>
           </div>}
         {/* Profile Preview */}
@@ -220,19 +219,24 @@ export const UserSettingsPage = () =>{
         {/* Tab Navigation */}
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 mb-6 overflow-hidden">
           <div className="flex overflow-x-auto">
-            <button onClick={() =>setActiveTab('profile')} className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'profile' ? 'text-news-primary border-b-2 border-news-primary' : 'text-gray-600 hover:text-gray-900'}`}>
-              Profile Information</button>
-            <button onClick={() =>setActiveTab('account')} className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'account' ? 'text-news-primary border-b-2 border-news-primary' : 'text-gray-600 hover:text-gray-900'}`}>
-              Account Settings</button>
-            <button onClick={() =>setActiveTab('notifications')} className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'notifications' ? 'text-news-primary border-b-2 border-news-primary' : 'text-gray-600 hover:text-gray-900'}`}>
-              Notifications</button>
-            <button onClick={() =>setActiveTab('privacy')} className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'privacy' ? 'text-news-primary border-b-2 border-news-primary' : 'text-gray-600 hover:text-gray-900'}`}>
-              Privacy</button>
+            <button onClick={() => setActiveTab('profile')} className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'profile' ? 'text-news-primary border-b-2 border-news-primary' : 'text-gray-600 hover:text-gray-900'}`}>
+              Profile Information
+            </button>
+            <button onClick={() => setActiveTab('account')} className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'account' ? 'text-news-primary border-b-2 border-news-primary' : 'text-gray-600 hover:text-gray-900'}`}>
+              Account Settings
+            </button>
+            <button onClick={() => setActiveTab('notifications')} className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'notifications' ? 'text-news-primary border-b-2 border-news-primary' : 'text-gray-600 hover:text-gray-900'}`}>
+              Notifications
+            </button>
+            <button onClick={() => setActiveTab('privacy')} className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'privacy' ? 'text-news-primary border-b-2 border-news-primary' : 'text-gray-600 hover:text-gray-900'}`}>
+              Privacy
+            </button>
           </div>
         </div>
         {/* Tab Content */}
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">{/* Profile Information Tab */}
-          {activeTab === 'profile' &&<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+          {/* Profile Information Tab */}
+          {activeTab === 'profile' && <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Left Column - Personal Info */}
               <div className="md:col-span-2 space-y-6">
                 <div>
@@ -248,7 +252,8 @@ export const UserSettingsPage = () =>{
                         <div className="bg-gray-100 p-2">
                           <User className="h-5 w-5 text-gray-500" />
                         </div>
-                        <input type="text" id="name" value={formData.name} onChange={e =>handleInputChange(e, 'name')} className="flex-1 px-3 py-2 focus:ring-2 focus:ring-news-primary focus:outline-none" placeholder="Your full name" /></div>
+                        <input type="text" id="name" value={formData.name} onChange={e => handleInputChange(e, 'name')} className="flex-1 px-3 py-2 focus:ring-2 focus:ring-news-primary focus:outline-none" placeholder="Your full name" />
+                      </div>
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
@@ -258,7 +263,8 @@ export const UserSettingsPage = () =>{
                         <div className="bg-gray-100 p-2">
                           <Mail className="h-5 w-5 text-gray-500" />
                         </div>
-                        <input type="email" id="email" value={formData.email} onChange={e =>handleInputChange(e, 'email')} className="flex-1 px-3 py-2 focus:ring-2 focus:ring-news-primary focus:outline-none" placeholder="Your email address" /></div>
+                        <input type="email" id="email" value={formData.email} onChange={e => handleInputChange(e, 'email')} className="flex-1 px-3 py-2 focus:ring-2 focus:ring-news-primary focus:outline-none" placeholder="Your email address" />
+                      </div>
                     </div>
                     <div>
                       <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
@@ -268,7 +274,8 @@ export const UserSettingsPage = () =>{
                         <div className="bg-gray-100 p-2">
                           <Phone className="h-5 w-5 text-gray-500" />
                         </div>
-                        <input type="tel" id="phone" value={formData.phone} onChange={e =>handleInputChange(e, 'phone')} className="flex-1 px-3 py-2 focus:ring-2 focus:ring-news-primary focus:outline-none" placeholder="Your phone number" /></div>
+                        <input type="tel" id="phone" value={formData.phone} onChange={e => handleInputChange(e, 'phone')} className="flex-1 px-3 py-2 focus:ring-2 focus:ring-news-primary focus:outline-none" placeholder="Your phone number" />
+                      </div>
                     </div>
                     <div>
                       <label htmlFor="address1" className="block text-sm font-medium text-gray-700 mb-1">
@@ -278,7 +285,8 @@ export const UserSettingsPage = () =>{
                         <div className="bg-gray-100 p-2">
                           <Home className="h-5 w-5 text-gray-500" />
                         </div>
-                        <input type="text" id="address1" value={formData.address1} onChange={e =>handleInputChange(e, 'address1')} className="flex-1 px-3 py-2 focus:ring-2 focus:ring-news-primary focus:outline-none" placeholder="Street address" /></div>
+                        <input type="text" id="address1" value={formData.address1} onChange={e => handleInputChange(e, 'address1')} className="flex-1 px-3 py-2 focus:ring-2 focus:ring-news-primary focus:outline-none" placeholder="Street address" />
+                      </div>
                     </div>
                     <div>
                       <label htmlFor="address2" className="block text-sm font-medium text-gray-700 mb-1">
@@ -288,7 +296,8 @@ export const UserSettingsPage = () =>{
                         <div className="bg-gray-100 p-2">
                           <Building className="h-5 w-5 text-gray-500" />
                         </div>
-                        <input type="text" id="address2" value={formData.address2} onChange={e =>handleInputChange(e, 'address2')} className="flex-1 px-3 py-2 focus:ring-2 focus:ring-news-primary focus:outline-none" placeholder="Apartment, suite, unit, etc." /></div>
+                        <input type="text" id="address2" value={formData.address2} onChange={e => handleInputChange(e, 'address2')} className="flex-1 px-3 py-2 focus:ring-2 focus:ring-news-primary focus:outline-none" placeholder="Apartment, suite, unit, etc." />
+                      </div>
                     </div>
                     <div>
                       <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-1">
@@ -298,13 +307,14 @@ export const UserSettingsPage = () =>{
                         <div className="bg-gray-100 p-2">
                           <MapPin className="h-5 w-5 text-gray-500" />
                         </div>
-                        <input type="text" id="location" value={formData.location} onChange={e =>handleInputChange(e, 'location')} className="flex-1 px-3 py-2 focus:ring-2 focus:ring-news-primary focus:outline-none" placeholder="City, State" /></div>
+                        <input type="text" id="location" value={formData.location} onChange={e => handleInputChange(e, 'location')} className="flex-1 px-3 py-2 focus:ring-2 focus:ring-news-primary focus:outline-none" placeholder="City, State" />
+                      </div>
                     </div>
                     <div>
                       <label htmlFor="bio" className="block text-sm font-medium text-gray-700 mb-1">
                         Bio
                       </label>
-                      <textarea id="bio" value={formData.bio} onChange={e =>handleInputChange(e, 'bio')} rows={4} className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-news-primary focus:outline-none" placeholder="Tell us about yourself..."></textarea>
+                      <textarea id="bio" value={formData.bio} onChange={e => handleInputChange(e, 'bio')} rows={4} className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-news-primary focus:outline-none" placeholder="Tell us about yourself..."></textarea>
                       <p className="text-xs text-gray-500 mt-1">
                         This information will be displayed publicly on your
                         profile page.
@@ -328,7 +338,8 @@ export const UserSettingsPage = () =>{
                         <div className="bg-gray-100 p-2">
                           <Globe className="h-5 w-5 text-gray-500" />
                         </div>
-                        <input type="url" id="website" value={formData.social.website} onChange={e =>handleSocialChange(e, 'website')} className="flex-1 px-3 py-2 focus:ring-2 focus:ring-news-primary focus:outline-none" placeholder="yourwebsite.com" /></div>
+                        <input type="url" id="website" value={formData.social.website} onChange={e => handleSocialChange(e, 'website')} className="flex-1 px-3 py-2 focus:ring-2 focus:ring-news-primary focus:outline-none" placeholder="yourwebsite.com" />
+                      </div>
                     </div>
                     <div>
                       <label htmlFor="twitter" className="block text-sm font-medium text-gray-700 mb-1">
@@ -338,7 +349,8 @@ export const UserSettingsPage = () =>{
                         <div className="bg-gray-100 p-2">
                           <Twitter className="h-5 w-5 text-blue-400" />
                         </div>
-                        <input type="text" id="twitter" value={formData.social.twitter} onChange={e =>handleSocialChange(e, 'twitter')} className="flex-1 px-3 py-2 focus:ring-2 focus:ring-news-primary focus:outline-none" placeholder="@username" /></div>
+                        <input type="text" id="twitter" value={formData.social.twitter} onChange={e => handleSocialChange(e, 'twitter')} className="flex-1 px-3 py-2 focus:ring-2 focus:ring-news-primary focus:outline-none" placeholder="@username" />
+                      </div>
                     </div>
                     <div>
                       <label htmlFor="facebook" className="block text-sm font-medium text-gray-700 mb-1">
@@ -348,7 +360,8 @@ export const UserSettingsPage = () =>{
                         <div className="bg-gray-100 p-2">
                           <Facebook className="h-5 w-5 text-blue-600" />
                         </div>
-                        <input type="text" id="facebook" value={formData.social.facebook} onChange={e =>handleSocialChange(e, 'facebook')} className="flex-1 px-3 py-2 focus:ring-2 focus:ring-news-primary focus:outline-none" placeholder="username or page name" /></div>
+                        <input type="text" id="facebook" value={formData.social.facebook} onChange={e => handleSocialChange(e, 'facebook')} className="flex-1 px-3 py-2 focus:ring-2 focus:ring-news-primary focus:outline-none" placeholder="username or page name" />
+                      </div>
                     </div>
                     <div>
                       <label htmlFor="linkedin" className="block text-sm font-medium text-gray-700 mb-1">
@@ -358,14 +371,15 @@ export const UserSettingsPage = () =>{
                         <div className="bg-gray-100 p-2">
                           <Linkedin className="h-5 w-5 text-blue-700" />
                         </div>
-                        <input type="text" id="linkedin" value={formData.social.linkedin} onChange={e =>handleSocialChange(e, 'linkedin')} className="flex-1 px-3 py-2 focus:ring-2 focus:ring-news-primary focus:outline-none" placeholder="username" /></div>
+                        <input type="text" id="linkedin" value={formData.social.linkedin} onChange={e => handleSocialChange(e, 'linkedin')} className="flex-1 px-3 py-2 focus:ring-2 focus:ring-news-primary focus:outline-none" placeholder="username" />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>}
           {/* Account Settings Tab */}
-          {activeTab === 'account' &&<div className="space-y-6">
+          {activeTab === 'account' && <div className="space-y-6">
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">
                   Account Security
@@ -381,8 +395,9 @@ export const UserSettingsPage = () =>{
                           Update your password to maintain account security
                         </p>
                       </div>
-                      <button onClick={() =>alert('Password change dialog would open here')} className="px-4 py-2 bg-news-primary text-white rounded-md text-sm font-medium hover:bg-news-primary-dark transition-colors">
-                        Change Password</button>
+                      <button onClick={() => alert('Password change dialog would open here')} className="px-4 py-2 bg-news-primary text-white rounded-md text-sm font-medium hover:bg-news-primary-dark transition-colors">
+                        Change Password
+                      </button>
                     </div>
                   </div>
                   <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
@@ -395,8 +410,9 @@ export const UserSettingsPage = () =>{
                           Add an extra layer of security to your account
                         </p>
                       </div>
-                      <button onClick={() =>alert('2FA setup would start here')} className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md text-sm font-medium hover:bg-gray-100 transition-colors">
-                        Set Up 2FA</button>
+                      <button onClick={() => alert('2FA setup would start here')} className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md text-sm font-medium hover:bg-gray-100 transition-colors">
+                        Set Up 2FA
+                      </button>
                     </div>
                   </div>
                   <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
@@ -405,10 +421,13 @@ export const UserSettingsPage = () =>{
                         <h4 className="font-medium text-gray-900">
                           Login Sessions
                         </h4>
-                        <p className="text-sm text-gray-600 mt-1">Manage devices where you're currently logged in</p>
+                        <p className="text-sm text-gray-600 mt-1">
+                          Manage devices where you're currently logged in
+                        </p>
                       </div>
-                      <button onClick={() =>alert('Session management would open here')} className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md text-sm font-medium hover:bg-gray-100 transition-colors">
-                        Manage Sessions</button>
+                      <button onClick={() => alert('Session management would open here')} className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md text-sm font-medium hover:bg-gray-100 transition-colors">
+                        Manage Sessions
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -426,7 +445,8 @@ export const UserSettingsPage = () =>{
                           Select your preferred language for the platform
                         </p>
                       </div>
-                      <select value={formData.preferences.language} onChange={e =>handlePreferenceSelectChange(e, 'language')} className="px-3 py-2 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-news-primary"><option>English</option>
+                      <select value={formData.preferences.language} onChange={e => handlePreferenceSelectChange(e, 'language')} className="px-3 py-2 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-news-primary">
+                        <option>English</option>
                         <option>Spanish</option>
                         <option>French</option>
                       </select>
@@ -440,7 +460,8 @@ export const UserSettingsPage = () =>{
                           Set your local time zone for accurate event times
                         </p>
                       </div>
-                      <select value={formData.preferences.timeZone} onChange={e =>handlePreferenceSelectChange(e, 'timeZone')} className="px-3 py-2 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-news-primary"><option>Eastern Time (ET)</option>
+                      <select value={formData.preferences.timeZone} onChange={e => handlePreferenceSelectChange(e, 'timeZone')} className="px-3 py-2 border border-gray-300 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-news-primary">
+                        <option>Eastern Time (ET)</option>
                         <option>Central Time (CT)</option>
                         <option>Mountain Time (MT)</option>
                         <option>Pacific Time (PT)</option>
@@ -457,7 +478,8 @@ export const UserSettingsPage = () =>{
                           Allow others to view your profile and activity
                         </p>
                       </div>
-                      <button onClick={() =>handlePreferenceToggle('publicProfile')} className="relative inline-flex items-center"><span className="sr-only">Toggle public profile</span>
+                      <button onClick={() => handlePreferenceToggle('publicProfile')} className="relative inline-flex items-center">
+                        <span className="sr-only">Toggle public profile</span>
                         <div className={`relative inline-block w-12 h-6 rounded-full transition-colors ${formData.preferences.publicProfile ? 'bg-news-primary' : 'bg-gray-200'}`}>
                           <span className={`absolute top-1 left-1 inline-block w-4 h-4 rounded-full bg-white transform transition-transform ${formData.preferences.publicProfile ? 'translate-x-6' : ''}`}></span>
                         </div>
@@ -474,7 +496,8 @@ export const UserSettingsPage = () =>{
                           Use AI to help improve your articles and comments
                         </p>
                       </div>
-                      <button onClick={() =>handlePreferenceToggle('aiAssistance')} className="relative inline-flex items-center"><span className="sr-only">Toggle AI assistance</span>
+                      <button onClick={() => handlePreferenceToggle('aiAssistance')} className="relative inline-flex items-center">
+                        <span className="sr-only">Toggle AI assistance</span>
                         <div className={`relative inline-block w-12 h-6 rounded-full transition-colors ${formData.preferences.aiAssistance ? 'bg-news-primary' : 'bg-gray-200'}`}>
                           <span className={`absolute top-1 left-1 inline-block w-4 h-4 rounded-full bg-white transform transition-transform ${formData.preferences.aiAssistance ? 'translate-x-6' : ''}`}></span>
                         </div>
@@ -497,14 +520,15 @@ export const UserSettingsPage = () =>{
                         Permanently delete your account and all your data
                       </p>
                     </div>
-                    <button onClick={() =>alert('Account deletion confirmation would appear here')} className="px-4 py-2 bg-red-600 text-white rounded-md text-sm font-medium hover:bg-red-700 transition-colors">
-                      Delete Account</button>
+                    <button onClick={() => alert('Account deletion confirmation would appear here')} className="px-4 py-2 bg-red-600 text-white rounded-md text-sm font-medium hover:bg-red-700 transition-colors">
+                      Delete Account
+                    </button>
                   </div>
                 </div>
               </div>
             </div>}
           {/* Notifications Tab */}
-          {activeTab === 'notifications' &&<div className="space-y-6">
+          {activeTab === 'notifications' && <div className="space-y-6">
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">
                   Email Notifications
@@ -519,7 +543,8 @@ export const UserSettingsPage = () =>{
                         Receive notifications via email
                       </p>
                     </div>
-                    <button onClick={() =>handleNotificationToggle('emailNotifications')} className="relative inline-flex items-center" aria-pressed={formData.notifications.emailNotifications}><span className="sr-only">
+                    <button onClick={() => handleNotificationToggle('emailNotifications')} className="relative inline-flex items-center" aria-pressed={formData.notifications.emailNotifications}>
+                      <span className="sr-only">
                         Toggle email notifications
                       </span>
                       <div className={`relative inline-block w-12 h-6 rounded-full transition-colors ${formData.notifications.emailNotifications ? 'bg-news-primary' : 'bg-gray-200'}`}>
@@ -536,7 +561,8 @@ export const UserSettingsPage = () =>{
                         Receive notifications via text message
                       </p>
                     </div>
-                    <button onClick={() =>handleNotificationToggle('textNotifications')} className="relative inline-flex items-center" aria-pressed={formData.notifications.textNotifications}><span className="sr-only">Toggle text notifications</span>
+                    <button onClick={() => handleNotificationToggle('textNotifications')} className="relative inline-flex items-center" aria-pressed={formData.notifications.textNotifications}>
+                      <span className="sr-only">Toggle text notifications</span>
                       <div className={`relative inline-block w-12 h-6 rounded-full transition-colors ${formData.notifications.textNotifications ? 'bg-news-primary' : 'bg-gray-200'}`}>
                         <span className={`absolute top-1 left-1 inline-block w-4 h-4 rounded-full bg-white transform transition-transform ${formData.notifications.textNotifications ? 'translate-x-6' : ''}`}></span>
                       </div>
@@ -552,7 +578,8 @@ export const UserSettingsPage = () =>{
                         follow
                       </p>
                     </div>
-                    <button onClick={() =>handleNotificationToggle('articleComments')} className="relative inline-flex items-center" aria-pressed={formData.notifications.articleComments}><span className="sr-only">
+                    <button onClick={() => handleNotificationToggle('articleComments')} className="relative inline-flex items-center" aria-pressed={formData.notifications.articleComments}>
+                      <span className="sr-only">
                         Toggle comment notifications
                       </span>
                       <div className={`relative inline-block w-12 h-6 rounded-full transition-colors ${formData.notifications.articleComments ? 'bg-news-primary' : 'bg-gray-200'}`}>
@@ -570,7 +597,8 @@ export const UserSettingsPage = () =>{
                         announcements
                       </p>
                     </div>
-                    <button onClick={() =>handleNotificationToggle('communityUpdates')} className="relative inline-flex items-center" aria-pressed={formData.notifications.communityUpdates}><span className="sr-only">
+                    <button onClick={() => handleNotificationToggle('communityUpdates')} className="relative inline-flex items-center" aria-pressed={formData.notifications.communityUpdates}>
+                      <span className="sr-only">
                         Toggle community update notifications
                       </span>
                       <div className={`relative inline-block w-12 h-6 rounded-full transition-colors ${formData.notifications.communityUpdates ? 'bg-news-primary' : 'bg-gray-200'}`}>
@@ -583,9 +611,12 @@ export const UserSettingsPage = () =>{
                       <h4 className="font-medium text-gray-900">
                         Event Reminders
                       </h4>
-                      <p className="text-sm text-gray-600">Notifications about upcoming events you're interested in</p>
+                      <p className="text-sm text-gray-600">
+                        Notifications about upcoming events you're interested in
+                      </p>
                     </div>
-                    <button onClick={() =>handleNotificationToggle('eventReminders')} className="relative inline-flex items-center" aria-pressed={formData.notifications.eventReminders}><span className="sr-only">Toggle event reminders</span>
+                    <button onClick={() => handleNotificationToggle('eventReminders')} className="relative inline-flex items-center" aria-pressed={formData.notifications.eventReminders}>
+                      <span className="sr-only">Toggle event reminders</span>
                       <div className={`relative inline-block w-12 h-6 rounded-full transition-colors ${formData.notifications.eventReminders ? 'bg-news-primary' : 'bg-gray-200'}`}>
                         <span className={`absolute top-1 left-1 inline-block w-4 h-4 rounded-full bg-white transform transition-transform ${formData.notifications.eventReminders ? 'translate-x-6' : ''}`}></span>
                       </div>
@@ -605,7 +636,7 @@ export const UserSettingsPage = () =>{
               </div>
             </div>}
           {/* Privacy Tab */}
-          {activeTab === 'privacy' &&<div className="space-y-6">
+          {activeTab === 'privacy' && <div className="space-y-6">
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">
                   Privacy Settings
@@ -620,7 +651,8 @@ export const UserSettingsPage = () =>{
                         Display your email address on your public profile
                       </p>
                     </div>
-                    <button onClick={() =>handlePrivacyToggle('showEmail')} className="relative inline-flex items-center" aria-pressed={formData.privacy.showEmail}><span className="sr-only">Toggle email visibility</span>
+                    <button onClick={() => handlePrivacyToggle('showEmail')} className="relative inline-flex items-center" aria-pressed={formData.privacy.showEmail}>
+                      <span className="sr-only">Toggle email visibility</span>
                       <div className={`relative inline-block w-12 h-6 rounded-full transition-colors ${formData.privacy.showEmail ? 'bg-news-primary' : 'bg-gray-200'}`}>
                         <span className={`absolute top-1 left-1 inline-block w-4 h-4 rounded-full bg-white transform transition-transform ${formData.privacy.showEmail ? 'translate-x-6' : ''}`}></span>
                       </div>
@@ -635,7 +667,8 @@ export const UserSettingsPage = () =>{
                         Display your phone number on your public profile
                       </p>
                     </div>
-                    <button onClick={() =>handlePrivacyToggle('showPhone')} className="relative inline-flex items-center" aria-pressed={formData.privacy.showPhone}><span className="sr-only">Toggle phone visibility</span>
+                    <button onClick={() => handlePrivacyToggle('showPhone')} className="relative inline-flex items-center" aria-pressed={formData.privacy.showPhone}>
+                      <span className="sr-only">Toggle phone visibility</span>
                       <div className={`relative inline-block w-12 h-6 rounded-full transition-colors ${formData.privacy.showPhone ? 'bg-news-primary' : 'bg-gray-200'}`}>
                         <span className={`absolute top-1 left-1 inline-block w-4 h-4 rounded-full bg-white transform transition-transform ${formData.privacy.showPhone ? 'translate-x-6' : ''}`}></span>
                       </div>
@@ -650,7 +683,8 @@ export const UserSettingsPage = () =>{
                         Display your address on your public profile
                       </p>
                     </div>
-                    <button onClick={() =>handlePrivacyToggle('showAddress')} className="relative inline-flex items-center" aria-pressed={formData.privacy.showAddress}><span className="sr-only">Toggle address visibility</span>
+                    <button onClick={() => handlePrivacyToggle('showAddress')} className="relative inline-flex items-center" aria-pressed={formData.privacy.showAddress}>
+                      <span className="sr-only">Toggle address visibility</span>
                       <div className={`relative inline-block w-12 h-6 rounded-full transition-colors ${formData.privacy.showAddress ? 'bg-news-primary' : 'bg-gray-200'}`}>
                         <span className={`absolute top-1 left-1 inline-block w-4 h-4 rounded-full bg-white transform transition-transform ${formData.privacy.showAddress ? 'translate-x-6' : ''}`}></span>
                       </div>
@@ -665,7 +699,8 @@ export const UserSettingsPage = () =>{
                         Display your location on your public profile
                       </p>
                     </div>
-                    <button onClick={() =>handlePrivacyToggle('showLocation')} className="relative inline-flex items-center" aria-pressed={formData.privacy.showLocation}><span className="sr-only">
+                    <button onClick={() => handlePrivacyToggle('showLocation')} className="relative inline-flex items-center" aria-pressed={formData.privacy.showLocation}>
+                      <span className="sr-only">
                         Toggle location visibility
                       </span>
                       <div className={`relative inline-block w-12 h-6 rounded-full transition-colors ${formData.privacy.showLocation ? 'bg-news-primary' : 'bg-gray-200'}`}>
@@ -683,7 +718,8 @@ export const UserSettingsPage = () =>{
                         profile
                       </p>
                     </div>
-                    <button onClick={() =>handlePrivacyToggle('showSocial')} className="relative inline-flex items-center" aria-pressed={formData.privacy.showSocial}><span className="sr-only">
+                    <button onClick={() => handlePrivacyToggle('showSocial')} className="relative inline-flex items-center" aria-pressed={formData.privacy.showSocial}>
+                      <span className="sr-only">
                         Toggle social media visibility
                       </span>
                       <div className={`relative inline-block w-12 h-6 rounded-full transition-colors ${formData.privacy.showSocial ? 'bg-news-primary' : 'bg-gray-200'}`}>
@@ -708,8 +744,9 @@ export const UserSettingsPage = () =>{
                           Get a copy of all the data we have about you
                         </p>
                       </div>
-                      <button onClick={() =>alert('Data download request would be processed')} className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md text-sm font-medium hover:bg-gray-100 transition-colors">
-                        Request Data</button>
+                      <button onClick={() => alert('Data download request would be processed')} className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md text-sm font-medium hover:bg-gray-100 transition-colors">
+                        Request Data
+                      </button>
                     </div>
                   </div>
                   <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
@@ -722,8 +759,9 @@ export const UserSettingsPage = () =>{
                           Manage how we use cookies on this site
                         </p>
                       </div>
-                      <button onClick={() =>alert('Cookie preferences dialog would open here')} className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md text-sm font-medium hover:bg-gray-100 transition-colors">
-                        Manage Cookies</button>
+                      <button onClick={() => alert('Cookie preferences dialog would open here')} className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md text-sm font-medium hover:bg-gray-100 transition-colors">
+                        Manage Cookies
+                      </button>
                     </div>
                   </div>
                 </div>

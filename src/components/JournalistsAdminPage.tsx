@@ -1,10 +1,8 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useState } from 'react';
-import { PlayIcon, PlusIcon } from 'lucide-react';
+import { PlayIcon, PlusIcon, Edit2 } from 'lucide-react';
 import { PageHeader } from './PageHeader';
 import { EditJournalistModal } from './EditJournalistModal';
-export const JournalistsAdminPage = () =>{
+export const JournalistsAdminPage = () => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [currentJournalist, setCurrentJournalist] = useState(null);
   const journalists = [{
@@ -96,7 +94,7 @@ export const JournalistsAdminPage = () =>{
     // For now we'll just close the modal
     setIsEditModalOpen(false);
   };
-  return<div className="flex-1 overflow-auto bg-white">
+  return <div className="flex-1 overflow-auto bg-white">
       <PageHeader />
       <div className="mx-auto w-full px-4 py-6">
         <h1 className="mb-6 text-2xl font-bold text-gray-900">
@@ -124,10 +122,11 @@ export const JournalistsAdminPage = () =>{
             <h2 className="text-lg font-medium text-gray-900">
               Current Journalists
             </h2>
-            <button onClick={() =>{
+            <button onClick={() => {
             setCurrentJournalist(null);
             setIsEditModalOpen(true);
-          }} className="flex items-center justify-center gap-1 rounded-md bg-gray-900 px-3 py-1.5 text-sm font-medium text-white"><PlusIcon className="h-4 w-4" />
+          }} className="flex items-center justify-center gap-1 rounded-md bg-gray-900 px-3 py-1.5 text-sm font-medium text-white">
+              <PlusIcon className="h-4 w-4" />
               Add New
             </button>
           </div>
@@ -176,8 +175,9 @@ export const JournalistsAdminPage = () =>{
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                       <div className="flex space-x-2">
-                        <button onClick={() =>handleEditJournalist(journalist)} className="rounded-md bg-blue-100 px-3 py-1 text-xs font-medium text-blue-600">
-                          Edit</button>
+                        <button onClick={() => handleEditJournalist(journalist)} className="rounded-md bg-blue-100 px-3 py-1 text-xs font-medium text-blue-600">
+                          Edit
+                        </button>
                         <button className="rounded-md bg-red-100 px-3 py-1 text-xs font-medium text-red-600">
                           Del
                         </button>

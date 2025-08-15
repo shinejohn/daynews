@@ -1,44 +1,49 @@
-'use client';
-// Converted from Magic Patterns
-import React, { useState, useEffect } from 'react';;
-import { supabase } from '@/lib/supabase/client';
-import { ExternalLink, MapPin, Star } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-export const PromotedBusinesses = () =>{
-  const router = useRouter();
+import React from 'react';
+import { Star, MapPin, ExternalLink } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+export const PromotedBusinesses = () => {
+  const navigate = useNavigate();
   // Mock promoted businesses
-  const [promotedBusinesses, setPromotedBusinesses] = useState([]);
-  const [loading, setLoading] = useState(true);
-  
-  useEffect(() => {
-    const fetchPromotedBusinesses = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('news')
-          .select('*')
-          .order('created_at', { ascending: false });
-        
-        if (error) throw error;
-        setPromotedBusinesses(data || []);
-      } catch (error) {
-        console.error('Error fetching news:', error);
-        setPromotedBusinesses([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-    
-    fetchPromotedBusinesses();
-  }, []);
+  const promotedBusinesses = [{
+    id: 101,
+    name: 'Seaside Grill & Bar',
+    category: 'Restaurant',
+    rating: 4.8,
+    reviewCount: 243,
+    distance: 0.3,
+    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    description: 'Waterfront dining with fresh seafood and craft cocktails.',
+    specialOffer: 'Happy Hour: 4-6pm daily - 50% off appetizers'
+  }, {
+    id: 102,
+    name: 'Oceanview Spa & Wellness',
+    category: 'Spa',
+    rating: 4.9,
+    reviewCount: 187,
+    distance: 1.1,
+    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    description: 'Luxury spa treatments with ocean views and premium amenities.',
+    specialOffer: 'New Client Special: 20% off first visit'
+  }, {
+    id: 103,
+    name: 'Gulf Coast Fitness Center',
+    category: 'Gym',
+    rating: 4.7,
+    reviewCount: 156,
+    distance: 0.8,
+    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    description: 'State-of-the-art fitness facility with personal training and group classes.',
+    specialOffer: 'Summer Special: No enrollment fee + first month free'
+  }];
   const handleViewDetails = businessId => {
     // Navigate to the business profile page
-    router.push(`/business/${businessId}`);
+    navigate(`/business/${businessId}`);
   };
   const handleContact = businessId => {
     // Navigate to the business profile page with contact section focus
-    router.push(`/business/${businessId}?section=contact`);
+    navigate(`/business/${businessId}?section=contact`);
   };
-  return<div>
+  return <div>
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-lg font-semibold text-gray-800">
           Featured Businesses
@@ -80,7 +85,8 @@ export const PromotedBusinesses = () =>{
               </p>
               {business.specialOffer && <div className="bg-yellow-50 p-2 rounded-md text-xs text-yellow-800 mb-3">
                   <span className="font-medium">Special Offer:</span>{' '}
-                  {business.specialOffer}</div>}
+                  {business.specialOffer}
+                </div>}
               <div className="flex justify-between items-center">
                 <button className="text-news-primary text-sm font-medium hover:underline flex items-center" onClick={e => {
               e.stopPropagation();

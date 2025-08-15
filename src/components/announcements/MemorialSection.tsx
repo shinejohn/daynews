@@ -1,15 +1,13 @@
-'use client';
-// Converted from Magic Patterns
-import React, { useState } from 'react';
-import { Calendar, Flower, Gift, Heart, MapPin, Send } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-export const MemorialSection = () =>{
-  const router = useRouter();
+import React, { useState, memo } from 'react';
+import { MapPin, Calendar, Heart, Flower, Gift, Send } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+export const MemorialSection = () => {
+  const navigate = useNavigate();
   const handleViewAllMemorials = () => {
     // Navigate to a dedicated memorials page
-    router.push('/memorials');
+    navigate('/memorials');
   };
-  return<div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+  return <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
       <div className="px-6 py-4 bg-gray-50 border-b border-gray-200">
         <div className="flex items-center">
           <Flower className="h-5 w-5 text-gray-600 mr-2" />
@@ -40,16 +38,16 @@ const MemorialCard = ({
 }) => {
   const [expanded, setExpanded] = useState(false);
   const [memoryText, setMemoryText] = useState('');
-  const router = useRouter();
+  const navigate = useNavigate();
   const handleCardClick = e => {
     // Prevent navigation if clicking on the heart button or within the expanded section
     if (e.target.closest('button.heart-button') || e.target.closest('div.expanded-section')) {
       return;
     }
     // Navigate to memorial detail page
-    router.push(`/memorial/${id}`);
+    navigate(`/memorial/${id}`);
   };
-  return<div className="border-b border-gray-100 pb-4 cursor-pointer hover:bg-gray-50 transition-colors rounded-md" onClick={handleCardClick}>
+  return <div className="border-b border-gray-100 pb-4 cursor-pointer hover:bg-gray-50 transition-colors rounded-md" onClick={handleCardClick}>
       <div className="flex items-center p-2">
         <div className="h-14 w-14 rounded-full overflow-hidden flex-shrink-0 border border-gray-200">
           <img src={image} alt={name} className="h-full w-full object-cover grayscale" />
@@ -75,8 +73,10 @@ const MemorialCard = ({
         </button>
       </div>
       {expanded && <div className="mt-2 px-2 animate-fade-in expanded-section" onClick={e => e.stopPropagation()}>
-          <div className="bg-gray-50 rounded-md p-3 text-xs text-gray-600 italic">"May the memories of your loved one bring you comfort during this
-            difficult time."</div>
+          <div className="bg-gray-50 rounded-md p-3 text-xs text-gray-600 italic">
+            "May the memories of your loved one bring you comfort during this
+            difficult time."
+          </div>
           <div className="mt-3 flex space-x-2">
             <button className="flex-1 text-xs py-1.5 bg-gray-50 hover:bg-gray-100 rounded border border-gray-200 flex items-center justify-center text-gray-700">
               <Flower className="h-3 w-3 mr-1" />

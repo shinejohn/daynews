@@ -1,16 +1,14 @@
-'use client';
-// Converted from Magic Patterns
 import React from 'react';
-import { useRouter } from 'next/navigation';
+import { useNavigate } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 export const OpinionSection = ({
   onArticleClick
-}) =>{
-  const router = useRouter();
+}) => {
+  const navigate = useNavigate();
   const handleViewAllOpinions = () => {
-    router.push('/trending?category=opinion');
+    navigate('/trending?category=opinion');
   };
-  return<div className="space-y-4">
+  return <div className="space-y-4">
       <div className="bg-white rounded-md overflow-hidden shadow-sm border border-gray-200 cursor-pointer hover:shadow-md transition-shadow" onClick={onArticleClick}>
         <div className="p-3">
           <div className="text-xs text-gray-500 mb-1">EDITORIAL</div>

@@ -1,11 +1,9 @@
-'use client';
-// Converted from Magic Patterns
 import React from 'react';
-import { Bookmark, Clock, MapPin } from 'lucide-react';
+import { MapPin, Clock, Bookmark } from 'lucide-react';
 export const FeaturedStories = ({
   category = null,
   onArticleClick
-}) =>{
+}) => {
   const allArticles = [{
     id: 1,
     title: 'New Community Center to Open Next Month with State-of-the-Art Facilities',
@@ -33,7 +31,7 @@ export const FeaturedStories = ({
   }];
   // Filter articles based on selected category
   const articles = category ? allArticles.filter(article => article.categoryType === category) : allArticles;
-  return<div className="space-y-4">
+  return <div className="space-y-4">
       {articles.length > 0 ? articles.map(article => <div key={article.id} className="bg-white rounded-md overflow-hidden shadow-sm border border-gray-200 flex hover:shadow-md transition-shadow cursor-pointer" onClick={onArticleClick}>
             <div className="w-1/3">
               <div className="relative h-full">

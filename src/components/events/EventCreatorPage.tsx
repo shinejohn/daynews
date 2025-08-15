@@ -1,10 +1,8 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { Calendar, ChevronRight, Clock, Image as ImageIcon, Info, Link, MapPin, Tag, User, Users } from 'lucide-react';
-export const EventCreatorPage = () =>{
-  const router = useRouter();
+import { useNavigate } from 'react-router-dom';
+import { Calendar, Clock, MapPin, Users, Tag, Image as ImageIcon, Link, Info, ChevronRight } from 'lucide-react';
+export const EventCreatorPage = () => {
+  const navigate = useNavigate();
   const [eventData, setEventData] = useState({
     title: '',
     description: '',
@@ -58,9 +56,9 @@ export const EventCreatorPage = () =>{
   const handleSubmit = e => {
     e.preventDefault();
     // Handle form submission logic
-    router.push('/eventDetail');
+    navigate('/eventDetail');
   };
-  return<div className="container mx-auto max-w-3xl px-4 py-8">
+  return <div className="container mx-auto max-w-3xl px-4 py-8">
       <h1 className="text-2xl font-bold text-gray-900 mb-2">Create an Event</h1>
       <p className="text-gray-600 mb-6">Share your event with the community</p>
       <form onSubmit={handleSubmit} className="space-y-6">
@@ -151,15 +149,17 @@ export const EventCreatorPage = () =>{
                 Tags (optional)
               </label>
               <div className="flex">
-                <input type="text" value={currentTag} onChange={e =>setCurrentTag(e.target.value)} placeholder="Add tags (e.g., family-friendly, outdoor)" className="flex-1 px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-news-primary focus:border-transparent" onKeyPress={e => e.key === 'Enter' && (e.preventDefault(), handleAddTag())} /><button type="button" onClick={handleAddTag} className="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-md hover:bg-gray-300">
+                <input type="text" value={currentTag} onChange={e => setCurrentTag(e.target.value)} placeholder="Add tags (e.g., family-friendly, outdoor)" className="flex-1 px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-news-primary focus:border-transparent" onKeyPress={e => e.key === 'Enter' && (e.preventDefault(), handleAddTag())} />
+                <button type="button" onClick={handleAddTag} className="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-md hover:bg-gray-300">
                   Add
                 </button>
               </div>
               {eventData.tags.length > 0 && <div className="flex flex-wrap gap-2 mt-2">
                   {eventData.tags.map(tag => <span key={tag} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
                       {tag}
-                      <button type="button" onClick={() =>handleRemoveTag(tag)} className="ml-1.5 inline-flex items-center justify-center h-4 w-4 rounded-full bg-gray-200 text-gray-500 hover:bg-gray-300">
-                        &times;</button>
+                      <button type="button" onClick={() => handleRemoveTag(tag)} className="ml-1.5 inline-flex items-center justify-center h-4 w-4 rounded-full bg-gray-200 text-gray-500 hover:bg-gray-300">
+                        &times;
+                      </button>
                     </span>)}
                 </div>}
             </div>
@@ -176,12 +176,14 @@ export const EventCreatorPage = () =>{
             </label>
             <div className="mt-2 space-y-2">
               <div className="flex items-center">
-                <input id="non-profit" name="organization-type" type="radio" checked={eventData.organizationType === 'non-profit'} onChange={() =>handleOrganizationTypeChange('non-profit')} className="h-4 w-4 text-news-primary focus:ring-news-primary" /><label htmlFor="non-profit" className="ml-3 text-sm text-gray-700">
+                <input id="non-profit" name="organization-type" type="radio" checked={eventData.organizationType === 'non-profit'} onChange={() => handleOrganizationTypeChange('non-profit')} className="h-4 w-4 text-news-primary focus:ring-news-primary" />
+                <label htmlFor="non-profit" className="ml-3 text-sm text-gray-700">
                   Non-profit/Community Organization (Free)
                 </label>
               </div>
               <div className="flex items-center">
-                <input id="commercial" name="organization-type" type="radio" checked={eventData.organizationType === 'commercial'} onChange={() =>handleOrganizationTypeChange('commercial')} className="h-4 w-4 text-news-primary focus:ring-news-primary" /><label htmlFor="commercial" className="ml-3 text-sm text-gray-700">
+                <input id="commercial" name="organization-type" type="radio" checked={eventData.organizationType === 'commercial'} onChange={() => handleOrganizationTypeChange('commercial')} className="h-4 w-4 text-news-primary focus:ring-news-primary" />
+                <label htmlFor="commercial" className="ml-3 text-sm text-gray-700">
                   Commercial/Ticketed Event ($29)
                 </label>
               </div>
@@ -253,8 +255,9 @@ export const EventCreatorPage = () =>{
               </div>
             </div>
           </div>
-        </div>{/* Pricing Summary */}
-        {eventData.organizationType === 'commercial' &&<div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        </div>
+        {/* Pricing Summary */}
+        {eventData.organizationType === 'commercial' && <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
             <h2 className="text-lg font-medium text-gray-900 mb-4">
               Pricing Summary
             </h2>
@@ -271,9 +274,12 @@ export const EventCreatorPage = () =>{
           </div>}
         {/* Action Buttons */}
         <div className="flex justify-between">
-          <button type="button" onClick={() =>router.push('/')} className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
-            Cancel</button>
-          <button type="submit" className="px-4 py-2 bg-news-primary text-white rounded-md hover:bg-news-primary-dark flex items-center">{eventData.organizationType === 'commercial' ? 'Continue to Payment' : 'Create Event'}<ChevronRight className="ml-1 h-4 w-4" />
+          <button type="button" onClick={() => navigate('/')} className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
+            Cancel
+          </button>
+          <button type="submit" className="px-4 py-2 bg-news-primary text-white rounded-md hover:bg-news-primary-dark flex items-center">
+            {eventData.organizationType === 'commercial' ? 'Continue to Payment' : 'Create Event'}
+            <ChevronRight className="ml-1 h-4 w-4" />
           </button>
         </div>
       </form>

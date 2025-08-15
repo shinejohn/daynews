@@ -1,4 +1,3 @@
-// Converted from Magic Patterns
 import React from 'react';
 import { Globe } from 'lucide-react';
 export const HeroSection = ({
@@ -24,9 +23,11 @@ export const HeroSection = ({
           Enhanced by AI
         </h1>
         <div className="w-24 h-1 bg-white mx-auto mb-6"></div>
-        <p className="text-xl sm:text-2xl max-w-3xl mx-auto font-light mb-10 text-gray-100">We're reimagining local news for {locationName} by combining the power
+        <p className="text-xl sm:text-2xl max-w-3xl mx-auto font-light mb-10 text-gray-100">
+          We're reimagining local news for {locationName} by combining the power
           of community voices with cutting-edge AI technology to keep you
-          informed about what matters most.</p>
+          informed about what matters most.
+        </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <button className="bg-white text-news-primary px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition-colors">
             Our Mission

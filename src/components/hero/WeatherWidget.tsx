@@ -1,7 +1,6 @@
-// Converted from Magic Patterns
 import React from 'react';
 import { Cloud, CloudRain, Sun, ThermometerIcon } from 'lucide-react';
-export const WeatherWidget = () =>{
+export const WeatherWidget = () => {
   // In a real app, this would come from a weather API
   const weather = {
     temp: 82,
@@ -14,10 +13,10 @@ export const WeatherWidget = () =>{
     switch (condition.toLowerCase()) {
       case 'rain':
       case 'showers':
-        return<CloudRain className="h-6 w-6 text-white" />;
+        return <CloudRain className="h-6 w-6 text-white" />;
       case 'cloudy':
       case 'partly cloudy':
-        return<Cloud className="h-6 w-6 text-white" />;
+        return <Cloud className="h-6 w-6 text-white" />;
       default:
         return <Sun className="h-6 w-6 text-white" />;
     }

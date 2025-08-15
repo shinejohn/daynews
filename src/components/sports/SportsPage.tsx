@@ -1,8 +1,7 @@
-// Converted from Magic Patterns
 import React from 'react';
-import Link from 'next/link';
+import { Link } from 'react-router-dom';
 import { NewspaperMasthead } from '../navigation/NewspaperMasthead';
-import { Calendar, ChevronRight, Clock, Star, TrendingUp, Trophy, User } from 'lucide-react';
+import { Trophy, Calendar, User, Clock, ChevronRight, Star, TrendingUp } from 'lucide-react';
 export const SportsPage = () => {
   return <div className="min-h-screen bg-gray-50">
       <main className="container mx-auto px-4 py-8">
@@ -17,7 +16,7 @@ export const SportsPage = () => {
                 Featured
               </span>
               <h2 className="text-2xl font-bold text-gray-900 mb-3">
-                <Link href="#" className="hover:text-blue-600">
+                <Link to="#" className="hover:text-blue-600">
                   Clearwater High School Football Team Advances to State
                   Championship
                 </Link>
@@ -33,7 +32,7 @@ export const SportsPage = () => {
                 <Clock className="h-4 w-4 mr-1" />
                 <span>2 hours ago</span>
               </div>
-              <Link href="#" className="text-blue-600 font-medium hover:text-blue-800 flex items-center">
+              <Link to="#" className="text-blue-600 font-medium hover:text-blue-800 flex items-center">
                 Read Full Story
                 <ChevronRight className="h-4 w-4 ml-1" />
               </Link>
@@ -120,7 +119,7 @@ export const SportsPage = () => {
                   </div>
                 </div>
               </div>
-              <Link href="#" className="mt-4 text-blue-600 font-medium hover:text-blue-800 flex items-center">
+              <Link to="#" className="mt-4 text-blue-600 font-medium hover:text-blue-800 flex items-center">
                 View All Scores
                 <ChevronRight className="h-4 w-4 ml-1" />
               </Link>
@@ -134,7 +133,7 @@ export const SportsPage = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="border-b border-gray-100 pb-4 md:border-b-0 md:pb-0 md:border-r md:pr-4">
                     <h3 className="font-medium text-gray-900 mb-2">
-                      <Link href="#" className="hover:text-blue-600">
+                      <Link to="#" className="hover:text-blue-600">
                         Local Swimmer Qualifies for National Championships
                       </Link>
                     </h3>
@@ -150,7 +149,7 @@ export const SportsPage = () => {
                   </div>
                   <div>
                     <h3 className="font-medium text-gray-900 mb-2">
-                      <Link href="#" className="hover:text-blue-600">
+                      <Link to="#" className="hover:text-blue-600">
                         Clearwater Threshers Announce New Manager for Upcoming
                         Season
                       </Link>
@@ -169,13 +168,15 @@ export const SportsPage = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="border-b border-gray-100 pb-4 md:border-b-0 md:pb-0 md:border-r md:pr-4">
                     <h3 className="font-medium text-gray-900 mb-2">
-                      <Link href="#" className="hover:text-blue-600">
+                      <Link to="#" className="hover:text-blue-600">
                         Local Golf Course to Host PGA Tour Qualifying Event
                       </Link>
                     </h3>
-                    <p className="text-gray-600 text-sm mb-2">Clearwater's Innisbrook Resort will host a PGA Tour
+                    <p className="text-gray-600 text-sm mb-2">
+                      Clearwater's Innisbrook Resort will host a PGA Tour
                       qualifying event next month, bringing professional golfers
-                      from around the country to compete.</p>
+                      from around the country to compete.
+                    </p>
                     <div className="flex items-center text-xs text-gray-500">
                       <Clock className="h-3 w-3 mr-1" />
                       <span>3 days ago</span>
@@ -183,7 +184,7 @@ export const SportsPage = () => {
                   </div>
                   <div>
                     <h3 className="font-medium text-gray-900 mb-2">
-                      <Link href="#" className="hover:text-blue-600">
+                      <Link to="#" className="hover:text-blue-600">
                         Youth Soccer League Expands with Four New Teams
                       </Link>
                     </h3>
@@ -199,7 +200,7 @@ export const SportsPage = () => {
                   </div>
                 </div>
               </div>
-              <Link href="#" className="mt-6 inline-block text-blue-600 font-medium hover:text-blue-800 flex items-center">
+              <Link to="#" className="mt-6 inline-block text-blue-600 font-medium hover:text-blue-800 flex items-center">
                 More Sports News
                 <ChevronRight className="h-4 w-4 ml-1" />
               </Link>
@@ -219,7 +220,7 @@ export const SportsPage = () => {
                     Saturday, Aug 12
                   </div>
                   <h3 className="font-medium text-gray-900">
-                    <Link href="#" className="hover:text-blue-600">
+                    <Link to="#" className="hover:text-blue-600">
                       Football: Clearwater vs. Countryside
                     </Link>
                   </h3>
@@ -232,7 +233,7 @@ export const SportsPage = () => {
                     Sunday, Aug 13
                   </div>
                   <h3 className="font-medium text-gray-900">
-                    <Link href="#" className="hover:text-blue-600">
+                    <Link to="#" className="hover:text-blue-600">
                       Baseball: Clearwater Threshers vs. Lakeland Flying Tigers
                     </Link>
                   </h3>
@@ -245,7 +246,7 @@ export const SportsPage = () => {
                     Tuesday, Aug 15
                   </div>
                   <h3 className="font-medium text-gray-900">
-                    <Link href="#" className="hover:text-blue-600">
+                    <Link to="#" className="hover:text-blue-600">
                       Volleyball: Clearwater vs. East Lake
                     </Link>
                   </h3>
@@ -254,7 +255,7 @@ export const SportsPage = () => {
                   </div>
                 </div>
               </div>
-              <Link href="/eventsCalendar" className="mt-4 text-blue-600 font-medium hover:text-blue-800 flex items-center">
+              <Link to="/eventsCalendar" className="mt-4 text-blue-600 font-medium hover:text-blue-800 flex items-center">
                 View Full Calendar
                 <ChevronRight className="h-4 w-4 ml-1" />
               </Link>
@@ -291,7 +292,7 @@ export const SportsPage = () => {
                   </div>
                 </div>
               </div>
-              <Link href="#" className="mt-4 text-blue-600 font-medium hover:text-blue-800 flex items-center">
+              <Link to="#" className="mt-4 text-blue-600 font-medium hover:text-blue-800 flex items-center">
                 View All Athletes
                 <ChevronRight className="h-4 w-4 ml-1" />
               </Link>
@@ -304,23 +305,27 @@ export const SportsPage = () => {
               </h2>
               <ol className="list-decimal list-inside space-y-3 pl-2">
                 <li className="text-gray-900">
-                  <Link href="#" className="hover:text-blue-600">Clearwater High School's Path to the State Championship</Link>
+                  <Link to="#" className="hover:text-blue-600">
+                    Clearwater High School's Path to the State Championship
+                  </Link>
                 </li>
                 <li className="text-gray-900">
-                  <Link href="#" className="hover:text-blue-600">
+                  <Link to="#" className="hover:text-blue-600">
                     Local Athletes Receiving College Scholarships
                   </Link>
                 </li>
                 <li className="text-gray-900">
-                  <Link href="#" className="hover:text-blue-600">
+                  <Link to="#" className="hover:text-blue-600">
                     New Training Facility Opens for Youth Sports
                   </Link>
                 </li>
                 <li className="text-gray-900">
-                  <Link href="#" className="hover:text-blue-600">Interview with Clearwater Threshers' New Manager</Link>
+                  <Link to="#" className="hover:text-blue-600">
+                    Interview with Clearwater Threshers' New Manager
+                  </Link>
                 </li>
                 <li className="text-gray-900">
-                  <Link href="#" className="hover:text-blue-600">
+                  <Link to="#" className="hover:text-blue-600">
                     Summer Sports Camps Registration Now Open
                   </Link>
                 </li>

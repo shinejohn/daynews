@@ -1,8 +1,6 @@
-'use client';
-// Converted from Magic Patterns
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { ArrowRight, BarChart, Bell, Bot, Building, Check, CheckCircle, ChevronDown, ChevronRight, Circle, Cpu, Database, DollarSign, Edit3, Eye, Globe, Grid, HelpCircle, Info, Layers, Loader, Map, Newspaper, PlusCircle, RefreshCw, Server, Settings, Shield, Trash2, User, Users, Zap } from 'lucide-react';
+import React, { useState, Component } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Grid, Newspaper, DollarSign, Shield, Bot, BarChart, Settings, Building, ChevronDown, Bell, User, Check, ChevronRight, Map, Users, Database, Layers, Server, Globe, Cpu, Zap, ArrowRight, CheckCircle, Circle, HelpCircle, Info, PlusCircle, Edit3, Trash2, Loader, Eye, RefreshCw } from 'lucide-react';
 // Sample data for communities
 const communitiesData = [{
   id: 1,
@@ -68,8 +66,8 @@ const communitiesData = [{
   deployedDate: 'Jun 15, 2023',
   health: 93
 }];
-export const CommunityDeploymentWizard = () =>{
-  const router = useRouter();
+export const CommunityDeploymentWizard = () => {
+  const navigate = useNavigate();
   const [communities, setCommunities] = useState(communitiesData);
   const [activeTab, setActiveTab] = useState('existing');
   const [deploymentStep, setDeploymentStep] = useState(1);
@@ -83,7 +81,7 @@ export const CommunityDeploymentWizard = () =>{
   });
   // Navigate to different admin pages
   const navigateTo = path => {
-    router.push(path);
+    navigate(path);
   };
   // Format currency
   const formatCurrency = value => {
@@ -167,7 +165,7 @@ export const CommunityDeploymentWizard = () =>{
     setActiveTab('existing');
     setDeploymentStep(1);
   };
-  return<div className="min-h-screen bg-[#0A0A0B] text-white relative">
+  return <div className="min-h-screen bg-[#0A0A0B] text-white relative">
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 pointer-events-none" style={{
       backgroundImage: 'linear-gradient(to right, #1A1A1F 1px, transparent 1px), linear-gradient(to bottom, #1A1A1F 1px, transparent 1px)',
@@ -178,8 +176,9 @@ export const CommunityDeploymentWizard = () =>{
         <div className="flex items-center justify-between h-full px-6">
           <div className="font-['Space_Grotesk'] text-lg font-bold tracking-wider text-white uppercase cursor-pointer" style={{
           textShadow: '0 0 10px rgba(0,229,255,0.5)'
-        }} onClick={() =>navigateTo('/admin-dashboard')}>
-            Day.News Command Center</div>
+        }} onClick={() => navigateTo('/admin-dashboard')}>
+            Day.News Command Center
+          </div>
           <div className="flex items-center">
             <div className="flex items-center mr-8">
               <div className="w-2 h-2 bg-[#00FF88] rounded-full mr-2 animate-pulse"></div>
@@ -204,9 +203,16 @@ export const CommunityDeploymentWizard = () =>{
       {/* Sidebar navigation */}
       <aside className="fixed top-[60px] left-0 bottom-0 w-[80px] bg-[#0F0F11] z-40 flex flex-col items-center pt-6">
         <div className="flex flex-col items-center space-y-10">
-          <NavItem icon={<Grid />} label="Dashboard" onClick={() => navigateTo('/admin-dashboard')} /><NavItem icon={<Newspaper />} label="Content" onClick={() => navigateTo('/content-management')} /><NavItem icon={<DollarSign />} label="Revenue" onClick={() => navigateTo('/revenue-analytics')} /><NavItem icon={<Shield />} label="Moderation" onClick={() => navigateTo('/moderation-queue')} /><NavItem icon={<Bot />} label="AI Agents" onClick={() => navigateTo('/ai-agent-control')} /><NavItem icon={<BarChart />} label="Analytics" onClick={() => navigateTo('/admin-dashboard')} /></div>
+          <NavItem icon={<Grid />} label="Dashboard" onClick={() => navigateTo('/admin-dashboard')} />
+          <NavItem icon={<Newspaper />} label="Content" onClick={() => navigateTo('/content-management')} />
+          <NavItem icon={<DollarSign />} label="Revenue" onClick={() => navigateTo('/revenue-analytics')} />
+          <NavItem icon={<Shield />} label="Moderation" onClick={() => navigateTo('/moderation-queue')} />
+          <NavItem icon={<Bot />} label="AI Agents" onClick={() => navigateTo('/ai-agent-control')} />
+          <NavItem icon={<BarChart />} label="Analytics" onClick={() => navigateTo('/admin-dashboard')} />
+        </div>
         <div className="mt-auto mb-6">
-          <NavItem icon={<Settings />} label="Settings" onClick={() => navigateTo('/admin-dashboard')} /></div>
+          <NavItem icon={<Settings />} label="Settings" onClick={() => navigateTo('/admin-dashboard')} />
+        </div>
       </aside>
       {/* Main content area */}
       <main className="pt-[60px] pl-[80px]">
@@ -217,16 +223,23 @@ export const CommunityDeploymentWizard = () =>{
               COMMUNITY DEPLOYMENT
             </h1>
             <div className="flex space-x-4">
-              <button className={`px-6 py-2 rounded-md text-sm font-medium ${activeTab === 'existing' ? 'bg-[#00E5FF22] text-[#00E5FF]' : 'text-[#A0A0A8] hover:bg-[#1A1A1F] hover:text-white'}`} onClick={() =>setActiveTab('existing')}>
-                Existing Communities</button>
-              <button className={`px-6 py-2 rounded-md text-sm font-medium ${activeTab === 'deploy' ? 'bg-[#00E5FF22] text-[#00E5FF]' : 'text-[#A0A0A8] hover:bg-[#1A1A1F] hover:text-white'}`} onClick={() =>setActiveTab('deploy')}>
-                Deploy New Community</button>
+              <button className={`px-6 py-2 rounded-md text-sm font-medium ${activeTab === 'existing' ? 'bg-[#00E5FF22] text-[#00E5FF]' : 'text-[#A0A0A8] hover:bg-[#1A1A1F] hover:text-white'}`} onClick={() => setActiveTab('existing')}>
+                Existing Communities
+              </button>
+              <button className={`px-6 py-2 rounded-md text-sm font-medium ${activeTab === 'deploy' ? 'bg-[#00E5FF22] text-[#00E5FF]' : 'text-[#A0A0A8] hover:bg-[#1A1A1F] hover:text-white'}`} onClick={() => setActiveTab('deploy')}>
+                Deploy New Community
+              </button>
             </div>
-          </div>{/* Existing Communities Tab */}
-          {activeTab === 'existing' &&<div>
+          </div>
+          {/* Existing Communities Tab */}
+          {activeTab === 'existing' && <div>
               {/* Stats row */}
               <div className="grid grid-cols-4 gap-4 mb-8">
-                <StatCard label="ACTIVE COMMUNITIES" value={communities.filter(c =>c.status === 'active').length} icon={<Building className="w-5 h-5 text-[#00E5FF]" />} color="#00E5FF" /><StatCard label="TOTAL SUBSCRIBERS" value={communities.reduce((sum, c) => sum + c.subscribers, 0).toLocaleString()} icon={<Users className="w-5 h-5 text-[#00FF88]" />} color="#00FF88" /><StatCard label="MONTHLY REVENUE" value={formatCurrency(communities.reduce((sum, c) => sum + c.monthlyRevenue, 0))} icon={<DollarSign className="w-5 h-5 text-[#FFB000]" />} color="#FFB000" /><StatCard label="NETWORK HEALTH" value={`${Math.round(communities.reduce((sum, c) => sum + c.health, 0) / communities.length)}%`} icon={<Zap className="w-5 h-5 text-[#00FF88]" />} color="#00FF88" /></div>
+                <StatCard label="ACTIVE COMMUNITIES" value={communities.filter(c => c.status === 'active').length} icon={<Building className="w-5 h-5 text-[#00E5FF]" />} color="#00E5FF" />
+                <StatCard label="TOTAL SUBSCRIBERS" value={communities.reduce((sum, c) => sum + c.subscribers, 0).toLocaleString()} icon={<Users className="w-5 h-5 text-[#00FF88]" />} color="#00FF88" />
+                <StatCard label="MONTHLY REVENUE" value={formatCurrency(communities.reduce((sum, c) => sum + c.monthlyRevenue, 0))} icon={<DollarSign className="w-5 h-5 text-[#FFB000]" />} color="#FFB000" />
+                <StatCard label="NETWORK HEALTH" value={`${Math.round(communities.reduce((sum, c) => sum + c.health, 0) / communities.length)}%`} icon={<Zap className="w-5 h-5 text-[#00FF88]" />} color="#00FF88" />
+              </div>
               {/* Communities table */}
               <div className="bg-[#131316] rounded-lg border border-[#00E5FF33] shadow-[0_0_20px_rgba(0,229,255,0.1)] backdrop-blur-sm backdrop-filter overflow-hidden">
                 <div className="overflow-x-auto">
@@ -278,7 +291,8 @@ export const CommunityDeploymentWizard = () =>{
                                 <div className="w-2 h-2 rounded-full mr-2" style={{
                             backgroundColor: statusInfo.color
                           }}></div>
-                                <span>{statusInfo.text}</span>{community.status === 'deploying' &&<RefreshCw className="w-4 h-4 ml-2 text-[#00E5FF] animate-spin" />}
+                                <span>{statusInfo.text}</span>
+                                {community.status === 'deploying' && <RefreshCw className="w-4 h-4 ml-2 text-[#00E5FF] animate-spin" />}
                               </div>
                             </td>
                             <td className="py-4 px-6 font-['JetBrains_Mono']">
@@ -310,13 +324,15 @@ export const CommunityDeploymentWizard = () =>{
                             </td>
                             <td className="py-4 px-6">
                               <div className="flex space-x-2">
-                                <button className="p-1 rounded-md hover:bg-[#00E5FF22] text-[#00E5FF]" onClick={() =>navigateTo('/content-management')}><Eye className="w-5 h-5" />
+                                <button className="p-1 rounded-md hover:bg-[#00E5FF22] text-[#00E5FF]" onClick={() => navigateTo('/content-management')}>
+                                  <Eye className="w-5 h-5" />
                                 </button>
                                 <button className="p-1 rounded-md hover:bg-[#00E5FF22] text-[#00E5FF]" onClick={() => {
                             // Would open settings in a real app
                           }}>
                                   <Settings className="w-5 h-5" />
-                                </button>{community.status === 'deploying' &&<button className="p-1 rounded-md hover:bg-[#FF336622] text-[#FF3366]" onClick={() => {
+                                </button>
+                                {community.status === 'deploying' && <button className="p-1 rounded-md hover:bg-[#FF336622] text-[#FF3366]" onClick={() => {
                             // Would cancel deployment in a real app
                             setCommunities(communities.filter(c => c.id !== community.id));
                           }}>
@@ -332,13 +348,14 @@ export const CommunityDeploymentWizard = () =>{
               </div>
               {/* Deploy new community button */}
               <div className="mt-8 flex justify-center">
-                <button className="px-6 py-3 bg-[#00E5FF] text-black font-medium rounded-md hover:bg-[#00E5FFDD] transition-colors flex items-center" onClick={() =>setActiveTab('deploy')}><PlusCircle className="w-5 h-5 mr-2" />
+                <button className="px-6 py-3 bg-[#00E5FF] text-black font-medium rounded-md hover:bg-[#00E5FFDD] transition-colors flex items-center" onClick={() => setActiveTab('deploy')}>
+                  <PlusCircle className="w-5 h-5 mr-2" />
                   Deploy New Community
                 </button>
               </div>
             </div>}
           {/* Deploy New Community Tab */}
-          {activeTab === 'deploy' &&<div className="bg-[#131316] rounded-lg border border-[#00E5FF33] shadow-[0_0_20px_rgba(0,229,255,0.1)] backdrop-blur-sm backdrop-filter p-8">
+          {activeTab === 'deploy' && <div className="bg-[#131316] rounded-lg border border-[#00E5FF33] shadow-[0_0_20px_rgba(0,229,255,0.1)] backdrop-blur-sm backdrop-filter p-8">
               {/* Deployment steps */}
               <div className="mb-8">
                 <div className="flex items-center justify-between max-w-3xl mx-auto">
@@ -408,10 +425,12 @@ export const CommunityDeploymentWizard = () =>{
                         <DataSourceCard name="census" title="Census Data" description="US Census Bureau demographic and economic data" icon={<Database className="w-5 h-5" />} selected={deploymentForm.dataSource === 'census'} onClick={() => setDeploymentForm({
                     ...deploymentForm,
                     dataSource: 'census'
-                  })} /><DataSourceCard name="opendata" title="Open Data Portal" description="City/county open data portals and public records" icon={<Globe className="w-5 h-5" />} selected={deploymentForm.dataSource === 'opendata'} onClick={() => setDeploymentForm({
+                  })} />
+                        <DataSourceCard name="opendata" title="Open Data Portal" description="City/county open data portals and public records" icon={<Globe className="w-5 h-5" />} selected={deploymentForm.dataSource === 'opendata'} onClick={() => setDeploymentForm({
                     ...deploymentForm,
                     dataSource: 'opendata'
-                  })} /></div>
+                  })} />
+                      </div>
                     </div>
                     <div className="bg-[#1A1A1F] rounded-lg p-4 border border-[#00E5FF33]">
                       <div className="flex items-start">
@@ -669,7 +688,7 @@ const StatCard = ({
   icon,
   color = 'white'
 }) => {
-  return<div className="bg-[#131316] rounded-lg p-4 border border-[#00E5FF33] shadow-[0_0_20px_rgba(0,229,255,0.1)] backdrop-blur-sm backdrop-filter">
+  return <div className="bg-[#131316] rounded-lg p-4 border border-[#00E5FF33] shadow-[0_0_20px_rgba(0,229,255,0.1)] backdrop-blur-sm backdrop-filter">
       <div className="flex justify-between items-start mb-2">
         <div className="text-xs font-['Space_Grotesk'] text-[#A0A0A8] tracking-wider">
           {label}
@@ -706,7 +725,7 @@ const DeploymentStep = ({
     textColor = '#00FF88';
     borderColor = '#00FF88';
   }
-  return<div className="flex flex-col items-center">
+  return <div className="flex flex-col items-center">
       <div className="w-10 h-10 rounded-full flex items-center justify-center mb-2 border-2 transition-colors" style={{
       backgroundColor: bgColor,
       borderColor

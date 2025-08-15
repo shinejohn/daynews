@@ -1,8 +1,6 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useEffect, useState } from 'react';
-import { Calendar, MapPin } from 'lucide-react';
-// import { StickyNav } from './navigation/StickyNav'; // Component not found
+import { MapPin, Share2, Heart, MessageCircle, Calendar, PlusCircle } from 'lucide-react';
+import { StickyNav } from './navigation/StickyNav';
 import { HeroSection } from './hero/HeroSection';
 import { AnnouncementTypesTabs } from './announcements/AnnouncementTypesTabs';
 import { CreateAnnouncementCTA } from './announcements/CreateAnnouncementCTA';
@@ -10,7 +8,7 @@ import { AnnouncementCard } from './announcements/AnnouncementCard';
 import { FeaturedAnnouncement } from './announcements/FeaturedAnnouncement';
 import { MemorialSection } from './announcements/MemorialSection';
 import { useLocationDetection } from './location/LocationDetector';
-export const AnnouncementsPage = () =>{
+export const AnnouncementsPage = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeCategory, setActiveCategory] = useState('Announcements');
   const [activeType, setActiveType] = useState('all');
@@ -35,7 +33,7 @@ export const AnnouncementsPage = () =>{
   // Set time-based greeting
   useEffect(() => {
     const hour = new Date().getHours();
-    if (hour >= 5 && hour< 12) {
+    if (hour >= 5 && hour < 12) {
       setGreeting('Good Morning');
     } else if (hour >= 12 && hour < 18) {
       setGreeting('Good Afternoon');
@@ -43,7 +41,7 @@ export const AnnouncementsPage = () =>{
       setGreeting('Good Evening');
     }
     // Simulate fluctuating reader count
-    const interval = setInterval(() =>{
+    const interval = setInterval(() => {
       setActiveReaders(prev => Math.floor(Math.random() * 20) - 10 + prev);
     }, 5000);
     return () => clearInterval(interval);
@@ -59,8 +57,8 @@ export const AnnouncementsPage = () =>{
   };
   // Get the city name safely with a default fallback
   const cityName = locationData?.city || 'Clearwater';
-  return<div className="flex-1 overflow-auto bg-gray-50">
-      <div>TODO: StickyNav</div>
+  return <div className="flex-1 overflow-auto bg-gray-50">
+      <StickyNav scrolled={scrolled} activeCategory={activeCategory} onCategoryChange={handleCategoryChange} onMainSectionChange={handleMainSectionChange} />
       <main className="pt-28 overflow-auto">
         <HeroSection greeting={greeting} location={cityName} activeReaders={activeReaders} />
         <div className="container mx-auto px-4 py-6">

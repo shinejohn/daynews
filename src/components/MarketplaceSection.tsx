@@ -1,14 +1,12 @@
-'use client';
-// Converted from Magic Patterns
 import React from 'react';
 import { Tag, ChevronRight } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-export const MarketplaceSection = () =>{
-  const router = useRouter();
+import { useNavigate } from 'react-router-dom';
+export const MarketplaceSection = () => {
+  const navigate = useNavigate();
   const handleViewAllMarketplace = () => {
-    router.push('/marketplace');
+    navigate('/marketplace');
   };
-  return<div className="bg-white rounded-lg border border-gray-200 p-4">
+  return <div className="bg-white rounded-lg border border-gray-200 p-4">
       <div className="flex items-center justify-between mb-4">
         <h2 className="font-bold text-gray-800 flex items-center">
           <Tag className="h-4 w-4 mr-2 text-news-primary" />

@@ -1,5 +1,3 @@
-'use client';
-// Converted from Magic Patterns
 import React from 'react';
 import { Eye, Heart } from 'lucide-react';
 interface PhotoCardProps {
@@ -8,7 +6,7 @@ interface PhotoCardProps {
   date: string;
   views?: number;
   likes?: number;
-  onClick?: () =>void;
+  onClick?: () => void;
   className?: string;
 }
 export const PhotoCard = ({
@@ -20,7 +18,7 @@ export const PhotoCard = ({
   onClick,
   className = ''
 }: PhotoCardProps) => {
-  return<div className={`group relative aspect-square rounded-lg overflow-hidden shadow-sm border border-gray-200 ${className} ${onClick ? 'cursor-pointer' : ''}`} onClick={onClick}>
+  return <div className={`group relative aspect-square rounded-lg overflow-hidden shadow-sm border border-gray-200 ${className} ${onClick ? 'cursor-pointer' : ''}`} onClick={onClick}>
       <img src={image} alt={title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <div className="absolute bottom-0 left-0 right-0 p-3">

@@ -1,12 +1,10 @@
-'use client';
-// Converted from Magic Patterns
 import React from 'react';
-import { Bookmark, Clock, ExternalLink, MapPin } from 'lucide-react';
+import { MapPin, Clock, Bookmark, ExternalLink } from 'lucide-react';
 export const MoreNewsSection = ({
   category = null,
   onArticleClick,
   isNational = false
-}) =>{
+}) => {
   const allLocalNewsArticles = [{
     id: 1,
     title: 'Clearwater Beach Restoration Project Completes Ahead of Schedule',
@@ -121,7 +119,7 @@ export const MoreNewsSection = ({
   const allNewsArticles = isNational ? allNationalNewsArticles : allLocalNewsArticles;
   // Filter articles based on selected category
   const newsArticles = category ? allNewsArticles.filter(article => article.categoryType === category) : allNewsArticles;
-  return<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  return <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {newsArticles.length > 0 ? newsArticles.map(article => <div key={article.id} className="bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200 flex flex-col hover:shadow-md transition-shadow cursor-pointer" onClick={onArticleClick}>
             <div className="relative h-48">
               <img src={article.image} alt={article.title} className="w-full h-full object-cover" />

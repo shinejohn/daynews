@@ -1,28 +1,27 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useEffect } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
-import { ArrowRight, Calendar, CheckCircle, Clock, Download, ExternalLink, Mail, Printer, User, Users } from 'lucide-react';
-export const ConfirmationPage = () =>{
-  const router = useRouter();
-  const pathname = usePathname();
-  // TODO: Convert location.state to searchParams or context
-  const formData = null;
-  const selectedCommunities = [];
-  const duration = 1;
-  const startDate = new Date();
-  const endDate = new Date();
-  const totalPrice = 0;
-  const orderId = 'ORDER123';
-  const paymentMethod = 'card';
-  const isRerun = false;
+import { useNavigate, useLocation } from 'react-router-dom';
+import { CheckCircle, Calendar, Users, Clock, ArrowRight, Printer, Download, Mail, ExternalLink } from 'lucide-react';
+export const ConfirmationPage = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const {
+    formData,
+    selectedCommunities,
+    duration,
+    startDate,
+    endDate,
+    totalPrice,
+    orderId,
+    paymentMethod,
+    isRerun
+  } = location.state || {};
   useEffect(() => {
     // If no data was passed, redirect back
     if (!formData || !selectedCommunities) {
-      router.push('/postListing');
+      navigate('/postListing');
       return;
     }
-  }, [formData, selectedCommunities, router]);
+  }, [formData, selectedCommunities, navigate]);
   const formatDate = date => {
     return new Date(date).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -39,17 +38,17 @@ export const ConfirmationPage = () =>{
     });
   };
   const handleViewAd = () => {
-    router.push('/classifieds', {
+    navigate('/classifieds', {
       state: {
         listingCreated: true
       }
     });
   };
   const handleViewProfile = () => {
-    router.push('/profile');
+    navigate('/profile');
   };
   const handleRunAgain = () => {
-    router.push('/classifieds/rerun', {
+    navigate('/classifieds/rerun', {
       state: {
         adId: orderId,
         formData,
@@ -60,7 +59,7 @@ export const ConfirmationPage = () =>{
   const handlePrintReceipt = () => {
     window.print();
   };
-  return<div className="flex-1 overflow-auto bg-gray-50">
+  return <div className="flex-1 overflow-auto bg-gray-50">
       <div className="max-w-3xl mx-auto py-8 px-4">
         <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
           <div className="text-center mb-8">
@@ -94,7 +93,9 @@ export const ConfirmationPage = () =>{
                   <h3 className="text-sm font-medium text-gray-500 mb-1">
                     Payment Method
                   </h3>
-                  <p className="text-gray-900">{paymentMethod === 'creditCard' ? 'Credit Card' : 'PayPal'}</p>
+                  <p className="text-gray-900">
+                    {paymentMethod === 'creditCard' ? 'Credit Card' : 'PayPal'}
+                  </p>
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -115,7 +116,9 @@ export const ConfirmationPage = () =>{
                   </h3>
                   <div className="flex items-center">
                     <Clock className="h-4 w-4 text-gray-400 mr-1" />
-                    <p className="text-gray-900">{duration} month{duration > 1 ? 's' : ''}</p>
+                    <p className="text-gray-900">
+                      {duration} month{duration > 1 ? 's' : ''}
+                    </p>
                   </div>
                 </div>
                 <div>
@@ -164,7 +167,9 @@ export const ConfirmationPage = () =>{
               <Mail className="h-4 w-4 mr-2" />
               Email Receipt
             </button>
-          </div>{/* What's next */}<div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8">
+          </div>
+          {/* What's next */}
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8">
             <h3 className="font-medium text-blue-800 mb-2">What's Next?</h3>
             <ul className="space-y-2 text-sm text-blue-700">
               <li className="flex items-start">
@@ -179,8 +184,10 @@ export const ConfirmationPage = () =>{
               </li>
               <li className="flex items-start">
                 <span className="text-blue-500 mr-2">•</span>
-                <span>You'll receive email notifications when users contact you
-                  about your ad</span>
+                <span>
+                  You'll receive email notifications when users contact you
+                  about your ad
+                </span>
               </li>
               <li className="flex items-start">
                 <span className="text-blue-500 mr-2">•</span>

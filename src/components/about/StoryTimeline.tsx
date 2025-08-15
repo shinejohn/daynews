@@ -1,14 +1,12 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useState } from 'react';
-import { Award, Building, Calendar, ChevronLeft, ChevronRight, Lightbulb, Newspaper, User, Users } from 'lucide-react';
-export const StoryTimeline = () =>{
+import { ChevronLeft, ChevronRight, Calendar, Award, Users, Newspaper, Lightbulb, Building } from 'lucide-react';
+export const StoryTimeline = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const milestones = [{
     year: 2019,
     title: 'Our Beginning',
     description: 'Founded with a mission to revitalize local journalism through technology and community engagement.',
-    icon:<Building className="h-6 w-6" />,
+    icon: <Building className="h-6 w-6" />,
     stats: {
       communities: 3,
       stories: 257,
@@ -18,7 +16,7 @@ export const StoryTimeline = () =>{
     year: 2020,
     title: 'AI Integration',
     description: 'Implemented our first AI journalists to help process and analyze local data, freeing our human journalists to focus on investigative reporting.',
-    icon:<Lightbulb className="h-6 w-6" />,
+    icon: <Lightbulb className="h-6 w-6" />,
     stats: {
       communities: 12,
       stories: 1458,
@@ -28,7 +26,7 @@ export const StoryTimeline = () =>{
     year: 2021,
     title: 'Rapid Expansion',
     description: 'Expanded to 25 communities across the state, with a focus on underserved rural areas lacking local news coverage.',
-    icon:<Users className="h-6 w-6" />,
+    icon: <Users className="h-6 w-6" />,
     stats: {
       communities: 25,
       stories: 4587,
@@ -38,7 +36,7 @@ export const StoryTimeline = () =>{
     year: 2022,
     title: 'Award Recognition',
     description: 'Received the National Innovation in Journalism Award for our unique approach to sustainable local news.',
-    icon:<Award className="h-6 w-6" />,
+    icon: <Award className="h-6 w-6" />,
     stats: {
       communities: 42,
       stories: 8754,
@@ -48,7 +46,7 @@ export const StoryTimeline = () =>{
     year: 2023,
     title: 'Community Ownership',
     description: 'Launched our community ownership model, allowing readers to invest in their local news ecosystem.',
-    icon:<Users className="h-6 w-6" />,
+    icon: <Users className="h-6 w-6" />,
     stats: {
       communities: 65,
       stories: 12543,
@@ -58,7 +56,7 @@ export const StoryTimeline = () =>{
     year: 2024,
     title: 'Today',
     description: 'Now serving over 80 communities with a hybrid team of human journalists and AI assistants, publishing thousands of local stories monthly.',
-    icon:<Newspaper className="h-6 w-6" />,
+    icon: <Newspaper className="h-6 w-6" />,
     stats: {
       communities: 87,
       stories: 15783,
@@ -93,7 +91,8 @@ export const StoryTimeline = () =>{
           </div>
           {/* Year markers */}
           <div className="flex justify-between mt-2">
-            {milestones.map((milestone, index) => <button key={milestone.year} onClick={() =>setActiveIndex(index)} className={`flex flex-col items-center transition-all ${index === activeIndex ? 'scale-110' : 'opacity-70'}`}><span className={`w-4 h-4 rounded-full ${index === activeIndex ? 'bg-news-primary' : 'bg-gray-300'} mb-1`}></span>
+            {milestones.map((milestone, index) => <button key={milestone.year} onClick={() => setActiveIndex(index)} className={`flex flex-col items-center transition-all ${index === activeIndex ? 'scale-110' : 'opacity-70'}`}>
+                <span className={`w-4 h-4 rounded-full ${index === activeIndex ? 'bg-news-primary' : 'bg-gray-300'} mb-1`}></span>
                 <span className={`text-sm font-medium ${index === activeIndex ? 'text-news-primary' : 'text-gray-500'}`}>
                   {milestone.year}
                 </span>

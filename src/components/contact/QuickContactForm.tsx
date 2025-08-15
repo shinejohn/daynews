@@ -1,11 +1,9 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useState } from 'react';
 import { Send, Paperclip, AlertCircle, CheckCircle } from 'lucide-react';
 export const QuickContactForm = ({
   onSubmit,
   submitted
-}) =>{
+}) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -94,7 +92,7 @@ export const QuickContactForm = ({
       setAttachmentName('');
     }
   };
-  return<section>
+  return <section>
       <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">
         Quick Contact Form
       </h2>
@@ -104,8 +102,10 @@ export const QuickContactForm = ({
           <h3 className="text-lg font-bold text-news-primary">
             Send Us a Message
           </h3>
-          <p className="text-sm text-gray-600">Fill out the form below and we'll get back to you as soon as
-            possible</p>
+          <p className="text-sm text-gray-600">
+            Fill out the form below and we'll get back to you as soon as
+            possible
+          </p>
         </div>
         {/* Success Message */}
         {submitted && <div className="m-6 bg-green-50 border border-green-200 rounded-lg p-4 flex items-start">
@@ -114,8 +114,10 @@ export const QuickContactForm = ({
               <h4 className="font-medium text-green-800">
                 Message Sent Successfully!
               </h4>
-              <p className="text-sm text-green-700 mt-1">Thank you for contacting us. We've received your message and
-                will respond shortly.</p>
+              <p className="text-sm text-green-700 mt-1">
+                Thank you for contacting us. We've received your message and
+                will respond shortly.
+              </p>
             </div>
           </div>}
         {/* Form */}
@@ -180,7 +182,9 @@ export const QuickContactForm = ({
                 <Paperclip className="h-5 w-5 text-gray-500" />
                 <input type="file" className="hidden" onChange={handleFileChange} accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" />
               </label>
-              <div className="flex-1 border-t border-r border-b border-gray-300 rounded-r-md px-4 py-2 bg-white truncate">{attachmentName || 'No file selected (Max: 10MB)'}</div>
+              <div className="flex-1 border-t border-r border-b border-gray-300 rounded-r-md px-4 py-2 bg-white truncate">
+                {attachmentName || 'No file selected (Max: 10MB)'}
+              </div>
             </div>
             <p className="mt-1 text-xs text-gray-500">
               Accepted formats: JPG, PNG, PDF, DOC, DOCX
@@ -195,10 +199,13 @@ export const QuickContactForm = ({
               <label htmlFor="privacy" className="font-medium text-gray-700">
                 Privacy Consent <span className="text-red-500">*</span>
               </label>
-              <p className="text-gray-500">I agree to the{' '}<a href="#" className="text-news-primary hover:underline">
+              <p className="text-gray-500">
+                I agree to the{' '}
+                <a href="#" className="text-news-primary hover:underline">
                   Privacy Policy
                 </a>{' '}
-                and consent to being contacted regarding my inquiry.</p>
+                and consent to being contacted regarding my inquiry.
+              </p>
             </div>
           </div>
           {/* Submit Button */}

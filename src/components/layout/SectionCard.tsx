@@ -1,5 +1,3 @@
-'use client';
-// Converted from Magic Patterns
 import React from 'react';
 import { ChevronUp, ChevronDown } from 'lucide-react';
 interface SectionCardProps {
@@ -7,7 +5,7 @@ interface SectionCardProps {
   icon?: ReactNode;
   children: ReactNode;
   isOpen: boolean;
-  onToggle: () =>void;
+  onToggle: () => void;
   count?: number | null;
   className?: string;
 }
@@ -20,7 +18,7 @@ export const SectionCard = ({
   count = null,
   className = ''
 }: SectionCardProps) => {
-  return<div className={`bg-white rounded-xl shadow-sm mb-6 overflow-hidden ${className}`}>
+  return <div className={`bg-white rounded-xl shadow-sm mb-6 overflow-hidden ${className}`}>
       <div className="flex items-center justify-between p-5 cursor-pointer border-b border-gray-100" onClick={onToggle}>
         <div className="flex items-center">
           {icon && <div className="mr-3">{icon}</div>}

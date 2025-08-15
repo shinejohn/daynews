@@ -1,43 +1,49 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useState } from 'react';
-import { Calendar, DollarSign, Filter, Music, Ticket, User, Users, Utensils } from 'lucide-react';
+import { Calendar, Filter, Music, Users, DollarSign, Ticket, Utensils } from 'lucide-react';
 export const EventFiltersBar = ({
   activeFilter,
   setActiveFilter
-}) =>{
+}) => {
   const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
   const filters = [{
     id: 'today',
     label: 'Today',
-    icon:<Calendar className="h-4 w-4" />}, {
+    icon: <Calendar className="h-4 w-4" />
+  }, {
     id: 'weekend',
     label: 'This Weekend',
-    icon:<Calendar className="h-4 w-4" />}, {
+    icon: <Calendar className="h-4 w-4" />
+  }, {
     id: 'free',
     label: 'Free',
-    icon:<DollarSign className="h-4 w-4" />}, {
+    icon: <DollarSign className="h-4 w-4" />
+  }, {
     id: 'family',
     label: 'Family',
-    icon:<Users className="h-4 w-4" />}, {
+    icon: <Users className="h-4 w-4" />
+  }, {
     id: 'music',
     label: 'Music',
-    icon:<Music className="h-4 w-4" />}, {
+    icon: <Music className="h-4 w-4" />
+  }, {
     id: 'sports',
     label: 'Sports',
-    icon:<Ticket className="h-4 w-4" />}, {
+    icon: <Ticket className="h-4 w-4" />
+  }, {
     id: 'food',
     label: 'Food',
-    icon:<Utensils className="h-4 w-4" />}];
+    icon: <Utensils className="h-4 w-4" />
+  }];
   const handleFilterClick = filterId => {
     setActiveFilter(activeFilter === filterId ? 'all' : filterId);
   };
   const toggleAdvancedFilters = () => {
     setShowAdvancedFilters(!showAdvancedFilters);
   };
-  return<div className="bg-white rounded-lg shadow-sm border border-gray-200 p-3">
+  return <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-3">
       <div className="flex items-center space-x-2 overflow-x-auto pb-2">
-        {filters.map(filter => <button key={filter.id} onClick={() =>handleFilterClick(filter.id)} className={`flex items-center px-3 py-1.5 rounded-full text-sm font-medium whitespace-nowrap ${activeFilter === filter.id ? 'bg-news-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}><span className="mr-1.5">{filter.icon}</span>
+        {filters.map(filter => <button key={filter.id} onClick={() => handleFilterClick(filter.id)} className={`flex items-center px-3 py-1.5 rounded-full text-sm font-medium whitespace-nowrap ${activeFilter === filter.id ? 'bg-news-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
+            <span className="mr-1.5">{filter.icon}</span>
             {filter.label}
           </button>)}
         <button onClick={toggleAdvancedFilters} className="flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 whitespace-nowrap">

@@ -1,10 +1,9 @@
-// Converted from Magic Patterns
 import React from 'react';
 import { ArrowUp, ArrowDown, Hash } from 'lucide-react';
 export const TrendingCategories = ({
   categories,
   timePeriod
-}) =>{
+}) => {
   // Function to get color class based on category color
   const getCategoryColorClass = color => {
     const colorMap = {
@@ -18,7 +17,7 @@ export const TrendingCategories = ({
     };
     return colorMap[color] || 'bg-gray-500';
   };
-  return<div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+  return <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
       <div className="p-4 border-b border-gray-200">
         <h3 className="font-bold text-gray-900 flex items-center">
           <Hash className="h-5 w-5 mr-2 text-news-primary" />
@@ -46,7 +45,8 @@ export const TrendingCategories = ({
                 </div>
               </div>
               {/* Trend indicator */}
-              <div className={`ml-3 flex items-center ${category.direction === 'up' ? 'text-green-600' : 'text-red-600'} text-xs`}>{category.direction === 'up' ?<ArrowUp className="h-3 w-3 mr-1" /> : <ArrowDown className="h-3 w-3 mr-1" />}
+              <div className={`ml-3 flex items-center ${category.direction === 'up' ? 'text-green-600' : 'text-red-600'} text-xs`}>
+                {category.direction === 'up' ? <ArrowUp className="h-3 w-3 mr-1" /> : <ArrowDown className="h-3 w-3 mr-1" />}
                 <span>{category.percentChange}%</span>
               </div>
             </div>)}

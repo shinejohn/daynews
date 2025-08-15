@@ -1,7 +1,5 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useState } from 'react';
-import { AlertCircle, ArrowRight, BarChart2, Briefcase, Calendar, Check, ChevronDown, ChevronUp, Clock, Clock as ClockIcon, CreditCard, CreditCard as CardIcon, DollarSign, Edit2, Eye, Info, MessageSquare, Monitor, Save, Send, Smartphone, Star, Target, TrendingUp, User, UserCheck, Users, Zap } from 'lucide-react';
+import { CreditCard, Calendar, Edit2, Check, Clock, ChevronDown, ChevronUp, AlertCircle, Zap, Info, Users, BarChart2, DollarSign, CreditCard as CardIcon, Smartphone, Monitor, Eye, ArrowRight, MessageSquare, Star, Target, TrendingUp, Briefcase, Send, Save, UserCheck, Clock as ClockIcon } from 'lucide-react';
 import { Community } from './TargetCommunities';
 import { AdPreview } from './AdPreview';
 interface ReviewAndLaunchProps {
@@ -97,7 +95,7 @@ export const ReviewAndLaunch: React.FC<ReviewAndLaunchProps> = ({
       setShowScheduleOptions(false);
     }
   };
-  return<div className="space-y-8">
+  return <div className="space-y-8">
       <h1 className="text-2xl font-bold text-gray-900 mb-2">
         Review your community ad campaign
       </h1>
@@ -119,10 +117,12 @@ export const ReviewAndLaunch: React.FC<ReviewAndLaunchProps> = ({
             <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
               <div className="flex justify-end mb-3">
                 <div className="flex bg-gray-200 rounded-md p-1">
-                  <button className={`px-3 py-1 rounded text-sm ${previewDevice === 'desktop' ? 'bg-white shadow-sm' : 'text-gray-600'}`} onClick={() =>setPreviewDevice('desktop')}><Monitor className="h-4 w-4 inline mr-1" />
+                  <button className={`px-3 py-1 rounded text-sm ${previewDevice === 'desktop' ? 'bg-white shadow-sm' : 'text-gray-600'}`} onClick={() => setPreviewDevice('desktop')}>
+                    <Monitor className="h-4 w-4 inline mr-1" />
                     Desktop
                   </button>
-                  <button className={`px-3 py-1 rounded text-sm ${previewDevice === 'mobile' ? 'bg-white shadow-sm' : 'text-gray-600'}`} onClick={() =>setPreviewDevice('mobile')}><Smartphone className="h-4 w-4 inline mr-1" />
+                  <button className={`px-3 py-1 rounded text-sm ${previewDevice === 'mobile' ? 'bg-white shadow-sm' : 'text-gray-600'}`} onClick={() => setPreviewDevice('mobile')}>
+                    <Smartphone className="h-4 w-4 inline mr-1" />
                     Mobile
                   </button>
                 </div>
@@ -135,7 +135,9 @@ export const ReviewAndLaunch: React.FC<ReviewAndLaunchProps> = ({
             <div className="space-y-3">
               <div>
                 <div className="text-sm text-gray-500 mb-1">Format</div>
-                <div className="font-medium">{adFormat === 'standard' ? 'Standard Card' : adFormat === 'compact' ? 'Compact Text Ad' : adFormat === 'banner' ? 'Featured Banner' : 'Premium Showcase'}</div>
+                <div className="font-medium">
+                  {adFormat === 'standard' ? 'Standard Card' : adFormat === 'compact' ? 'Compact Text Ad' : adFormat === 'banner' ? 'Featured Banner' : 'Premium Showcase'}
+                </div>
               </div>
               <div>
                 <div className="text-sm text-gray-500 mb-1">Title</div>
@@ -273,8 +275,10 @@ export const ReviewAndLaunch: React.FC<ReviewAndLaunchProps> = ({
                             <div className="text-sm font-medium">
                               Est. Daily Clicks
                             </div>
-                            <div className="text-xs text-gray-500">{formatNumber(community.price * 250 * 0.025)}{' '}
-                              (avg. 2.5% CTR)</div>
+                            <div className="text-xs text-gray-500">
+                              {formatNumber(community.price * 250 * 0.025)}{' '}
+                              (avg. 2.5% CTR)
+                            </div>
                           </div>
                         </div>
                         <div className="flex items-start">
@@ -412,7 +416,8 @@ export const ReviewAndLaunch: React.FC<ReviewAndLaunchProps> = ({
               </div>
               <div className="flex items-center">
                 <div className="flex-1 mr-3">
-                  <input type="number" min={Math.max(0, totalBudget - 250)} value={additionalCredits} onChange={e =>setAdditionalCredits(Number(e.target.value))} className="w-full p-2 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white" /></div>
+                  <input type="number" min={Math.max(0, totalBudget - 250)} value={additionalCredits} onChange={e => setAdditionalCredits(Number(e.target.value))} className="w-full p-2 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white" />
+                </div>
                 <button className="bg-blue-600 text-white px-4 py-2 rounded-md font-medium hover:bg-blue-700">
                   Add Credits
                 </button>
@@ -423,19 +428,22 @@ export const ReviewAndLaunch: React.FC<ReviewAndLaunchProps> = ({
                 Payment Options
               </div>
               <label className="flex items-center p-3 border border-gray-200 rounded-md bg-white cursor-pointer hover:bg-gray-50">
-                <input type="radio" name="paymentMethod" value="card" checked={paymentMethod === 'card'} onChange={() =>setPaymentMethod('card')} className="h-4 w-4 text-blue-600 focus:ring-blue-500" /><CardIcon className="h-5 w-5 text-gray-400 mx-3" />
+                <input type="radio" name="paymentMethod" value="card" checked={paymentMethod === 'card'} onChange={() => setPaymentMethod('card')} className="h-4 w-4 text-blue-600 focus:ring-blue-500" />
+                <CardIcon className="h-5 w-5 text-gray-400 mx-3" />
                 <span className="font-medium text-gray-900">
                   Credit/Debit Card
                 </span>
               </label>
               <label className="flex items-center p-3 border border-gray-200 rounded-md bg-white cursor-pointer hover:bg-gray-50">
-                <input type="radio" name="paymentMethod" value="paypal" checked={paymentMethod === 'paypal'} onChange={() =>setPaymentMethod('paypal')} className="h-4 w-4 text-blue-600 focus:ring-blue-500" /><div className="mx-3 text-blue-600 font-bold text-lg">
+                <input type="radio" name="paymentMethod" value="paypal" checked={paymentMethod === 'paypal'} onChange={() => setPaymentMethod('paypal')} className="h-4 w-4 text-blue-600 focus:ring-blue-500" />
+                <div className="mx-3 text-blue-600 font-bold text-lg">
                   Pay<span className="text-blue-800">Pal</span>
                 </div>
                 <span className="font-medium text-gray-900">PayPal</span>
               </label>
               <label className="flex items-center p-3 border border-gray-200 rounded-md bg-white cursor-pointer hover:bg-gray-50">
-                <input type="radio" name="paymentMethod" value="crypto" checked={paymentMethod === 'crypto'} onChange={() =>setPaymentMethod('crypto')} className="h-4 w-4 text-blue-600 focus:ring-blue-500" /><div className="mx-3 h-5 w-5 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold">
+                <input type="radio" name="paymentMethod" value="crypto" checked={paymentMethod === 'crypto'} onChange={() => setPaymentMethod('crypto')} className="h-4 w-4 text-blue-600 focus:ring-blue-500" />
+                <div className="mx-3 h-5 w-5 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold">
                   ₿
                 </div>
                 <span className="font-medium text-gray-900">
@@ -443,7 +451,8 @@ export const ReviewAndLaunch: React.FC<ReviewAndLaunchProps> = ({
                 </span>
               </label>
               <label className="flex items-center p-3 border border-gray-200 rounded-md bg-white cursor-pointer hover:bg-gray-50">
-                <input type="radio" name="paymentMethod" value="wire" checked={paymentMethod === 'wire'} onChange={() =>setPaymentMethod('wire')} className="h-4 w-4 text-blue-600 focus:ring-blue-500" /><Briefcase className="h-5 w-5 text-gray-400 mx-3" />
+                <input type="radio" name="paymentMethod" value="wire" checked={paymentMethod === 'wire'} onChange={() => setPaymentMethod('wire')} className="h-4 w-4 text-blue-600 focus:ring-blue-500" />
+                <Briefcase className="h-5 w-5 text-gray-400 mx-3" />
                 <div>
                   <span className="font-medium text-gray-900">
                     Wire Transfer
@@ -459,7 +468,8 @@ export const ReviewAndLaunch: React.FC<ReviewAndLaunchProps> = ({
             <h3 className="font-medium text-gray-900 mb-3">Launch Options</h3>
             <div className="space-y-3 mb-6">
               <label className="flex items-center p-3 border border-gray-200 rounded-md bg-white cursor-pointer hover:bg-gray-50">
-                <input type="radio" name="launchOption" value="now" checked={launchOption === 'now'} onChange={() =>handleLaunchOptionChange('now')} className="h-4 w-4 text-blue-600 focus:ring-blue-500" /><Zap className="h-5 w-5 text-yellow-500 mx-3" />
+                <input type="radio" name="launchOption" value="now" checked={launchOption === 'now'} onChange={() => handleLaunchOptionChange('now')} className="h-4 w-4 text-blue-600 focus:ring-blue-500" />
+                <Zap className="h-5 w-5 text-yellow-500 mx-3" />
                 <div>
                   <div className="font-medium text-gray-900">Launch Now</div>
                   <div className="text-xs text-gray-500">
@@ -468,7 +478,8 @@ export const ReviewAndLaunch: React.FC<ReviewAndLaunchProps> = ({
                 </div>
               </label>
               <label className="flex items-center p-3 border border-gray-200 rounded-md bg-white cursor-pointer hover:bg-gray-50">
-                <input type="radio" name="launchOption" value="schedule" checked={launchOption === 'schedule'} onChange={() =>handleLaunchOptionChange('schedule')} className="h-4 w-4 text-blue-600 focus:ring-blue-500" /><Calendar className="h-5 w-5 text-blue-500 mx-3" />
+                <input type="radio" name="launchOption" value="schedule" checked={launchOption === 'schedule'} onChange={() => handleLaunchOptionChange('schedule')} className="h-4 w-4 text-blue-600 focus:ring-blue-500" />
+                <Calendar className="h-5 w-5 text-blue-500 mx-3" />
                 <div>
                   <div className="font-medium text-gray-900">
                     Schedule Launch
@@ -479,7 +490,8 @@ export const ReviewAndLaunch: React.FC<ReviewAndLaunchProps> = ({
                 </div>
               </label>
               <label className="flex items-center p-3 border border-gray-200 rounded-md bg-white cursor-pointer hover:bg-gray-50">
-                <input type="radio" name="launchOption" value="template" checked={launchOption === 'template'} onChange={() =>handleLaunchOptionChange('template')} className="h-4 w-4 text-blue-600 focus:ring-blue-500" /><Save className="h-5 w-5 text-purple-500 mx-3" />
+                <input type="radio" name="launchOption" value="template" checked={launchOption === 'template'} onChange={() => handleLaunchOptionChange('template')} className="h-4 w-4 text-blue-600 focus:ring-blue-500" />
+                <Save className="h-5 w-5 text-purple-500 mx-3" />
                 <div>
                   <div className="font-medium text-gray-900">
                     Save as Template
@@ -490,7 +502,8 @@ export const ReviewAndLaunch: React.FC<ReviewAndLaunchProps> = ({
                 </div>
               </label>
               <label className="flex items-center p-3 border border-gray-200 rounded-md bg-white cursor-pointer hover:bg-gray-50">
-                <input type="radio" name="launchOption" value="approval" checked={launchOption === 'approval'} onChange={() =>handleLaunchOptionChange('approval')} className="h-4 w-4 text-blue-600 focus:ring-blue-500" /><UserCheck className="h-5 w-5 text-green-500 mx-3" />
+                <input type="radio" name="launchOption" value="approval" checked={launchOption === 'approval'} onChange={() => handleLaunchOptionChange('approval')} className="h-4 w-4 text-blue-600 focus:ring-blue-500" />
+                <UserCheck className="h-5 w-5 text-green-500 mx-3" />
                 <div>
                   <div className="font-medium text-gray-900">
                     Get Team Approval
@@ -511,12 +524,14 @@ export const ReviewAndLaunch: React.FC<ReviewAndLaunchProps> = ({
                     <label className="block text-sm text-blue-800 mb-1">
                       Date
                     </label>
-                    <input type="date" value={scheduleDate} onChange={e =>setScheduleDate(e.target.value)} min={new Date().toISOString().split('T')[0]} className="w-full p-2 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white" /></div>
+                    <input type="date" value={scheduleDate} onChange={e => setScheduleDate(e.target.value)} min={new Date().toISOString().split('T')[0]} className="w-full p-2 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white" />
+                  </div>
                   <div>
                     <label className="block text-sm text-blue-800 mb-1">
                       Time
                     </label>
-                    <input type="time" value={scheduleTime} onChange={e =>setScheduleTime(e.target.value)} className="w-full p-2 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white" /></div>
+                    <input type="time" value={scheduleTime} onChange={e => setScheduleTime(e.target.value)} className="w-full p-2 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white" />
+                  </div>
                 </div>
                 <div className="text-xs text-blue-700 flex items-center">
                   <Info className="h-4 w-4 mr-1" />
@@ -529,13 +544,14 @@ export const ReviewAndLaunch: React.FC<ReviewAndLaunchProps> = ({
       </section>
       {/* Launch Campaign Button */}
       <div className="flex justify-center">
-        <button className="bg-blue-600 text-white px-8 py-4 rounded-lg font-medium text-lg hover:bg-blue-700 flex items-center">{launchOption === 'now' ?<>
+        <button className="bg-blue-600 text-white px-8 py-4 rounded-lg font-medium text-lg hover:bg-blue-700 flex items-center">
+          {launchOption === 'now' ? <>
               <Zap className="mr-2 h-5 w-5" />
               Launch Campaign Now
-            </>: launchOption === 'schedule' ?<>
+            </> : launchOption === 'schedule' ? <>
               <Calendar className="mr-2 h-5 w-5" />
               Schedule Campaign
-            </>: launchOption === 'template' ?<>
+            </> : launchOption === 'template' ? <>
               <Save className="mr-2 h-5 w-5" />
               Save Campaign Template
             </> : <>

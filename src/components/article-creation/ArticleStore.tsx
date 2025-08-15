@@ -1,4 +1,3 @@
-// Converted from Magic Patterns
 import React from 'react';
 import { create } from 'zustand';
 export interface ChatMessage {

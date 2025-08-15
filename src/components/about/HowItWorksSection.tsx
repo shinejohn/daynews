@@ -1,6 +1,5 @@
-// Converted from Magic Patterns
 import React from 'react';
-import { AlertCircle, CheckCircle, Database, Edit, FileText, Search, Sparkles, User, Users } from 'lucide-react';
+import { Sparkles, Users, FileText, CheckCircle, AlertCircle, Edit, Search, Database } from 'lucide-react';
 export const HowItWorksSection = () => {
   const steps = [{
     icon: <Search className="h-8 w-8 text-white" />,
@@ -9,31 +8,31 @@ export const HowItWorksSection = () => {
     aiRole: 'Data collection and pattern recognition',
     humanRole: 'Setting priorities and identifying community needs'
   }, {
-    icon:<Database className="h-8 w-8 text-white" />,
+    icon: <Database className="h-8 w-8 text-white" />,
     title: 'Research & Analysis',
     description: 'Information is verified, contextualized, and enriched with historical data and relevant background.',
     aiRole: 'Processing large datasets and finding connections',
     humanRole: 'Conducting interviews and providing local expertise'
   }, {
-    icon:<Edit className="h-8 w-8 text-white" />,
+    icon: <Edit className="h-8 w-8 text-white" />,
     title: 'Content Creation',
     description: 'Stories are drafted with a focus on accuracy, relevance, and engaging presentation.',
     aiRole: 'Generating initial drafts and structuring information',
     humanRole: 'Adding human perspective and editorial judgment'
   }, {
-    icon:<CheckCircle className="h-8 w-8 text-white" />,
+    icon: <CheckCircle className="h-8 w-8 text-white" />,
     title: 'Editorial Review',
     description: 'All content undergoes a thorough review process before publication to ensure quality and accuracy.',
     aiRole: 'Fact-checking and consistency verification',
     humanRole: 'Final editorial decisions and ethical considerations'
   }, {
-    icon:<Users className="h-8 w-8 text-white" />,
+    icon: <Users className="h-8 w-8 text-white" />,
     title: 'Community Engagement',
     description: 'After publication, we actively engage with community feedback and update stories as needed.',
     aiRole: 'Analyzing reader response and identifying questions',
     humanRole: 'Responding to comments and building relationships'
   }];
-  return<section className="py-20 bg-gray-50">
+  return <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-display font-bold text-gray-900 mb-4">

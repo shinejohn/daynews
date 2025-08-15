@@ -1,5 +1,3 @@
-'use client';
-// Converted from Magic Patterns
 import React from 'react';
 import { Star, Plus, Check } from 'lucide-react';
 import { Community } from './TargetCommunities';
@@ -8,7 +6,7 @@ interface CommunityCardProps {
   isSelected: boolean;
   onToggle: () => void;
 }
-export const CommunityCard: React.FC<CommunityCardProps>= ({
+export const CommunityCard: React.FC<CommunityCardProps> = ({
   community,
   isSelected,
   onToggle
@@ -22,7 +20,7 @@ export const CommunityCard: React.FC<CommunityCardProps>= ({
     return num.toString();
   };
   const renderStars = (rating: number) => {
-    return Array(5).fill(0).map((_, i) =><Star key={i} className={`h-3.5 w-3.5 ${i < rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'}`} />);
+    return Array(5).fill(0).map((_, i) => <Star key={i} className={`h-3.5 w-3.5 ${i < rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'}`} />);
   };
   return <div className={`bg-white rounded-lg border ${isSelected ? 'border-blue-500 ring-1 ring-blue-500' : 'border-gray-200'} p-4 hover:shadow-md transition-shadow`}>
       <div className="flex justify-between items-start mb-3">

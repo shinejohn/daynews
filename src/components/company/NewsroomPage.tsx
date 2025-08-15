@@ -1,7 +1,6 @@
-// Converted from Magic Patterns
 import React from 'react';
-import Link from 'next/link';
-import { Award, Calendar, ChevronRight, Clock, ExternalLink, FileText, Mail, MapPin, Phone } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Users, Award, FileText, Calendar, Mail, Phone, ExternalLink, ChevronRight, MapPin, Clock } from 'lucide-react';
 export const NewsroomPage = () => {
   return <div className="min-h-screen bg-gray-50">
       <main className="container mx-auto px-4 py-8">
@@ -262,7 +261,7 @@ export const NewsroomPage = () => {
             </div>
           </div>
           <div className="mt-8 text-center">
-            <Link href="/authors" className="inline-flex items-center text-news-primary font-medium hover:text-news-primary-dark">
+            <Link to="/authors" className="inline-flex items-center text-news-primary font-medium hover:text-news-primary-dark">
               View All Team Members
               <ChevronRight className="h-4 w-4 ml-1" />
             </Link>
@@ -288,8 +287,10 @@ export const NewsroomPage = () => {
                     <p className="font-medium text-gray-900">
                       Florida Press Association Awards
                     </p>
-                    <p className="text-gray-600 text-sm">First Place, Investigative Reporting: "The Hidden Cost of
-                      Development"</p>
+                    <p className="text-gray-600 text-sm">
+                      First Place, Investigative Reporting: "The Hidden Cost of
+                      Development"
+                    </p>
                   </div>
                 </li>
                 <li className="flex items-start">
@@ -300,8 +301,10 @@ export const NewsroomPage = () => {
                     <p className="font-medium text-gray-900">
                       Society of Professional Journalists
                     </p>
-                    <p className="text-gray-600 text-sm">Excellence in Local Journalism Award for our "Clearwater
-                      Schools in Crisis" series</p>
+                    <p className="text-gray-600 text-sm">
+                      Excellence in Local Journalism Award for our "Clearwater
+                      Schools in Crisis" series
+                    </p>
                   </div>
                 </li>
                 <li className="flex items-start">
@@ -312,8 +315,10 @@ export const NewsroomPage = () => {
                     <p className="font-medium text-gray-900">
                       Online News Association
                     </p>
-                    <p className="text-gray-600 text-sm">Best Community Engagement for our "Voices of Clearwater"
-                      project</p>
+                    <p className="text-gray-600 text-sm">
+                      Best Community Engagement for our "Voices of Clearwater"
+                      project
+                    </p>
                   </div>
                 </li>
               </ul>
@@ -329,8 +334,10 @@ export const NewsroomPage = () => {
                     <p className="font-medium text-gray-900">
                       National Headliner Awards
                     </p>
-                    <p className="text-gray-600 text-sm">Second Place, Local News Coverage: "Aftermath of Hurricane
-                      Ian"</p>
+                    <p className="text-gray-600 text-sm">
+                      Second Place, Local News Coverage: "Aftermath of Hurricane
+                      Ian"
+                    </p>
                   </div>
                 </li>
                 <li className="flex items-start">
@@ -341,8 +348,10 @@ export const NewsroomPage = () => {
                     <p className="font-medium text-gray-900">
                       Edward R. Murrow Awards
                     </p>
-                    <p className="text-gray-600 text-sm">Regional Award for Excellence in Video Journalism:
-                      "Clearwater's Changing Coastline"</p>
+                    <p className="text-gray-600 text-sm">
+                      Regional Award for Excellence in Video Journalism:
+                      "Clearwater's Changing Coastline"
+                    </p>
                   </div>
                 </li>
                 <li className="flex items-start">
@@ -369,9 +378,11 @@ export const NewsroomPage = () => {
             Editorial Calendar
           </h2>
           <div className="bg-white rounded-lg shadow-sm p-6">
-            <p className="text-gray-700 mb-6">Our newsroom plans special coverage throughout the year to
+            <p className="text-gray-700 mb-6">
+              Our newsroom plans special coverage throughout the year to
               highlight important topics and events in our community. Here's a
-              look at some of our upcoming editorial focuses:</p>
+              look at some of our upcoming editorial focuses:
+            </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="border border-gray-200 rounded-lg p-4">
                 <div className="flex items-center mb-3">
@@ -429,8 +440,10 @@ export const NewsroomPage = () => {
                   <h3 className="font-bold text-gray-900">December 2024</h3>
                 </div>
                 <p className="text-gray-700 font-medium mb-2">Year in Review</p>
-                <p className="text-gray-600 text-sm">Recapping the biggest local stories of 2024 and looking ahead
-                  to what's coming in 2025.</p>
+                <p className="text-gray-600 text-sm">
+                  Recapping the biggest local stories of 2024 and looking ahead
+                  to what's coming in 2025.
+                </p>
               </div>
               <div className="border border-gray-200 rounded-lg p-4">
                 <div className="flex items-center mb-3">
@@ -452,7 +465,7 @@ export const NewsroomPage = () => {
         <div className="mb-12">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-2xl font-bold text-gray-900">Press Releases</h2>
-            <Link href="#" className="text-news-primary font-medium hover:text-news-primary-dark flex items-center">
+            <Link to="#" className="text-news-primary font-medium hover:text-news-primary-dark flex items-center">
               View All
               <ChevronRight className="h-4 w-4 ml-1" />
             </Link>
@@ -475,7 +488,7 @@ export const NewsroomPage = () => {
                     underrepresented neighborhoods and issues in the Clearwater
                     area.
                   </p>
-                  <Link href="#" className="text-news-primary text-sm font-medium hover:text-news-primary-dark flex items-center mt-2">
+                  <Link to="#" className="text-news-primary text-sm font-medium hover:text-news-primary-dark flex items-center mt-2">
                     Read Full Release
                     <ExternalLink className="h-3.5 w-3.5 ml-1" />
                   </Link>
@@ -500,7 +513,7 @@ export const NewsroomPage = () => {
                     including first place for investigative reporting on local
                     development issues.
                   </p>
-                  <Link href="#" className="text-news-primary text-sm font-medium hover:text-news-primary-dark flex items-center mt-2">
+                  <Link to="#" className="text-news-primary text-sm font-medium hover:text-news-primary-dark flex items-center mt-2">
                     Read Full Release
                     <ExternalLink className="h-3.5 w-3.5 ml-1" />
                   </Link>
@@ -525,7 +538,7 @@ export const NewsroomPage = () => {
                     and mentorship opportunities for high school students
                     interested in media careers.
                   </p>
-                  <Link href="#" className="text-news-primary text-sm font-medium hover:text-news-primary-dark flex items-center mt-2">
+                  <Link to="#" className="text-news-primary text-sm font-medium hover:text-news-primary-dark flex items-center mt-2">
                     Read Full Release
                     <ExternalLink className="h-3.5 w-3.5 ml-1" />
                   </Link>
@@ -593,10 +606,12 @@ export const NewsroomPage = () => {
         {/* Join Our Team */}
         <div className="bg-news-primary rounded-lg shadow-lg p-8 text-center text-white">
           <h2 className="text-2xl font-bold mb-4">Join Our Team</h2>
-          <p className="text-white text-opacity-90 mb-6 max-w-2xl mx-auto">We're always looking for talented journalists, photographers, and
+          <p className="text-white text-opacity-90 mb-6 max-w-2xl mx-auto">
+            We're always looking for talented journalists, photographers, and
             digital media specialists who are passionate about local news and
-            serving our community.</p>
-          <Link href="/careers" className="inline-block bg-white text-news-primary px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition-colors">
+            serving our community.
+          </p>
+          <Link to="/careers" className="inline-block bg-white text-news-primary px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition-colors">
             View Current Openings
           </Link>
         </div>

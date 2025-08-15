@@ -1,33 +1,35 @@
-'use client';
-// Converted from Magic Patterns
 import React from 'react';
 import { useLocationDetection } from '../location/LocationDetector';
-export const TermsOfServicePage = () =>{
+export const TermsOfServicePage = () => {
   const {
     locationData
   } = useLocationDetection();
   const city = locationData?.city || 'Clearwater';
-  return<div className="min-h-screen bg-bg-primary w-full">
+  return <div className="min-h-screen bg-bg-primary w-full">
       <main className="container mx-auto px-4 py-12">
         <h1 className="font-display text-4xl font-bold text-news-primary mb-8">
           Terms of Service
         </h1>
         <div className="max-w-4xl bg-white rounded-lg shadow-sm p-6 md:p-8 mb-8">
-          <p className="text-gray-600 mb-6">Last Updated:{' '}
+          <p className="text-gray-600 mb-6">
+            Last Updated:{' '}
             {new Date().toLocaleDateString('en-US', {
             month: 'long',
             day: 'numeric',
             year: 'numeric'
-          })}</p>
+          })}
+          </p>
           <section className="mb-8">
             <h2 className="font-display text-2xl font-bold text-gray-900 mb-4">
               Agreement to Terms
             </h2>
-            <p className="text-gray-700 mb-4">These Terms of Service ("Terms") constitute a legally binding
+            <p className="text-gray-700 mb-4">
+              These Terms of Service ("Terms") constitute a legally binding
               agreement between you and {city} Day News ("we," "our," or "us")
               governing your access to and use of our website, mobile
               application, and other online services (collectively, the
-              "Services").</p>
+              "Services").
+            </p>
             <p className="text-gray-700 mb-4">
               By accessing or using our Services, you agree to be bound by these
               Terms. If you do not agree to these Terms, you may not access or
@@ -141,11 +143,13 @@ export const TermsOfServicePage = () =>{
             <h3 className="font-display text-xl font-bold text-gray-800 mb-3">
               User Content
             </h3>
-            <p className="text-gray-700 mb-4">Our Services may allow you to post, submit, publish, display, or
+            <p className="text-gray-700 mb-4">
+              Our Services may allow you to post, submit, publish, display, or
               transmit content, including but not limited to comments, reviews,
               and other materials (collectively, "User Content"). You retain all
               rights in, and are solely responsible for, the User Content you
-              post to our Services.</p>
+              post to our Services.
+            </p>
             <p className="text-gray-700 mb-4">
               By posting User Content, you grant us a non-exclusive, perpetual,
               irrevocable, royalty-free, worldwide, transferable, sublicensable
@@ -167,16 +171,20 @@ export const TermsOfServicePage = () =>{
                 In any way that violates any applicable federal, state, local,
                 or international law or regulation.
               </li>
-              <li>To transmit, or procure the sending of, any advertising or
+              <li>
+                To transmit, or procure the sending of, any advertising or
                 promotional material, including any "junk mail," "chain letter,"
-                "spam," or any other similar solicitation.</li>
+                "spam," or any other similar solicitation.
+              </li>
               <li>
                 To impersonate or attempt to impersonate us, our employees,
                 another user, or any other person or entity.
               </li>
-              <li>To engage in any other conduct that restricts or inhibits
+              <li>
+                To engage in any other conduct that restricts or inhibits
                 anyone's use or enjoyment of the Services, or which may harm us
-                or users of the Services or expose them to liability.</li>
+                or users of the Services or expose them to liability.
+              </li>
             </ul>
           </section>
           <section className="mb-8">
@@ -194,10 +202,12 @@ export const TermsOfServicePage = () =>{
             <h2 className="font-display text-2xl font-bold text-gray-900 mb-4">
               Disclaimer of Warranties
             </h2>
-            <p className="text-gray-700 mb-4">YOUR USE OF OUR SERVICES IS AT YOUR SOLE RISK. OUR SERVICES AND
+            <p className="text-gray-700 mb-4">
+              YOUR USE OF OUR SERVICES IS AT YOUR SOLE RISK. OUR SERVICES AND
               ALL CONTENT INCLUDED ON OR OTHERWISE MADE AVAILABLE TO YOU THROUGH
               OUR SERVICES ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS,
-              WITHOUT ANY WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED.</p>
+              WITHOUT ANY WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+            </p>
             <p className="text-gray-700 mb-4">
               TO THE FULLEST EXTENT PROVIDED BY LAW, WE HEREBY DISCLAIM ALL
               WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, STATUTORY, OR
@@ -225,14 +235,16 @@ export const TermsOfServicePage = () =>{
             <h2 className="font-display text-2xl font-bold text-gray-900 mb-4">
               Indemnification
             </h2>
-            <p className="text-gray-700 mb-4">You agree to defend, indemnify, and hold harmless us, our
+            <p className="text-gray-700 mb-4">
+              You agree to defend, indemnify, and hold harmless us, our
               affiliates, licensors, and service providers, and our and their
               respective officers, directors, employees, contractors, agents,
               licensors, suppliers, successors, and assigns from and against any
               claims, liabilities, damages, judgments, awards, losses, costs,
               expenses, or fees (including reasonable attorneys' fees) arising
               out of or relating to your violation of these Terms or your use of
-              the Services.</p>
+              the Services.
+            </p>
           </section>
           <section className="mb-8">
             <h2 className="font-display text-2xl font-bold text-gray-900 mb-4">

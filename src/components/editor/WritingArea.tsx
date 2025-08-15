@@ -1,11 +1,9 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useEffect, useRef, forwardRef, useImperativeHandle } from 'react';
 export const WritingArea = forwardRef(({
   content,
   onChange,
   isPreview
-}, ref) =>{
+}, ref) => {
   const editorRef = useRef(null);
   useImperativeHandle(ref, () => ({
     focus: () => {
@@ -62,7 +60,7 @@ export const WritingArea = forwardRef(({
       }
     }
   };
-  return<div className="relative min-h-[calc(100vh-200px)]">
+  return <div className="relative min-h-[calc(100vh-200px)]">
         {isPreview ? <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{
       __html: content
     }} /> : <div ref={editorRef} className="outline-none prose prose-lg max-w-none focus:ring-0" contentEditable={true} onInput={handleInput} onPaste={handlePaste} onKeyDown={handleKeyDown} suppressContentEditableWarning={true} spellCheck={true} data-placeholder="Start writing your article here..." style={{

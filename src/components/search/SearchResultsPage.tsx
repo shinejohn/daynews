@@ -1,14 +1,11 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabase/client';
-import { ArrowDown, ArrowUp, Clock, Filter, Search, Tag, X } from 'lucide-react';
+import { Search, X, Clock, Filter, ArrowUp, ArrowDown, Calendar, User, Tag, MapPin } from 'lucide-react';
 import { PageHeader } from '../PageHeader';
 import { SearchFilters } from './SearchFilters';
 import { SearchResultCard } from './SearchResultCard';
 import { SearchSuggestions } from './SearchSuggestions';
 import { useLocationDetection } from '../location/LocationDetector';
-export const SearchResultsPage = () =>{
+export const SearchResultsPage = () => {
   const {
     locationData
   } = useLocationDetection();
@@ -31,9 +28,9 @@ export const SearchResultsPage = () =>{
     setLoading(true);
     // Simulate API delay
     const timer = setTimeout(() => {
-      const [] = generateMockResults(query, activeFilter, timeFilter, sortBy, page);
-      setResults(prev => page > 1 ? [...prev, ...[].results] : [].results);
-      setTotalResults([].total);
+      const mockResults = generateMockResults(query, activeFilter, timeFilter, sortBy, page);
+      setResults(prev => page > 1 ? [...prev, ...mockResults.results] : mockResults.results);
+      setTotalResults(mockResults.total);
       // Simulate spell check
       if (query === 'farmes market') {
         setSpellCheck('farmers market');
@@ -93,7 +90,7 @@ export const SearchResultsPage = () =>{
       setPage(1);
     }
   };
-  return<div className="flex-1 overflow-auto bg-gray-50">
+  return <div className="flex-1 overflow-auto bg-gray-50">
       <PageHeader />
       <div className="mx-auto max-w-7xl px-4 py-6">
         {/* Persistent Search Bar */}
@@ -154,11 +151,13 @@ export const SearchResultsPage = () =>{
               <h2 className="text-xl font-bold text-gray-900 mb-2 sm:mb-0">
                 {loading && page === 1 ? <div className="h-7 w-48 bg-gray-200 animate-pulse rounded"></div> : <>
                     <span className="text-news-primary">{totalResults}</span>{' '}
-                    results for "{query}"</>}
+                    results for "{query}"
+                  </>}
               </h2>
               <div className="flex items-center space-x-2">
                 <span className="text-sm text-gray-500">Sort:</span>
-                <select value={sortBy} onChange={e =>handleSortChange(e.target.value)} className="text-sm border border-gray-300 rounded-md px-2 py-1"><option value="relevance">Relevance</option>
+                <select value={sortBy} onChange={e => handleSortChange(e.target.value)} className="text-sm border border-gray-300 rounded-md px-2 py-1">
+                  <option value="relevance">Relevance</option>
                   <option value="recent">Most Recent</option>
                   <option value="popular">Most Popular</option>
                 </select>
@@ -182,8 +181,10 @@ export const SearchResultsPage = () =>{
                   <h3 className="text-xl font-bold text-gray-700 mb-2">
                     No results found
                   </h3>
-                  <p className="text-gray-500 max-w-md mx-auto">We couldn't find any matches for "{query}". Try different
-                    keywords or filters.</p>
+                  <p className="text-gray-500 max-w-md mx-auto">
+                    We couldn't find any matches for "{query}". Try different
+                    keywords or filters.
+                  </p>
                 </div>}
             </div>
             {/* Load More */}
@@ -202,29 +203,55 @@ export const SearchResultsPage = () =>{
 // Helper function to generate mock search results
 const generateMockResults = (query, filter, timeFilter, sortBy, page) => {
   const itemsPerPage = 10;
-  const [newsResults, setNewsResults] = useState([]);
-  const [loading, setLoading] = useState(true);
-  
-  useEffect(() => {
-    const fetchNewsResults = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('events')
-          .select('*')
-          .order('created_at', { ascending: false });
-        
-        if (error) throw error;
-        setNewsResults(data || []);
-      } catch (error) {
-        console.error('Error fetching events:', error);
-        setNewsResults([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-    
-    fetchNewsResults();
-  }, []);
+  const newsResults = [{
+    id: 'news-1',
+    type: 'news',
+    title: 'Local Farmers Market Expands to New Location',
+    snippet: 'The popular weekend farmers market is moving to a larger venue to accommodate more vendors and visitors.',
+    source: 'Clearwater Daily News',
+    date: '2 hours ago',
+    image: 'https://images.unsplash.com/photo-1488459716781-31db52582fe9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    engagement: {
+      views: 1245,
+      comments: 32,
+      shares: 18
+    },
+    url: '#',
+    author: 'Sarah Johnson',
+    tags: ['farmers market', 'local business', 'community']
+  }, {
+    id: 'news-2',
+    type: 'news',
+    title: 'City Council Approves Funding for Downtown Farmers Market Pavilion',
+    snippet: 'The new structure will provide shelter for year-round farmers market operations and other community events.',
+    source: 'Clearwater Daily News',
+    date: '1 day ago',
+    image: 'https://images.unsplash.com/photo-1595228702670-3bef2b60a82f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    engagement: {
+      views: 982,
+      comments: 47,
+      shares: 23
+    },
+    url: '#',
+    author: 'Michael Reynolds',
+    tags: ['city council', 'farmers market', 'downtown']
+  }, {
+    id: 'news-3',
+    type: 'news',
+    title: 'Local Farmers Report Record Sales at Weekend Market',
+    snippet: 'Vendors at the Clearwater Farmers Market reported their highest sales day of the year as residents shopped for fresh produce.',
+    source: 'Clearwater Business Journal',
+    date: '3 days ago',
+    image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    engagement: {
+      views: 764,
+      comments: 12,
+      shares: 8
+    },
+    url: '#',
+    author: 'Jessica Parker',
+    tags: ['farmers market', 'local economy', 'agriculture']
+  }];
   const eventResults = [{
     id: 'event-1',
     type: 'event',

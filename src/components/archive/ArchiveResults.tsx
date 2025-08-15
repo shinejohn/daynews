@@ -1,7 +1,5 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useState } from 'react';
-import { AlertCircle, BookmarkPlus, Calendar, Clock, Download, Eye, Info, Printer, Share2, Tag } from 'lucide-react';
+import { Calendar, Clock, Tag, Eye, Printer, Download, Share2, BookmarkPlus, Info, AlertCircle } from 'lucide-react';
 export const ArchiveResults = ({
   results,
   isLoading,
@@ -10,7 +8,7 @@ export const ArchiveResults = ({
   showHistoricalContext,
   activeCollection,
   searchParams
-}) =>{
+}) => {
   const [viewMode, setViewMode] = useState('list'); // 'list', 'newspaper', 'original'
   // Format the selected date for display
   const formattedDate = selectedDate.toLocaleDateString('en-US', {
@@ -69,7 +67,7 @@ export const ArchiveResults = ({
   };
   // Render loading state
   if (isLoading) {
-    return<div className={`rounded-lg shadow-md p-6 ${sepiaMode ? 'bg-amber-100 border border-amber-200' : 'bg-white border border-gray-200'}`}>
+    return <div className={`rounded-lg shadow-md p-6 ${sepiaMode ? 'bg-amber-100 border border-amber-200' : 'bg-white border border-gray-200'}`}>
         <div className="flex justify-center items-center h-64">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-news-primary"></div>
         </div>
@@ -83,23 +81,27 @@ export const ArchiveResults = ({
           <h3 className="text-xl font-bold text-gray-700 mb-2">
             No Archives Found
           </h3>
-          <p className="text-gray-500 max-w-md mx-auto">We couldn't find any archived content for the selected date or
+          <p className="text-gray-500 max-w-md mx-auto">
+            We couldn't find any archived content for the selected date or
             search criteria. Try selecting a different date or adjusting your
-            search.</p>
+            search.
+          </p>
         </div>
       </div>;
   }
   // Render newspaper view
   if (viewMode === 'newspaper') {
-    return<div className={sepiaMode ? 'bg-amber-50 border border-amber-200 shadow-md' : 'bg-white border border-gray-200 shadow-md'}>
+    return <div className={sepiaMode ? 'bg-amber-50 border border-amber-200 shadow-md' : 'bg-white border border-gray-200 shadow-md'}>
         {/* Newspaper header */}
         <div className={`p-6 border-b ${sepiaMode ? 'border-amber-200' : 'border-gray-200'}`}>
           <div className="text-center">
             <h1 className="font-display text-4xl font-black uppercase tracking-tight mb-2">
               THE CLEARWATER DAILY NEWS
             </h1>
-            <div className="text-sm text-gray-600 mb-4">{formattedDate} • Vol. {Math.floor(Math.random() * 100)} • No.{' '}
-              {Math.floor(Math.random() * 1000)}</div>
+            <div className="text-sm text-gray-600 mb-4">
+              {formattedDate} • Vol. {Math.floor(Math.random() * 100)} • No.{' '}
+              {Math.floor(Math.random() * 1000)}
+            </div>
             <div className="flex justify-between items-center text-xs text-gray-500 border-t border-b py-2 px-4 mx-auto max-w-2xl">
               <span>MORNING EDITION</span>
               <span>PRICE: 5 CENTS</span>
@@ -139,7 +141,8 @@ export const ArchiveResults = ({
           </div>
           {/* Secondary stories */}
           <div className="col-span-2">
-            {results.slice(1, 4).map((result, index) => <div key={result.id} className={`mb-6 ${index >0 ? 'pt-4 border-t' : ''}`}><h3 className="font-display text-xl font-bold mb-2">
+            {results.slice(1, 4).map((result, index) => <div key={result.id} className={`mb-6 ${index > 0 ? 'pt-4 border-t' : ''}`}>
+                <h3 className="font-display text-xl font-bold mb-2">
                   {result.title}
                 </h3>
                 <div className="text-xs text-gray-600 mb-2">
@@ -179,10 +182,12 @@ export const ArchiveResults = ({
         <p className="text-gray-600 mb-4">{getResultsDescription()}</p>
         {/* View mode toggle */}
         <div className="flex space-x-2">
-          <button onClick={() =>setViewMode('list')} className={`px-3 py-1.5 text-sm rounded-md ${viewMode === 'list' ? sepiaMode ? 'bg-amber-200 text-amber-800' : 'bg-blue-100 text-blue-700' : sepiaMode ? 'bg-amber-50 text-gray-700' : 'bg-gray-100 text-gray-700'}`}>
-            List View</button>
-          <button onClick={() =>setViewMode('newspaper')} className={`px-3 py-1.5 text-sm rounded-md ${viewMode === 'newspaper' ? sepiaMode ? 'bg-amber-200 text-amber-800' : 'bg-blue-100 text-blue-700' : sepiaMode ? 'bg-amber-50 text-gray-700' : 'bg-gray-100 text-gray-700'}`}>
-            Newspaper View</button>
+          <button onClick={() => setViewMode('list')} className={`px-3 py-1.5 text-sm rounded-md ${viewMode === 'list' ? sepiaMode ? 'bg-amber-200 text-amber-800' : 'bg-blue-100 text-blue-700' : sepiaMode ? 'bg-amber-50 text-gray-700' : 'bg-gray-100 text-gray-700'}`}>
+            List View
+          </button>
+          <button onClick={() => setViewMode('newspaper')} className={`px-3 py-1.5 text-sm rounded-md ${viewMode === 'newspaper' ? sepiaMode ? 'bg-amber-200 text-amber-800' : 'bg-blue-100 text-blue-700' : sepiaMode ? 'bg-amber-50 text-gray-700' : 'bg-gray-100 text-gray-700'}`}>
+            Newspaper View
+          </button>
         </div>
       </div>
       {/* Results list */}
@@ -202,7 +207,7 @@ const ArchiveResultCard = ({
     month: 'long',
     day: 'numeric'
   });
-  return<div className={`rounded-lg shadow-md overflow-hidden ${sepiaMode ? 'bg-amber-50 border border-amber-200' : 'bg-white border border-gray-200'}`}>
+  return <div className={`rounded-lg shadow-md overflow-hidden ${sepiaMode ? 'bg-amber-50 border border-amber-200' : 'bg-white border border-gray-200'}`}>
       <div className="flex flex-col md:flex-row">
         {/* Image */}
         {result.image && <div className="md:w-1/3 h-48 md:h-auto">

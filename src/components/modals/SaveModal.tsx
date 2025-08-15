@@ -1,11 +1,9 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useState } from 'react';
 import { X, Folder, Plus, Check } from 'lucide-react';
 export const SaveModal = ({
   onClose,
   article
-}) =>{
+}) => {
   const [selectedCollection, setSelectedCollection] = useState('default');
   const [showNewCollection, setShowNewCollection] = useState(false);
   const [newCollectionName, setNewCollectionName] = useState('');
@@ -36,7 +34,7 @@ export const SaveModal = ({
       setNewCollectionName('');
     }
   };
-  return<div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+  return <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-lg shadow-xl w-full max-w-md">
         <div className="flex justify-between items-center p-4 border-b">
           <h2 className="text-lg font-semibold">Save Article</h2>
@@ -89,7 +87,8 @@ export const SaveModal = ({
                     New Collection Name
                   </label>
                   <div className="flex">
-                    <input type="text" value={newCollectionName} onChange={e =>setNewCollectionName(e.target.value)} className="flex-1 border border-gray-300 rounded-l-md px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500" placeholder="Enter collection name" /><button className="bg-blue-600 text-white px-3 py-2 rounded-r-md text-sm" onClick={handleCreateCollection}>
+                    <input type="text" value={newCollectionName} onChange={e => setNewCollectionName(e.target.value)} className="flex-1 border border-gray-300 rounded-l-md px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500" placeholder="Enter collection name" />
+                    <button className="bg-blue-600 text-white px-3 py-2 rounded-r-md text-sm" onClick={handleCreateCollection}>
                       Create
                     </button>
                   </div>

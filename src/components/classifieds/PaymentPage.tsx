@@ -1,19 +1,24 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useEffect, useState } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
-import { AlertCircle, ArrowLeft, ArrowRight, Check, CreditCard, DollarSign, Lock, Locks } from 'lucide-react';
-export const PaymentPage = () =>{
-  const router = useRouter();
-  const pathname = usePathname();
-  // TODO: Convert location.state to searchParams or context
-  const formData = null;
-  const selectedCommunities = [];
-  const duration = 1;
-  const startDate = new Date();
-  const endDate = new Date();
-  const totalPrice = 0;
-  const isRerun = false;
+import { useNavigate, useLocation } from 'react-router-dom';
+import { ArrowLeft, ArrowRight, CreditCard, Check, Lock, AlertCircle, Calendar, DollarSign, Users } from 'lucide-react';
+export const PaymentPage = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const {
+    formData,
+    selectedCommunities,
+    duration,
+    startDate,
+    endDate,
+    totalPrice,
+    isRerun
+  } = location.state || {
+    formData: null,
+    selectedCommunities: [],
+    duration: 1,
+    totalPrice: 0,
+    isRerun: false
+  };
   const [paymentMethod, setPaymentMethod] = useState('creditCard');
   const [cardInfo, setCardInfo] = useState({
     cardNumber: '',
@@ -27,12 +32,12 @@ export const PaymentPage = () =>{
   useEffect(() => {
     // If no data was passed, redirect back
     if (!formData || !selectedCommunities || selectedCommunities.length === 0) {
-      router.push('/postListing');
+      navigate('/postListing');
       return;
     }
-  }, [formData, selectedCommunities, router]);
+  }, [formData, selectedCommunities, navigate]);
   const handleBack = () => {
-    router.back();
+    navigate(-1);
   };
   const handleInputChange = e => {
     const {
@@ -74,7 +79,7 @@ export const PaymentPage = () =>{
   const validateForm = () => {
     const newErrors = {};
     if (paymentMethod === 'creditCard') {
-      if (!cardInfo.cardNumber || cardInfo.cardNumber.replace(/\s/g, '').length< 16) {
+      if (!cardInfo.cardNumber || cardInfo.cardNumber.replace(/\s/g, '').length < 16) {
         newErrors.cardNumber = 'Please enter a valid card number';
       }
       if (!cardInfo.cardName) {
@@ -93,7 +98,7 @@ export const PaymentPage = () =>{
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-  const handleSubmit = async () =>{
+  const handleSubmit = async () => {
     if (!validateForm()) {
       return;
     }
@@ -102,7 +107,7 @@ export const PaymentPage = () =>{
     setTimeout(() => {
       setProcessing(false);
       // Navigate to confirmation page
-      router.push('/classifieds/confirmation', {
+      navigate('/classifieds/confirmation', {
         state: {
           formData,
           selectedCommunities,
@@ -132,7 +137,7 @@ export const PaymentPage = () =>{
       maximumFractionDigits: 2
     });
   };
-  return<div className="flex-1 overflow-auto bg-gray-50">
+  return <div className="flex-1 overflow-auto bg-gray-50">
       <div className="max-w-3xl mx-auto py-8 px-4">
         <button onClick={handleBack} className="flex items-center text-news-primary mb-6 hover:underline" aria-label="Back to timeframe selection">
           <ArrowLeft className="h-4 w-4 mr-1" />
@@ -153,7 +158,8 @@ export const PaymentPage = () =>{
                 </h3>
                 <div className="space-y-2">
                   <label className="flex items-center p-3 border rounded-md cursor-pointer bg-blue-50 border-news-primary">
-                    <input type="radio" name="paymentMethod" value="creditCard" checked={paymentMethod === 'creditCard'} onChange={() =>setPaymentMethod('creditCard')} className="h-4 w-4 text-news-primary focus:ring-news-primary" aria-label="Pay with credit or debit card" /><span className="ml-2 flex-1">Credit or Debit Card</span>
+                    <input type="radio" name="paymentMethod" value="creditCard" checked={paymentMethod === 'creditCard'} onChange={() => setPaymentMethod('creditCard')} className="h-4 w-4 text-news-primary focus:ring-news-primary" aria-label="Pay with credit or debit card" />
+                    <span className="ml-2 flex-1">Credit or Debit Card</span>
                     <div className="flex space-x-1">
                       <div className="w-8 h-5 bg-gray-200 rounded"></div>
                       <div className="w-8 h-5 bg-gray-200 rounded"></div>
@@ -161,12 +167,14 @@ export const PaymentPage = () =>{
                     </div>
                   </label>
                   <label className="flex items-center p-3 border rounded-md cursor-pointer hover:bg-gray-50">
-                    <input type="radio" name="paymentMethod" value="paypal" checked={paymentMethod === 'paypal'} onChange={() =>setPaymentMethod('paypal')} className="h-4 w-4 text-news-primary focus:ring-news-primary" aria-label="Pay with PayPal" /><span className="ml-2 flex-1">PayPal</span>
+                    <input type="radio" name="paymentMethod" value="paypal" checked={paymentMethod === 'paypal'} onChange={() => setPaymentMethod('paypal')} className="h-4 w-4 text-news-primary focus:ring-news-primary" aria-label="Pay with PayPal" />
+                    <span className="ml-2 flex-1">PayPal</span>
                     <div className="w-8 h-5 bg-gray-200 rounded"></div>
                   </label>
                 </div>
-              </div>{/* Credit card form */}
-              {paymentMethod === 'creditCard' &&<div className="space-y-4">
+              </div>
+              {/* Credit card form */}
+              {paymentMethod === 'creditCard' && <div className="space-y-4">
                   <div>
                     <label htmlFor="cardNumber" className="block text-sm font-medium text-gray-700 mb-1">
                       Card Number
@@ -212,9 +220,11 @@ export const PaymentPage = () =>{
                   </div>
                 </div>}
               {/* PayPal */}
-              {paymentMethod === 'paypal' &&<div className="bg-gray-50 border border-gray-200 rounded-md p-4">
-                  <p className="text-gray-700 mb-3">You'll be redirected to PayPal to complete your payment
-                    after reviewing your order.</p>
+              {paymentMethod === 'paypal' && <div className="bg-gray-50 border border-gray-200 rounded-md p-4">
+                  <p className="text-gray-700 mb-3">
+                    You'll be redirected to PayPal to complete your payment
+                    after reviewing your order.
+                  </p>
                   <div className="flex items-center justify-center bg-white border border-gray-300 rounded-md p-3">
                     <span className="text-blue-600 font-bold text-xl">Pay</span>
                     <span className="text-blue-800 font-bold text-xl">Pal</span>
@@ -223,7 +233,7 @@ export const PaymentPage = () =>{
               {/* Terms and conditions */}
               <div>
                 <label className="flex items-start cursor-pointer">
-                  <input type="checkbox" checked={agreedToTerms} onChange={() =>{
+                  <input type="checkbox" checked={agreedToTerms} onChange={() => {
                   setAgreedToTerms(!agreedToTerms);
                   if (errors.terms) {
                     setErrors({
@@ -231,10 +241,14 @@ export const PaymentPage = () =>{
                       terms: null
                     });
                   }
-                }} className="h-5 w-5 mt-0.5 text-news-primary focus:ring-news-primary rounded" aria-invalid={errors.terms ? 'true' : 'false'} aria-describedby={errors.terms ? 'terms-error' : undefined} /><span className="ml-2 text-sm text-gray-600">I agree to the{' '}<button type="button" className="text-news-primary hover:underline">
+                }} className="h-5 w-5 mt-0.5 text-news-primary focus:ring-news-primary rounded" aria-invalid={errors.terms ? 'true' : 'false'} aria-describedby={errors.terms ? 'terms-error' : undefined} />
+                  <span className="ml-2 text-sm text-gray-600">
+                    I agree to the{' '}
+                    <button type="button" className="text-news-primary hover:underline">
                       Terms and Conditions
                     </button>{' '}
-                    and{' '}<button type="button" className="text-news-primary hover:underline">
+                    and{' '}
+                    <button type="button" className="text-news-primary hover:underline">
                       Privacy Policy
                     </button>
                   </span>
@@ -270,7 +284,9 @@ export const PaymentPage = () =>{
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-600">Duration:</span>
-                    <span className="text-gray-900 font-medium">{duration} month{duration > 1 ? 's' : ''}</span>
+                    <span className="text-gray-900 font-medium">
+                      {duration} month{duration > 1 ? 's' : ''}
+                    </span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-600">Run Period:</span>

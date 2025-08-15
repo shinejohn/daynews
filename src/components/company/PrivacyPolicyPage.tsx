@@ -1,33 +1,35 @@
-'use client';
-// Converted from Magic Patterns
 import React, { Children } from 'react';
 import { useLocationDetection } from '../location/LocationDetector';
-export const PrivacyPolicyPage = () =>{
+export const PrivacyPolicyPage = () => {
   const {
     locationData
   } = useLocationDetection();
   const city = locationData?.city || 'Clearwater';
-  return<div className="min-h-screen bg-bg-primary w-full">
+  return <div className="min-h-screen bg-bg-primary w-full">
       <main className="container mx-auto px-4 py-12">
         <h1 className="font-display text-4xl font-bold text-news-primary mb-8">
           Privacy Policy
         </h1>
         <div className="max-w-4xl bg-white rounded-lg shadow-sm p-6 md:p-8 mb-8">
-          <p className="text-gray-600 mb-6">Last Updated:{' '}
+          <p className="text-gray-600 mb-6">
+            Last Updated:{' '}
             {new Date().toLocaleDateString('en-US', {
             month: 'long',
             day: 'numeric',
             year: 'numeric'
-          })}</p>
+          })}
+          </p>
           <section className="mb-8">
             <h2 className="font-display text-2xl font-bold text-gray-900 mb-4">
               Introduction
             </h2>
-            <p className="text-gray-700 mb-4">{city} Day News ("we," "our," or "us") respects your privacy and
+            <p className="text-gray-700 mb-4">
+              {city} Day News ("we," "our," or "us") respects your privacy and
               is committed to protecting your personal information. This Privacy
               Policy explains how we collect, use, disclose, and safeguard your
               information when you visit our website, use our mobile
-              application, or interact with our services.</p>
+              application, or interact with our services.
+            </p>
             <p className="text-gray-700 mb-4">
               Please read this Privacy Policy carefully. By accessing or using
               our services, you acknowledge that you have read, understood, and
@@ -175,8 +177,10 @@ export const PrivacyPolicyPage = () =>{
               <li>The right to data portability</li>
               <li>The right to withdraw consent</li>
             </ul>
-            <p className="text-gray-700 mb-4">To exercise these rights, please contact us using the information
-              provided in the "Contact Us" section below.</p>
+            <p className="text-gray-700 mb-4">
+              To exercise these rights, please contact us using the information
+              provided in the "Contact Us" section below.
+            </p>
           </section>
           <section className="mb-8">
             <h2 className="font-display text-2xl font-bold text-gray-900 mb-4">
@@ -191,7 +195,9 @@ export const PrivacyPolicyPage = () =>{
             </p>
           </section>
           <section className="mb-8">
-            <h2 className="font-display text-2xl font-bold text-gray-900 mb-4">Children's Privacy</h2>
+            <h2 className="font-display text-2xl font-bold text-gray-900 mb-4">
+              Children's Privacy
+            </h2>
             <p className="text-gray-700 mb-4">
               Our services are not intended for individuals under the age of 13.
               We do not knowingly collect personal information from children
@@ -204,10 +210,12 @@ export const PrivacyPolicyPage = () =>{
             <h2 className="font-display text-2xl font-bold text-gray-900 mb-4">
               Changes to This Privacy Policy
             </h2>
-            <p className="text-gray-700 mb-4">We may update our Privacy Policy from time to time. We will notify
+            <p className="text-gray-700 mb-4">
+              We may update our Privacy Policy from time to time. We will notify
               you of any changes by posting the new Privacy Policy on this page
               and updating the "Last Updated" date. You are advised to review
-              this Privacy Policy periodically for any changes.</p>
+              this Privacy Policy periodically for any changes.
+            </p>
           </section>
           <section>
             <h2 className="font-display text-2xl font-bold text-gray-900 mb-4">

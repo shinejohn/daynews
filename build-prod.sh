@@ -12,7 +12,7 @@ npx vite build --outDir dist/client
 
 # Build server
 echo "📦 Building server..."
-npx vite build --ssr src/entry/entry-server.jsx --outDir dist/server
+npx vite build --ssr src/entry/entry-server.tsx --outDir dist/server
 
 # Copy server files
 echo "📋 Copying server files..."

@@ -1,10 +1,8 @@
-'use client';
-// Converted from Magic Patterns
 import React from 'react';
 import { ArrowUp, List, MessageSquare } from 'lucide-react';
 export const ArticleNavigation = ({
   commentCount
-}) =>{
+}) => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -16,7 +14,7 @@ export const ArticleNavigation = ({
       behavior: 'smooth'
     });
   };
-  return<div className="sticky top-32">
+  return <div className="sticky top-32">
       <div className="bg-white rounded-lg border border-gray-200 p-4 mb-6">
         <h3 className="font-medium text-gray-900 mb-3">In This Article</h3>
         <ul className="space-y-2 text-sm">

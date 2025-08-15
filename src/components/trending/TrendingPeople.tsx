@@ -1,15 +1,14 @@
-// Converted from Magic Patterns
 import React from 'react';
-import { BookOpen, Edit, MessageSquare, Star, User, Users } from 'lucide-react';
+import { Users, Edit, MessageSquare, Star, BookOpen } from 'lucide-react';
 export const TrendingPeople = ({
   people,
   timePeriod
-}) =>{
+}) => {
   // Group people by type
   const authors = people.filter(person => person.type === 'author');
   const commenters = people.filter(person => person.type === 'commenter');
   const newContributors = people.filter(person => person.type === 'new');
-  return<div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+  return <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
       <div className="p-4 border-b border-gray-200">
         <h3 className="font-bold text-gray-900 flex items-center">
           <Users className="h-5 w-5 mr-2 text-news-primary" />
@@ -62,22 +61,25 @@ const PersonCard = ({
         return {
           value: formatNumber(person.reads),
           label: 'reads',
-          icon:<BookOpen className="h-3 w-3 mr-1 text-gray-500" />};
+          icon: <BookOpen className="h-3 w-3 mr-1 text-gray-500" />
+        };
       case 'comments':
         return {
           value: formatNumber(person.comments),
           label: 'comments',
-          icon:<MessageSquare className="h-3 w-3 mr-1 text-gray-500" />};
+          icon: <MessageSquare className="h-3 w-3 mr-1 text-gray-500" />
+        };
       case 'articles':
         return {
           value: person.articles,
           label: 'articles',
-          icon:<Edit className="h-3 w-3 mr-1 text-gray-500" />};
+          icon: <Edit className="h-3 w-3 mr-1 text-gray-500" />
+        };
       default:
         return {
           value: formatNumber(person.reads),
           label: 'reads',
-          icon:<BookOpen className="h-3 w-3 mr-1 text-gray-500" />
+          icon: <BookOpen className="h-3 w-3 mr-1 text-gray-500" />
         };
     }
   };

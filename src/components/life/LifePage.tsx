@@ -1,7 +1,6 @@
-// Converted from Magic Patterns
 import React from 'react';
-import Link from 'next/link';
-import { Book, Calendar, Camera, ChevronRight, Clock, Coffee, Heart, MapPin, Music, User, Users, Utensils } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Coffee, Users, Camera, Book, Calendar, Clock, ChevronRight, Heart, Utensils, Music, MapPin } from 'lucide-react';
 export const LifePage = () => {
   return <div className="min-h-screen bg-gray-50">
       <main className="container mx-auto px-4 py-8">
@@ -16,7 +15,7 @@ export const LifePage = () => {
                 Featured
               </span>
               <h2 className="text-2xl font-bold text-gray-900 mb-3">
-                <Link href="#" className="hover:text-pink-600">
+                <Link to="#" className="hover:text-pink-600">
                   The Hidden Gems of Clearwater: Local Spots You Need to Visit
                 </Link>
               </h2>
@@ -32,7 +31,7 @@ export const LifePage = () => {
                 <Clock className="h-4 w-4 mr-1" />
                 <span>3 hours ago</span>
               </div>
-              <Link href="#" className="text-pink-600 font-medium hover:text-pink-800 flex items-center">
+              <Link to="#" className="text-pink-600 font-medium hover:text-pink-800 flex items-center">
                 Read Full Story
                 <ChevronRight className="h-4 w-4 ml-1" />
               </Link>
@@ -47,23 +46,23 @@ export const LifePage = () => {
           <div className="md:col-span-2">
             {/* Categories */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
-              <Link href="#" className="bg-white rounded-lg shadow-sm p-4 text-center hover:shadow-md transition-shadow">
+              <Link to="#" className="bg-white rounded-lg shadow-sm p-4 text-center hover:shadow-md transition-shadow">
                 <Coffee className="h-8 w-8 mx-auto text-pink-500 mb-2" />
                 <span className="font-medium text-gray-900">Food & Dining</span>
               </Link>
-              <Link href="#" className="bg-white rounded-lg shadow-sm p-4 text-center hover:shadow-md transition-shadow">
+              <Link to="#" className="bg-white rounded-lg shadow-sm p-4 text-center hover:shadow-md transition-shadow">
                 <Camera className="h-8 w-8 mx-auto text-blue-500 mb-2" />
                 <span className="font-medium text-gray-900">
                   Arts & Culture
                 </span>
               </Link>
-              <Link href="#" className="bg-white rounded-lg shadow-sm p-4 text-center hover:shadow-md transition-shadow">
+              <Link to="#" className="bg-white rounded-lg shadow-sm p-4 text-center hover:shadow-md transition-shadow">
                 <Heart className="h-8 w-8 mx-auto text-red-500 mb-2" />
                 <span className="font-medium text-gray-900">
                   Health & Wellness
                 </span>
               </Link>
-              <Link href="#" className="bg-white rounded-lg shadow-sm p-4 text-center hover:shadow-md transition-shadow">
+              <Link to="#" className="bg-white rounded-lg shadow-sm p-4 text-center hover:shadow-md transition-shadow">
                 <Users className="h-8 w-8 mx-auto text-green-500 mb-2" />
                 <span className="font-medium text-gray-900">Family</span>
               </Link>
@@ -80,7 +79,7 @@ export const LifePage = () => {
                       Health & Wellness
                     </span>
                     <h3 className="font-medium text-gray-900 mb-2">
-                      <Link href="#" className="hover:text-pink-600">
+                      <Link to="#" className="hover:text-pink-600">
                         New Wellness Center Opens in Downtown Clearwater
                       </Link>
                     </h3>
@@ -99,13 +98,15 @@ export const LifePage = () => {
                       Food & Dining
                     </span>
                     <h3 className="font-medium text-gray-900 mb-2">
-                      <Link href="#" className="hover:text-pink-600">
+                      <Link to="#" className="hover:text-pink-600">
                         Five New Restaurants Opening This Summer in Clearwater
                       </Link>
                     </h3>
-                    <p className="text-gray-600 text-sm mb-2">From farm-to-table concepts to international cuisine,
+                    <p className="text-gray-600 text-sm mb-2">
+                      From farm-to-table concepts to international cuisine,
                       Clearwater's dining scene is about to get even more
-                      exciting with these new additions.</p>
+                      exciting with these new additions.
+                    </p>
                     <div className="flex items-center text-xs text-gray-500">
                       <Clock className="h-3 w-3 mr-1" />
                       <span>2 days ago</span>
@@ -118,12 +119,16 @@ export const LifePage = () => {
                       Arts & Culture
                     </span>
                     <h3 className="font-medium text-gray-900 mb-2">
-                      <Link href="#" className="hover:text-pink-600">Local Artist's Mural Project Transforms Downtown
-                        Buildings</Link>
+                      <Link to="#" className="hover:text-pink-600">
+                        Local Artist's Mural Project Transforms Downtown
+                        Buildings
+                      </Link>
                     </h3>
-                    <p className="text-gray-600 text-sm mb-2">Clearwater native Maya Rodriguez is leading a community
+                    <p className="text-gray-600 text-sm mb-2">
+                      Clearwater native Maya Rodriguez is leading a community
                       art initiative that's bringing vibrant murals to
-                      previously blank walls downtown.</p>
+                      previously blank walls downtown.
+                    </p>
                     <div className="flex items-center text-xs text-gray-500">
                       <Clock className="h-3 w-3 mr-1" />
                       <span>3 days ago</span>
@@ -134,7 +139,7 @@ export const LifePage = () => {
                       Family
                     </span>
                     <h3 className="font-medium text-gray-900 mb-2">
-                      <Link href="#" className="hover:text-pink-600">
+                      <Link to="#" className="hover:text-pink-600">
                         Best Summer Activities for Kids in Clearwater
                       </Link>
                     </h3>
@@ -150,7 +155,7 @@ export const LifePage = () => {
                   </div>
                 </div>
               </div>
-              <Link href="#" className="mt-6 inline-block text-pink-600 font-medium hover:text-pink-800 flex items-center">
+              <Link to="#" className="mt-6 inline-block text-pink-600 font-medium hover:text-pink-800 flex items-center">
                 More Lifestyle Stories
                 <ChevronRight className="h-4 w-4 ml-1" />
               </Link>
@@ -165,7 +170,7 @@ export const LifePage = () => {
                   <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Dining guide" className="w-full h-48 object-cover" />
                   <div className="p-4">
                     <h3 className="font-medium text-gray-900 mb-2">
-                      <Link href="#" className="hover:text-pink-600">
+                      <Link to="#" className="hover:text-pink-600">
                         The Ultimate Clearwater Dining Guide
                       </Link>
                     </h3>
@@ -180,7 +185,7 @@ export const LifePage = () => {
                   <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Weekend activities" className="w-full h-48 object-cover" />
                   <div className="p-4">
                     <h3 className="font-medium text-gray-900 mb-2">
-                      <Link href="#" className="hover:text-pink-600">
+                      <Link to="#" className="hover:text-pink-600">
                         Perfect Weekend in Clearwater
                       </Link>
                     </h3>
@@ -208,7 +213,7 @@ export const LifePage = () => {
                     Saturday, Aug 12
                   </div>
                   <h3 className="font-medium text-gray-900">
-                    <Link href="#" className="hover:text-pink-600">
+                    <Link to="#" className="hover:text-pink-600">
                       Clearwater Farmers Market
                     </Link>
                   </h3>
@@ -221,7 +226,7 @@ export const LifePage = () => {
                     Sunday, Aug 13
                   </div>
                   <h3 className="font-medium text-gray-900">
-                    <Link href="#" className="hover:text-pink-600">
+                    <Link to="#" className="hover:text-pink-600">
                       Summer Concert Series: Jazz at Sunset
                     </Link>
                   </h3>
@@ -234,7 +239,7 @@ export const LifePage = () => {
                     Tuesday, Aug 15
                   </div>
                   <h3 className="font-medium text-gray-900">
-                    <Link href="#" className="hover:text-pink-600">
+                    <Link to="#" className="hover:text-pink-600">
                       Cooking Class: Mediterranean Cuisine
                     </Link>
                   </h3>
@@ -243,7 +248,7 @@ export const LifePage = () => {
                   </div>
                 </div>
               </div>
-              <Link href="/eventsCalendar" className="mt-4 text-pink-600 font-medium hover:text-pink-800 flex items-center">
+              <Link to="/eventsCalendar" className="mt-4 text-pink-600 font-medium hover:text-pink-800 flex items-center">
                 View Full Calendar
                 <ChevronRight className="h-4 w-4 ml-1" />
               </Link>
@@ -261,7 +266,9 @@ export const LifePage = () => {
                     <h3 className="font-medium text-gray-900">
                       Urban Bites Café
                     </h3>
-                    <div className="flex items-center text-yellow-500 text-xs mb-1">★★★★★{' '}<span className="text-gray-500 ml-1">(124 reviews)</span>
+                    <div className="flex items-center text-yellow-500 text-xs mb-1">
+                      ★★★★★{' '}
+                      <span className="text-gray-500 ml-1">(124 reviews)</span>
                     </div>
                     <p className="text-xs text-gray-600">
                       Cozy café with specialty coffee and fresh food
@@ -274,7 +281,9 @@ export const LifePage = () => {
                     <h3 className="font-medium text-gray-900">
                       Clearwater Arts Center
                     </h3>
-                    <div className="flex items-center text-yellow-500 text-xs mb-1">★★★★☆{' '}<span className="text-gray-500 ml-1">(86 reviews)</span>
+                    <div className="flex items-center text-yellow-500 text-xs mb-1">
+                      ★★★★☆{' '}
+                      <span className="text-gray-500 ml-1">(86 reviews)</span>
                     </div>
                     <p className="text-xs text-gray-600">
                       Gallery featuring local artists and workshops
@@ -287,7 +296,9 @@ export const LifePage = () => {
                     <h3 className="font-medium text-gray-900">
                       Seaside Spa & Wellness
                     </h3>
-                    <div className="flex items-center text-yellow-500 text-xs mb-1">★★★★★{' '}<span className="text-gray-500 ml-1">(92 reviews)</span>
+                    <div className="flex items-center text-yellow-500 text-xs mb-1">
+                      ★★★★★{' '}
+                      <span className="text-gray-500 ml-1">(92 reviews)</span>
                     </div>
                     <p className="text-xs text-gray-600">
                       Beachfront spa offering relaxing treatments
@@ -295,7 +306,7 @@ export const LifePage = () => {
                   </div>
                 </div>
               </div>
-              <Link href="/businessDirectory" className="mt-4 text-pink-600 font-medium hover:text-pink-800 flex items-center">
+              <Link to="/businessDirectory" className="mt-4 text-pink-600 font-medium hover:text-pink-800 flex items-center">
                 View All Locations
                 <ChevronRight className="h-4 w-4 ml-1" />
               </Link>
@@ -306,28 +317,28 @@ export const LifePage = () => {
                 Trending Topics
               </h2>
               <div className="flex flex-wrap gap-2">
-                <Link href="#" className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm">
+                <Link to="#" className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm">
                   #ClearwaterBeach
                 </Link>
-                <Link href="#" className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm">
+                <Link to="#" className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm">
                   #LocalEats
                 </Link>
-                <Link href="#" className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm">
+                <Link to="#" className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm">
                   #SummerActivities
                 </Link>
-                <Link href="#" className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm">
+                <Link to="#" className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm">
                   #FamilyFun
                 </Link>
-                <Link href="#" className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm">
+                <Link to="#" className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm">
                   #ArtScene
                 </Link>
-                <Link href="#" className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm">
+                <Link to="#" className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm">
                   #HealthyLiving
                 </Link>
-                <Link href="#" className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm">
+                <Link to="#" className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm">
                   #WeekendGetaway
                 </Link>
-                <Link href="#" className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm">
+                <Link to="#" className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm">
                   #OutdoorDining
                 </Link>
               </div>

@@ -1,12 +1,10 @@
-'use client';
-// Converted from Magic Patterns
 import React from 'react';
-import { Bell, MapPin } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { MapPin, Bell } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 export const AnnouncementsSection = () => {
-  const router = useRouter();
+  const navigate = useNavigate();
   const handleAnnouncementClick = id => {
-    router.push(`/announcementDetail?id=${id}`);
+    navigate(`/announcementDetail?id=${id}`);
   };
   return <div className="rounded-md border border-gray-200 bg-white p-3 shadow-sm">
       <div className="flex items-center mb-3">

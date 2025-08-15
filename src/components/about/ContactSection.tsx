@@ -1,6 +1,5 @@
-// Converted from Magic Patterns
 import React from 'react';
-import { ArrowRight, Mail, MapPin, MessageSquare, Phone, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageSquare, Send, ArrowRight } from 'lucide-react';
 export const ContactSection = () => {
   return <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -8,7 +7,9 @@ export const ContactSection = () => {
           <h2 className="text-3xl font-display font-bold text-gray-900 mb-4">
             Get In Touch
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">Have questions, feedback, or a story tip? We'd love to hear from you</p>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Have questions, feedback, or a story tip? We'd love to hear from you
+          </p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Contact Information */}
@@ -140,10 +141,13 @@ export const ContactSection = () => {
                 </div>
                 <div className="flex items-center mb-6">
                   <input type="checkbox" id="privacy" className="h-4 w-4 text-news-primary focus:ring-news-primary border-gray-300 rounded" />
-                  <label htmlFor="privacy" className="ml-2 block text-sm text-gray-600">I agree to the{' '}<a href="#" className="text-news-primary hover:underline">
+                  <label htmlFor="privacy" className="ml-2 block text-sm text-gray-600">
+                    I agree to the{' '}
+                    <a href="#" className="text-news-primary hover:underline">
                       Privacy Policy
                     </a>{' '}
-                    and consent to being contacted.</label>
+                    and consent to being contacted.
+                  </label>
                 </div>
                 <button type="submit" className="w-full bg-news-primary text-white py-3 px-4 rounded-md hover:bg-news-primary-dark transition-colors flex items-center justify-center">
                   <Send className="h-5 w-5 mr-2" />

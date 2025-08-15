@@ -1,5 +1,3 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useState } from 'react';
 import { PageHeader } from '../PageHeader';
 import { ContactOptionsGrid } from './ContactOptionsGrid';
@@ -10,7 +8,7 @@ import { OfficeInformation } from './OfficeInformation';
 import { SocialMediaLinks } from './SocialMediaLinks';
 import { LiveChatWidget } from './LiveChatWidget';
 import { useLocationDetection } from '../location/LocationDetector';
-export const ContactUsPage = () =>{
+export const ContactUsPage = () => {
   const {
     locationData
   } = useLocationDetection();
@@ -27,7 +25,7 @@ export const ContactUsPage = () =>{
       setFormSubmitted(false);
     }, 5000);
   };
-  return<div className="flex-1 overflow-auto bg-gray-50">
+  return <div className="flex-1 overflow-auto bg-gray-50">
       <PageHeader />
       <main>
         {/* Hero Section */}
@@ -36,8 +34,10 @@ export const ContactUsPage = () =>{
             <h1 className="text-4xl sm:text-5xl font-display font-bold mb-4">
               Contact Us
             </h1>
-            <p className="text-xl max-w-3xl mx-auto font-light text-gray-100">We're here to help - reach out your way to the{' '}
-              {locationData?.city || 'Clearwater'} Day News team</p>
+            <p className="text-xl max-w-3xl mx-auto font-light text-gray-100">
+              We're here to help - reach out your way to the{' '}
+              {locationData?.city || 'Clearwater'} Day News team
+            </p>
           </div>
         </section>
         {/* Main Content */}

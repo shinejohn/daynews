@@ -1,9 +1,6 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useEffect, useState, useRef } from 'react';
-import { supabase } from '@/lib/supabase/client';
-import { useRouter } from 'next/navigation';
-import { AlertCircle, AlertTriangle, Award, BarChart2, Bookmark, Calendar, Check, ChevronDown, ChevronRight, Clock, Copy, ExternalLink, FileText, Heart, Home, Mail, MapPin, MessageSquare, Share2, Shield, Star, ThermometerIcon, ThumbsUp, X, Zap } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { MapPin, ThermometerIcon, Home, Mail, Share2, MessageSquare, Bookmark, ThumbsUp, Heart, AlertCircle, ChevronRight, X, Copy, Clock, Calendar, Award, Check, Shield, BarChart2, Eye, Star, AlertTriangle, Zap, FileText, ExternalLink, ChevronDown } from 'lucide-react';
 import { NewspaperMasthead } from '../navigation/NewspaperMasthead';
 import { HeroSection } from '../hero/HeroSection';
 import { ArticleSidebar } from './ArticleSidebar';
@@ -14,8 +11,8 @@ import { MobileArticleBar } from './MobileArticleBar';
 import { SaveModal } from '../modals/SaveModal';
 import { ShareModal } from '../modals/ShareModal';
 import { useLocationDetection } from '../location/LocationDetector';
-export const ArticleDetailPage = () =>{
-  const router = useRouter();
+export const ArticleDetailPage = () => {
+  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [readingProgress, setReadingProgress] = useState(0);
   const [showNextArticle, setShowNextArticle] = useState(false);
@@ -108,7 +105,7 @@ export const ArticleDetailPage = () =>{
   // Set time-based greeting
   useEffect(() => {
     const hour = new Date().getHours();
-    if (hour >= 5 && hour< 12) {
+    if (hour >= 5 && hour < 12) {
       setGreeting('Good Morning');
     } else if (hour >= 12 && hour < 18) {
       setGreeting('Good Afternoon');
@@ -116,7 +113,7 @@ export const ArticleDetailPage = () =>{
       setGreeting('Good Evening');
     }
     // Simulate fluctuating reader count
-    const interval = setInterval(() =>{
+    const interval = setInterval(() => {
       setActiveReaders(prev => Math.floor(Math.random() * 20) - 10 + prev);
     }, 5000);
     return () => clearInterval(interval);
@@ -146,7 +143,7 @@ export const ArticleDetailPage = () =>{
     setShowNextArticle(false);
   };
   const navigateToAuthorProfile = () => {
-    router.push(`/author/${author.id}`);
+    navigate(`/author/${author.id}`);
   };
   // Dummy functions needed for StickyNav
   const handleMainNavChange = tab => {
@@ -164,7 +161,7 @@ export const ArticleDetailPage = () =>{
   const toggleAIMetrics = () => {
     setShowAIMetrics(!showAIMetrics);
   };
-  return<div className="min-h-screen bg-gray-50">
+  return <div className="min-h-screen bg-gray-50">
       {/* Reading progress indicator */}
       <div className="fixed top-80 left-0 right-0 z-50 h-1 bg-gray-200">
         <div className="h-full bg-community-green transition-all duration-300" style={{
@@ -410,9 +407,13 @@ export const ArticleDetailPage = () =>{
                 <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Office building" className="w-full h-auto rounded" />
               </div>
               <div className="w-3/4">
-                <h4 className="font-display text-lg font-bold mb-1">Local Businesses Driving Clearwater's Economic Growth</h4>
-                <p className="text-sm text-gray-600 mb-2">How small businesses are contributing to the city's rising
-                  property values and tax base...</p>
+                <h4 className="font-display text-lg font-bold mb-1">
+                  Local Businesses Driving Clearwater's Economic Growth
+                </h4>
+                <p className="text-sm text-gray-600 mb-2">
+                  How small businesses are contributing to the city's rising
+                  property values and tax base...
+                </p>
                 <a href="#" className="text-news-primary font-medium text-sm hover:underline" onClick={e => {
                 e.preventDefault();
                 handleAdClick();
@@ -446,21 +447,27 @@ export const ArticleDetailPage = () =>{
                 <p className="text-gray-800 leading-relaxed">
                   <span className="float-left font-display text-7xl leading-[0.8] mr-2 mt-1 text-gray-900">
                     T
-                  </span>he Clearwater City Council has unanimously approved an $89.2
+                  </span>
+                  he Clearwater City Council has unanimously approved an $89.2
                   million budget for the 2025 fiscal year during Tuesday night's
                   meeting, maintaining the current millage rate while increasing
                   funding for key infrastructure projects and public safety
-                  initiatives.</p>
-                <p className="text-gray-800 leading-relaxed">The approved budget, which goes into effect on October 1,
+                  initiatives.
+                </p>
+                <p className="text-gray-800 leading-relaxed">
+                  The approved budget, which goes into effect on October 1,
                   represents a 3.7% increase from the previous fiscal year,
                   reflecting the city's continued growth and rising property
-                  values throughout the Pinellas County municipality.</p>
-                <p className="text-gray-800 leading-relaxed">"This budget strikes the right balance between fiscal
+                  values throughout the Pinellas County municipality.
+                </p>
+                <p className="text-gray-800 leading-relaxed">
+                  "This budget strikes the right balance between fiscal
                   responsibility and meeting the needs of our growing
                   community," said Mayor Frank Hibbard during the council
                   meeting. "We're maintaining the same tax rate while still
                   investing in the services and infrastructure our residents
-                  expect."</p>
+                  expect."
+                </p>
                 <h3 className="font-display text-2xl font-bold text-gray-900 mt-8 mb-4">
                   Property Tax Rate Remains Stable
                 </h3>
@@ -486,9 +493,13 @@ export const ArticleDetailPage = () =>{
                       <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Office building" className="w-full h-auto rounded" />
                     </div>
                     <div className="w-3/4">
-                      <h4 className="font-display text-lg font-bold mb-1">Local Businesses Driving Clearwater's Economic Growth</h4>
-                      <p className="text-sm text-gray-600 mb-2">How small businesses are contributing to the city's
-                        rising property values and tax base...</p>
+                      <h4 className="font-display text-lg font-bold mb-1">
+                        Local Businesses Driving Clearwater's Economic Growth
+                      </h4>
+                      <p className="text-sm text-gray-600 mb-2">
+                        How small businesses are contributing to the city's
+                        rising property values and tax base...
+                      </p>
                       <a href="#" className="text-news-primary font-medium text-sm hover:underline">
                         Learn More
                       </a>
@@ -511,10 +522,12 @@ export const ArticleDetailPage = () =>{
                   Clearwater Beach Marina.
                 </p>
                 <div className="my-8 bg-news-primary bg-opacity-5 border-l-4 border-news-primary p-6 text-center">
-                  <blockquote className="font-display text-xl text-news-primary italic">"We're focusing on projects that will enhance quality of
+                  <blockquote className="font-display text-xl text-news-primary italic">
+                    "We're focusing on projects that will enhance quality of
                     life for residents while also preparing for future growth.
                     This isn't just about fixing what's broken—it's about
-                    building a more resilient Clearwater."</blockquote>
+                    building a more resilient Clearwater."
+                  </blockquote>
                   <cite className="text-sm text-gray-600 mt-2 block">
                     — Amanda Thompson, Public Works Director
                   </cite>
@@ -540,15 +553,19 @@ export const ArticleDetailPage = () =>{
                   the infrastructure investments, some voiced concerns about the
                   increasing cost of living in Clearwater.
                 </p>
-                <p className="text-gray-800 leading-relaxed">"Property values keep going up, which means even with the same
+                <p className="text-gray-800 leading-relaxed">
+                  "Property values keep going up, which means even with the same
                   millage rate, we're paying more in taxes each year," said
                   longtime resident Maria Sanchez. "At some point, the council
                   needs to consider lowering the rate to give homeowners some
-                  relief."</p>
-                <p className="text-gray-800 leading-relaxed">Others praised the council's approach. "The investments in
+                  relief."
+                </p>
+                <p className="text-gray-800 leading-relaxed">
+                  Others praised the council's approach. "The investments in
                   infrastructure are long overdue," said business owner David
                   Chen. "These improvements will benefit everyone and help
-                  attract more businesses to our downtown area."</p>
+                  attract more businesses to our downtown area."
+                </p>
                 <h3 className="font-display text-2xl font-bold text-gray-900 mt-8 mb-4">
                   Looking Ahead
                 </h3>
@@ -558,13 +575,17 @@ export const ArticleDetailPage = () =>{
                   climate resilience, affordable housing, and transportation
                   improvements.
                 </p>
-                <p className="text-gray-800 leading-relaxed">"We're in a strong financial position today, but we need to be
+                <p className="text-gray-800 leading-relaxed">
+                  "We're in a strong financial position today, but we need to be
                   thinking about the Clearwater of tomorrow," Jennings said.
                   "The decisions we make now will shape our city for decades to
-                  come."</p>
-                <p className="text-gray-800 leading-relaxed">The full budget document is available on the city's website,
+                  come."
+                </p>
+                <p className="text-gray-800 leading-relaxed">
+                  The full budget document is available on the city's website,
                   and a town hall meeting to explain the budget in detail is
-                  scheduled for August 15 at the Main Library.</p>
+                  scheduled for August 15 at the Main Library.
+                </p>
               </div>
               {/* Advertisement section */}
               <div className="mt-8 bg-gray-100 p-4 text-center">
@@ -652,15 +673,18 @@ export const ArticleDetailPage = () =>{
               {/* Reaction bar */}
               <div className="mt-4 pt-4 border-t border-gray-200">
                 <div className="flex flex-wrap gap-3">
-                  <button className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full hover:bg-gray-200" onClick={() =>handleReaction('helpful')}><ThumbsUp className="h-4 w-4" />
+                  <button className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full hover:bg-gray-200" onClick={() => handleReaction('helpful')}>
+                    <ThumbsUp className="h-4 w-4" />
                     <span>Helpful</span>
                     <span className="text-gray-500">{reactions.helpful}</span>
                   </button>
-                  <button className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full hover:bg-gray-200" onClick={() =>handleReaction('love')}><Heart className="h-4 w-4" />
+                  <button className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full hover:bg-gray-200" onClick={() => handleReaction('love')}>
+                    <Heart className="h-4 w-4" />
                     <span>Love</span>
                     <span className="text-gray-500">{reactions.love}</span>
                   </button>
-                  <button className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full hover:bg-gray-200" onClick={() =>handleReaction('surprising')}><AlertCircle className="h-4 w-4" />
+                  <button className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full hover:bg-gray-200" onClick={() => handleReaction('surprising')}>
+                    <AlertCircle className="h-4 w-4" />
                     <span>Surprising</span>
                     <span className="text-gray-500">
                       {reactions.surprising}
@@ -727,14 +751,15 @@ export const ArticleDetailPage = () =>{
       </div>
 
       {/* Save Modal */}
-      {showSaveModal && <SaveModal onClose={() =>setShowSaveModal(false)} article={{
+      {showSaveModal && <SaveModal onClose={() => setShowSaveModal(false)} article={{
       title: 'Clearwater City Council Approves $89.2M Budget for 2025 Fiscal Year',
       category: 'LOCAL NEWS',
       image: 'https://images.unsplash.com/photo-1577495508326-19a1b3cf65b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1280&h=720&q=80'
     }} />}
 
       {/* Share Modal */}
-      {showShareModal &&<ShareModal onClose={() =>setShowShareModal(false)} article={{
+      {showShareModal && <ShareModal onClose={() => setShowShareModal(false)} article={{
       title: 'Clearwater City Council Approves $89.2M Budget for 2025 Fiscal Year'
-    }} />}</div>;
+    }} />}
+    </div>;
 };

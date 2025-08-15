@@ -1,16 +1,14 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useEffect, useState } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
-import { AlertCircle, ArrowLeft, ArrowRight, Calendar, Check, Clock, Copy, DollarSign, Info } from 'lucide-react';
-export const RerunAdPage = () =>{
-  const router = useRouter();
-  const pathname = usePathname();
+import { useNavigate, useLocation } from 'react-router-dom';
+import { ArrowLeft, ArrowRight, Calendar, Check, Info, Clock, DollarSign, AlertCircle, Copy } from 'lucide-react';
+export const RerunAdPage = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const {
     adId,
     formData,
     selectedCommunities
-  } = {} as any || { // TODO: Convert location.state to searchParams or context
+  } = location.state || {
     adId: null,
     formData: null,
     selectedCommunities: []
@@ -27,17 +25,17 @@ export const RerunAdPage = () =>{
   useEffect(() => {
     // If no data was passed, redirect back
     if (!adId || !formData || !selectedCommunities) {
-      router.push('/profile');
+      navigate('/profile');
       return;
     }
     // Initialize with the communities from the original ad
     setCurrentCommunities(selectedCommunities);
-  }, [adId, formData, selectedCommunities, router]);
+  }, [adId, formData, selectedCommunities, navigate]);
   const handleBack = () => {
-    router.push('/profile');
+    navigate('/profile');
   };
   const handleContinue = () => {
-    router.push('/classifieds/payment', {
+    navigate('/classifieds/payment', {
       state: {
         formData,
         selectedCommunities: currentCommunities,
@@ -66,7 +64,7 @@ export const RerunAdPage = () =>{
     setEndDate(newEndDate);
   };
   const handleEditCommunities = () => {
-    router.push('/classifieds/select-communities', {
+    navigate('/classifieds/select-communities', {
       state: {
         formData,
         isRerun: true,
@@ -78,14 +76,14 @@ export const RerunAdPage = () =>{
   const calculateMonthlyPrice = () => {
     const basePrice = 10; // $10 for up to 3 communities
     const additionalCommunityPrice = 2; // $2 per additional community
-    if (currentCommunities.length<= 3) {
+    if (currentCommunities.length <= 3) {
       return basePrice;
     } else {
       return basePrice + (currentCommunities.length - 3) * additionalCommunityPrice;
     }
   };
   // Calculate total price with discounts for longer durations
-  const calculateTotalPrice = () =>{
+  const calculateTotalPrice = () => {
     const monthlyPrice = calculateMonthlyPrice();
     // Apply discounts based on duration
     if (selectedDuration === 1) {
@@ -127,7 +125,7 @@ export const RerunAdPage = () =>{
     tomorrow.setDate(tomorrow.getDate() + 1);
     return tomorrow.toISOString().split('T')[0];
   };
-  return<div className="flex-1 overflow-auto bg-gray-50">
+  return <div className="flex-1 overflow-auto bg-gray-50">
       <div className="max-w-3xl mx-auto py-8 px-4">
         <button onClick={handleBack} className="flex items-center text-news-primary mb-6 hover:underline" aria-label="Back to profile">
           <ArrowLeft className="h-4 w-4 mr-1" />
@@ -152,11 +150,13 @@ export const RerunAdPage = () =>{
                   <strong>Title:</strong> {formData?.title}
                 </p>
                 <p className="text-gray-700 mb-1">
-                  <strong>Communities:</strong>{currentCommunities.length}{' '}
-                  selected</p>
+                  <strong>Communities:</strong> {currentCommunities.length}{' '}
+                  selected
+                </p>
                 <p className="text-gray-700">
                   <strong>Base Price:</strong>{' '}
-                  {formatCurrency(calculateMonthlyPrice())}/month</p>
+                  {formatCurrency(calculateMonthlyPrice())}/month
+                </p>
               </div>
               <button onClick={handleEditCommunities} className="text-news-primary hover:underline flex items-center text-sm" aria-label="Edit communities selection">
                 <Copy className="h-4 w-4 mr-1" />
@@ -199,10 +199,12 @@ export const RerunAdPage = () =>{
                 </h3>
                 <p className="text-sm text-blue-700">
                   Your ad will run from <strong>{formatDate(startDate)}</strong>{' '}
-                  to<strong>{formatDate(endDate)}</strong>
+                  to <strong>{formatDate(endDate)}</strong>
                 </p>
-                {getDiscountPercentage() > 0 && <p className="text-sm text-blue-700 mt-1">You're saving {getDiscountPercentage()}% with your{' '}
-                    {selectedDuration}-month plan!</p>}
+                {getDiscountPercentage() > 0 && <p className="text-sm text-blue-700 mt-1">
+                    You're saving {getDiscountPercentage()}% with your{' '}
+                    {selectedDuration}-month plan!
+                  </p>}
               </div>
             </div>
           </div>
@@ -218,7 +220,9 @@ export const RerunAdPage = () =>{
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-gray-600">Duration:</span>
-                <span className="text-gray-900">{selectedDuration} month{selectedDuration > 1 ? 's' : ''}</span>
+                <span className="text-gray-900">
+                  {selectedDuration} month{selectedDuration > 1 ? 's' : ''}
+                </span>
               </div>
               {getDiscountPercentage() > 0 && <div className="flex justify-between text-sm text-green-600">
                   <span>Discount ({getDiscountPercentage()}%):</span>
@@ -257,13 +261,16 @@ const DurationOption = ({
   onClick
 }) => {
   const totalPrice = months * monthlyPrice * (1 - discount / 100);
-  return <div onClick={onClick} className={`border rounded-lg p-4 cursor-pointer transition-all ${selected ? 'border-news-primary bg-blue-50' : 'border-gray-200 hover:border-gray-300'}`} role="radio" aria-checked={selected} tabIndex={0} onKeyPress={e =>{
+  return <div onClick={onClick} className={`border rounded-lg p-4 cursor-pointer transition-all ${selected ? 'border-news-primary bg-blue-50' : 'border-gray-200 hover:border-gray-300'}`} role="radio" aria-checked={selected} tabIndex={0} onKeyPress={e => {
     if (e.key === 'Enter' || e.key === ' ') {
       onClick();
     }
-  }}><div className="flex justify-between items-start">
+  }}>
+      <div className="flex justify-between items-start">
         <div>
-          <h4 className="font-medium text-gray-900">{months} Month{months > 1 ? 's' : ''}</h4>
+          <h4 className="font-medium text-gray-900">
+            {months} Month{months > 1 ? 's' : ''}
+          </h4>
           {discount > 0 && <span className="inline-block bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded-full mt-1">
               Save {discount}%
             </span>}

@@ -1,6 +1,5 @@
-// Converted from Magic Patterns
 import React from 'react';
-import { ChevronRight, MapPin } from 'lucide-react';
+import { MapPin, ChevronRight } from 'lucide-react';
 export const MemorialCard = ({
   location,
   name,

@@ -1,6 +1,5 @@
-// Converted from Magic Patterns
 import React from 'react';
-import { ArrowRight, Calendar, Clock, MapPin, TrendingUp } from 'lucide-react';
+import { TrendingUp, Calendar, Clock, MapPin, ArrowRight } from 'lucide-react';
 export const TagAnalytics = ({
   analytics
 }) => {

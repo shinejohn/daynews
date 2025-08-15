@@ -1,8 +1,6 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useState } from 'react';
-import { Github, Linkedin, Mail, MessageSquare, Sparkles, Twitter, User } from 'lucide-react';
-export const TeamSection = () =>{
+import { Mail, Twitter, Linkedin, Github, User, Sparkles, MessageSquare } from 'lucide-react';
+export const TeamSection = () => {
   const [activeTab, setActiveTab] = useState('humans');
   const humanTeam = [{
     name: 'Sarah Johnson',
@@ -89,7 +87,7 @@ export const TeamSection = () =>{
     image: 'https://images.unsplash.com/photo-1583207681906-51271bfa962d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
     capabilities: ['Historical Research', 'Context Analysis', 'Source Identification']
   }];
-  return<section className="py-20 bg-white">
+  return <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-display font-bold text-gray-900 mb-4">
@@ -102,19 +100,22 @@ export const TeamSection = () =>{
           {/* Tab navigation */}
           <div className="flex justify-center mt-8">
             <div className="inline-flex p-1 bg-gray-100 rounded-lg">
-              <button onClick={() =>setActiveTab('humans')} className={`px-6 py-2 rounded-md text-sm font-medium ${activeTab === 'humans' ? 'bg-white text-news-primary shadow-sm' : 'text-gray-600 hover:text-gray-900'}`}><div className="flex items-center">
+              <button onClick={() => setActiveTab('humans')} className={`px-6 py-2 rounded-md text-sm font-medium ${activeTab === 'humans' ? 'bg-white text-news-primary shadow-sm' : 'text-gray-600 hover:text-gray-900'}`}>
+                <div className="flex items-center">
                   <User className="h-4 w-4 mr-2" />
                   Human Team
                 </div>
               </button>
-              <button onClick={() =>setActiveTab('ai')} className={`px-6 py-2 rounded-md text-sm font-medium ${activeTab === 'ai' ? 'bg-white text-news-primary shadow-sm' : 'text-gray-600 hover:text-gray-900'}`}><div className="flex items-center">
+              <button onClick={() => setActiveTab('ai')} className={`px-6 py-2 rounded-md text-sm font-medium ${activeTab === 'ai' ? 'bg-white text-news-primary shadow-sm' : 'text-gray-600 hover:text-gray-900'}`}>
+                <div className="flex items-center">
                   <Sparkles className="h-4 w-4 mr-2" />
                   AI Journalists
                 </div>
               </button>
             </div>
           </div>
-        </div>{activeTab === 'humans' ?<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        </div>
+        {activeTab === 'humans' ? <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {humanTeam.map(member => <div key={member.name} className="bg-gray-50 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                 <div className="aspect-w-3 aspect-h-2">
                   <img src={member.image} alt={member.name} className="w-full h-56 object-cover" />
@@ -183,12 +184,14 @@ export const TeamSection = () =>{
                   <h3 className="text-lg font-medium text-blue-800">
                     How Our AI Journalists Work
                   </h3>
-                  <p className="mt-2 text-blue-700">All of our AI systems operate under human supervision and
+                  <p className="mt-2 text-blue-700">
+                    All of our AI systems operate under human supervision and
                     follow strict editorial guidelines. They assist with data
                     processing, research, and first drafts, but final editorial
                     decisions are always made by our human journalists. We're
                     committed to transparency about AI use and clearly label all
-                    AI-assisted content.</p>
+                    AI-assisted content.
+                  </p>
                 </div>
               </div>
             </div>

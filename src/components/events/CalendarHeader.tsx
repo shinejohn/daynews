@@ -1,12 +1,10 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Calendar } from 'lucide-react';
 export const CalendarHeader = ({
   selectedDate,
   setSelectedDate,
   events
-}) =>{
+}) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   // Get month and year for display
   const monthYear = currentMonth.toLocaleDateString('en-US', {
@@ -58,7 +56,7 @@ export const CalendarHeader = ({
     const totalCells = Math.ceil((firstDayOfWeek + daysInMonth) / 7) * 7;
     const days = [];
     // Add previous month's days
-    for (let i = 0; i< firstDayOfWeek; i++) {
+    for (let i = 0; i < firstDayOfWeek; i++) {
       const prevMonthDay = new Date(year, month, -firstDayOfWeek + i + 1);
       days.push({
         date: prevMonthDay,
@@ -144,7 +142,8 @@ export const CalendarHeader = ({
       {/* Calendar grid */}
       <div className="p-4">
         {/* Day labels */}
-        <div className="grid grid-cols-7 mb-2">{['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day =><div key={day} className="text-center text-sm font-medium text-gray-500">
+        <div className="grid grid-cols-7 mb-2">
+          {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => <div key={day} className="text-center text-sm font-medium text-gray-500">
               {day}
             </div>)}
         </div>
@@ -152,13 +151,14 @@ export const CalendarHeader = ({
         <div className="grid grid-cols-7 gap-1">
           {calendarDays.map((day, index) => {
           const eventCount = getEventCountForDate(day.date);
-          return <div key={index} onClick={() =>handleDayClick(day)} className={`
+          return <div key={index} onClick={() => handleDayClick(day)} className={`
                   h-20 p-1 rounded-md border relative cursor-pointer transition-colors
                   ${day.isCurrentMonth ? 'bg-white' : 'bg-gray-50 text-gray-400'}
                   ${day.isSelected ? 'border-news-primary' : 'border-gray-200'}
                   ${day.isToday ? 'font-bold' : ''}
                   hover:border-news-primary
-                `}><div className="flex justify-between items-start">
+                `}>
+                <div className="flex justify-between items-start">
                   <span className={`text-sm ${day.isToday ? 'bg-news-primary text-white w-6 h-6 flex items-center justify-center rounded-full' : ''}`}>
                     {day.dayOfMonth}
                   </span>

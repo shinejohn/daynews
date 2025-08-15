@@ -1,8 +1,6 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useState } from 'react';
 import { Search, ChevronDown, ChevronUp } from 'lucide-react';
-export const FAQSection = () =>{
+export const FAQSection = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedFAQs, setExpandedFAQs] = useState([]);
   const faqs = [{
@@ -42,18 +40,20 @@ export const FAQSection = () =>{
     setExpandedFAQs(prev => prev.includes(id) ? prev.filter(faqId => faqId !== id) : [...prev, id]);
   };
   const filteredFAQs = searchQuery.trim() === '' ? faqs : faqs.filter(faq => faq.question.toLowerCase().includes(searchQuery.toLowerCase()) || faq.answer.toLowerCase().includes(searchQuery.toLowerCase()));
-  return<section>
+  return <section>
       <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">
         Frequently Asked Questions
       </h2>
       {/* Search Box */}
       <div className="relative mb-6">
-        <input type="text" placeholder="Search FAQs..." value={searchQuery} onChange={e =>setSearchQuery(e.target.value)} className="w-full px-4 py-3 pl-10 border border-gray-300 rounded-md focus:ring-news-primary focus:border-news-primary" /><Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+        <input type="text" placeholder="Search FAQs..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)} className="w-full px-4 py-3 pl-10 border border-gray-300 rounded-md focus:ring-news-primary focus:border-news-primary" />
+        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
       </div>
       {/* FAQ List */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden divide-y divide-gray-200">
         {filteredFAQs.length > 0 ? filteredFAQs.map(faq => <div key={faq.id} className="overflow-hidden">
-              <button onClick={() =>toggleFAQ(faq.id)} className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors focus:outline-none"><h3 className="text-lg font-medium text-gray-900">
+              <button onClick={() => toggleFAQ(faq.id)} className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors focus:outline-none">
+                <h3 className="text-lg font-medium text-gray-900">
                   {faq.question}
                 </h3>
                 {expandedFAQs.includes(faq.id) ? <ChevronUp className="h-5 w-5 text-gray-500" /> : <ChevronDown className="h-5 w-5 text-gray-500" />}
@@ -62,10 +62,13 @@ export const FAQSection = () =>{
                 <p>{faq.answer}</p>
               </div>
             </div>) : <div className="p-6 text-center">
-            <p className="text-gray-500">No FAQs match your search. Please try different keywords or{' '}<a href="#" className="text-news-primary font-medium hover:underline">
+            <p className="text-gray-500">
+              No FAQs match your search. Please try different keywords or{' '}
+              <a href="#" className="text-news-primary font-medium hover:underline">
                 contact us
               </a>{' '}
-              for assistance.</p>
+              for assistance.
+            </p>
           </div>}
       </div>
       {/* Still Have Questions */}
@@ -73,7 +76,9 @@ export const FAQSection = () =>{
         <h3 className="text-lg font-bold text-news-primary mb-2">
           Still Have Questions?
         </h3>
-        <p className="text-gray-600 mb-4">Can't find what you're looking for? Our support team is here to help.</p>
+        <p className="text-gray-600 mb-4">
+          Can't find what you're looking for? Our support team is here to help.
+        </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <button className="bg-news-primary text-white px-6 py-3 rounded-md font-medium hover:bg-news-primary-dark transition-colors">
             Contact Support

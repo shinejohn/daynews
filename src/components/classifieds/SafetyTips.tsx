@@ -1,7 +1,5 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useState } from 'react';
-import { AlertCircle, AlertTriangle, ChevronDown, ChevronUp, MapPin, Shield } from 'lucide-react';
+import { AlertTriangle, ChevronDown, ChevronUp, MapPin, Shield, AlertCircle } from 'lucide-react';
 export const SafetyTips = () => {
   const [expanded, setExpanded] = useState(false);
   return <div className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
@@ -10,8 +8,8 @@ export const SafetyTips = () => {
           <Shield className="h-5 w-5 text-yellow-600 mr-2" />
           <h3 className="font-bold text-gray-800">Safety Center</h3>
         </div>
-        <button onClick={() =>setExpanded(!expanded)} className="text-gray-500 hover:text-gray-700">
-          {expanded ?<ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
+        <button onClick={() => setExpanded(!expanded)} className="text-gray-500 hover:text-gray-700">
+          {expanded ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
         </button>
       </div>
       {expanded ? <div className="p-4 space-y-4">
@@ -57,8 +55,9 @@ export const SafetyTips = () => {
           <p className="text-sm text-gray-600">
             Keep your transactions safe with our safety tips and resources.
           </p>
-          <button onClick={() =>setExpanded(true)} className="mt-2 text-sm text-news-primary font-medium hover:underline">
-            View Safety Tips</button>
+          <button onClick={() => setExpanded(true)} className="mt-2 text-sm text-news-primary font-medium hover:underline">
+            View Safety Tips
+          </button>
         </div>}
     </div>;
 };

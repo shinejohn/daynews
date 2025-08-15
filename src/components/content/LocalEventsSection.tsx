@@ -1,10 +1,8 @@
-'use client';
-// Converted from Magic Patterns
 import React from 'react';
-import { Calendar, ChevronRight, MapPin } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-export const LocalEventsSection = () =>{
-  const router = useRouter();
+import { MapPin, Calendar, ChevronRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+export const LocalEventsSection = () => {
+  const navigate = useNavigate();
   const localEvents = [{
     id: 1,
     title: 'Clearwater Jazz Holiday',
@@ -25,12 +23,12 @@ export const LocalEventsSection = () =>{
     image: 'https://images.unsplash.com/photo-1563784462041-5f97ac9523dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
   }];
   const handleEventClick = eventId => {
-    router.push(`/eventDetail?id=${eventId}`);
+    navigate(`/eventDetail?id=${eventId}`);
   };
   const handleViewAllEvents = () => {
-    router.push('/eventsCalendar');
+    navigate('/eventsCalendar');
   };
-  return<div className="space-y-3">
+  return <div className="space-y-3">
       {localEvents.map(event => <div key={event.id} className="bg-white rounded-md overflow-hidden shadow-sm border border-gray-200 flex cursor-pointer hover:shadow-md transition-shadow" onClick={() => handleEventClick(event.id)}>
           <div className="w-1/4">
             <img src={event.image} alt={event.title} className="w-full h-full object-cover" />

@@ -1,12 +1,10 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { AlertCircle, Check, ChevronLeft, FileText, Image, MapPin, Tag, Upload, X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Upload, Image, X, ChevronLeft, FileText, MapPin, Tag, AlertCircle, Check } from 'lucide-react';
 import { PageHeader } from '../PageHeader';
 import { useLocationDetection } from '../location/LocationDetector';
-export const PhotoUploadPage = () =>{
-  const router = useRouter();
+export const PhotoUploadPage = () => {
+  const navigate = useNavigate();
   const {
     locationData
   } = useLocationDetection();
@@ -65,7 +63,7 @@ export const PhotoUploadPage = () =>{
     setTimeout(() => {
       setIsUploading(false);
       // Navigate to the photo detail page or gallery
-      router.push('/photos');
+      navigate('/photos');
     }, 2000);
   };
   // Remove selected file
@@ -75,9 +73,9 @@ export const PhotoUploadPage = () =>{
   };
   // Cancel upload and go back
   const handleCancel = () => {
-    router.back();
+    navigate(-1);
   };
-  return<div className="flex-1 overflow-auto bg-gray-50">
+  return <div className="flex-1 overflow-auto bg-gray-50">
       <PageHeader />
       <div className="mx-auto max-w-3xl px-4 py-6">
         <button onClick={handleCancel} className="flex items-center text-gray-600 hover:text-gray-900 mb-6">
@@ -125,8 +123,8 @@ export const PhotoUploadPage = () =>{
                 <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">
                   Title*
                 </label>
-                <input type="text" id="title" value={title} onChange={e =>setTitle(e.target.value)} className={`w-full rounded-md border ${errors.title ? 'border-red-300' : 'border-gray-300'} py-2 px-3 focus:outline-none focus:ring-2 focus:ring-news-primary focus:border-transparent`} placeholder="Give your photo a descriptive title" />
-                {errors.title &&<div className="flex items-center mt-1 text-red-600 text-sm">
+                <input type="text" id="title" value={title} onChange={e => setTitle(e.target.value)} className={`w-full rounded-md border ${errors.title ? 'border-red-300' : 'border-gray-300'} py-2 px-3 focus:outline-none focus:ring-2 focus:ring-news-primary focus:border-transparent`} placeholder="Give your photo a descriptive title" />
+                {errors.title && <div className="flex items-center mt-1 text-red-600 text-sm">
                     <AlertCircle className="h-4 w-4 mr-1" />
                     {errors.title}
                   </div>}
@@ -135,7 +133,7 @@ export const PhotoUploadPage = () =>{
                 <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
                   Description*
                 </label>
-                <textarea id="description" value={description} onChange={e =>setDescription(e.target.value)} rows={3} className={`w-full rounded-md border ${errors.description ? 'border-red-300' : 'border-gray-300'} py-2 px-3 focus:outline-none focus:ring-2 focus:ring-news-primary focus:border-transparent`} placeholder="Tell the story behind this photo"></textarea>
+                <textarea id="description" value={description} onChange={e => setDescription(e.target.value)} rows={3} className={`w-full rounded-md border ${errors.description ? 'border-red-300' : 'border-gray-300'} py-2 px-3 focus:outline-none focus:ring-2 focus:ring-news-primary focus:border-transparent`} placeholder="Tell the story behind this photo"></textarea>
                 {errors.description && <div className="flex items-center mt-1 text-red-600 text-sm">
                     <AlertCircle className="h-4 w-4 mr-1" />
                     {errors.description}
@@ -149,7 +147,8 @@ export const PhotoUploadPage = () =>{
                   Category*
                 </label>
                 <div className="relative">
-                  <select id="category" value={category} onChange={e =>setCategory(e.target.value)} className={`w-full rounded-md border ${errors.category ? 'border-red-300' : 'border-gray-300'} py-2 px-3 pr-8 appearance-none focus:outline-none focus:ring-2 focus:ring-news-primary focus:border-transparent`}><option value="">Select a category</option>
+                  <select id="category" value={category} onChange={e => setCategory(e.target.value)} className={`w-full rounded-md border ${errors.category ? 'border-red-300' : 'border-gray-300'} py-2 px-3 pr-8 appearance-none focus:outline-none focus:ring-2 focus:ring-news-primary focus:border-transparent`}>
+                    <option value="">Select a category</option>
                     <option value="Nature">Nature</option>
                     <option value="Events">Events</option>
                     <option value="Recreation">Recreation</option>
@@ -175,7 +174,8 @@ export const PhotoUploadPage = () =>{
                   Community*
                 </label>
                 <div className="relative">
-                  <input type="text" id="community" value={community} onChange={e =>setCommunity(e.target.value)} className={`w-full rounded-md border ${errors.community ? 'border-red-300' : 'border-gray-300'} py-2 px-3 pl-9 focus:outline-none focus:ring-2 focus:ring-news-primary focus:border-transparent`} placeholder="Enter your community name" /><div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <input type="text" id="community" value={community} onChange={e => setCommunity(e.target.value)} className={`w-full rounded-md border ${errors.community ? 'border-red-300' : 'border-gray-300'} py-2 px-3 pl-9 focus:outline-none focus:ring-2 focus:ring-news-primary focus:border-transparent`} placeholder="Enter your community name" />
+                  <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <MapPin className="h-4 w-4 text-gray-400" />
                   </div>
                 </div>
@@ -191,12 +191,14 @@ export const PhotoUploadPage = () =>{
                 Privacy Settings
               </label>
               <div className="flex items-center">
-                <input type="radio" id="public" name="privacy" checked={isPublic} onChange={() =>setIsPublic(true)} className="h-4 w-4 text-news-primary focus:ring-news-primary border-gray-300" /><label htmlFor="public" className="ml-2 text-sm text-gray-700">
+                <input type="radio" id="public" name="privacy" checked={isPublic} onChange={() => setIsPublic(true)} className="h-4 w-4 text-news-primary focus:ring-news-primary border-gray-300" />
+                <label htmlFor="public" className="ml-2 text-sm text-gray-700">
                   Public - Everyone can see this photo
                 </label>
               </div>
               <div className="flex items-center mt-2">
-                <input type="radio" id="private" name="privacy" checked={!isPublic} onChange={() =>setIsPublic(false)} className="h-4 w-4 text-news-primary focus:ring-news-primary border-gray-300" /><label htmlFor="private" className="ml-2 text-sm text-gray-700">
+                <input type="radio" id="private" name="privacy" checked={!isPublic} onChange={() => setIsPublic(false)} className="h-4 w-4 text-news-primary focus:ring-news-primary border-gray-300" />
+                <label htmlFor="private" className="ml-2 text-sm text-gray-700">
                   Private - Only you can see this photo
                 </label>
               </div>

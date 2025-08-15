@@ -1,15 +1,12 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabase/client';
-// Removed react-router-dom import
-import { Calendar, ChevronLeft, Download, Edit, Flag, Heart, MapPin, MessageSquare, Send, Share2, Tag, ThumbsDown, ThumbsUp, Trash2 } from 'lucide-react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { ChevronLeft, Heart, MessageSquare, Share2, Download, Flag, Calendar, MapPin, User, Tag, Edit, Trash2, Send, ThumbsUp, ThumbsDown } from 'lucide-react';
 import { PageHeader } from '../PageHeader';
-export const PhotoDetailPage = () =>{
+export const PhotoDetailPage = () => {
   const {
     photoId
   } = useParams();
-  const router = useRouter();
+  const navigate = useNavigate();
   const [photo, setPhoto] = useState(null);
   const [loading, setLoading] = useState(true);
   const [liked, setLiked] = useState(false);
@@ -109,17 +106,17 @@ export const PhotoDetailPage = () =>{
   const handleDeletePhoto = () => {
     // In a real app, this would call an API to delete the photo
     if (confirm('Are you sure you want to delete this photo? This action cannot be undone.')) {
-      router.push('/photos');
+      navigate('/photos');
     }
   };
   const handleEditPhoto = () => {
-    router.push(`/photos/edit/${photoId}`);
+    navigate(`/photos/edit/${photoId}`);
   };
   const handleGoBack = () => {
-    router.back();
+    navigate(-1);
   };
   if (loading) {
-    return<div className="flex-1 overflow-auto bg-gray-50">
+    return <div className="flex-1 overflow-auto bg-gray-50">
         <PageHeader />
         <div className="mx-auto max-w-7xl px-4 py-6">
           <div className="flex justify-center items-center h-64">
@@ -168,11 +165,13 @@ export const PhotoDetailPage = () =>{
                 <div className="flex flex-wrap items-center text-sm text-gray-500 mb-6">
                   <div className="flex items-center mr-4 mb-2">
                     <Calendar className="h-4 w-4 mr-1" />
-                    <span>{new Date(photo.date).toLocaleDateString('en-US', {
+                    <span>
+                      {new Date(photo.date).toLocaleDateString('en-US', {
                       month: 'long',
                       day: 'numeric',
                       year: 'numeric'
-                    })}</span>
+                    })}
+                    </span>
                   </div>
                   <div className="flex items-center mr-4 mb-2">
                     <MapPin className="h-4 w-4 mr-1" />
@@ -217,7 +216,7 @@ export const PhotoDetailPage = () =>{
                   <div className="flex">
                     <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Your avatar" className="h-10 w-10 rounded-full mr-3" />
                     <div className="flex-1 relative">
-                      <textarea value={comment} onChange={e =>setComment(e.target.value)} placeholder="Add a comment..." className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-news-primary focus:border-transparent" rows={2}></textarea>
+                      <textarea value={comment} onChange={e => setComment(e.target.value)} placeholder="Add a comment..." className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-news-primary focus:border-transparent" rows={2}></textarea>
                       <button type="submit" disabled={!comment.trim()} className="absolute bottom-2 right-2 p-1 rounded-full bg-news-primary text-white disabled:bg-gray-300">
                         <Send className="h-4 w-4" />
                       </button>
@@ -234,11 +233,13 @@ export const PhotoDetailPage = () =>{
                             <div className="font-medium text-gray-900">
                               {comment.author}
                             </div>
-                            <div className="text-xs text-gray-500">{new Date(comment.date).toLocaleDateString('en-US', {
+                            <div className="text-xs text-gray-500">
+                              {new Date(comment.date).toLocaleDateString('en-US', {
                             month: 'short',
                             day: 'numeric',
                             year: 'numeric'
-                          })}</div>
+                          })}
+                            </div>
                           </div>
                           <p className="text-gray-700 text-sm">
                             {comment.text}
@@ -313,7 +314,7 @@ export const PhotoDetailPage = () =>{
                   More from {photo.community}
                 </h2>
                 <div className="space-y-4">
-                  {relatedPhotos.map(relatedPhoto => <div key={relatedPhoto.id} className="flex items-center cursor-pointer hover:bg-gray-50 p-2 rounded-lg" onClick={() => router.push(`/photos/${relatedPhoto.id}`)}>
+                  {relatedPhotos.map(relatedPhoto => <div key={relatedPhoto.id} className="flex items-center cursor-pointer hover:bg-gray-50 p-2 rounded-lg" onClick={() => navigate(`/photos/${relatedPhoto.id}`)}>
                       <div className="h-16 w-16 rounded-md overflow-hidden flex-shrink-0">
                         <img src={relatedPhoto.imageUrl} alt={relatedPhoto.title} className="h-full w-full object-cover" />
                       </div>
@@ -325,8 +326,9 @@ export const PhotoDetailPage = () =>{
                     </div>)}
                 </div>
                 <div className="mt-4 pt-3 border-t border-gray-100 text-center">
-                  <button onClick={() =>router.push('/photos')} className="text-sm font-medium text-news-primary hover:text-news-primary-dark">
-                    View all photos</button>
+                  <button onClick={() => navigate('/photos')} className="text-sm font-medium text-news-primary hover:text-news-primary-dark">
+                    View all photos
+                  </button>
                 </div>
               </div>
             </div>

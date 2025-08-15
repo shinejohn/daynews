@@ -1,6 +1,5 @@
-// Converted from Magic Patterns
 import React from 'react';
-import { Calendar, MapPin, MessageSquare, TrendingUp, User, Users } from 'lucide-react';
+import { Calendar, MapPin, Users, TrendingUp, MessageSquare } from 'lucide-react';
 export const ArticleSidebar = () => {
   return <div className="space-y-8">
       {/* Premium ad space */}
@@ -25,13 +24,17 @@ export const ArticleSidebar = () => {
                   0{item}
                 </div>
                 <div>
-                  <h4 className="font-medium text-gray-900 mb-1 line-clamp-2">{item === 1 && 'Clearwater Marine Aquarium Announces Expansion Plans'}
+                  <h4 className="font-medium text-gray-900 mb-1 line-clamp-2">
+                    {item === 1 && 'Clearwater Marine Aquarium Announces Expansion Plans'}
                     {item === 2 && 'Local Restaurant Week Returns With 45 Participating Venues'}
                     {item === 3 && 'School Board Approves New Start Times for 2025'}
                     {item === 4 && 'Tropical Storm Debby Forms in Gulf, Monitoring Continues'}
-                    {item === 5 && 'Downtown Art Festival Expects Record Attendance'}</h4>
-                  <div className="text-xs text-gray-500">{Math.floor(Math.random() * 10) + 1}h ago •{' '}
-                    {Math.floor(Math.random() * 100) + 50} readers</div>
+                    {item === 5 && 'Downtown Art Festival Expects Record Attendance'}
+                  </h4>
+                  <div className="text-xs text-gray-500">
+                    {Math.floor(Math.random() * 10) + 1}h ago •{' '}
+                    {Math.floor(Math.random() * 100) + 50} readers
+                  </div>
                 </div>
               </div>
             </a>)}
@@ -46,20 +49,26 @@ export const ArticleSidebar = () => {
         <div className="divide-y divide-gray-100">
           {[1, 2, 3].map(item => <a key={item} href="#" className="block p-4 hover:bg-gray-50">
               <div>
-                <h4 className="font-medium text-gray-900 mb-1">{item === 1 && 'Farmers Market at Coachman Park'}
+                <h4 className="font-medium text-gray-900 mb-1">
+                  {item === 1 && 'Farmers Market at Coachman Park'}
                   {item === 2 && 'Summer Concert Series: Jazz on the Bay'}
-                  {item === 3 && 'Clearwater Library Book Sale'}</h4>
+                  {item === 3 && 'Clearwater Library Book Sale'}
+                </h4>
                 <div className="flex items-center text-xs text-gray-500 mb-1">
                   <Calendar className="h-3 w-3 mr-1" />
-                  <span>{item === 1 && 'Saturday, Aug 3 • 8am-1pm'}
+                  <span>
+                    {item === 1 && 'Saturday, Aug 3 • 8am-1pm'}
                     {item === 2 && 'Sunday, Aug 4 • 6pm-9pm'}
-                    {item === 3 && 'Aug 5-7 • 10am-7pm'}</span>
+                    {item === 3 && 'Aug 5-7 • 10am-7pm'}
+                  </span>
                 </div>
                 <div className="flex items-center text-xs text-gray-500">
                   <MapPin className="h-3 w-3 mr-1" />
-                  <span>{item === 1 && 'Coachman Park'}
+                  <span>
+                    {item === 1 && 'Coachman Park'}
                     {item === 2 && 'Pier 60'}
-                    {item === 3 && 'Clearwater Main Library'}</span>
+                    {item === 3 && 'Clearwater Main Library'}
+                  </span>
                 </div>
               </div>
             </a>)}

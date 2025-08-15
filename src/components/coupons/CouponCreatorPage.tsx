@@ -1,10 +1,8 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { ArrowLeft, Building, Calendar, Image as ImageIcon, Info, MapPin, Percent, Save, Send, Tag, Ticket, Upload } from 'lucide-react';
-export const CouponCreatorPage = () =>{
-  const router = useRouter();
+import { useNavigate } from 'react-router-dom';
+import { ArrowLeft, Ticket, Calendar, Building, MapPin, Tag, Percent, Image as ImageIcon, Upload, Save, Send, Info } from 'lucide-react';
+export const CouponCreatorPage = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -31,12 +29,12 @@ export const CouponCreatorPage = () =>{
     e.preventDefault();
     // Submit coupon logic would go here
     // For now, just navigate back to the coupons page
-    router.push('/coupons');
+    navigate('/coupons');
   };
   const handleCancel = () => {
-    router.push('/publish');
+    navigate('/publish');
   };
-  return<div className="flex-1 overflow-auto bg-gray-50">
+  return <div className="flex-1 overflow-auto bg-gray-50">
       <div className="max-w-4xl mx-auto py-8 px-4">
         <button onClick={handleCancel} className="flex items-center text-gray-600 mb-6 hover:text-gray-900">
           <ArrowLeft className="h-4 w-4 mr-2" />

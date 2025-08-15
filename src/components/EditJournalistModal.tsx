@@ -1,5 +1,3 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
 interface EditJournalistModalProps {
@@ -21,7 +19,7 @@ interface EditJournalistModalProps {
   };
   onSave: (journalist: any) => void;
 }
-export const EditJournalistModal: React.FC<EditJournalistModalProps>= ({
+export const EditJournalistModal: React.FC<EditJournalistModalProps> = ({
   isOpen,
   onClose,
   journalist,
@@ -143,7 +141,8 @@ export const EditJournalistModal: React.FC<EditJournalistModalProps>= ({
                     </label>
                     <div className="flex flex-wrap gap-2">
                       <div className="inline-flex items-center bg-gray-100 rounded px-2 py-1 text-xs">
-                        <input type="checkbox" className="mr-1" checked={formData.alternativeGenres.includes('The News Chronicle')} onChange={() =>handleCheckboxChange('The News Chronicle', 'alternativeGenres')} /><span>The News Chronicle</span>
+                        <input type="checkbox" className="mr-1" checked={formData.alternativeGenres.includes('The News Chronicle')} onChange={() => handleCheckboxChange('The News Chronicle', 'alternativeGenres')} />
+                        <span>The News Chronicle</span>
                       </div>
                     </div>
                   </div>
@@ -157,8 +156,10 @@ export const EditJournalistModal: React.FC<EditJournalistModalProps>= ({
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm mb-1">Categories</label>
-                    <div className="flex flex-wrap gap-2">{['Economy / Business News', 'Community', 'Politics', 'Sports', 'Education'].map(category =><div key={category} className="inline-flex items-center bg-gray-100 rounded px-2 py-1 text-xs">
-                          <input type="checkbox" className="mr-1" checked={formData.categories.includes(category)} onChange={() =>handleCheckboxChange(category, 'categories')} /><span>{category}</span>
+                    <div className="flex flex-wrap gap-2">
+                      {['Economy / Business News', 'Community', 'Politics', 'Sports', 'Education'].map(category => <div key={category} className="inline-flex items-center bg-gray-100 rounded px-2 py-1 text-xs">
+                          <input type="checkbox" className="mr-1" checked={formData.categories.includes(category)} onChange={() => handleCheckboxChange(category, 'categories')} />
+                          <span>{category}</span>
                         </div>)}
                     </div>
                   </div>
@@ -166,8 +167,10 @@ export const EditJournalistModal: React.FC<EditJournalistModalProps>= ({
                     <label className="block text-sm mb-1">
                       Journalistic Perspectives
                     </label>
-                    <div className="flex flex-wrap gap-2">{['Investigative Journalism', 'Feature Story (Human-Interest Focused)', 'Analytical Journalism', 'Community-Based Reporting'].map(perspective =><div key={perspective} className="inline-flex items-center bg-gray-100 rounded px-2 py-1 text-xs">
-                          <input type="checkbox" className="mr-1" checked={formData.perspectives.includes(perspective)} onChange={() =>handleCheckboxChange(perspective, 'perspectives')} /><span>{perspective}</span>
+                    <div className="flex flex-wrap gap-2">
+                      {['Investigative Journalism', 'Feature Story (Human-Interest Focused)', 'Analytical Journalism', 'Community-Based Reporting'].map(perspective => <div key={perspective} className="inline-flex items-center bg-gray-100 rounded px-2 py-1 text-xs">
+                          <input type="checkbox" className="mr-1" checked={formData.perspectives.includes(perspective)} onChange={() => handleCheckboxChange(perspective, 'perspectives')} />
+                          <span>{perspective}</span>
                         </div>)}
                     </div>
                   </div>
@@ -181,8 +184,10 @@ export const EditJournalistModal: React.FC<EditJournalistModalProps>= ({
                     <label className="block text-sm mb-1">
                       Journalistic Styles
                     </label>
-                    <div className="flex flex-wrap gap-2">{['attention', 'clarity', 'informative rigor', 'conversational', 'narrative'].map(style =><div key={style} className="inline-flex items-center bg-gray-100 rounded px-2 py-1 text-xs">
-                          <input type="checkbox" className="mr-1" checked={formData.styles.includes(style)} onChange={() =>handleCheckboxChange(style, 'styles')} /><span>{style}</span>
+                    <div className="flex flex-wrap gap-2">
+                      {['attention', 'clarity', 'informative rigor', 'conversational', 'narrative'].map(style => <div key={style} className="inline-flex items-center bg-gray-100 rounded px-2 py-1 text-xs">
+                          <input type="checkbox" className="mr-1" checked={formData.styles.includes(style)} onChange={() => handleCheckboxChange(style, 'styles')} />
+                          <span>{style}</span>
                         </div>)}
                     </div>
                   </div>
@@ -199,8 +204,10 @@ export const EditJournalistModal: React.FC<EditJournalistModalProps>= ({
                         <option value="formal">formal</option>
                         <option value="casual">casual</option>
                       </select>
-                      <div className="flex border border-l-0 border-gray-300 rounded-r px-3 py-2 text-sm bg-gray-50">{['serious', 'reflective', 'optimistic', 'critical'].map(tone =><div key={tone} className="inline-flex items-center mr-2">
-                            <input type="checkbox" className="mr-1" checked={formData.secondaryTones.includes(tone)} onChange={() =>handleCheckboxChange(tone, 'secondaryTones')} /><span className="text-xs">{tone}</span>
+                      <div className="flex border border-l-0 border-gray-300 rounded-r px-3 py-2 text-sm bg-gray-50">
+                        {['serious', 'reflective', 'optimistic', 'critical'].map(tone => <div key={tone} className="inline-flex items-center mr-2">
+                            <input type="checkbox" className="mr-1" checked={formData.secondaryTones.includes(tone)} onChange={() => handleCheckboxChange(tone, 'secondaryTones')} />
+                            <span className="text-xs">{tone}</span>
                           </div>)}
                       </div>
                     </div>

@@ -1,11 +1,9 @@
-'use client';
-// Converted from Magic Patterns
 import React from 'react';
-import { Bookmark, Clock, MapPin } from 'lucide-react';
+import { MapPin, Clock, Bookmark } from 'lucide-react';
 export const CommunityVoices = ({
   category = null,
   onArticleClick
-}) =>{
+}) => {
   const allArticles = [{
     id: 1,
     title: "Why Our City's Parks Need More Investment",
@@ -39,7 +37,7 @@ export const CommunityVoices = ({
   }];
   // Filter articles based on selected category
   const articles = category ? allArticles.filter(article => article.categoryType === category) : allArticles;
-  return<div className="space-y-4">
+  return <div className="space-y-4">
       {articles.length > 0 ? articles.map(article => <div key={article.id} className="bg-white rounded-md overflow-hidden shadow-sm border border-gray-200 hover:shadow-md transition-shadow cursor-pointer" onClick={onArticleClick}>
             <div className="p-4">
               <div className="inline-block bg-orange-100 text-xs font-medium text-orange-600 px-2 py-0.5 rounded-sm mb-2">
@@ -57,7 +55,9 @@ export const CommunityVoices = ({
               </div>
               <div className="flex items-center">
                 <div className="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center mr-2">
-                  <span className="text-xs font-medium text-gray-600">{article.author.split(' ').map(n => n[0]).join('')}</span>
+                  <span className="text-xs font-medium text-gray-600">
+                    {article.author.split(' ').map(n => n[0]).join('')}
+                  </span>
                 </div>
                 <div>
                   <div className="text-sm font-medium text-gray-900">

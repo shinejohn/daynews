@@ -8,13 +8,14 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
       '@components': path.resolve(__dirname, './src/components')
-    }
+    },
+    extensions: ['.js', '.jsx', '.ts', '.tsx']
   },
   build: {
     // Generate manifest for production
     manifest: true,
     rollupOptions: {
-      input: '/src/entry/entry-client.jsx'
+      input: '/src/entry/entry-client.tsx'
     }
   },
   ssr: {

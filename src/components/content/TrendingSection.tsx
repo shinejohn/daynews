@@ -1,12 +1,10 @@
-'use client';
-// Converted from Magic Patterns
 import React from 'react';
-import { Bookmark, Clock, MapPin, TrendingUp } from 'lucide-react';
+import { Clock, MapPin, Bookmark, TrendingUp } from 'lucide-react';
 export const TrendingSection = ({
   category = null,
   onArticleClick,
   isNational = false
-}) =>{
+}) => {
   const allLocalTrendingArticles = [{
     id: 1,
     title: 'New Waterfront Park Project Approved by City Council',
@@ -103,7 +101,7 @@ export const TrendingSection = ({
   const allTrendingArticles = isNational ? allNationalTrendingArticles : allLocalTrendingArticles;
   // Filter articles based on selected category
   const trendingArticles = category ? allTrendingArticles.filter(article => article.categoryType === category) : allTrendingArticles.slice(0, 3);
-  return<div className="space-y-4">
+  return <div className="space-y-4">
       {trendingArticles.length > 0 ? trendingArticles.map(article => <div key={article.id} className="bg-white rounded-md overflow-hidden shadow-sm border border-gray-200 flex hover:shadow-md transition-shadow cursor-pointer" onClick={onArticleClick}>
             <div className="w-1/3">
               <div className="relative h-full">
@@ -133,10 +131,14 @@ export const TrendingSection = ({
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <div className="h-5 w-5 rounded-full bg-gray-200 flex items-center justify-center">
-                    <span className="text-xs font-medium text-gray-600">{isNational ? 'NR' : 'AM'}</span>
+                    <span className="text-xs font-medium text-gray-600">
+                      {isNational ? 'NR' : 'AM'}
+                    </span>
                   </div>
                   <span className="ml-1 text-xs text-gray-600">
-                    <span className="font-medium">{isNational ? 'National Reporter' : 'Alex Morgan'}</span>
+                    <span className="font-medium">
+                      {isNational ? 'National Reporter' : 'Alex Morgan'}
+                    </span>
                   </span>
                 </div>
                 <button className="p-1 rounded-full hover:bg-gray-100">

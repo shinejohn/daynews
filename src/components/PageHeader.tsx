@@ -1,5 +1,3 @@
-'use client';
-// Converted from Magic Patterns
 import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 export const PageHeader = () => {

@@ -1,42 +1,45 @@
-'use client';
-// Converted from Magic Patterns
-import React, { useState, useEffect } from 'react';;
-import { supabase } from '@/lib/supabase/client';
-import { useRouter } from 'next/navigation';
-import { Camera, ChevronRight, User } from 'lucide-react';
-export const PhotoGallerySection = () =>{
-  const router = useRouter();
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ChevronRight, Camera, User, Calendar, MapPin } from 'lucide-react';
+export const PhotoGallerySection = () => {
+  const navigate = useNavigate();
   // Mock photo gallery data
-  const [photos, setPhotos] = useState([]);
-  const [loading, setLoading] = useState(true);
-  
-  useEffect(() => {
-    const fetchPhotos = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('events')
-          .select('*')
-          .order('created_at', { ascending: false });
-        
-        if (error) throw error;
-        setPhotos(data || []);
-      } catch (error) {
-        console.error('Error fetching events:', error);
-        setPhotos([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-    
-    fetchPhotos();
-  }, []);
+  const photos = [{
+    id: '1',
+    imageUrl: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    title: 'Clearwater Beach Sunset',
+    photographer: 'John Shine',
+    date: 'July 28, 2025',
+    location: 'Clearwater Beach'
+  }, {
+    id: '2',
+    imageUrl: 'https://images.unsplash.com/photo-1488459716781-31db52582fe9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    title: 'Downtown Farmers Market',
+    photographer: 'Sarah Johnson',
+    date: 'July 25, 2025',
+    location: 'Downtown Clearwater'
+  }, {
+    id: '3',
+    imageUrl: 'https://images.unsplash.com/photo-1517960413843-0aee8e2b3285?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    title: 'Pier 60 Fishing',
+    photographer: 'Mike Peterson',
+    date: 'July 22, 2025',
+    location: 'Pier 60'
+  }, {
+    id: '4',
+    imageUrl: 'https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    title: 'Beach Cleanup Event',
+    photographer: 'Lisa Wong',
+    date: 'July 20, 2025',
+    location: 'Honeymoon Island'
+  }];
   const handleViewAllPhotos = () => {
-    router.push('/photos');
+    navigate('/photos');
   };
   const handlePhotoClick = photoId => {
-    router.push(`/photos/${photoId}`);
+    navigate(`/photos/${photoId}`);
   };
-  return<div>
+  return <div>
       <div className="grid grid-cols-2 gap-2">
         {photos.map((photo, index) => <div key={photo.id} className="relative aspect-square rounded-md overflow-hidden group cursor-pointer" onClick={() => handlePhotoClick(photo.id)}>
             <img src={photo.imageUrl} alt={photo.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />

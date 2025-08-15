@@ -1,8 +1,6 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useState } from 'react';
-import { AlertCircle, AlertTriangle, CheckCircle, CheckSquare, ChevronRight, Edit, Eye, FileText, Info, MessageSquare, Search, Shield, Sparkles, Upload, X } from 'lucide-react';
-export const CreateNewsPage = () =>{
+import { FileText, MapPin, Info, X, Upload, PlusCircle, CheckCircle, AlertCircle, ChevronRight, MessageSquare, Edit, Eye, Sparkles, RefreshCw, ThumbsUp, ThumbsDown, Shield, CheckSquare, AlertTriangle, Search } from 'lucide-react';
+export const CreateNewsPage = () => {
   const [formData, setFormData] = useState({
     title: '',
     subtitle: '',
@@ -77,14 +75,14 @@ export const CreateNewsPage = () =>{
     }
   };
   const handleNextStep = () => {
-    if (activeStep< 3) {
+    if (activeStep < 3) {
       setActiveStep(activeStep + 1);
     } else {
       // Submit the form
       validateArticle();
     }
   };
-  const handlePrevStep = () =>{
+  const handlePrevStep = () => {
     if (activeStep > 1) {
       setActiveStep(activeStep - 1);
     }
@@ -122,7 +120,7 @@ The center will resume its regular schedule starting Monday, with expanded hours
       const title = titleLine ? titleLine.replace('# ', '') : '';
       // Extract subtitle (assuming it's the next line after title)
       const subtitleIndex = contentLines.indexOf(titleLine) + 1;
-      const subtitle = subtitleIndex< contentLines.length ? contentLines[subtitleIndex] : '';
+      const subtitle = subtitleIndex < contentLines.length ? contentLines[subtitleIndex] : '';
       // The rest is content
       const content = contentLines.slice(subtitleIndex + 1).join('\n');
       setFormData(prev => ({
@@ -142,17 +140,18 @@ The center will resume its regular schedule starting Monday, with expanded hours
   const renderStepIndicator = () => {
     return <div className="flex justify-between items-center mb-8 px-4 py-3 bg-bg-secondary rounded-lg">
         {[1, 2, 3].map(step => <div key={step} className="flex flex-1 items-center" onClick={() => setActiveStep(step)}>
-            <div className={`flex items-center justify-center w-8 h-8 rounded-full mr-2 ${activeStep === step ? 'bg-news-primary text-white' : activeStep >step ? 'bg-community-green-light bg-opacity-20 text-community-green border border-community-green' : 'bg-bg-tertiary text-text-tertiary'}`}>
-              {activeStep > step ?<CheckCircle className="w-5 h-5" /> : step}
+            <div className={`flex items-center justify-center w-8 h-8 rounded-full mr-2 ${activeStep === step ? 'bg-news-primary text-white' : activeStep > step ? 'bg-community-green-light bg-opacity-20 text-community-green border border-community-green' : 'bg-bg-tertiary text-text-tertiary'}`}>
+              {activeStep > step ? <CheckCircle className="w-5 h-5" /> : step}
             </div>
             <div className="flex-1">
               <div className={`text-sm font-ui font-medium ${activeStep >= step ? 'text-text-primary' : 'text-text-tertiary'}`}>
                 {step === 1 && 'Contextualize'}
                 {step === 2 && 'Add content'}
-                {step === 3 && 'Validate'}</div>
+                {step === 3 && 'Validate'}
+              </div>
             </div>
             {step < 3 && <div className="flex-1 h-1 bg-bg-tertiary mx-2">
-                <div className={`h-1 ${activeStep >step ? 'bg-community-green' : 'bg-bg-tertiary'}`} style={{
+                <div className={`h-1 ${activeStep > step ? 'bg-community-green' : 'bg-bg-tertiary'}`} style={{
             width: activeStep > step ? '100%' : '0%'
           }}></div>
               </div>}
@@ -173,20 +172,25 @@ The center will resume its regular schedule starting Monday, with expanded hours
               </h2>
             </div>
             <div className="flex items-center space-x-2">
-              <button onClick={() =>setAiView('chat')} className={`px-3 py-1.5 rounded-md text-sm font-ui flex items-center ${aiView === 'chat' ? 'bg-civic-purple-light bg-opacity-10 text-civic-purple' : 'text-text-secondary hover:bg-bg-tertiary'}`}><MessageSquare className="h-4 w-4 mr-1.5" />
+              <button onClick={() => setAiView('chat')} className={`px-3 py-1.5 rounded-md text-sm font-ui flex items-center ${aiView === 'chat' ? 'bg-civic-purple-light bg-opacity-10 text-civic-purple' : 'text-text-secondary hover:bg-bg-tertiary'}`}>
+                <MessageSquare className="h-4 w-4 mr-1.5" />
                 Chat
               </button>
-              <button onClick={() =>setAiView('preview')} className={`px-3 py-1.5 rounded-md text-sm font-ui flex items-center ${aiView === 'preview' ? 'bg-civic-purple-light bg-opacity-10 text-civic-purple' : 'text-text-secondary hover:bg-bg-tertiary'}`}><Eye className="h-4 w-4 mr-1.5" />
+              <button onClick={() => setAiView('preview')} className={`px-3 py-1.5 rounded-md text-sm font-ui flex items-center ${aiView === 'preview' ? 'bg-civic-purple-light bg-opacity-10 text-civic-purple' : 'text-text-secondary hover:bg-bg-tertiary'}`}>
+                <Eye className="h-4 w-4 mr-1.5" />
                 Preview
               </button>
-              <button onClick={() =>setAiView('validation')} className={`px-3 py-1.5 rounded-md text-sm font-ui flex items-center ${aiView === 'validation' ? 'bg-civic-purple-light bg-opacity-10 text-civic-purple' : 'text-text-secondary hover:bg-bg-tertiary'}`}><Shield className="h-4 w-4 mr-1.5" />
+              <button onClick={() => setAiView('validation')} className={`px-3 py-1.5 rounded-md text-sm font-ui flex items-center ${aiView === 'validation' ? 'bg-civic-purple-light bg-opacity-10 text-civic-purple' : 'text-text-secondary hover:bg-bg-tertiary'}`}>
+                <Shield className="h-4 w-4 mr-1.5" />
                 Validation
               </button>
-              <button onClick={() =>setShowAIPanel(false)} className="text-text-tertiary hover:text-text-secondary"><X className="h-5 w-5" />
+              <button onClick={() => setShowAIPanel(false)} className="text-text-tertiary hover:text-text-secondary">
+                <X className="h-5 w-5" />
               </button>
             </div>
           </div>
-          <div className="flex-1 overflow-auto">{aiView === 'chat' &&<div className="p-4 h-full flex flex-col">
+          <div className="flex-1 overflow-auto">
+            {aiView === 'chat' && <div className="p-4 h-full flex flex-col">
                 <div className="flex-1 overflow-y-auto mb-4 bg-bg-secondary rounded-lg p-4">
                   {aiResponse ? <div className="mb-4">
                       <div className="bg-civic-purple-light bg-opacity-10 rounded-lg p-3 inline-block max-w-[80%]">
@@ -211,13 +215,14 @@ The center will resume its regular schedule starting Monday, with expanded hours
                     </div>}
                 </div>
                 <div className="flex">
-                  <input type="text" value={aiPrompt} onChange={e =>setAiPrompt(e.target.value)} placeholder="Ask AI to generate content (e.g., Write an article about the local community center reopening)" className="flex-1 px-4 py-3 border border-border-medium rounded-l-lg font-ui focus:outline-none focus:ring-2 focus:ring-civic-purple-light" /><button onClick={simulateAIResponse} className="bg-civic-purple text-white px-4 py-2 rounded-r-lg hover:bg-civic-purple-dark flex items-center">
+                  <input type="text" value={aiPrompt} onChange={e => setAiPrompt(e.target.value)} placeholder="Ask AI to generate content (e.g., Write an article about the local community center reopening)" className="flex-1 px-4 py-3 border border-border-medium rounded-l-lg font-ui focus:outline-none focus:ring-2 focus:ring-civic-purple-light" />
+                  <button onClick={simulateAIResponse} className="bg-civic-purple text-white px-4 py-2 rounded-r-lg hover:bg-civic-purple-dark flex items-center">
                     <Sparkles className="h-4 w-4 mr-2" />
                     Generate
                   </button>
                 </div>
               </div>}
-            {aiView === 'preview' &&<div className="p-6">
+            {aiView === 'preview' && <div className="p-6">
                 <div className="mb-6 flex justify-between items-center">
                   <h3 className="text-lg font-display font-bold text-text-primary">
                     AI Generated Content Preview
@@ -231,7 +236,7 @@ The center will resume its regular schedule starting Monday, with expanded hours
                   <div className="whitespace-pre-line">{aiResponse}</div>
                 </div>
               </div>}
-            {aiView === 'validation' &&<div className="p-6">
+            {aiView === 'validation' && <div className="p-6">
                 <h3 className="text-lg font-display font-bold mb-6 text-text-primary">
                   AI Review Results
                 </h3>
@@ -363,13 +368,16 @@ The center will resume its regular schedule starting Monday, with expanded hours
               </div>}
           </div>
           <div className="border-t border-border-light p-4 flex justify-between">
-            <button onClick={() =>setShowAIPanel(false)} className="px-4 py-2 border border-border-medium rounded-md font-ui text-text-secondary hover:bg-bg-secondary">
-              Close</button>
-            <div className="flex space-x-2">{aiView === 'preview' &&<button onClick={applyAIContent} className="px-4 py-2 bg-civic-purple text-white rounded-md hover:bg-civic-purple-dark flex items-center">
+            <button onClick={() => setShowAIPanel(false)} className="px-4 py-2 border border-border-medium rounded-md font-ui text-text-secondary hover:bg-bg-secondary">
+              Close
+            </button>
+            <div className="flex space-x-2">
+              {aiView === 'preview' && <button onClick={applyAIContent} className="px-4 py-2 bg-civic-purple text-white rounded-md hover:bg-civic-purple-dark flex items-center">
                   <CheckCircle className="h-4 w-4 mr-2" />
                   Apply Content
                 </button>}
-              {aiView === 'validation' &&<button onClick={() =>setAiView('chat')} className="px-4 py-2 bg-civic-purple text-white rounded-md hover:bg-civic-purple-dark flex items-center"><Edit className="h-4 w-4 mr-2" />
+              {aiView === 'validation' && <button onClick={() => setAiView('chat')} className="px-4 py-2 bg-civic-purple text-white rounded-md hover:bg-civic-purple-dark flex items-center">
+                  <Edit className="h-4 w-4 mr-2" />
                   Improve with AI
                 </button>}
             </div>
@@ -387,10 +395,11 @@ The center will resume its regular schedule starting Monday, with expanded hours
               Create News
             </h1>
           </div>
-          <button onClick={() =>{
+          <button onClick={() => {
           setShowAIPanel(true);
           setAiView('chat');
-        }} className="flex items-center bg-news-primary text-white rounded-full px-4 py-2 text-sm font-ui font-medium hover:bg-news-primary-light"><span className="mr-2">Create with AI</span>
+        }} className="flex items-center bg-news-primary text-white rounded-full px-4 py-2 text-sm font-ui font-medium hover:bg-news-primary-light">
+            <span className="mr-2">Create with AI</span>
             <div className="flex items-center justify-center h-5 w-5 bg-white rounded-full">
               <span className="text-xs font-ui font-bold text-news-primary">
                 AI
@@ -454,11 +463,12 @@ The center will resume its regular schedule starting Monday, with expanded hours
                 </label>
                 <div className="flex items-center">
                   <div className="relative flex-1">
-                    <input type="text" value={currentTag} onChange={e =>setCurrentTag(e.target.value)} onKeyDown={handleKeyDown} placeholder="Add keywords (e.g. class, music, event)" className="w-full px-3 py-2 border border-border-medium rounded-l-md font-ui focus:outline-none focus:ring-1 focus:ring-news-primary-light" disabled={activeStep !== 1} />
-                    {formData.tags.length > 0 &&<div className="absolute left-2 top-1/2 transform -translate-y-1/2 flex flex-wrap gap-1">
+                    <input type="text" value={currentTag} onChange={e => setCurrentTag(e.target.value)} onKeyDown={handleKeyDown} placeholder="Add keywords (e.g. class, music, event)" className="w-full px-3 py-2 border border-border-medium rounded-l-md font-ui focus:outline-none focus:ring-1 focus:ring-news-primary-light" disabled={activeStep !== 1} />
+                    {formData.tags.length > 0 && <div className="absolute left-2 top-1/2 transform -translate-y-1/2 flex flex-wrap gap-1">
                         {formData.tags.map(tag => <div key={tag} className="flex items-center bg-bg-tertiary text-text-secondary text-xs font-ui rounded-full px-2 py-1">
                             {tag}
-                            <button onClick={() =>handleRemoveTag(tag)} className="ml-1 text-text-tertiary hover:text-text-secondary" disabled={activeStep !== 1}><X className="h-3 w-3" />
+                            <button onClick={() => handleRemoveTag(tag)} className="ml-1 text-text-tertiary hover:text-text-secondary" disabled={activeStep !== 1}>
+                              <X className="h-3 w-3" />
                             </button>
                           </div>)}
                       </div>}

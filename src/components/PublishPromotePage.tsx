@@ -1,16 +1,14 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { ArrowRight, Calendar, ChevronRight, Gavel, Megaphone, Newspaper, ShoppingBag, Store, Target, Ticket } from 'lucide-react';
-export const PublishPromotePage = () =>{
+import { useNavigate } from 'react-router-dom';
+import { Newspaper, ShoppingBag, Megaphone, Ticket, ArrowRight, ChevronRight, Calendar, Gavel, Store, Target } from 'lucide-react';
+export const PublishPromotePage = () => {
   const [selectedOption, setSelectedOption] = useState('');
-  const router = useRouter();
+  const navigate = useNavigate();
   const options = [{
     id: 'article',
     title: 'Write an Article',
     description: 'Share news, stories, or information with your community',
-    icon:<Newspaper className="h-8 w-8 text-news-primary" />,
+    icon: <Newspaper className="h-8 w-8 text-news-primary" />,
     color: 'bg-blue-100',
     textColor: 'text-news-primary',
     route: '/create-article'
@@ -18,7 +16,7 @@ export const PublishPromotePage = () =>{
     id: 'product',
     title: 'Sell a Product or Service',
     description: 'List items for sale or promote your business services',
-    icon:<ShoppingBag className="h-8 w-8 text-green-600" />,
+    icon: <ShoppingBag className="h-8 w-8 text-green-600" />,
     color: 'bg-green-100',
     textColor: 'text-green-600',
     route: '/postListing'
@@ -26,7 +24,7 @@ export const PublishPromotePage = () =>{
     id: 'business',
     title: 'List Your Business Profile',
     description: 'Create and promote your business in the local directory',
-    icon:<Store className="h-8 w-8 text-cyan-600" />,
+    icon: <Store className="h-8 w-8 text-cyan-600" />,
     color: 'bg-cyan-100',
     textColor: 'text-cyan-600',
     route: '/business/create'
@@ -34,7 +32,7 @@ export const PublishPromotePage = () =>{
     id: 'advertise',
     title: 'Advertise in the Community',
     description: 'Create targeted ad campaigns to reach local audiences',
-    icon:<Target className="h-8 w-8 text-pink-600" />,
+    icon: <Target className="h-8 w-8 text-pink-600" />,
     color: 'bg-pink-100',
     textColor: 'text-pink-600',
     route: '/community-ads'
@@ -42,7 +40,7 @@ export const PublishPromotePage = () =>{
     id: 'announcement',
     title: 'Make an Announcement',
     description: 'Share important information with your community',
-    icon:<Megaphone className="h-8 w-8 text-purple-600" />,
+    icon: <Megaphone className="h-8 w-8 text-purple-600" />,
     color: 'bg-purple-100',
     textColor: 'text-purple-600',
     route: '/announcementCreator'
@@ -50,7 +48,7 @@ export const PublishPromotePage = () =>{
     id: 'coupon',
     title: 'Offer a Coupon',
     description: 'Create special deals or discounts for your business',
-    icon:<Ticket className="h-8 w-8 text-orange-600" />,
+    icon: <Ticket className="h-8 w-8 text-orange-600" />,
     color: 'bg-orange-100',
     textColor: 'text-orange-600',
     route: '/couponCreator'
@@ -58,7 +56,7 @@ export const PublishPromotePage = () =>{
     id: 'event',
     title: 'Schedule an Event',
     description: 'Create and promote community events',
-    icon:<Calendar className="h-8 w-8 text-indigo-600" />,
+    icon: <Calendar className="h-8 w-8 text-indigo-600" />,
     color: 'bg-indigo-100',
     textColor: 'text-indigo-600',
     route: '/eventCreator'
@@ -66,7 +64,7 @@ export const PublishPromotePage = () =>{
     id: 'legal',
     title: 'Post a Legal Notice',
     description: 'Publish official legal notices and announcements',
-    icon:<Gavel className="h-8 w-8 text-red-600" />,
+    icon: <Gavel className="h-8 w-8 text-red-600" />,
     color: 'bg-red-100',
     textColor: 'text-red-600',
     route: '/legalNoticeCreator'
@@ -78,24 +76,26 @@ export const PublishPromotePage = () =>{
     if (selectedOption) {
       const selectedOptionData = options.find(option => option.id === selectedOption);
       if (selectedOptionData) {
-        router.push(selectedOptionData.route);
+        navigate(selectedOptionData.route);
       }
     }
   };
   const handleDirectNavigation = optionId => {
     const selectedOptionData = options.find(option => option.id === optionId);
     if (selectedOptionData) {
-      router.push(selectedOptionData.route);
+      navigate(selectedOptionData.route);
     }
   };
-  return<div className="flex-1 overflow-auto bg-gray-50">
+  return <div className="flex-1 overflow-auto bg-gray-50">
       <div className="max-w-4xl mx-auto py-8 px-4">
         <h1 className="text-3xl font-bold text-gray-900 mb-6">
           Share, Sell and Announce
         </h1>
-        <p className="text-lg text-gray-600 mb-8">Choose what you'd like to publish in your community</p>
+        <p className="text-lg text-gray-600 mb-8">
+          Choose what you'd like to publish in your community
+        </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          {options.map(option => <div key={option.id} className={`border rounded-xl p-6 cursor-pointer transition-all ${selectedOption === option.id ? `border-2 ${option.textColor} ${option.color} shadow-md` : 'border-gray-200 hover:border-gray-300 hover:shadow-sm'}`} onClick={() =>{
+          {options.map(option => <div key={option.id} className={`border rounded-xl p-6 cursor-pointer transition-all ${selectedOption === option.id ? `border-2 ${option.textColor} ${option.color} shadow-md` : 'border-gray-200 hover:border-gray-300 hover:shadow-sm'}`} onClick={() => {
           handleOptionSelect(option.id);
           // Allow for direct click-through navigation as well
           handleDirectNavigation(option.id);
@@ -104,7 +104,8 @@ export const PublishPromotePage = () =>{
             handleOptionSelect(option.id);
             handleDirectNavigation(option.id);
           }
-        }}><div className="flex items-start">
+        }}>
+              <div className="flex items-start">
                 <div className={`p-3 rounded-lg ${option.color} mr-4`}>
                   {option.icon}
                 </div>

@@ -1,30 +1,33 @@
-'use client';
-// Converted from Magic Patterns
 import React from 'react';
 import { Wrench, ShoppingBag, Briefcase, FileText, Home } from 'lucide-react';
 export const MarketplaceCategories = ({
   selectedCategory,
   onCategorySelect
-}) =>{
+}) => {
   const categories = [{
     id: 'all',
     title: 'All Categories',
-    icon:<ShoppingBag className="h-6 w-6" />}, {
+    icon: <ShoppingBag className="h-6 w-6" />
+  }, {
     id: 'services',
     title: 'Services',
-    icon:<Wrench className="h-6 w-6" />}, {
+    icon: <Wrench className="h-6 w-6" />
+  }, {
     id: 'products',
     title: 'Products for sale',
-    icon:<ShoppingBag className="h-6 w-6" />}, {
+    icon: <ShoppingBag className="h-6 w-6" />
+  }, {
     id: 'jobs',
     title: 'Job offers',
-    icon:<Briefcase className="h-6 w-6" />}, {
+    icon: <Briefcase className="h-6 w-6" />
+  }, {
     id: 'classifieds',
     title: 'General Classifieds',
-    icon:<FileText className="h-6 w-6" />}, {
+    icon: <FileText className="h-6 w-6" />
+  }, {
     id: 'rentals',
     title: 'Rentals',
-    icon:<Home className="h-6 w-6" />
+    icon: <Home className="h-6 w-6" />
   }];
   return <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6">
       {categories.map(category => <CategoryCard key={category.id} icon={category.icon} title={category.title} isSelected={selectedCategory === category.id} onClick={() => onCategorySelect(category.id)} />)}

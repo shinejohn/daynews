@@ -1,11 +1,9 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useEffect, useState } from 'react';
-import { Heart, HelpCircle, Lightbulb, MessageSquare, ThumbsUp } from 'lucide-react';
+import { MessageSquare, Heart, ThumbsUp, Lightbulb, HelpCircle } from 'lucide-react';
 export const CommunityPulse = ({
   data,
   timePeriod
-}) =>{
+}) => {
   const [comments, setComments] = useState(data.comments || []);
   // Simulate live comment updates for "now" time period
   useEffect(() => {
@@ -27,7 +25,7 @@ export const CommunityPulse = ({
       return () => clearInterval(interval);
     }
   }, [timePeriod, data.comments]);
-  return<div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+  return <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
       <div className="p-4 border-b border-gray-200">
         <h3 className="font-bold text-gray-900 flex items-center">
           <MessageSquare className="h-5 w-5 mr-2 text-news-primary" />
@@ -43,13 +41,14 @@ export const CommunityPulse = ({
           <div className="h-48 relative">
             {data.wordCloud && data.wordCloud.map((word, index) => <div key={index} className="absolute text-gray-800" style={{
             fontSize: `${Math.max(0.7, word.value / 20)}rem`,
-            fontWeight: word.value >60 ? 'bold' : 'normal',
+            fontWeight: word.value > 60 ? 'bold' : 'normal',
             left: `${Math.random() * 70 + 5}%`,
             top: `${Math.random() * 70 + 5}%`,
             transform: `rotate(${Math.random() * 30 - 15}deg)`,
             opacity: word.value / 100
           }}>
-                  {word.text}</div>)}
+                  {word.text}
+                </div>)}
           </div>
         </div>
         {/* Live Comment Stream */}
@@ -82,7 +81,12 @@ export const CommunityPulse = ({
           Reaction Summary
         </h4>
         <div className="flex flex-wrap gap-3">
-          <ReactionBubble icon={<ThumbsUp className="h-4 w-4" />} label="Like" count={data.reactions ? data.reactions[0].count : 0} color="bg-blue-100 text-blue-600" /><ReactionBubble icon={<Heart className="h-4 w-4" />} label="Love" count={data.reactions ? data.reactions[1].count : 0} color="bg-red-100 text-red-600" /><ReactionBubble icon={<ThumbsUp className="h-4 w-4" />} label="Support" count={data.reactions ? data.reactions[2].count : 0} color="bg-green-100 text-green-600" /><ReactionBubble icon={<HelpCircle className="h-4 w-4" />} label="Curious" count={data.reactions ? data.reactions[3].count : 0} color="bg-purple-100 text-purple-600" /><ReactionBubble icon={<Lightbulb className="h-4 w-4" />} label="Insightful" count={data.reactions ? data.reactions[4].count : 0} color="bg-yellow-100 text-yellow-600" /></div>
+          <ReactionBubble icon={<ThumbsUp className="h-4 w-4" />} label="Like" count={data.reactions ? data.reactions[0].count : 0} color="bg-blue-100 text-blue-600" />
+          <ReactionBubble icon={<Heart className="h-4 w-4" />} label="Love" count={data.reactions ? data.reactions[1].count : 0} color="bg-red-100 text-red-600" />
+          <ReactionBubble icon={<ThumbsUp className="h-4 w-4" />} label="Support" count={data.reactions ? data.reactions[2].count : 0} color="bg-green-100 text-green-600" />
+          <ReactionBubble icon={<HelpCircle className="h-4 w-4" />} label="Curious" count={data.reactions ? data.reactions[3].count : 0} color="bg-purple-100 text-purple-600" />
+          <ReactionBubble icon={<Lightbulb className="h-4 w-4" />} label="Insightful" count={data.reactions ? data.reactions[4].count : 0} color="bg-yellow-100 text-yellow-600" />
+        </div>
       </div>
     </div>;
 };

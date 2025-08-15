@@ -1,16 +1,13 @@
-'use client';
-// Converted from Magic Patterns
-import React, { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabase/client';
+import React, { useEffect, useState, memo } from 'react';
 // ssr-csr=ssr
-// []=yes
-// []=yes
+// mockdata=yes
+// mockdataon=yes
 
-import { useRouter } from 'next/navigation';
-import { ChevronDown, Clock, ExternalLink, Filter, Search, Share2, TrendingUp, User, Users } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { MapPin, Share2, Heart, MessageCircle, Calendar, PlusCircle, Clock, Search, Filter, ChevronDown, ExternalLink, TrendingUp, Users } from 'lucide-react';
 import { useLocationDetection } from '../location/LocationDetector';
-export const TrendingPage = () =>{
-  const router = useRouter();
+export const TrendingPage = () => {
+  const navigate = useNavigate();
   const {
     locationData
   } = useLocationDetection();
@@ -67,7 +64,7 @@ export const TrendingPage = () =>{
   const TrendingNowLive = ({
     topics,
     timePeriod
-  }) =><div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+  }) => <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
       <h2 className="text-xl font-bold mb-4">Trending Topics</h2>
       <div className="space-y-2">
         {topics?.map((topic, index) => <div key={index} className="flex items-center justify-between p-2 hover:bg-gray-50 rounded">
@@ -199,7 +196,7 @@ export const TrendingPage = () =>{
         return 'Currently active';
     }
   };
-  return<div className="flex-1 overflow-auto bg-gray-50">
+  return <div className="flex-1 overflow-auto bg-gray-50">
       <main className="pt-4 overflow-auto">
         <div className="mx-auto max-w-7xl px-4 py-6">
           {/* Page Header */}
@@ -207,7 +204,9 @@ export const TrendingPage = () =>{
             <div className="flex flex-col md:flex-row md:items-end justify-between">
               <div>
                 <h1 className="text-3xl font-bold text-gray-900 mb-2 flex items-center">
-                  <TrendingUp className="h-8 w-8 mr-2 text-news-primary" />Trending in {locationData?.city || 'Clearwater'}</h1>
+                  <TrendingUp className="h-8 w-8 mr-2 text-news-primary" />
+                  Trending in {locationData?.city || 'Clearwater'}
+                </h1>
                 <p className="text-gray-600">
                   What your neighbors are talking about right now
                 </p>
@@ -228,14 +227,18 @@ export const TrendingPage = () =>{
           {/* Time Period Toggle */}
           <div className="mb-8">
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-1.5 inline-flex">
-              <button onClick={() =>handleTimePeriodChange('now')} className={`px-4 py-2 text-sm font-medium rounded-md ${timePeriod === 'now' ? 'bg-news-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}>
-                Now</button>
-              <button onClick={() =>handleTimePeriodChange('today')} className={`px-4 py-2 text-sm font-medium rounded-md ${timePeriod === 'today' ? 'bg-news-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}>
-                Today</button>
-              <button onClick={() =>handleTimePeriodChange('week')} className={`px-4 py-2 text-sm font-medium rounded-md ${timePeriod === 'week' ? 'bg-news-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}>
-                This Week</button>
-              <button onClick={() =>handleTimePeriodChange('month')} className={`px-4 py-2 text-sm font-medium rounded-md ${timePeriod === 'month' ? 'bg-news-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}>
-                This Month</button>
+              <button onClick={() => handleTimePeriodChange('now')} className={`px-4 py-2 text-sm font-medium rounded-md ${timePeriod === 'now' ? 'bg-news-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}>
+                Now
+              </button>
+              <button onClick={() => handleTimePeriodChange('today')} className={`px-4 py-2 text-sm font-medium rounded-md ${timePeriod === 'today' ? 'bg-news-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}>
+                Today
+              </button>
+              <button onClick={() => handleTimePeriodChange('week')} className={`px-4 py-2 text-sm font-medium rounded-md ${timePeriod === 'week' ? 'bg-news-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}>
+                This Week
+              </button>
+              <button onClick={() => handleTimePeriodChange('month')} className={`px-4 py-2 text-sm font-medium rounded-md ${timePeriod === 'month' ? 'bg-news-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}>
+                This Month
+              </button>
             </div>
           </div>
 
@@ -356,29 +359,23 @@ export const TrendingPage = () =>{
 // Helper function to generate mock trending data
 const generateMockTrendingData = timePeriod => {
   // Generate topics based on time period
-  const [topics, setTopics] = useState([]);
-  const [loading, setLoading] = useState(true);
-  
-  useEffect(() => {
-    const fetchTopics = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('events')
-          .select('*')
-          .order('created_at', { ascending: false });
-        
-        if (error) throw error;
-        setTopics(data || []);
-      } catch (error) {
-        console.error('Error fetching events:', error);
-        setTopics([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-    
-    fetchTopics();
-  }, []);
+  const topics = [{
+    id: 1,
+    name: 'Downtown Development',
+    count: timePeriod === 'now' ? 68 : timePeriod === 'today' ? 245 : timePeriod === 'week' ? 876 : 2341,
+    momentum: 0.8,
+    direction: 'up',
+    velocity: 12
+  }, {
+    id: 2,
+    name: 'School Board Meeting',
+    count: timePeriod === 'now' ? 52 : timePeriod === 'today' ? 187 : timePeriod === 'week' ? 542 : 1654,
+    momentum: 0.6,
+    direction: 'up',
+    velocity: 8
+  }
+  // More topics...
+  ];
   // Return a simplified dataset for the mock
   return {
     topics,

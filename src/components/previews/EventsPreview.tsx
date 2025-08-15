@@ -1,10 +1,8 @@
-'use client';
-// Converted from Magic Patterns
 import React from 'react';
-import { Calendar, ChevronRight, Clock, ExternalLink, MapPin } from 'lucide-react';
+import { Calendar, MapPin, Clock, ChevronRight, ExternalLink } from 'lucide-react';
 export const EventsPreview = ({
   onViewAll
-}) =>{
+}) => {
   // Featured event
   const featuredEvent = {
     id: 1,
@@ -49,7 +47,7 @@ export const EventsPreview = ({
     category: 'Music',
     image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
   }];
-  return<div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+  return <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       {/* Featured Event - Takes up 1/3 of the width */}
       <div className="lg:col-span-1">
         <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden h-full flex flex-col">

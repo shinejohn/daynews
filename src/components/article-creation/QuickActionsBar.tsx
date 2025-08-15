@@ -1,7 +1,5 @@
-'use client';
-// Converted from Magic Patterns
 import React from 'react';
-import { Edit, RefreshCw, Ruler, Target } from 'lucide-react';
+import { Target, Ruler, RefreshCw, Edit } from 'lucide-react';
 export const QuickActionsBar = ({
   onSetTone,
   onAdjustLength,

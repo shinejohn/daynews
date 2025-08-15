@@ -1,7 +1,5 @@
-'use client';
-// Converted from Magic Patterns
 import React from 'react';
-import { Clock, MapPin } from 'lucide-react';
+import { MapPin, Clock } from 'lucide-react';
 export const ArticleRelated = ({
   onAdClick
 }) => {
@@ -118,7 +116,9 @@ export const ArticleRelated = ({
       {/* Newsletter Signup */}
       <div className="bg-gray-100 rounded-lg p-8 mb-12">
         <div className="max-w-3xl mx-auto text-center">
-          <h3 className="font-display text-xl font-bold text-gray-900 mb-3">Get Clearwater's top stories delivered daily</h3>
+          <h3 className="font-display text-xl font-bold text-gray-900 mb-3">
+            Get Clearwater's top stories delivered daily
+          </h3>
           <p className="text-gray-600 mb-6">
             Stay informed with the latest news, events, and updates from your
             community.
@@ -140,8 +140,9 @@ export const ArticleRelated = ({
         <div className="text-xs text-gray-400 text-center mb-1">
           ADVERTISEMENT
         </div>
-        <div className="bg-gray-200 h-24 rounded flex items-center justify-center text-gray-400 cursor-pointer hover:bg-gray-300 transition-colors" onClick={() =>onAdClick && onAdClick('advertisingDetail')}>
-          728x90 Leaderboard Ad</div>
+        <div className="bg-gray-200 h-24 rounded flex items-center justify-center text-gray-400 cursor-pointer hover:bg-gray-300 transition-colors" onClick={() => onAdClick && onAdClick('advertisingDetail')}>
+          728x90 Leaderboard Ad
+        </div>
       </div>
     </div>;
 };

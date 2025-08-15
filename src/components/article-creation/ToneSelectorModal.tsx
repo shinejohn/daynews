@@ -1,5 +1,3 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
 interface ToneSelectorModalProps {
@@ -7,7 +5,7 @@ interface ToneSelectorModalProps {
   onClose: () => void;
   onApply: (tone: string, style: string) => void;
 }
-export const ToneSelectorModal: React.FC<ToneSelectorModalProps>= ({
+export const ToneSelectorModal: React.FC<ToneSelectorModalProps> = ({
   isOpen,
   onClose,
   onApply
@@ -21,7 +19,7 @@ export const ToneSelectorModal: React.FC<ToneSelectorModalProps>= ({
   };
   const tones = ['Objective News', 'Feature Story', 'Opinion/Editorial', 'Investigative', 'Human Interest', 'Educational'];
   const styles = ['Professional', 'Conversational', 'Academic'];
-  return<div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  return <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg p-6 max-w-md w-full">
         <div className="flex justify-between items-center mb-4">
           <h3 className="text-lg font-semibold">Select Article Tone & Style</h3>
@@ -36,7 +34,8 @@ export const ToneSelectorModal: React.FC<ToneSelectorModalProps>= ({
             </label>
             <div className="grid grid-cols-2 gap-2">
               {tones.map(tone => <label key={tone} className="flex items-center">
-                  <input type="radio" name="tone" value={tone} checked={selectedTone === tone} onChange={() =>setSelectedTone(tone)} className="mr-2" /><span className="text-sm">{tone}</span>
+                  <input type="radio" name="tone" value={tone} checked={selectedTone === tone} onChange={() => setSelectedTone(tone)} className="mr-2" />
+                  <span className="text-sm">{tone}</span>
                 </label>)}
             </div>
           </div>
@@ -46,7 +45,8 @@ export const ToneSelectorModal: React.FC<ToneSelectorModalProps>= ({
             </label>
             <div className="flex gap-4">
               {styles.map(style => <label key={style} className="flex items-center">
-                  <input type="radio" name="style" value={style} checked={selectedStyle === style} onChange={() =>setSelectedStyle(style)} className="mr-2" /><span className="text-sm">{style}</span>
+                  <input type="radio" name="style" value={style} checked={selectedStyle === style} onChange={() => setSelectedStyle(style)} className="mr-2" />
+                  <span className="text-sm">{style}</span>
                 </label>)}
             </div>
           </div>

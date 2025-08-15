@@ -1,7 +1,6 @@
-// Converted from Magic Patterns
 import React from 'react';
-import Link from 'next/link';
-import { Check, Clock, ExternalLink, MapPin, Star } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { MapPin, Star, Clock, Check, ExternalLink } from 'lucide-react';
 export const BusinessCard = ({
   business
 }) => {
@@ -41,7 +40,9 @@ export const BusinessCard = ({
               </div>
               <div className="flex items-center text-sm mr-4">
                 <Clock className="h-4 w-4 mr-1 text-gray-400" />
-                <span className={business.isOpen ? 'text-green-600' : 'text-red-600'}>{business.isOpen ? 'Open Now' : 'Closed'}</span>
+                <span className={business.isOpen ? 'text-green-600' : 'text-red-600'}>
+                  {business.isOpen ? 'Open Now' : 'Closed'}
+                </span>
                 {business.isOpen && business.isBusy && <span className="ml-1 text-gray-600">
                     • {business.isBusy} busy
                   </span>}
@@ -50,7 +51,9 @@ export const BusinessCard = ({
                 <span>{business.priceRange}</span>
               </div>
             </div>
-            {business.featuredReview && <div className="bg-blue-50 p-3 rounded-md mb-3 text-sm italic text-gray-700">"{business.featuredReview}"</div>}
+            {business.featuredReview && <div className="bg-blue-50 p-3 rounded-md mb-3 text-sm italic text-gray-700">
+                "{business.featuredReview}"
+              </div>}
             {business.hasSpecialOffer && business.specialOffer && <div className="flex items-center text-sm text-green-700 mb-3">
                 <Check className="h-4 w-4 mr-1" />
                 <span>{business.specialOffer}</span>
@@ -58,7 +61,7 @@ export const BusinessCard = ({
           </div>
           {/* Action buttons */}
           <div className="flex mt-4 pt-4 border-t border-gray-200">
-            <Link href={`/business/${business.id}`} className="inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors">
+            <Link to={`/business/${business.id}`} className="inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors">
               View Details
               <ExternalLink className="ml-1.5 h-3.5 w-3.5" />
             </Link>

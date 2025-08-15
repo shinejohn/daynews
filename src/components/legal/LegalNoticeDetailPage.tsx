@@ -1,12 +1,9 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useEffect, useState, useRef, createElement } from 'react';
-import { supabase } from '@/lib/supabase/client';
-import { useRouter } from 'next/navigation';
-import { AlertCircle, ArrowLeft, BookOpen, Building, Calendar, Check, ChevronRight, Clock, Copy, Download, FileText, Gavel, MapPin, Printer, Scale, Share2, User, Users } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { ArrowLeft, Calendar, FileText, Printer, Share2, Download, Copy, Gavel, Clock, AlertCircle, MapPin, ChevronRight, Users, Building, Scale, BookOpen, Check } from 'lucide-react';
 import { ShareModal } from '../modals/ShareModal';
-export const LegalNoticeDetailPage = () =>{
-  const router = useRouter();
+export const LegalNoticeDetailPage = () => {
+  const navigate = useNavigate();
   const [notice, setNotice] = useState(null);
   const [loading, setLoading] = useState(true);
   const [relatedNotices, setRelatedNotices] = useState([]);
@@ -19,7 +16,7 @@ export const LegalNoticeDetailPage = () =>{
     // Mock API call delay
     setTimeout(() => {
       // Mock data
-      const [] = {
+      const mockNotice = {
         id: 'ln-2024-001234',
         type: 'FORECLOSURE NOTICE',
         status: 'ACTIVE',
@@ -54,36 +51,38 @@ Email: legal@smithassociates.com`,
         lastUpdated: 'August 2, 2024'
       };
       // Mock related notices
-      const [[], setMockRelatedNotices] = useState([]);
-  const [loading, setLoading] = useState(true);
-  
-  useEffect(() => {
-    const fetchMockRelatedNotices = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('news')
-          .select('*')
-          .order('created_at', { ascending: false });
-        
-        if (error) throw error;
-        setMockRelatedNotices(data || []);
-      } catch (error) {
-        console.error('Error fetching news:', error);
-        setMockRelatedNotices([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-    
-    fetchMockRelatedNotices();
-  }, []);
-      setNotice([]);
-      setRelatedNotices([]);
+      const mockRelatedNotices = [{
+        id: 'ln-2024-001235',
+        type: 'FORECLOSURE NOTICE',
+        caseNumber: '2024-CA-001235',
+        publishDate: 'July 29, 2024',
+        expiryDate: 'August 29, 2024',
+        court: 'Circuit Court, Pinellas County, Florida',
+        preview: 'Property: 456 Oak Avenue, Clearwater, FL 33756'
+      }, {
+        id: 'ln-2024-001236',
+        type: 'FORECLOSURE NOTICE',
+        caseNumber: '2024-CA-001236',
+        publishDate: 'July 25, 2024',
+        expiryDate: 'August 25, 2024',
+        court: 'Circuit Court, Pinellas County, Florida',
+        preview: 'Property: 789 Pine Street, Clearwater, FL 33755'
+      }, {
+        id: 'ln-2024-001237',
+        type: 'PROBATE NOTICE',
+        caseNumber: '2024-CP-001237',
+        publishDate: 'July 30, 2024',
+        expiryDate: 'August 30, 2024',
+        court: 'Circuit Court, Pinellas County, Florida',
+        preview: 'Estate of: Sarah Johnson'
+      }];
+      setNotice(mockNotice);
+      setRelatedNotices(mockRelatedNotices);
       setLoading(false);
     }, 1000);
   }, []);
   const handleBack = () => {
-    router.push('/legalNoticesList');
+    navigate('/legalNoticesList');
   };
   const handleRelatedNoticeClick = noticeId => {
     // In a real app, this would navigate to the specific notice
@@ -123,7 +122,7 @@ Email: legal@smithassociates.com`,
     });
   };
   if (loading) {
-    return<div className="flex-1 overflow-auto bg-gray-50 p-4">
+    return <div className="flex-1 overflow-auto bg-gray-50 p-4">
         <div className="max-w-4xl mx-auto">
           <div className="animate-pulse">
             <div className="h-8 w-40 bg-gray-200 rounded mb-4"></div>
@@ -303,10 +302,12 @@ Email: legal@smithassociates.com`,
             need to publish a legal notice, you can do so through our platform.
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
-            <button onClick={() =>router.push('/legalNoticeCreator')} className="bg-indigo-700 text-white px-6 py-3 rounded-md font-medium hover:bg-indigo-800 transition-colors">
-              Create a Legal Notice</button>
-            <button onClick={() =>router.push('/legalNoticesList')} className="border border-indigo-700 text-indigo-700 px-6 py-3 rounded-md font-medium hover:bg-indigo-50 transition-colors">
-              Browse All Legal Notices</button>
+            <button onClick={() => navigate('/legalNoticeCreator')} className="bg-indigo-700 text-white px-6 py-3 rounded-md font-medium hover:bg-indigo-800 transition-colors">
+              Create a Legal Notice
+            </button>
+            <button onClick={() => navigate('/legalNoticesList')} className="border border-indigo-700 text-indigo-700 px-6 py-3 rounded-md font-medium hover:bg-indigo-50 transition-colors">
+              Browse All Legal Notices
+            </button>
           </div>
         </div>
       </div>

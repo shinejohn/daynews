@@ -1,5 +1,3 @@
-'use client';
-// Converted from Magic Patterns
 import React from 'react';
 import { Star } from 'lucide-react';
 export const FilterSidebar = ({
@@ -58,13 +56,16 @@ export const FilterSidebar = ({
         {/* Quick filters */}
         <div className="space-y-3">
           <label className="flex items-center space-x-2 cursor-pointer">
-            <input type="checkbox" checked={filters.openNow} onChange={() =>handleCheckboxChange('openNow')} className="rounded text-news-primary focus:ring-news-primary" /><span className="text-sm text-gray-700">Open Now</span>
+            <input type="checkbox" checked={filters.openNow} onChange={() => handleCheckboxChange('openNow')} className="rounded text-news-primary focus:ring-news-primary" />
+            <span className="text-sm text-gray-700">Open Now</span>
           </label>
           <label className="flex items-center space-x-2 cursor-pointer">
-            <input type="checkbox" checked={filters.deliveryAvailable} onChange={() =>handleCheckboxChange('deliveryAvailable')} className="rounded text-news-primary focus:ring-news-primary" /><span className="text-sm text-gray-700">Delivery Available</span>
+            <input type="checkbox" checked={filters.deliveryAvailable} onChange={() => handleCheckboxChange('deliveryAvailable')} className="rounded text-news-primary focus:ring-news-primary" />
+            <span className="text-sm text-gray-700">Delivery Available</span>
           </label>
           <label className="flex items-center space-x-2 cursor-pointer">
-            <input type="checkbox" checked={filters.newBusinesses} onChange={() =>handleCheckboxChange('newBusinesses')} className="rounded text-news-primary focus:ring-news-primary" /><span className="text-sm text-gray-700">New Businesses</span>
+            <input type="checkbox" checked={filters.newBusinesses} onChange={() => handleCheckboxChange('newBusinesses')} className="rounded text-news-primary focus:ring-news-primary" />
+            <span className="text-sm text-gray-700">New Businesses</span>
           </label>
         </div>
         {/* Distance slider */}
@@ -83,8 +84,10 @@ export const FilterSidebar = ({
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Price Range
           </label>
-          <div className="flex space-x-2">{['$', '$$', '$$$', '$$$$'].map(price =><button key={price} onClick={() =>handlePriceRangeChange(price)} className={`flex-1 py-1.5 rounded text-sm font-medium ${filters.priceRange.includes(price) ? 'bg-news-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
-                {price}</button>)}
+          <div className="flex space-x-2">
+            {['$', '$$', '$$$', '$$$$'].map(price => <button key={price} onClick={() => handlePriceRangeChange(price)} className={`flex-1 py-1.5 rounded text-sm font-medium ${filters.priceRange.includes(price) ? 'bg-news-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
+                {price}
+              </button>)}
           </div>
         </div>
         {/* Ratings */}
@@ -93,7 +96,8 @@ export const FilterSidebar = ({
             Ratings
           </label>
           <div className="space-y-2">
-            {[4, 3, 2, 1].map(rating => <button key={rating} onClick={() =>handleRatingChange(rating)} className={`flex items-center w-full px-3 py-1.5 rounded text-sm ${filters.minRating === rating ? 'bg-news-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}><div className="flex">
+            {[4, 3, 2, 1].map(rating => <button key={rating} onClick={() => handleRatingChange(rating)} className={`flex items-center w-full px-3 py-1.5 rounded text-sm ${filters.minRating === rating ? 'bg-news-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
+                <div className="flex">
                   {[...Array(5)].map((_, i) => <Star key={i} fill={i < rating ? 'currentColor' : 'none'} className={`h-3.5 w-3.5 ${filters.minRating === rating ? 'text-white' : i < rating ? 'text-yellow-400' : 'text-gray-300'}`} />)}
                 </div>
                 <span className="ml-1.5">& Up</span>

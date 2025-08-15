@@ -1,7 +1,5 @@
-'use client';
-// Converted from Magic Patterns
 import React, { useState } from 'react';
-import { BarChart2, ChevronDown, CreditCard, Globe, Plus, User } from 'lucide-react';
+import { User, ChevronDown, Plus, BarChart2, Globe, CreditCard } from 'lucide-react';
 export const CommunityAdsHeader = () => {
   const [showUserMenu, setShowUserMenu] = useState(false);
   return <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
