@@ -1,0 +1,341 @@
+{
+  "health_check_response": {
+    "status": "ok",
+    "cache": {
+      "hits": 150,
+      "misses": 25,
+      "size": 50,
+      "maxSize": 1000
+    },
+    "database": "supabase",
+    "timestamp": "2024-01-15T10:30:00.000Z"
+  },
+  "news_list_response": [
+    {
+      "id": "1",
+      "slug": "local-business-opens",
+      "title": "New Local Business Opens Downtown",
+      "excerpt": "A family-owned restaurant has opened its doors...",
+      "content": "<p>Full article content here...</p>",
+      "publication_date": "2024-01-15T10:30:00.000Z",
+      "author": {
+        "id": "123",
+        "name": "Jane Reporter",
+        "avatar_url": null
+      },
+      "view_count": 45,
+      "status": "published",
+      "community_id": "downtown"
+    },
+    {
+      "id": "2", 
+      "slug": "community-event-announced",
+      "title": "Summer Festival Announced for July",
+      "excerpt": "The annual summer festival will return...",
+      "content": "<p>Event details and schedule...</p>",
+      "publication_date": "2024-01-14T14:20:00.000Z",
+      "author": {
+        "id": "456",
+        "name": "Mike Events",
+        "avatar_url": "https://example.com/avatar.jpg"
+      },
+      "view_count": 128,
+      "status": "published",
+      "community_id": "downtown"
+    }
+  ],
+  "single_article_response": {
+    "id": "1",
+    "slug": "local-business-opens",
+    "title": "New Local Business Opens Downtown", 
+    "content": "<p>A family-owned restaurant has opened its doors in the heart of downtown...</p>",
+    "excerpt": "A family-owned restaurant has opened its doors...",
+    "publication_date": "2024-01-15T10:30:00.000Z",
+    "author": {
+      "id": "123",
+      "name": "Jane Reporter",
+      "avatar_url": null,
+      "bio": "Local business correspondent"
+    },
+    "community": {
+      "id": "downtown",
+      "name": "Downtown",
+      "slug": "downtown"
+    },
+    "view_count": 46,
+    "status": "published",
+    "tags": ["business", "downtown", "restaurant"],
+    "featured_image": "https://example.com/image.jpg"
+  },
+  "events_list_response": [
+    {
+      "id": "1",
+      "slug": "summer-music-festival",
+      "title": "Downtown Summer Music Festival",
+      "description": "Join us for an evening of local music and food",
+      "start_date": "2024-07-15T18:00:00.000Z",
+      "end_date": "2024-07-15T23:00:00.000Z",
+      "venue": "Downtown Park",
+      "address": "100 Park Avenue",
+      "organizer": "Downtown Events Committee",
+      "rsvp_count": 125,
+      "category": {
+        "id": "1",
+        "name": "Music",
+        "slug": "music"
+      },
+      "community_id": "downtown"
+    },
+    {
+      "id": "2",
+      "slug": "farmers-market",
+      "title": "Weekly Farmers Market",
+      "description": "Fresh local produce and artisanal goods",
+      "start_date": "2024-01-20T08:00:00.000Z",
+      "end_date": "2024-01-20T14:00:00.000Z",
+      "venue": "Town Square",
+      "address": "Main Street & 1st Ave",
+      "organizer": "Local Farmers Association",
+      "rsvp_count": 0,
+      "category": {
+        "id": "2",
+        "name": "Community",
+        "slug": "community"
+      },
+      "community_id": "downtown"
+    }
+  ],
+  "businesses_list_response": [
+    {
+      "id": "1",
+      "slug": "marios-pizza",
+      "name": "Mario's Pizza Palace",
+      "description": "Authentic Italian pizza made with fresh ingredients",
+      "address": "123 Main Street",
+      "phone": "555-0123",
+      "email": "info@mariospizza.com",
+      "website": "https://mariospizza.com",
+      "category": {
+        "id": "1",
+        "name": "Restaurant",
+        "slug": "restaurant"
+      },
+      "average_rating": 4.5,
+      "review_count": 23,
+      "community_id": "downtown",
+      "is_active": true
+    },
+    {
+      "id": "2",
+      "slug": "downtown-coffee",
+      "name": "Downtown Coffee Roasters",
+      "description": "Locally roasted coffee and fresh pastries",
+      "address": "456 Oak Street", 
+      "phone": "555-0456",
+      "email": "hello@downtowncoffee.com",
+      "website": "https://downtowncoffee.com",
+      "category": {
+        "id": "1",
+        "name": "Restaurant",
+        "slug": "restaurant"
+      },
+      "average_rating": 4.8,
+      "review_count": 67,
+      "community_id": "downtown",
+      "is_active": true
+    }
+  ],
+  "single_business_response": {
+    "id": "1",
+    "slug": "marios-pizza",
+    "name": "Mario's Pizza Palace",
+    "description": "Authentic Italian pizza made with fresh ingredients. Family owned since 1985.",
+    "address": "123 Main Street",
+    "phone": "555-0123",
+    "email": "info@mariospizza.com",
+    "website": "https://mariospizza.com",
+    "category": {
+      "id": "1",
+      "name": "Restaurant",
+      "slug": "restaurant"
+    },
+    "owner": {
+      "id": "789",
+      "name": "Mario Rossi"
+    },
+    "business_hours": [
+      {
+        "day_of_week": 1,
+        "open_time": "11:00",
+        "close_time": "22:00",
+        "is_closed": false
+      },
+      {
+        "day_of_week": 2, 
+        "open_time": "11:00",
+        "close_time": "22:00",
+        "is_closed": false
+      }
+    ],
+    "hours_by_day": {
+      "1": {
+        "day_of_week": 1,
+        "open_time": "11:00",
+        "close_time": "22:00",
+        "is_closed": false
+      }
+    },
+    "business_photos": [
+      {
+        "id": "1",
+        "url": "https://example.com/pizza1.jpg",
+        "caption": "Our signature pizza"
+      }
+    ],
+    "reviews": [
+      {
+        "id": "1",
+        "rating": 5,
+        "comment": "Best pizza in town!",
+        "created_at": "2024-01-10T15:30:00.000Z",
+        "user": {
+          "id": "100",
+          "name": "John Customer",
+          "avatar_url": null
+        }
+      }
+    ],
+    "deals": [
+      {
+        "id": "1",
+        "title": "50% Off Mondays",
+        "description": "Half price on all pizzas every Monday",
+        "valid_from": "2024-01-01T00:00:00.000Z",
+        "valid_until": "2024-12-31T23:59:59.000Z"
+      }
+    ],
+    "average_rating": 4.5,
+    "review_count": 23,
+    "community_id": "downtown",
+    "is_active": true
+  },
+  "deals_list_response": [
+    {
+      "id": "1",
+      "title": "50% Off All Pizzas",
+      "description": "Get half price on all pizzas this weekend only",
+      "discount_percentage": 50,
+      "valid_from": "2024-01-19T00:00:00.000Z",
+      "valid_until": "2024-01-21T23:59:59.000Z",
+      "is_active": true,
+      "business": {
+        "id": "1",
+        "name": "Mario's Pizza Palace",
+        "slug": "marios-pizza",
+        "category": {
+          "name": "Restaurant"
+        }
+      }
+    },
+    {
+      "id": "2",
+      "title": "Buy One Get One Coffee",
+      "description": "Purchase any coffee drink and get a second one free",
+      "discount_percentage": null,
+      "valid_from": "2024-01-15T00:00:00.000Z", 
+      "valid_until": "2024-01-31T23:59:59.000Z",
+      "is_active": true,
+      "business": {
+        "id": "2",
+        "name": "Downtown Coffee Roasters",
+        "slug": "downtown-coffee",
+        "category": {
+          "name": "Restaurant"
+        }
+      }
+    }
+  ],
+  "search_results_response": {
+    "news": [
+      {
+        "id": "1",
+        "slug": "pizza-review",
+        "title": "Local Pizza Restaurant Gets Rave Reviews",
+        "excerpt": "Mario's Pizza Palace receiving excellent customer feedback...",
+        "publication_date": "2024-01-12T16:00:00.000Z"
+      }
+    ],
+    "businesses": [
+      {
+        "id": "1",
+        "slug": "marios-pizza",
+        "name": "Mario's Pizza Palace",
+        "description": "Authentic Italian pizza made with fresh ingredients"
+      }
+    ],
+    "events": [
+      {
+        "id": "3",
+        "slug": "pizza-making-class",
+        "title": "Learn to Make Pizza Workshop",
+        "start_date": "2024-02-10T14:00:00.000Z"
+      }
+    ]
+  },
+  "communities_list_response": [
+    {
+      "id": "downtown",
+      "name": "Downtown",
+      "slug": "downtown"
+    },
+    {
+      "id": "midtown",
+      "name": "Midtown", 
+      "slug": "midtown"
+    },
+    {
+      "id": "uptown",
+      "name": "Uptown",
+      "slug": "uptown"
+    }
+  ],
+  "error_responses": {
+    "404_article_not_found": {
+      "error": "Article not found"
+    },
+    "404_business_not_found": {
+      "error": "Business not found"
+    },
+    "400_missing_query": {
+      "error": "Query parameter required"
+    },
+    "400_invalid_webhook": {
+      "error": "Type and action required"
+    },
+    "500_database_error": {
+      "error": "Database connection failed"
+    },
+    "500_search_error": {
+      "error": "Search index unavailable"
+    }
+  },
+  "webhook_success_response": {
+    "success": true,
+    "revalidated": [
+      "/news",
+      "/article/test-article",
+      "/",
+      "/downtown/news", 
+      "/downtown/article/test-article",
+      "/downtown"
+    ],
+    "results": [
+      { "success": true },
+      { "success": true },
+      { "success": true },
+      { "success": true },
+      { "success": true },
+      { "success": true }
+    ]
+  }
+}

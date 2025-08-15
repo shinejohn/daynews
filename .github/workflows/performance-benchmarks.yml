@@ -1,0 +1,249 @@
+name: Performance Benchmarks
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    # Run benchmarks daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      suites:
+        description: 'Benchmark suites to run (comma-separated: cache,rendering,dataLayer)'
+        required: false
+        default: 'cache,rendering,dataLayer'
+      iterations:
+        description: 'Number of iterations to run'
+        required: false
+        default: '1'
+
+jobs:
+  benchmark:
+    name: Run Performance Benchmarks
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18, 20]
+        
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2 # Need previous commit for comparison
+      
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Setup benchmark environment
+        run: |
+          mkdir -p benchmark-results
+          echo "NODE_ENV=ci" >> $GITHUB_ENV
+          echo "CI=true" >> $GITHUB_ENV
+      
+      - name: Run performance benchmarks
+        id: benchmark
+        run: |
+          SUITES="${{ github.event.inputs.suites || 'cache,rendering,dataLayer' }}"
+          ITERATIONS="${{ github.event.inputs.iterations || '1' }}"
+          
+          echo "Running benchmarks with suites: $SUITES, iterations: $ITERATIONS"
+          
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            # For PRs, run with alerts but don't fail the build
+            npm run benchmark -- --suites "$SUITES" --iterations "$ITERATIONS" --verbose || true
+          else
+            # For main branch, fail on regressions
+            npm run benchmark:ci -- --suites "$SUITES" --iterations "$ITERATIONS"
+          fi
+        env:
+          NODE_ENV: ci
+          CI: true
+      
+      - name: Upload benchmark results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: benchmark-results-node${{ matrix.node-version }}
+          path: benchmark-results/
+          retention-days: 30
+      
+      - name: Comment PR with results
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            
+            try {
+              // Find the latest benchmark report
+              const resultsDir = 'benchmark-results';
+              const files = fs.readdirSync(resultsDir);
+              const reportFile = files.find(f => f.startsWith('benchmark-report-') && f.endsWith('.md'));
+              
+              if (reportFile) {
+                const reportPath = path.join(resultsDir, reportFile);
+                const report = fs.readFileSync(reportPath, 'utf8');
+                
+                // Create or update PR comment
+                const { data: comments } = await github.rest.issues.listComments({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.issue.number,
+                });
+                
+                const botComment = comments.find(comment => 
+                  comment.user.type === 'Bot' && 
+                  comment.body.includes('Performance Benchmark Results')
+                );
+                
+                const commentBody = `## Performance Benchmark Results (Node.js ${{ matrix.node-version }})
+
+${report}
+
+*Benchmark run triggered by commit ${context.sha.substring(0, 7)}*`;
+                
+                if (botComment) {
+                  await github.rest.issues.updateComment({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    comment_id: botComment.id,
+                    body: commentBody
+                  });
+                } else {
+                  await github.rest.issues.createComment({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: context.issue.number,
+                    body: commentBody
+                  });
+                }
+              }
+            } catch (error) {
+              console.log('Could not post benchmark results to PR:', error);
+            }
+      
+      - name: Check for performance regressions
+        if: github.ref == 'refs/heads/main'
+        run: |
+          # Parse the latest benchmark results to check for regressions
+          LATEST_RESULT=$(ls -t benchmark-results/benchmark-results-*.json | head -1)
+          
+          if [ -f "$LATEST_RESULT" ]; then
+            # Check if there are any high-severity regressions
+            REGRESSIONS=$(node -e "
+              const results = JSON.parse(require('fs').readFileSync('$LATEST_RESULT', 'utf8'));
+              const highSeverity = results.regressions?.regressions?.filter(r => r.severity === 'high') || [];
+              console.log(highSeverity.length);
+            ")
+            
+            if [ "$REGRESSIONS" -gt "0" ]; then
+              echo "❌ High-severity performance regressions detected!"
+              echo "Check the benchmark results for details."
+              exit 1
+            else
+              echo "✅ No critical performance regressions detected."
+            fi
+          fi
+
+  benchmark-comparison:
+    name: Performance Comparison
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    needs: benchmark
+    
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run PR benchmarks
+        run: npm run benchmark:ci
+        env:
+          NODE_ENV: ci
+          CI: true
+      
+      - name: Checkout base branch
+        run: |
+          git fetch origin ${{ github.base_ref }}
+          git checkout origin/${{ github.base_ref }}
+      
+      - name: Run base benchmarks
+        run: npm run benchmark:ci
+        env:
+          NODE_ENV: ci
+          CI: true
+      
+      - name: Compare results
+        run: |
+          echo "Performance comparison between base and PR branches would be implemented here"
+          echo "This could include statistical analysis of performance differences"
+
+  notify-slack:
+    name: Notify Slack
+    runs-on: ubuntu-latest
+    needs: benchmark
+    if: always() && (github.ref == 'refs/heads/main' || github.event_name == 'schedule')
+    
+    steps:
+      - name: Send Slack notification
+        uses: 8398a7/action-slack@v3
+        if: env.SLACK_WEBHOOK_URL != ''
+        with:
+          status: ${{ job.status }}
+          text: |
+            Performance benchmark completed for ${{ github.repository }}
+            Branch: ${{ github.ref }}
+            Commit: ${{ github.sha }}
+            Status: ${{ job.status }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  benchmark-trend:
+    name: Update Performance Trends
+    runs-on: ubuntu-latest
+    needs: benchmark
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Download benchmark results
+        uses: actions/download-artifact@v4
+        with:
+          name: benchmark-results-node18
+          path: benchmark-results/
+      
+      - name: Update performance database
+        run: |
+          # This could send results to a time-series database like InfluxDB
+          # or update a GitHub Pages site with performance trends
+          echo "Updating performance trends database..."
+          echo "Results could be sent to monitoring systems like Grafana/InfluxDB"
+          
+          # Example: Send to webhook for external processing
+          # curl -X POST "$WEBHOOK_URL" -H "Content-Type: application/json" -d @benchmark-results/latest.json
+      
+      - name: Generate performance badge
+        run: |
+          # Generate a badge for the README showing current performance status
+          echo "Generating performance status badge..."
+          # This could create a dynamic badge showing "Performance: ✅ Passing" or "Performance: ⚠️ Degraded"

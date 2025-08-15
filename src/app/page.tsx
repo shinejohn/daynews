@@ -1,6 +1,9 @@
 // Home page - Server Component
 import { Metadata } from 'next';
 
+// Rendering strategy: ISR
+export const revalidate = 300; // ISR - updates every 5 minutes
+
 export const metadata: Metadata = {
   title: 'DayNews - Your Local News Source',
   description: 'Stay connected with your community through local news, events, and classifieds',

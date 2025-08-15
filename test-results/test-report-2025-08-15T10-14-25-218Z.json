@@ -1,0 +1,107 @@
+{
+  "summary": {
+    "timestamp": "2025-08-15T10:14:25.218Z",
+    "duration": 4045,
+    "systemInfo": {
+      "timestamp": "2025-08-15T10:14:21.173Z",
+      "nodeVersion": "v22.17.1",
+      "platform": "darwin",
+      "arch": "arm64",
+      "cpus": 14,
+      "memory": {
+        "total": 38654705664,
+        "free": 1702232064,
+        "process": {
+          "rss": 42270720,
+          "heapTotal": 5603328,
+          "heapUsed": 4938984,
+          "external": 1938143,
+          "arrayBuffers": 37815
+        }
+      },
+      "environment": {
+        "NODE_ENV": "test",
+        "CI": false,
+        "buildId": null
+      }
+    },
+    "options": {
+      "suites": [
+        "unit"
+      ],
+      "parallel": true,
+      "coverage": false,
+      "verbose": false,
+      "failFast": false,
+      "retry": true,
+      "generateReport": true,
+      "saveHistory": false
+    },
+    "overall": {
+      "success": true,
+      "suites": {
+        "passed": 0,
+        "failed": 1,
+        "total": 1
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "total": 0,
+        "duration": 0,
+        "coverage": null
+      }
+    },
+    "coverage": null,
+    "coverageThresholds": {
+      "passed": true,
+      "violations": []
+    }
+  },
+  "results": {
+    "unit": {
+      "suite": "unit",
+      "name": "Unit Tests",
+      "success": false,
+      "error": "Failed to parse test results: Unexpected end of JSON input",
+      "attempts": 3,
+      "stats": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "total": 1
+      }
+    }
+  },
+  "performance": {
+    "totalTime": "4.04s",
+    "avgTimePerSuite": "4.04s",
+    "fastestSuite": {
+      "suite": "unit",
+      "name": "Unit Tests",
+      "success": false,
+      "error": "Failed to parse test results: Unexpected end of JSON input",
+      "attempts": 3,
+      "stats": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "total": 1
+      }
+    },
+    "slowestSuite": {
+      "suite": "unit",
+      "name": "Unit Tests",
+      "success": false,
+      "error": "Failed to parse test results: Unexpected end of JSON input",
+      "attempts": 3,
+      "stats": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "total": 1
+      }
+    }
+  }
+}

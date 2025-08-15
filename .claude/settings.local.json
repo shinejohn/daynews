@@ -1,9 +1,21 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "permissions": {
     "allow": [
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(chmod:*)",
+      "Bash(/Users/johnshine/Dropbox/Fibonacco/Day-News/Code/daynews/scripts/version-b/02-create-isr-engine.sh)",
+      "Bash(node:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(bash:*)",
+      "Bash(echo $?)",
+      "Bash(ls:*)",
+      "Bash(npm install:*)",
+      "Bash(mkdir:*)",
+      "Bash(npm run test:*)",
+      "Bash(npx jest:*)"
     ],
     "deny": []
-  },
-  "$schema": "https://json.schemastore.org/claude-code-settings.json"
+  }
 }

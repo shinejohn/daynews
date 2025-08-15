@@ -1,0 +1,13 @@
+{
+  "tables": [],
+  "byCategory": {
+    "user": [],
+    "general": [],
+    "forms": [],
+    "events": [],
+    "business": [],
+    "auth": [],
+    "news": [],
+    "marketplace": []
+  }
+}

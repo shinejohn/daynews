@@ -1,0 +1,51 @@
+[Unit]
+Description=DayNews ISR Application
+Documentation=https://github.com/yourorg/daynews
+After=network.target
+Wants=network.target
+
+[Service]
+# Service configuration
+Type=forking
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/daynews
+
+# Environment
+Environment=NODE_ENV=production
+Environment=PORT=3000
+EnvironmentFile=-/etc/environment
+EnvironmentFile=-/var/www/daynews/.env.production
+
+# Process management
+ExecStart=/usr/bin/pm2 start ecosystem.config.js --env production
+ExecReload=/usr/bin/pm2 reload ecosystem.config.js --env production
+ExecStop=/usr/bin/pm2 stop ecosystem.config.js
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/var/www/daynews
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+
+# Resource limits
+LimitNOFILE=65536
+LimitNPROC=4096
+
+# Restart configuration
+Restart=always
+RestartSec=10
+TimeoutStartSec=30
+TimeoutStopSec=30
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=daynews
+
+[Install]
+WantedBy=multi-user.target

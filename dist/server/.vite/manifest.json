@@ -1,0 +1,8 @@
+{
+  "src/entry/entry-server.jsx": {
+    "file": "entry-server.js",
+    "name": "entry-server",
+    "src": "src/entry/entry-server.jsx",
+    "isEntry": true
+  }
+}

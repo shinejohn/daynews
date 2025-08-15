@@ -1,0 +1,76 @@
+[
+  {
+    "route": "/",
+    "html": "<!DOCTYPE html><html><head><title>Riverside News - Home</title></head><body><h1>Welcome to Riverside News</h1><p>Your local source for community news and events.</p></body></html>",
+    "context": {
+      "page": "home",
+      "articles": [
+        {
+          "id": "550e8400-e29b-41d4-a716-446655440001",
+          "title": "Local Community Center Receives Major Renovation Grant",
+          "excerpt": "The Riverside Community Center receives $2.5M grant for major renovations including gymnasium and facility upgrades."
+        }
+      ]
+    },
+    "timestamp": 1703001600000,
+    "ttl": 300000,
+    "expiresAt": 1703001900000
+  },
+  {
+    "route": "/news",
+    "html": "<!DOCTYPE html><html><head><title>Latest News - Riverside News</title></head><body><h1>Latest News</h1><div class='articles'><!-- Article list --></div></body></html>",
+    "context": {
+      "page": "news",
+      "articles": [],
+      "pagination": {
+        "page": 1,
+        "limit": 20,
+        "total": 156
+      }
+    },
+    "timestamp": 1703001700000,
+    "ttl": 300000,
+    "expiresAt": 1703002000000
+  },
+  {
+    "route": "/about",
+    "html": "<!DOCTYPE html><html><head><title>About Us - Riverside News</title></head><body><h1>About Riverside News</h1><p>We've been serving the Riverside community since 2010.</p></body></html>",
+    "context": {
+      "page": "about",
+      "static": true
+    },
+    "timestamp": 1703000000000,
+    "ttl": 86400000,
+    "expiresAt": 1703086400000
+  },
+  {
+    "route": "/business/riverside-cafe",
+    "html": "<!DOCTYPE html><html><head><title>Riverside Café - Business Directory</title></head><body><h1>Riverside Café</h1><p>Cozy local café serving fresh coffee, pastries, and light meals</p></body></html>",
+    "context": {
+      "page": "business-profile",
+      "business": {
+        "id": "bus_001",
+        "name": "Riverside Café",
+        "category": "restaurant"
+      }
+    },
+    "timestamp": 1703001500000,
+    "ttl": 3600000,
+    "expiresAt": 1703005100000
+  },
+  {
+    "route": "/events/winter-holiday-festival",
+    "html": "<!DOCTYPE html><html><head><title>Winter Holiday Festival - Events</title></head><body><h1>Winter Holiday Festival</h1><p>Join us for the annual Winter Holiday Festival featuring live music, food vendors, and activities for the whole family.</p></body></html>",
+    "context": {
+      "page": "event-detail",
+      "event": {
+        "id": "evt_001",
+        "title": "Winter Holiday Festival",
+        "start_date": "2024-12-21T17:00:00Z"
+      }
+    },
+    "timestamp": 1703001800000,
+    "ttl": 1800000,
+    "expiresAt": 1703003600000
+  }
+]

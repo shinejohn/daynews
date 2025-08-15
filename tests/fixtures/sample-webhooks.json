@@ -1,0 +1,168 @@
+{
+  "news_insert": {
+    "type": "news",
+    "action": "insert",
+    "data": {
+      "id": 1,
+      "slug": "breaking-local-news",
+      "title": "Breaking: Local Business Opens Downtown",
+      "content": "A new local business has opened in the downtown area...",
+      "author_id": 123,
+      "community_id": "downtown",
+      "category": "business",
+      "status": "published",
+      "publication_date": "2024-01-15T10:30:00Z"
+    }
+  },
+  "news_update": {
+    "type": "news",
+    "action": "update",
+    "data": {
+      "id": 1,
+      "slug": "breaking-local-news",
+      "title": "Breaking: Local Business Opens Downtown - Updated",
+      "content": "A new local business has opened in the downtown area with updated details...",
+      "author_id": 123,
+      "community_id": "downtown",
+      "category": "business",
+      "status": "published",
+      "publication_date": "2024-01-15T10:30:00Z"
+    }
+  },
+  "event_insert": {
+    "type": "events",
+    "action": "insert",
+    "data": {
+      "id": 2,
+      "slug": "summer-music-festival",
+      "title": "Downtown Summer Music Festival",
+      "description": "Join us for an amazing evening of local music...",
+      "start_date": "2024-07-15T18:00:00Z",
+      "end_date": "2024-07-15T23:00:00Z",
+      "venue": "Downtown Park",
+      "community_id": "downtown",
+      "category_id": 1,
+      "organizer": "Downtown Events Committee"
+    }
+  },
+  "business_insert": {
+    "type": "businesses",
+    "action": "insert",
+    "data": {
+      "id": 3,
+      "slug": "marios-pizza-palace",
+      "name": "Mario's Pizza Palace",
+      "description": "Authentic Italian pizza made with fresh ingredients",
+      "address": "123 Main Street, Downtown",
+      "phone": "555-0123",
+      "email": "info@mariospizza.com",
+      "website": "https://mariospizza.com",
+      "category_id": 1,
+      "community_id": "downtown",
+      "owner_id": 456,
+      "is_active": true
+    }
+  },
+  "business_update": {
+    "type": "businesses",
+    "action": "update",
+    "data": {
+      "id": 3,
+      "slug": "marios-pizza-palace",
+      "name": "Mario's Pizza Palace",
+      "description": "Authentic Italian pizza made with fresh ingredients - Now with delivery!",
+      "address": "123 Main Street, Downtown",
+      "phone": "555-0123",
+      "email": "info@mariospizza.com",
+      "website": "https://mariospizza.com",
+      "category_id": 1,
+      "community_id": "downtown",
+      "owner_id": 456,
+      "is_active": true
+    }
+  },
+  "announcement_insert": {
+    "type": "announcements",
+    "action": "insert",
+    "data": {
+      "id": 4,
+      "title": "Road Construction Notice",
+      "content": "Main Street will be under construction from January 20-25...",
+      "type": "notice",
+      "priority": "high",
+      "author_id": 789,
+      "community_id": "downtown",
+      "publication_date": "2024-01-18T09:00:00Z",
+      "status": "published"
+    }
+  },
+  "deal_insert": {
+    "type": "deals",
+    "action": "insert",
+    "data": {
+      "id": 5,
+      "title": "50% Off All Pizzas This Weekend",
+      "description": "Get half price on all pizzas Friday through Sunday",
+      "business_id": 3,
+      "discount_percentage": 50,
+      "valid_from": "2024-01-19T00:00:00Z",
+      "valid_until": "2024-01-21T23:59:59Z",
+      "is_active": true,
+      "terms_conditions": "Cannot be combined with other offers"
+    }
+  },
+  "invalid_webhook": {
+    "type": "news"
+  },
+  "malformed_webhook": {
+    "type": null,
+    "action": "insert",
+    "data": {}
+  },
+  "batch_webhooks": [
+    {
+      "type": "news",
+      "action": "insert",
+      "data": {
+        "id": 10,
+        "slug": "news-1",
+        "community_id": "downtown"
+      }
+    },
+    {
+      "type": "news",
+      "action": "insert",
+      "data": {
+        "id": 11,
+        "slug": "news-2",
+        "community_id": "downtown"
+      }
+    },
+    {
+      "type": "events",
+      "action": "update",
+      "data": {
+        "id": 12,
+        "slug": "event-1",
+        "community_id": "midtown"
+      }
+    }
+  ],
+  "high_frequency_batch": [
+    {
+      "type": "news",
+      "action": "update",
+      "data": { "id": 1, "slug": "article-1", "community_id": "downtown" }
+    },
+    {
+      "type": "news", 
+      "action": "update",
+      "data": { "id": 2, "slug": "article-2", "community_id": "downtown" }
+    },
+    {
+      "type": "news",
+      "action": "update", 
+      "data": { "id": 3, "slug": "article-3", "community_id": "midtown" }
+    }
+  ]
+}

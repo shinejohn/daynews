@@ -1,0 +1,83 @@
+[
+  {
+    "id": "auth_001",
+    "email": "sarah.johnson@email.com",
+    "username": "sarahj_reporter",
+    "first_name": "Sarah",
+    "last_name": "Johnson",
+    "role": "journalist",
+    "bio": "Local news reporter covering community events and municipal affairs for Riverside. Has been with the team for 5 years.",
+    "avatar_url": "/images/avatars/sarah-johnson.jpg",
+    "verified": true,
+    "active": true,
+    "article_count": 127,
+    "follower_count": 340,
+    "specialties": ["local government", "community events", "education"],
+    "social_links": {
+      "twitter": "@sarahj_news",
+      "linkedin": "linkedin.com/in/sarahjohnson"
+    },
+    "created_at": "2023-08-15T09:00:00Z",
+    "updated_at": "2024-12-10T16:30:00Z"
+  },
+  {
+    "id": "auth_002",
+    "email": "michael.chen@email.com",
+    "username": "mchen_biz",
+    "first_name": "Michael",
+    "last_name": "Chen",
+    "role": "journalist",
+    "bio": "Business and economic development reporter focusing on local entrepreneurship and commercial real estate.",
+    "avatar_url": "/images/avatars/michael-chen.jpg",
+    "verified": true,
+    "active": true,
+    "article_count": 89,
+    "follower_count": 256,
+    "specialties": ["business", "economic development", "real estate"],
+    "social_links": {
+      "twitter": "@mchen_business",
+      "linkedin": "linkedin.com/in/michaelchen"
+    },
+    "created_at": "2023-10-22T14:20:00Z",
+    "updated_at": "2024-12-08T11:15:00Z"
+  },
+  {
+    "id": "auth_003",
+    "email": "david.rodriguez@email.com",
+    "username": "drodriguez_sports",
+    "first_name": "David",
+    "last_name": "Rodriguez",
+    "role": "journalist",
+    "bio": "Sports reporter covering high school athletics, recreational leagues, and community sports events.",
+    "avatar_url": "/images/avatars/david-rodriguez.jpg",
+    "verified": true,
+    "active": true,
+    "article_count": 156,
+    "follower_count": 445,
+    "specialties": ["high school sports", "recreational athletics", "sports events"],
+    "social_links": {
+      "twitter": "@drod_sports",
+      "instagram": "@davidrod_sports"
+    },
+    "created_at": "2023-06-10T08:45:00Z",
+    "updated_at": "2024-12-13T22:20:00Z"
+  },
+  {
+    "id": "usr_001",
+    "email": "community.member@email.com",
+    "username": "riverside_resident",
+    "first_name": "Jane",
+    "last_name": "Smith",
+    "role": "user",
+    "bio": "Long-time Riverside resident and community volunteer.",
+    "avatar_url": "/images/avatars/default-user.jpg",
+    "verified": false,
+    "active": true,
+    "article_count": 0,
+    "follower_count": 12,
+    "specialties": [],
+    "social_links": {},
+    "created_at": "2024-05-15T12:00:00Z",
+    "updated_at": "2024-11-20T18:30:00Z"
+  }
+]
