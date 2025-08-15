@@ -5,7 +5,7 @@ import { FileText, Edit } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 export const ArticlePreview = ({
   article
-}) => {
+}) =>{
   const {
     headline,
     author,
@@ -17,7 +17,7 @@ export const ArticlePreview = ({
     // and then navigate to the editor with the article ID
     router.push('/editor/123');
   };
-  return <div className="bg-white rounded-lg shadow-md h-[600px] flex flex-col">
+  return<div className="bg-white rounded-lg shadow-md h-[600px] flex flex-col">
       <div className="bg-white border-b p-4 flex items-center justify-between">
         <div className="flex items-center">
           <FileText className="w-5 h-5 text-news-primary mr-2" />
@@ -37,16 +37,13 @@ export const ArticlePreview = ({
             {headline && <h1 className="font-display text-3xl font-bold mb-2 text-gray-900">
                 {headline}
               </h1>}
-            {author && <p className="text-gray-600 text-sm mb-6">
-                By {author} |{' '}
+            {author && <p className="text-gray-600 text-sm mb-6">By {author} |{' '}
                 {new Date().toLocaleDateString('en-US', {
             month: 'long',
             day: 'numeric',
             year: 'numeric'
-          })}
-              </p>}
-            {content && <div className="leading-relaxed">
-                {content.split('\n\n').map((paragraph, idx) => <p key={idx} className="mb-4">
+          })}</p>}
+            {content && <div className="leading-relaxed">{content.split('\n\n').map((paragraph, idx) =><p key={idx} className="mb-4">
                     {paragraph}
                   </p>)}
               </div>}

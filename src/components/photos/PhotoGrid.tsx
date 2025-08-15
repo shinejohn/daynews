@@ -1,7 +1,7 @@
 'use client';
 // Converted from Magic Patterns
 import React from 'react';
-import { Heart, MessageSquare, Calendar, MapPin } from 'lucide-react';
+import { Calendar, Heart, MapPin, MessageSquare } from 'lucide-react';
 export const PhotoGrid = ({
   photos,
   onPhotoClick
@@ -20,13 +20,11 @@ export const PhotoGrid = ({
             </p>
             <div className="flex items-center text-xs text-gray-500 mb-2">
               <Calendar className="h-3 w-3 mr-1" />
-              <span>
-                {new Date(photo.date).toLocaleDateString('en-US', {
+              <span>{new Date(photo.date).toLocaleDateString('en-US', {
               month: 'short',
               day: 'numeric',
               year: 'numeric'
-            })}
-              </span>
+            })}</span>
               <span className="mx-1">•</span>
               <MapPin className="h-3 w-3 mr-1" />
               <span>{photo.community}</span>

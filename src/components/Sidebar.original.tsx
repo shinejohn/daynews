@@ -1,11 +1,11 @@
 'use client';
 // Converted from Magic Patterns
-import React, { memo } from 'react';
+import React, {} from 'react';
 import { useRouter } from 'next/navigation';
-import { Search, Bell, Tag, Users, FileText, LogOut, Home, Calendar, Building2, Gavel, Heart, Archive, Image, Globe } from 'lucide-react';
+import { Archive, Bell, Building2, Calendar, FileText, Gavel, Globe, Heart, Home, Image, LogOut, Search, Tag, User, Users } from 'lucide-react';
 export const Sidebar = ({
   currentPage = 'createNews'
-}) => {
+}) =>{
   const router = useRouter();
   const handleSearch = e => {
     e.preventDefault();
@@ -18,9 +18,8 @@ export const Sidebar = ({
     // In a real app, this would handle the logout logic
     router.push('/');
   };
-  return <aside className="w-64 flex-shrink-0 border-r border-border-light bg-bg-primary">
-      <div className="flex items-center p-4 cursor-pointer" onClick={() => router.push('/')}>
-        <img src="/image.png" alt="Logo" className="h-8 w-8 rounded-full" />
+  return<aside className="w-64 flex-shrink-0 border-r border-border-light bg-bg-primary">
+      <div className="flex items-center p-4 cursor-pointer" onClick={() =>router.push('/')}><img src="/image.png" alt="Logo" className="h-8 w-8 rounded-full" />
         <h1 className="ml-2 font-display text-xl font-bold text-news-primary">
           Day.news
         </h1>
@@ -32,22 +31,9 @@ export const Sidebar = ({
         </form>
       </div>
       <nav className="px-2">
-        <NavItem icon={<Home className="h-5 w-5" />} label="Home" active={currentPage === 'home'} onClick={() => router.push('/')} />
-        <NavItem icon={<Globe className="h-5 w-5" />} label="National News" active={currentPage === 'national'} onClick={() => router.push('/national')} />
-        <NavItem icon={<FileText className="h-5 w-5" />} label="My stuff" active={currentPage === 'profile'} onClick={() => router.push('/profile')} />
-        <NavItem icon={<Bell className="h-5 w-5" />} label="Announcements" active={currentPage === 'announcements'} onClick={() => router.push('/announcements')} />
-        <NavItem icon={<Tag className="h-5 w-5" />} label="Coupons" active={currentPage === 'coupons'} onClick={() => router.push('/coupons')} />
-        <NavItem icon={<Calendar className="h-5 w-5" />} label="Events" active={currentPage === 'eventsCalendar'} onClick={() => router.push('/eventsCalendar')} />
-        <NavItem icon={<Building2 className="h-5 w-5" />} label="Business Directory" active={currentPage === 'businessDirectory'} onClick={() => router.push('/businessDirectory')} />
-        <NavItem icon={<Gavel className="h-5 w-5" />} label="Legal Notices" active={currentPage === 'legalNoticesList'} onClick={() => router.push('/legalNoticesList')} />
-        <NavItem icon={<Heart className="h-5 w-5" />} label="Memorials" active={currentPage === 'memorials'} onClick={() => router.push('/memorials')} />
-        <NavItem icon={<Image className="h-5 w-5" />} label="Photo Gallery" active={currentPage === 'photos' || currentPage.startsWith('photos/')} onClick={() => router.push('/photos')} />
-        <NavItem icon={<Archive className="h-5 w-5" />} label="Archive" active={currentPage === 'archive'} onClick={() => router.push('/archive')} />
-        <NavItem icon={<Users className="h-5 w-5" />} label="AI Journalists" active={currentPage === 'journalists'} onClick={() => router.push('/journalists')} />
-      </nav>
+        <NavItem icon={<Home className="h-5 w-5" />} label="Home" active={currentPage === 'home'} onClick={() => router.push('/')} /><NavItem icon={<Globe className="h-5 w-5" />} label="National News" active={currentPage === 'national'} onClick={() => router.push('/national')} /><NavItem icon={<FileText className="h-5 w-5" />} label="My stuff" active={currentPage === 'profile'} onClick={() => router.push('/profile')} /><NavItem icon={<Bell className="h-5 w-5" />} label="Announcements" active={currentPage === 'announcements'} onClick={() => router.push('/announcements')} /><NavItem icon={<Tag className="h-5 w-5" />} label="Coupons" active={currentPage === 'coupons'} onClick={() => router.push('/coupons')} /><NavItem icon={<Calendar className="h-5 w-5" />} label="Events" active={currentPage === 'eventsCalendar'} onClick={() => router.push('/eventsCalendar')} /><NavItem icon={<Building2 className="h-5 w-5" />} label="Business Directory" active={currentPage === 'businessDirectory'} onClick={() => router.push('/businessDirectory')} /><NavItem icon={<Gavel className="h-5 w-5" />} label="Legal Notices" active={currentPage === 'legalNoticesList'} onClick={() => router.push('/legalNoticesList')} /><NavItem icon={<Heart className="h-5 w-5" />} label="Memorials" active={currentPage === 'memorials'} onClick={() => router.push('/memorials')} /><NavItem icon={<Image className="h-5 w-5" />} label="Photo Gallery" active={currentPage === 'photos' || currentPage.startsWith('photos/')} onClick={() => router.push('/photos')} /><NavItem icon={<Archive className="h-5 w-5" />} label="Archive" active={currentPage === 'archive'} onClick={() => router.push('/archive')} /><NavItem icon={<Users className="h-5 w-5" />} label="AI Journalists" active={currentPage === 'journalists'} onClick={() => router.push('/journalists')} /></nav>
       <div className="mt-8 p-4">
-        <div className="rounded-lg bg-bg-tertiary p-4 text-center cursor-pointer hover:bg-bg-secondary transition-colors" onClick={() => router.push('/publish')}>
-          <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-community-green-light bg-opacity-20">
+        <div className="rounded-lg bg-bg-tertiary p-4 text-center cursor-pointer hover:bg-bg-secondary transition-colors" onClick={() =>router.push('/publish')}><div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-community-green-light bg-opacity-20">
             <FileText className="h-6 w-6 text-community-green" />
           </div>
           <h3 className="mb-1 font-ui font-medium text-text-primary">

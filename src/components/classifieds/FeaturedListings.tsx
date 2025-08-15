@@ -1,7 +1,7 @@
 // Converted from Magic Patterns
 import React from 'react';
-import { MapPin, Star, Shield, ChevronRight, ChevronLeft } from 'lucide-react';
-export const FeaturedListings = () => {
+import { ChevronLeft, ChevronRight, MapPin, Shield, Star } from 'lucide-react';
+export const FeaturedListings = () =>{
   const featuredListings = [{
     id: 1,
     title: '2022 Tesla Model 3 - Like New',
@@ -55,7 +55,7 @@ export const FeaturedListings = () => {
       verified: true
     }
   }];
-  return <div className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
+  return<div className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
       <div className="p-4 border-b border-gray-200 flex items-center justify-between">
         <h3 className="font-bold text-gray-800">Featured Listings</h3>
         <div className="flex space-x-2">
@@ -134,7 +134,5 @@ const CategoryBadge = ({
     services: 'Services',
     community: 'Community'
   };
-  return <div className={`px-2 py-1 rounded text-xs font-medium ${styles[category] || 'bg-gray-100 text-gray-700'}`}>
-      {labels[category] || 'General'}
-    </div>;
+  return<div className={`px-2 py-1 rounded text-xs font-medium ${styles[category] || 'bg-gray-100 text-gray-700'}`}>{labels[category] || 'General'}</div>;
 };

@@ -10,8 +10,7 @@ export const RelatedTags = ({
       </div>
       <div className="p-4">
         {/* Visual tag map */}
-        <div className="mb-4 bg-gray-50 rounded-lg p-4 h-48 relative">
-          {tags.map((tag, index) => {
+        <div className="mb-4 bg-gray-50 rounded-lg p-4 h-48 relative">{tags.map((tag, index) => {
           // Calculate position based on tag weight
           const size = 14 + tag.weight * 10;
           const opacity = 0.6 + tag.weight * 0.4;
@@ -39,7 +38,7 @@ export const RelatedTags = ({
             left: '60%'
           }];
           const position = positions[index % positions.length];
-          return <div key={tag.id} className="absolute cursor-pointer transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-full shadow-sm border border-gray-200 px-3 py-1 hover:shadow-md transition-all" style={{
+          return<div key={tag.id} className="absolute cursor-pointer transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-full shadow-sm border border-gray-200 px-3 py-1 hover:shadow-md transition-all" style={{
             top: position.top,
             left: position.left,
             fontSize: `${size}px`,

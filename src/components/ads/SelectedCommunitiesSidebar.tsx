@@ -7,7 +7,7 @@ interface SelectedCommunitiesSidebarProps {
   selectedCommunities: Community[];
   onRemove: (id: string) => void;
 }
-export const SelectedCommunitiesSidebar: React.FC<SelectedCommunitiesSidebarProps> = ({
+export const SelectedCommunitiesSidebar: React.FC<SelectedCommunitiesSidebarProps>= ({
   selectedCommunities,
   onRemove
 }) => {
@@ -24,7 +24,7 @@ export const SelectedCommunitiesSidebar: React.FC<SelectedCommunitiesSidebarProp
     }
     return num.toString();
   };
-  return <div className="bg-white rounded-lg border border-gray-200 shadow-sm sticky top-4">
+  return<div className="bg-white rounded-lg border border-gray-200 shadow-sm sticky top-4">
       <div className="p-4 border-b border-gray-200">
         <h3 className="font-semibold text-gray-900">Selected Communities</h3>
       </div>
@@ -56,8 +56,7 @@ export const SelectedCommunitiesSidebar: React.FC<SelectedCommunitiesSidebarProp
                   <div className="text-sm font-medium text-gray-900 mr-3">
                     ${community.price}/day
                   </div>
-                  <button onClick={() => onRemove(community.id)} className="text-gray-400 hover:text-gray-600">
-                    <X className="h-5 w-5" />
+                  <button onClick={() =>onRemove(community.id)} className="text-gray-400 hover:text-gray-600"><X className="h-5 w-5" />
                   </button>
                 </div>
               </div>)}

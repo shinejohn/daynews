@@ -1,7 +1,7 @@
 'use client';
 // Converted from Magic Patterns
 import React, { useState, useRef } from 'react';
-import { Upload, Image as ImageIcon, ExternalLink, Smartphone, Monitor, X, Info } from 'lucide-react';
+import { ExternalLink, Image as ImageIcon, Info, Monitor, Smartphone, Uploadss, X } from 'lucide-react';
 import { AdPreview } from './AdPreview';
 interface AdCreationFormProps {
   adFormat: string;
@@ -23,7 +23,7 @@ export const AdCreationForm: React.FC<AdCreationFormProps> = ({
   const [previewDevice, setPreviewDevice] = useState<'desktop' | 'mobile'>('desktop');
   const [showUrlPreview, setShowUrlPreview] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const formatLabels: Record<string, string> = {
+  const formatLabels: Record<string, string>= {
     compact: 'Compact Text Ad',
     standard: 'Standard Card',
     banner: 'Featured Banner',
@@ -35,7 +35,7 @@ export const AdCreationForm: React.FC<AdCreationFormProps> = ({
       title: number;
       body: number;
     };
-  }> = {
+  }>= {
     compact: {
       dimensions: '300x100px',
       maxChars: {
@@ -123,7 +123,7 @@ export const AdCreationForm: React.FC<AdCreationFormProps> = ({
     onAdDataChange('image', null);
   };
   const stockImages = ['https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80', 'https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80', 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80', 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80'];
-  return <div className="flex flex-col lg:flex-row gap-8">
+  return<div className="flex flex-col lg:flex-row gap-8">
       {/* Left side - Form */}
       <div className="w-full lg:w-1/2">
         <h1 className="text-2xl font-bold text-gray-900 mb-2">
@@ -175,8 +175,7 @@ export const AdCreationForm: React.FC<AdCreationFormProps> = ({
               Or choose from stock images
             </h4>
             <div className="grid grid-cols-4 gap-2">
-              {stockImages.map((image, index) => <div key={index} className="border rounded-md overflow-hidden cursor-pointer hover:border-blue-500 transition-colors" onClick={() => onAdDataChange('image', image)}>
-                  <img src={image} alt={`Stock ${index + 1}`} className="w-full h-16 object-cover" />
+              {stockImages.map((image, index) => <div key={index} className="border rounded-md overflow-hidden cursor-pointer hover:border-blue-500 transition-colors" onClick={() =>onAdDataChange('image', image)}><img src={image} alt={`Stock ${index + 1}`} className="w-full h-16 object-cover" />
                 </div>)}
             </div>
           </div>
@@ -187,10 +186,8 @@ export const AdCreationForm: React.FC<AdCreationFormProps> = ({
             <label htmlFor="body-text" className="block text-sm font-medium text-gray-700">
               Body Text
             </label>
-            <span className="text-xs text-gray-500">
-              {adData.bodyText.length}/{formatSpecs[adFormat].maxChars.body}{' '}
-              chars
-            </span>
+            <span className="text-xs text-gray-500">{adData.bodyText.length}/{formatSpecs[adFormat].maxChars.body}{' '}
+              chars</span>
           </div>
           <textarea id="body-text" rows={3} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Join fellow developers for our monthly..." value={adData.bodyText} onChange={handleBodyChange}></textarea>
         </div>
@@ -199,8 +196,8 @@ export const AdCreationForm: React.FC<AdCreationFormProps> = ({
           <label htmlFor="call-to-action" className="block text-sm font-medium text-gray-700 mb-1">
             Call to Action
           </label>
-          <select id="call-to-action" className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" value={adData.callToAction} onChange={e => onAdDataChange('callToAction', e.target.value)}>
-            {callToActionOptions.map(option => <option key={option} value={option}>
+          <select id="call-to-action" className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" value={adData.callToAction} onChange={e =>onAdDataChange('callToAction', e.target.value)}>
+            {callToActionOptions.map(option =><option key={option} value={option}>
                 {option}
               </option>)}
           </select>
@@ -211,8 +208,7 @@ export const AdCreationForm: React.FC<AdCreationFormProps> = ({
             Destination URL
           </label>
           <div className="relative">
-            <input type="url" id="destination-url" className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10" placeholder="https://your-website.com/landing-page" value={adData.destinationUrl} onChange={e => onAdDataChange('destinationUrl', e.target.value)} onFocus={() => setShowUrlPreview(true)} onBlur={() => setTimeout(() => setShowUrlPreview(false), 200)} />
-            <ExternalLink className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+            <input type="url" id="destination-url" className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10" placeholder="https://your-website.com/landing-page" value={adData.destinationUrl} onChange={e =>onAdDataChange('destinationUrl', e.target.value)} onFocus={() => setShowUrlPreview(true)} onBlur={() => setTimeout(() => setShowUrlPreview(false), 200)} /><ExternalLink className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
           </div>
           {/* URL Preview */}
           {showUrlPreview && adData.destinationUrl && <div className="mt-2 p-3 bg-gray-50 border border-gray-200 rounded-md">
@@ -233,12 +229,10 @@ export const AdCreationForm: React.FC<AdCreationFormProps> = ({
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-lg font-semibold text-gray-900">Live Preview</h2>
           <div className="flex bg-gray-200 rounded-md p-1">
-            <button className={`px-3 py-1 rounded text-sm ${previewDevice === 'desktop' ? 'bg-white shadow-sm' : 'text-gray-600'}`} onClick={() => setPreviewDevice('desktop')}>
-              <Monitor className="h-4 w-4 inline mr-1" />
+            <button className={`px-3 py-1 rounded text-sm ${previewDevice === 'desktop' ? 'bg-white shadow-sm' : 'text-gray-600'}`} onClick={() =>setPreviewDevice('desktop')}><Monitor className="h-4 w-4 inline mr-1" />
               Desktop
             </button>
-            <button className={`px-3 py-1 rounded text-sm ${previewDevice === 'mobile' ? 'bg-white shadow-sm' : 'text-gray-600'}`} onClick={() => setPreviewDevice('mobile')}>
-              <Smartphone className="h-4 w-4 inline mr-1" />
+            <button className={`px-3 py-1 rounded text-sm ${previewDevice === 'mobile' ? 'bg-white shadow-sm' : 'text-gray-600'}`} onClick={() =>setPreviewDevice('mobile')}><Smartphone className="h-4 w-4 inline mr-1" />
               Mobile
             </button>
           </div>

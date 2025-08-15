@@ -1,6 +1,6 @@
 // Converted from Magic Patterns
 import React from 'react';
-import { MapPin, Clock, Car, Accessibility, Coffee, Wifi } from 'lucide-react';
+import { Accessibility, Car, Clock, Coffee, MapPin, Wifi } from 'lucide-react';
 export const OfficeInformation = ({
   location = 'Clearwater'
 }) => {

@@ -1,7 +1,7 @@
 'use client';
 // Converted from Magic Patterns
 import React, { useEffect, useState } from 'react';
-import { MapPin, Users, ThermometerIcon, Globe } from 'lucide-react';
+import { Globe, ThermometerIcon, User, Users } from 'lucide-react';
 import { WeatherWidget } from './WeatherWidget';
 import { BreakingNewsBar } from './BreakingNewsBar';
 import { CommunitySelector } from '../location/CommunitySelector';
@@ -11,7 +11,7 @@ export const HeroSection = ({
   greeting,
   activeReaders,
   isNational = false
-}) => {
+}) =>{
   const router = useRouter();
   const pathname = usePathname();
   const [isLocalNews, setIsLocalNews] = useState(!isNational);
@@ -35,7 +35,7 @@ export const HeroSection = ({
       router.push('/national');
     }
   };
-  return <div className="relative bg-white border-b border-gray-300">
+  return<div className="relative bg-white border-b border-gray-300">
       {/* Secondary header with location and weather */}
       <div className="container mx-auto px-4 py-3 border-b border-gray-200">
         <div className="flex flex-col md:flex-row justify-between items-center">
@@ -73,10 +73,8 @@ export const HeroSection = ({
             <WeatherWidget />
             <div className="flex items-center ml-auto">
               <Users className="h-4 w-4 mr-2 text-community-green" />
-              <span className="font-medium text-community-green">
-                {activeReaders} {isLocalNews ? 'neighbors' : 'readers'} reading
-                now
-              </span>
+              <span className="font-medium text-community-green">{activeReaders} {isLocalNews ? 'neighbors' : 'readers'} reading
+                now</span>
             </div>
           </div>
         </div>

@@ -2,8 +2,8 @@
 // Converted from Magic Patterns
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { ArrowLeft, Megaphone, Calendar, MapPin, Users, Send, Save, Image as ImageIcon, Upload, Info } from 'lucide-react';
-export const AnnouncementCreatorPage = () => {
+import { ArrowLeft, Calendar, Image as ImageIcon, Info, MapPin, Megaphone, Save, Send, Upload } from 'lucide-react';
+export const AnnouncementCreatorPage = () =>{
   const router = useRouter();
   const [formData, setFormData] = useState({
     title: '',
@@ -33,7 +33,7 @@ export const AnnouncementCreatorPage = () => {
     router.push('/publish');
   };
   const categories = ['Community Event', 'Public Notice', 'Emergency Alert', 'Meeting', 'Volunteer Opportunity', 'Road Closure', 'School Announcement', 'Other'];
-  return <div className="flex-1 overflow-auto bg-gray-50">
+  return<div className="flex-1 overflow-auto bg-gray-50">
       <div className="max-w-4xl mx-auto py-8 px-4">
         <button onClick={handleCancel} className="flex items-center text-gray-600 mb-6 hover:text-gray-900">
           <ArrowLeft className="h-4 w-4 mr-2" />

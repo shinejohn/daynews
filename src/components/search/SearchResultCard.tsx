@@ -1,15 +1,15 @@
 // Converted from Magic Patterns
 import React from 'react';
-import { Calendar, MapPin, Star, Clock, Eye, MessageCircle, Share2, Tag, User, Ticket } from 'lucide-react';
+import { Calendar, Clock, Eye, MapPin, MessageCircle, Share2, Star, Tag, Ticket, User } from 'lucide-react';
 export const SearchResultCard = ({
   result,
   query
-}) => {
+}) =>{
   // Function to highlight search terms in text
   const highlightText = (text, query) => {
     if (!query || !text) return text;
     const parts = text.split(new RegExp(`(${query})`, 'gi'));
-    return <>
+    return<>
         {parts.map((part, i) => part.toLowerCase() === query.toLowerCase() ? <span key={i} className="bg-yellow-100 font-medium">
               {part}
             </span> : part)}
@@ -18,7 +18,7 @@ export const SearchResultCard = ({
   // Render different card layouts based on result type
   switch (result.type) {
     case 'news':
-      return <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+      return<div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
           <div className="flex flex-col md:flex-row">
             {result.image && <div className="md:w-1/4 h-48 md:h-auto">
                 <img src={result.image} alt={result.title} className="w-full h-full object-cover" />
@@ -70,7 +70,7 @@ export const SearchResultCard = ({
           </div>
         </div>;
     case 'event':
-      return <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+      return<div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
           <div className="flex flex-col md:flex-row">
             {result.image && <div className="md:w-1/4 h-48 md:h-auto">
                 <img src={result.image} alt={result.title} className="w-full h-full object-cover" />
@@ -110,7 +110,7 @@ export const SearchResultCard = ({
           </div>
         </div>;
     case 'business':
-      return <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+      return<div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
           <div className="flex flex-col md:flex-row">
             {result.image && <div className="md:w-1/4 h-48 md:h-auto">
                 <img src={result.image} alt={result.title} className="w-full h-full object-cover" />
@@ -163,7 +163,7 @@ export const SearchResultCard = ({
           </div>
         </div>;
     case 'people':
-      return <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+      return<div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
           <div className="flex flex-col md:flex-row">
             {result.image && <div className="md:w-1/6 h-48 md:h-auto">
                 <img src={result.image} alt={result.title} className="w-full h-full object-cover" />
@@ -205,7 +205,7 @@ export const SearchResultCard = ({
           </div>
         </div>;
     case 'deal':
-      return <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+      return<div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
           <div className="flex flex-col md:flex-row">
             {result.image && <div className="md:w-1/4 h-48 md:h-auto">
                 <img src={result.image} alt={result.title} className="w-full h-full object-cover" />

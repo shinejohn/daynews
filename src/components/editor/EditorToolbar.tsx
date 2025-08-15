@@ -13,94 +13,72 @@ export const EditorToolbar = ({
         <div className="flex flex-wrap items-center gap-1">
           {/* Text formatting */}
           <div className="flex items-center space-x-1 mr-3">
-            <button onClick={() => onFormatClick('bold')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Bold (Ctrl+B)">
-              <Bold className="h-4 w-4 text-gray-700" />
+            <button onClick={() =>onFormatClick('bold')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Bold (Ctrl+B)"><Bold className="h-4 w-4 text-gray-700" />
             </button>
-            <button onClick={() => onFormatClick('italic')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Italic (Ctrl+I)">
-              <Italic className="h-4 w-4 text-gray-700" />
+            <button onClick={() =>onFormatClick('italic')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Italic (Ctrl+I)"><Italic className="h-4 w-4 text-gray-700" />
             </button>
-            <button onClick={() => onFormatClick('underline')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Underline (Ctrl+U)">
-              <Underline className="h-4 w-4 text-gray-700" />
+            <button onClick={() =>onFormatClick('underline')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Underline (Ctrl+U)"><Underline className="h-4 w-4 text-gray-700" />
             </button>
-            <button onClick={() => onFormatClick('strikethrough')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Strikethrough">
-              <Strikethrough className="h-4 w-4 text-gray-700" />
+            <button onClick={() =>onFormatClick('strikethrough')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Strikethrough"><Strikethrough className="h-4 w-4 text-gray-700" />
             </button>
           </div>
           {/* Separator */}
           <div className="h-6 border-l border-gray-300 mx-1"></div>
           {/* Headers */}
           <div className="flex items-center space-x-1 mr-3">
-            <button onClick={() => onFormatClick('h1')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Heading 1">
-              <div className="h-4 w-4 text-gray-700" />
+            <button onClick={() =>onFormatClick('h1')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Heading 1"><div className="h-4 w-4 text-gray-700" />
             </button>
-            <button onClick={() => onFormatClick('h2')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Heading 2">
-              <div className="h-4 w-4 text-gray-700" />
+            <button onClick={() =>onFormatClick('h2')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Heading 2"><div className="h-4 w-4 text-gray-700" />
             </button>
-            <button onClick={() => onFormatClick('h3')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Heading 3">
-              <div className="h-4 w-4 text-gray-700" />
+            <button onClick={() =>onFormatClick('h3')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Heading 3"><div className="h-4 w-4 text-gray-700" />
             </button>
-            <button onClick={() => onFormatClick('h4')} className="p-1.5 rounded hover:bg-gray-100 transition-colors hidden sm:block" title="Heading 4">
-              <div className="h-4 w-4 text-gray-700" />
+            <button onClick={() =>onFormatClick('h4')} className="p-1.5 rounded hover:bg-gray-100 transition-colors hidden sm:block" title="Heading 4"><div className="h-4 w-4 text-gray-700" />
             </button>
           </div>
           {/* Separator */}
           <div className="h-6 border-l border-gray-300 mx-1"></div>
           {/* Lists */}
           <div className="flex items-center space-x-1 mr-3">
-            <button onClick={() => onFormatClick('bulletList')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Bullet List">
-              <List className="h-4 w-4 text-gray-700" />
+            <button onClick={() =>onFormatClick('bulletList')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Bullet List"><List className="h-4 w-4 text-gray-700" />
             </button>
-            <button onClick={() => onFormatClick('numberedList')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Numbered List">
-              <ListOrdered className="h-4 w-4 text-gray-700" />
+            <button onClick={() =>onFormatClick('numberedList')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Numbered List"><ListOrdered className="h-4 w-4 text-gray-700" />
             </button>
-            <button onClick={() => onFormatClick('checkList')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Check List">
-              <CheckSquare className="h-4 w-4 text-gray-700" />
+            <button onClick={() =>onFormatClick('checkList')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Check List"><CheckSquare className="h-4 w-4 text-gray-700" />
             </button>
           </div>
           {/* Separator */}
           <div className="h-6 border-l border-gray-300 mx-1"></div>
           {/* Alignment */}
           <div className="flex items-center space-x-1 mr-3 hidden sm:flex">
-            <button onClick={() => onFormatClick('alignLeft')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Align Left">
-              <AlignLeft className="h-4 w-4 text-gray-700" />
+            <button onClick={() =>onFormatClick('alignLeft')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Align Left"><AlignLeft className="h-4 w-4 text-gray-700" />
             </button>
-            <button onClick={() => onFormatClick('alignCenter')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Align Center">
-              <AlignCenter className="h-4 w-4 text-gray-700" />
+            <button onClick={() =>onFormatClick('alignCenter')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Align Center"><AlignCenter className="h-4 w-4 text-gray-700" />
             </button>
-            <button onClick={() => onFormatClick('alignRight')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Align Right">
-              <AlignRight className="h-4 w-4 text-gray-700" />
+            <button onClick={() =>onFormatClick('alignRight')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Align Right"><AlignRight className="h-4 w-4 text-gray-700" />
             </button>
-            <button onClick={() => onFormatClick('alignJustify')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Justify">
-              <AlignJustify className="h-4 w-4 text-gray-700" />
+            <button onClick={() =>onFormatClick('alignJustify')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Justify"><AlignJustify className="h-4 w-4 text-gray-700" />
             </button>
           </div>
           {/* Separator */}
           <div className="h-6 border-l border-gray-300 mx-1 hidden sm:block"></div>
           {/* Insert */}
           <div className="flex items-center space-x-1 mr-3">
-            <button onClick={() => onFormatClick('link')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Insert Link (Ctrl+K)">
-              <Link className="h-4 w-4 text-gray-700" />
+            <button onClick={() =>onFormatClick('link')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Insert Link (Ctrl+K)"><Link className="h-4 w-4 text-gray-700" />
             </button>
-            <button onClick={() => onFormatClick('image')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Insert Image">
-              <ImageIcon className="h-4 w-4 text-gray-700" />
+            <button onClick={() =>onFormatClick('image')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Insert Image"><ImageIcon className="h-4 w-4 text-gray-700" />
             </button>
-            <button onClick={() => onFormatClick('table')} className="p-1.5 rounded hover:bg-gray-100 transition-colors hidden sm:block" title="Insert Table">
-              <Table className="h-4 w-4 text-gray-700" />
+            <button onClick={() =>onFormatClick('table')} className="p-1.5 rounded hover:bg-gray-100 transition-colors hidden sm:block" title="Insert Table"><Table className="h-4 w-4 text-gray-700" />
             </button>
-            <button onClick={() => onFormatClick('code')} className="p-1.5 rounded hover:bg-gray-100 transition-colors hidden sm:block" title="Code Block">
-              <Code className="h-4 w-4 text-gray-700" />
+            <button onClick={() =>onFormatClick('code')} className="p-1.5 rounded hover:bg-gray-100 transition-colors hidden sm:block" title="Code Block"><Code className="h-4 w-4 text-gray-700" />
             </button>
-            <button onClick={() => onFormatClick('quote')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Block Quote">
-              <Quote className="h-4 w-4 text-gray-700" />
+            <button onClick={() =>onFormatClick('quote')} className="p-1.5 rounded hover:bg-gray-100 transition-colors" title="Block Quote"><Quote className="h-4 w-4 text-gray-700" />
             </button>
-            <button onClick={() => onFormatClick('divider')} className="p-1.5 rounded hover:bg-gray-100 transition-colors hidden sm:block" title="Horizontal Divider">
-              <Minus className="h-4 w-4 text-gray-700" />
+            <button onClick={() =>onFormatClick('divider')} className="p-1.5 rounded hover:bg-gray-100 transition-colors hidden sm:block" title="Horizontal Divider"><Minus className="h-4 w-4 text-gray-700" />
             </button>
           </div>
           {/* More tools toggle */}
           <div className="ml-auto">
-            <button onClick={() => setShowExtendedTools(!showExtendedTools)} className="p-1.5 rounded hover:bg-gray-100 transition-colors flex items-center" title="More Formatting Options">
-              <span className="text-xs text-gray-600 mr-1">More</span>
+            <button onClick={() =>setShowExtendedTools(!showExtendedTools)} className="p-1.5 rounded hover:bg-gray-100 transition-colors flex items-center" title="More Formatting Options"><span className="text-xs text-gray-600 mr-1">More</span>
               {showExtendedTools ? <ChevronDown className="h-4 w-4 text-gray-600" /> : <ChevronRight className="h-4 w-4 text-gray-600" />}
             </button>
           </div>

@@ -2,8 +2,8 @@
 // Converted from Magic Patterns
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { FileText, Calendar, User, Mail, Phone, Info, ChevronRight, DollarSign } from 'lucide-react';
-export const LegalNoticeCreatorPage = () => {
+import { ChevronRight, DollarSign, FileText, Info, Mail, Phone, User } from 'lucide-react';
+export const LegalNoticeCreatorPage = () =>{
   const router = useRouter();
   const [noticeData, setNoticeData] = useState({
     title: '',
@@ -22,7 +22,7 @@ export const LegalNoticeCreatorPage = () => {
     const words = noticeData.content.trim().split(/\s+/).length;
     setWordCount(words > 0 ? words : 0);
     // Update price based on word count
-    if (words <= 250) {
+    if (words<= 250) {
       setPrice(75);
     } else if (words <= 500) {
       setPrice(100);
@@ -30,7 +30,7 @@ export const LegalNoticeCreatorPage = () => {
       setPrice(150);
     }
   }, [noticeData.content]);
-  const handleInputChange = e => {
+  const handleInputChange = e =>{
     const {
       name,
       value
@@ -69,7 +69,7 @@ export const LegalNoticeCreatorPage = () => {
     // Handle form submission logic
     router.push('/legalNoticeDetail');
   };
-  return <div className="container mx-auto max-w-3xl px-4 py-8">
+  return<div className="container mx-auto max-w-3xl px-4 py-8">
       <h1 className="text-2xl font-bold text-gray-900 mb-2">
         Create Legal Notice
       </h1>
@@ -120,16 +120,14 @@ export const LegalNoticeCreatorPage = () => {
               </label>
               <div className="flex">
                 <input type="date" className="flex-1 px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-news-primary focus:border-transparent" min={new Date().toISOString().split('T')[0]} id="publicationDate" />
-                <button type="button" onClick={() => handleDateAdd(document.getElementById('publicationDate').value)} className="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-md hover:bg-gray-300">
-                  Add
-                </button>
+                <button type="button" onClick={() =>handleDateAdd(document.getElementById('publicationDate').value)} className="px-4 py-2 bg-gray-200 text-gray-700 rounded-r-md hover:bg-gray-300">
+                  Add</button>
               </div>
               {noticeData.publicationDates.length > 0 && <div className="flex flex-wrap gap-2 mt-2">
                   {noticeData.publicationDates.map(date => <span key={date} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
                       {new Date(date).toLocaleDateString()}
-                      <button type="button" onClick={() => handleDateRemove(date)} className="ml-1.5 inline-flex items-center justify-center h-4 w-4 rounded-full bg-gray-200 text-gray-500 hover:bg-gray-300">
-                        &times;
-                      </button>
+                      <button type="button" onClick={() =>handleDateRemove(date)} className="ml-1.5 inline-flex items-center justify-center h-4 w-4 rounded-full bg-gray-200 text-gray-500 hover:bg-gray-300">
+                        &times;</button>
                     </span>)}
                 </div>}
               <p className="mt-1 text-sm text-gray-500">
@@ -228,9 +226,8 @@ export const LegalNoticeCreatorPage = () => {
         </div>
         {/* Action Buttons */}
         <div className="flex justify-between">
-          <button type="button" onClick={() => router.push('/')} className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
-            Cancel
-          </button>
+          <button type="button" onClick={() =>router.push('/')} className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
+            Cancel</button>
           <button type="submit" className="px-4 py-2 bg-news-primary text-white rounded-md hover:bg-news-primary-dark flex items-center">
             Continue to Payment
             <ChevronRight className="ml-1 h-4 w-4" />

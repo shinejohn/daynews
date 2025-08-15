@@ -7,7 +7,7 @@ export const SearchFilters = ({
   timeFilter,
   onFilterChange,
   onTimeFilterChange
-}) => {
+}) =>{
   const contentFilters = [{
     id: 'all',
     label: 'All'
@@ -43,14 +43,13 @@ export const SearchFilters = ({
     id: 'year',
     label: 'This Year'
   }];
-  return <div className="mb-6">
+  return<div className="mb-6">
       <div className="flex flex-col sm:flex-row gap-4">
         {/* Content Type Filters */}
         <div className="flex items-center overflow-x-auto pb-2 sm:pb-0 scrollbar-hide">
           <div className="flex items-center bg-white rounded-full shadow-sm border border-gray-200 p-1">
-            {contentFilters.map(filter => <button key={filter.id} onClick={() => onFilterChange(filter.id)} className={`px-4 py-1.5 text-sm font-medium rounded-full whitespace-nowrap ${activeFilter === filter.id ? 'bg-news-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}>
-                {filter.label}
-              </button>)}
+            {contentFilters.map(filter => <button key={filter.id} onClick={() =>onFilterChange(filter.id)} className={`px-4 py-1.5 text-sm font-medium rounded-full whitespace-nowrap ${activeFilter === filter.id ? 'bg-news-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}>
+                {filter.label}</button>)}
           </div>
         </div>
         {/* Time Filters */}
@@ -60,9 +59,8 @@ export const SearchFilters = ({
               <Calendar className="h-4 w-4 mr-1.5" />
               <span>Time:</span>
             </div>
-            {timeFilters.map(filter => <button key={filter.id} onClick={() => onTimeFilterChange(filter.id)} className={`px-3 py-1.5 text-sm font-medium rounded-full whitespace-nowrap ${timeFilter === filter.id ? 'bg-news-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}>
-                {filter.label}
-              </button>)}
+            {timeFilters.map(filter => <button key={filter.id} onClick={() =>onTimeFilterChange(filter.id)} className={`px-3 py-1.5 text-sm font-medium rounded-full whitespace-nowrap ${timeFilter === filter.id ? 'bg-news-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}>
+                {filter.label}</button>)}
           </div>
         </div>
       </div>

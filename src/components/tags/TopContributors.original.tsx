@@ -1,6 +1,6 @@
 // Converted from Magic Patterns
 import React from 'react';
-import { User, Users, FileText } from 'lucide-react';
+import { FileText, User, Users } from 'lucide-react';
 export const TopContributors = ({
   contributors
 }) => {

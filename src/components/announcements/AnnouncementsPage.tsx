@@ -2,14 +2,14 @@
 // Converted from Magic Patterns
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { MapPin, Share2, Heart, MessageCircle, Calendar, PlusCircle, ExternalLink } from 'lucide-react';
+import { Calendar, ExternalLink, MapPin } from 'lucide-react';
 import { AnnouncementTypesTabs } from './AnnouncementTypesTabs';
 import { CreateAnnouncementCTA } from './CreateAnnouncementCTA';
 import { AnnouncementCard } from './AnnouncementCard';
 import { FeaturedAnnouncement } from './FeaturedAnnouncement';
 import { MemorialSection } from './MemorialSection';
 import { useLocationDetection } from '../location/LocationDetector';
-export const AnnouncementsPage = () => {
+export const AnnouncementsPage = () =>{
   const router = useRouter();
   const [activeType, setActiveType] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -103,7 +103,7 @@ export const AnnouncementsPage = () => {
   };
   // Get the city name safely with a default fallback
   const cityName = locationData?.city || 'Clearwater';
-  return <div className="flex-1 overflow-auto bg-gray-50">
+  return<div className="flex-1 overflow-auto bg-gray-50">
       <div className="container mx-auto px-4 py-6">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl font-bold text-gray-900">
@@ -125,19 +125,15 @@ export const AnnouncementsPage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
           {/* Main Announcements Feed - 2 columns */}
           <div className="lg:col-span-2 space-y-6">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              {activeType === 'all' ? 'Recent Announcements' : `${activeType.charAt(0).toUpperCase() + activeType.slice(1)} Announcements`}
-            </h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">{activeType === 'all' ? 'Recent Announcements' : `${activeType.charAt(0).toUpperCase() + activeType.slice(1)} Announcements`}</h2>
             {/* Featured Announcements */}
             {featuredAnnouncements.length > 0 && <div className="space-y-6 mb-8">
-                {featuredAnnouncements.map(announcement => <div key={announcement.id} onClick={() => handleAnnouncementClick(announcement.id)} className="cursor-pointer">
-                    <FeaturedAnnouncement id={announcement.id} type={announcement.type} title={announcement.title} content={announcement.content} image={announcement.image} date={announcement.date} location={announcement.location} reactions={announcement.reactions} />
+                {featuredAnnouncements.map(announcement => <div key={announcement.id} onClick={() =>handleAnnouncementClick(announcement.id)} className="cursor-pointer"><FeaturedAnnouncement id={announcement.id} type={announcement.type} title={announcement.title} content={announcement.content} image={announcement.image} date={announcement.date} location={announcement.location} reactions={announcement.reactions} />
                   </div>)}
               </div>}
             {/* Regular Announcements */}
             {regularAnnouncements.length > 0 ? <div className="space-y-6">
-                {regularAnnouncements.map(announcement => <div key={announcement.id} onClick={() => handleAnnouncementClick(announcement.id)} className="cursor-pointer">
-                    <AnnouncementCard id={announcement.id} type={announcement.type} title={announcement.title} content={announcement.content} image={announcement.image} date={announcement.date} location={announcement.location} reactions={announcement.reactions} />
+                {regularAnnouncements.map(announcement => <div key={announcement.id} onClick={() =>handleAnnouncementClick(announcement.id)} className="cursor-pointer"><AnnouncementCard id={announcement.id} type={announcement.type} title={announcement.title} content={announcement.content} image={announcement.image} date={announcement.date} location={announcement.location} reactions={announcement.reactions} />
                   </div>)}
               </div> : <div className="text-center py-12 bg-white rounded-lg shadow-sm border border-gray-200">
                 <p className="text-gray-500">
@@ -233,9 +229,8 @@ export const AnnouncementsPage = () => {
                   </h4>
                 </div>
               </div>
-              <button onClick={() => router.push('/eventsCalendar')} className="text-news-primary text-sm font-medium mt-4 inline-block hover:underline">
-                View all events
-              </button>
+              <button onClick={() =>router.push('/eventsCalendar')} className="text-news-primary text-sm font-medium mt-4 inline-block hover:underline">
+                View all events</button>
             </div>
             {/* Advertisement */}
             <div className="bg-gray-100 rounded-lg p-4 text-center border border-dashed border-gray-300 cursor-pointer hover:bg-gray-200 transition-colors" onClick={() => navigateToAdvertisingDetail()}>

@@ -1,7 +1,7 @@
 // Converted from Magic Patterns
 import React from 'react';
 import Link from 'next/link';
-import { Coffee, Users, Camera, Book, Calendar, Clock, ChevronRight, Heart, Utensils, Music, MapPin } from 'lucide-react';
+import { Book, Calendar, Camera, ChevronRight, Clock, Coffee, Heart, MapPin, Music, User, Users, Utensils } from 'lucide-react';
 export const LifePage = () => {
   return <div className="min-h-screen bg-gray-50">
       <main className="container mx-auto px-4 py-8">
@@ -103,11 +103,9 @@ export const LifePage = () => {
                         Five New Restaurants Opening This Summer in Clearwater
                       </Link>
                     </h3>
-                    <p className="text-gray-600 text-sm mb-2">
-                      From farm-to-table concepts to international cuisine,
+                    <p className="text-gray-600 text-sm mb-2">From farm-to-table concepts to international cuisine,
                       Clearwater's dining scene is about to get even more
-                      exciting with these new additions.
-                    </p>
+                      exciting with these new additions.</p>
                     <div className="flex items-center text-xs text-gray-500">
                       <Clock className="h-3 w-3 mr-1" />
                       <span>2 days ago</span>
@@ -120,16 +118,12 @@ export const LifePage = () => {
                       Arts & Culture
                     </span>
                     <h3 className="font-medium text-gray-900 mb-2">
-                      <Link href="#" className="hover:text-pink-600">
-                        Local Artist's Mural Project Transforms Downtown
-                        Buildings
-                      </Link>
+                      <Link href="#" className="hover:text-pink-600">Local Artist's Mural Project Transforms Downtown
+                        Buildings</Link>
                     </h3>
-                    <p className="text-gray-600 text-sm mb-2">
-                      Clearwater native Maya Rodriguez is leading a community
+                    <p className="text-gray-600 text-sm mb-2">Clearwater native Maya Rodriguez is leading a community
                       art initiative that's bringing vibrant murals to
-                      previously blank walls downtown.
-                    </p>
+                      previously blank walls downtown.</p>
                     <div className="flex items-center text-xs text-gray-500">
                       <Clock className="h-3 w-3 mr-1" />
                       <span>3 days ago</span>
@@ -267,9 +261,7 @@ export const LifePage = () => {
                     <h3 className="font-medium text-gray-900">
                       Urban Bites Café
                     </h3>
-                    <div className="flex items-center text-yellow-500 text-xs mb-1">
-                      ★★★★★{' '}
-                      <span className="text-gray-500 ml-1">(124 reviews)</span>
+                    <div className="flex items-center text-yellow-500 text-xs mb-1">★★★★★{' '}<span className="text-gray-500 ml-1">(124 reviews)</span>
                     </div>
                     <p className="text-xs text-gray-600">
                       Cozy café with specialty coffee and fresh food
@@ -282,9 +274,7 @@ export const LifePage = () => {
                     <h3 className="font-medium text-gray-900">
                       Clearwater Arts Center
                     </h3>
-                    <div className="flex items-center text-yellow-500 text-xs mb-1">
-                      ★★★★☆{' '}
-                      <span className="text-gray-500 ml-1">(86 reviews)</span>
+                    <div className="flex items-center text-yellow-500 text-xs mb-1">★★★★☆{' '}<span className="text-gray-500 ml-1">(86 reviews)</span>
                     </div>
                     <p className="text-xs text-gray-600">
                       Gallery featuring local artists and workshops
@@ -297,9 +287,7 @@ export const LifePage = () => {
                     <h3 className="font-medium text-gray-900">
                       Seaside Spa & Wellness
                     </h3>
-                    <div className="flex items-center text-yellow-500 text-xs mb-1">
-                      ★★★★★{' '}
-                      <span className="text-gray-500 ml-1">(92 reviews)</span>
+                    <div className="flex items-center text-yellow-500 text-xs mb-1">★★★★★{' '}<span className="text-gray-500 ml-1">(92 reviews)</span>
                     </div>
                     <p className="text-xs text-gray-600">
                       Beachfront spa offering relaxing treatments

@@ -1,17 +1,18 @@
+'use client';
 // Converted from Magic Patterns
 import React from 'react';
 import { useLocationDetection } from '../location/LocationDetector';
-import { Facebook, Twitter, Instagram, Youtube, Rss, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Instagram, Mail, MapPin, Phone, Rss, Twitter, Youtube } from 'lucide-react';
 import Link from 'next/link';
 export const Footer = ({
   currentPage = ''
-}) => {
+}) =>{
   const {
     locationData
   } = useLocationDetection();
   const city = locationData?.city || 'Clearwater';
   const state = locationData?.state || 'Florida';
-  return <footer className="bg-white text-gray-900">
+  return<footer className="bg-white text-gray-900">
       {/* Main footer content */}
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -20,9 +21,7 @@ export const Footer = ({
             <h3 className="font-display text-xl font-bold mb-4">
               {city} Day News
             </h3>
-            <p className="text-gray-700 text-sm mb-4">
-              {state} County's Trusted News Source Since 2025
-            </p>
+            <p className="text-gray-700 text-sm mb-4">{state} County's Trusted News Source Since 2025</p>
             <div className="flex flex-col space-y-2 text-sm text-gray-700">
               <div className="flex items-start">
                 <MapPin className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0" />

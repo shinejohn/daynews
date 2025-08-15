@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import { supabase } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
-import { User, Mail, Phone, MapPin, Calendar, Edit, Settings, FileText, Bell, Bookmark, Heart, Tag, Pen, Users, Award } from 'lucide-react';
-export const UserProfilePage = () => {
+import { Award, Bell, Bookmark, Calendar, Edit, FileText, Mail, MapPin, MessageSquare, Pen, Phone, Settings, Tag, Tags } from 'lucide-react';
+export const UserProfilePage = () =>{
   const router = useRouter();
   const [activeTab, setActiveTab] = useState('profile');
   // Mock user data - in a real app, this would come from an API or auth context
@@ -49,7 +49,7 @@ export const UserProfilePage = () => {
       date: 'July 15, 2024'
     }]
   };
-  return <div className="flex-1 bg-gray-50 min-h-screen">
+  return<div className="flex-1 bg-gray-50 min-h-screen">
       <div className="container mx-auto px-4 py-8 max-w-6xl">
         {/* Profile Header */}
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden mb-6">
@@ -66,8 +66,7 @@ export const UserProfilePage = () => {
                 <p className="text-gray-600">{userData.location}</p>
               </div>
               <div className="mt-4 md:mt-0 md:ml-auto">
-                <button onClick={() => router.push('/settings')} className="px-4 py-2 bg-gray-100 text-gray-700 rounded-md font-medium hover:bg-gray-200 transition-colors flex items-center">
-                  <Settings className="h-4 w-4 mr-1.5" />
+                <button onClick={() =>router.push('/settings')} className="px-4 py-2 bg-gray-100 text-gray-700 rounded-md font-medium hover:bg-gray-200 transition-colors flex items-center"><Settings className="h-4 w-4 mr-1.5" />
                   Edit Profile
                 </button>
               </div>
@@ -99,21 +98,16 @@ export const UserProfilePage = () => {
         {/* Tab Navigation */}
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 mb-6 overflow-hidden">
           <div className="flex overflow-x-auto">
-            <button onClick={() => setActiveTab('profile')} className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'profile' ? 'text-news-primary border-b-2 border-news-primary' : 'text-gray-600 hover:text-gray-900'}`}>
-              Activity
-            </button>
-            <button onClick={() => setActiveTab('saved')} className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'saved' ? 'text-news-primary border-b-2 border-news-primary' : 'text-gray-600 hover:text-gray-900'}`}>
-              Saved Articles
-            </button>
-            <button onClick={() => setActiveTab('comments')} className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'comments' ? 'text-news-primary border-b-2 border-news-primary' : 'text-gray-600 hover:text-gray-900'}`}>
-              Comments
-            </button>
-            <button onClick={() => setActiveTab('announcements')} className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'announcements' ? 'text-news-primary border-b-2 border-news-primary' : 'text-gray-600 hover:text-gray-900'}`}>
-              Your Announcements
-            </button>
-            <button onClick={() => setActiveTab('events')} className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'events' ? 'text-news-primary border-b-2 border-news-primary' : 'text-gray-600 hover:text-gray-900'}`}>
-              Your Events
-            </button>
+            <button onClick={() =>setActiveTab('profile')} className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'profile' ? 'text-news-primary border-b-2 border-news-primary' : 'text-gray-600 hover:text-gray-900'}`}>
+              Activity</button>
+            <button onClick={() =>setActiveTab('saved')} className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'saved' ? 'text-news-primary border-b-2 border-news-primary' : 'text-gray-600 hover:text-gray-900'}`}>
+              Saved Articles</button>
+            <button onClick={() =>setActiveTab('comments')} className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'comments' ? 'text-news-primary border-b-2 border-news-primary' : 'text-gray-600 hover:text-gray-900'}`}>
+              Comments</button>
+            <button onClick={() =>setActiveTab('announcements')} className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'announcements' ? 'text-news-primary border-b-2 border-news-primary' : 'text-gray-600 hover:text-gray-900'}`}>
+              Your Announcements</button>
+            <button onClick={() =>setActiveTab('events')} className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'events' ? 'text-news-primary border-b-2 border-news-primary' : 'text-gray-600 hover:text-gray-900'}`}>
+              Your Events</button>
           </div>
         </div>
 
@@ -130,12 +124,10 @@ export const UserProfilePage = () => {
                 </p>
               </div>
               <div className="flex space-x-3">
-                <button onClick={() => router.push('/author/profile-creator')} className="px-4 py-2 bg-white text-blue-700 rounded-md font-medium hover:bg-blue-50 transition-colors flex items-center">
-                  <Pen className="h-4 w-4 mr-1.5" />
+                <button onClick={() =>router.push('/author/profile-creator')} className="px-4 py-2 bg-white text-blue-700 rounded-md font-medium hover:bg-blue-50 transition-colors flex items-center"><Pen className="h-4 w-4 mr-1.5" />
                   Create Author Profile
                 </button>
-                <button onClick={() => router.push('/create-article')} className="px-4 py-2 bg-blue-500 text-white rounded-md font-medium hover:bg-blue-400 border border-blue-400 transition-colors flex items-center">
-                  <FileText className="h-4 w-4 mr-1.5" />
+                <button onClick={() =>router.push('/create-article')} className="px-4 py-2 bg-blue-500 text-white rounded-md font-medium hover:bg-blue-400 border border-blue-400 transition-colors flex items-center"><FileText className="h-4 w-4 mr-1.5" />
                   Write First Article
                 </button>
               </div>
@@ -143,8 +135,7 @@ export const UserProfilePage = () => {
           </div>}
 
         {/* Tab Content */}
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-          {activeTab === 'profile' && <div>
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">{activeTab === 'profile' &&<div>
               <h2 className="text-xl font-semibold text-gray-900 mb-4">
                 Recent Activity
               </h2>
@@ -203,9 +194,8 @@ export const UserProfilePage = () => {
                   <p className="text-sm text-gray-600 mb-4">
                     Share news and stories with your community
                   </p>
-                  <button onClick={() => router.push('/create-article')} className="px-4 py-2 bg-news-primary text-white rounded-md font-medium hover:bg-news-primary-dark transition-colors text-sm">
-                    Start Writing
-                  </button>
+                  <button onClick={() =>router.push('/create-article')} className="px-4 py-2 bg-news-primary text-white rounded-md font-medium hover:bg-news-primary-dark transition-colors text-sm">
+                    Start Writing</button>
                 </div>
                 <div className="border border-gray-200 rounded-lg p-6 text-center hover:border-news-primary hover:shadow-sm transition-all">
                   <div className="w-12 h-12 bg-news-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -217,9 +207,8 @@ export const UserProfilePage = () => {
                   <p className="text-sm text-gray-600 mb-4">
                     Share important updates with the community
                   </p>
-                  <button onClick={() => router.push('/announcementCreator')} className="px-4 py-2 bg-news-primary text-white rounded-md font-medium hover:bg-news-primary-dark transition-colors text-sm">
-                    Create Announcement
-                  </button>
+                  <button onClick={() =>router.push('/announcementCreator')} className="px-4 py-2 bg-news-primary text-white rounded-md font-medium hover:bg-news-primary-dark transition-colors text-sm">
+                    Create Announcement</button>
                 </div>
                 <div className="border border-gray-200 rounded-lg p-6 text-center hover:border-news-primary hover:shadow-sm transition-all">
                   <div className="w-12 h-12 bg-news-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -231,9 +220,8 @@ export const UserProfilePage = () => {
                   <p className="text-sm text-gray-600 mb-4">
                     Sell items or services to the community
                   </p>
-                  <button onClick={() => router.push('/postListing')} className="px-4 py-2 bg-news-primary text-white rounded-md font-medium hover:bg-news-primary-dark transition-colors text-sm">
-                    Create Listing
-                  </button>
+                  <button onClick={() =>router.push('/postListing')} className="px-4 py-2 bg-news-primary text-white rounded-md font-medium hover:bg-news-primary-dark transition-colors text-sm">
+                    Create Listing</button>
                 </div>
                 <div className="border border-gray-200 rounded-lg p-6 text-center hover:border-news-primary hover:shadow-sm transition-all">
                   <div className="w-12 h-12 bg-news-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -245,14 +233,13 @@ export const UserProfilePage = () => {
                   <p className="text-sm text-gray-600 mb-4">
                     Create your author profile and share your expertise
                   </p>
-                  <button onClick={() => router.push('/create-article')} className="px-4 py-2 bg-news-primary text-white rounded-md font-medium hover:bg-news-primary-dark transition-colors text-sm">
-                    Create Profile
-                  </button>
+                  <button onClick={() =>router.push('/create-article')} className="px-4 py-2 bg-news-primary text-white rounded-md font-medium hover:bg-news-primary-dark transition-colors text-sm">
+                    Create Profile</button>
                 </div>
               </div>
             </div>}
 
-          {activeTab === 'saved' && <div>
+          {activeTab === 'saved' &&<div>
               <h2 className="text-xl font-semibold text-gray-900 mb-4">
                 Saved Articles
               </h2>
@@ -283,13 +270,12 @@ export const UserProfilePage = () => {
                   <p className="text-gray-600 mb-4">
                     Articles you save will appear here
                   </p>
-                  <button onClick={() => router.push('/')} className="px-4 py-2 bg-news-primary text-white rounded-md font-medium hover:bg-news-primary-dark transition-colors">
-                    Browse Articles
-                  </button>
+                  <button onClick={() =>router.push('/')} className="px-4 py-2 bg-news-primary text-white rounded-md font-medium hover:bg-news-primary-dark transition-colors">
+                    Browse Articles</button>
                 </div>}
             </div>}
 
-          {activeTab === 'comments' && <div>
+          {activeTab === 'comments' &&<div>
               <h2 className="text-xl font-semibold text-gray-900 mb-4">
                 Your Comments
               </h2>
@@ -315,7 +301,7 @@ export const UserProfilePage = () => {
                 </div>}
             </div>}
 
-          {activeTab === 'announcements' && <div>
+          {activeTab === 'announcements' &&<div>
               <h2 className="text-xl font-semibold text-gray-900 mb-4">
                 Your Announcements
               </h2>
@@ -346,13 +332,12 @@ export const UserProfilePage = () => {
                   <p className="text-gray-600 mb-4">
                     Share important updates with your community
                   </p>
-                  <button onClick={() => router.push('/announcementCreator')} className="px-4 py-2 bg-news-primary text-white rounded-md font-medium hover:bg-news-primary-dark transition-colors">
-                    Create Announcement
-                  </button>
+                  <button onClick={() =>router.push('/announcementCreator')} className="px-4 py-2 bg-news-primary text-white rounded-md font-medium hover:bg-news-primary-dark transition-colors">
+                    Create Announcement</button>
                 </div>}
             </div>}
 
-          {activeTab === 'events' && <div>
+          {activeTab === 'events' &&<div>
               <h2 className="text-xl font-semibold text-gray-900 mb-4">
                 Your Events
               </h2>
@@ -386,9 +371,8 @@ export const UserProfilePage = () => {
                   <p className="text-gray-600 mb-4">
                     Create and manage community events
                   </p>
-                  <button onClick={() => router.push('/eventCreator')} className="px-4 py-2 bg-news-primary text-white rounded-md font-medium hover:bg-news-primary-dark transition-colors">
-                    Create Event
-                  </button>
+                  <button onClick={() =>router.push('/eventCreator')} className="px-4 py-2 bg-news-primary text-white rounded-md font-medium hover:bg-news-primary-dark transition-colors">
+                    Create Event</button>
                 </div>}
             </div>}
         </div>

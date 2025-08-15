@@ -1,7 +1,7 @@
 'use client';
 // Converted from Magic Patterns
 import React, { useEffect, useState } from 'react';
-import { Calendar, ChevronLeft, ChevronRight, Clock, DollarSign, AlertCircle, Info } from 'lucide-react';
+import { AlertCircle, Calendar, ChevronLeft, ChevronRight, Clock, DollarSign, Info } from 'lucide-react';
 import { Community } from './TargetCommunities';
 interface ScheduleAndBudgetProps {
   selectedCommunities: Community[];
@@ -126,7 +126,7 @@ export const ScheduleAndBudget: React.FC<ScheduleAndBudgetProps> = ({
     const daysInMonth = lastDay.getDate();
     const days = [];
     // Add previous month's days
-    for (let i = 0; i < firstDayOfWeek; i++) {
+    for (let i = 0; i< firstDayOfWeek; i++) {
       const prevMonthDay = new Date(year, month, -firstDayOfWeek + i + 1);
       days.push({
         date: prevMonthDay,
@@ -167,17 +167,17 @@ export const ScheduleAndBudget: React.FC<ScheduleAndBudgetProps> = ({
     return date >= new Date(start.setHours(0, 0, 0, 0)) && date <= new Date(end.setHours(23, 59, 59, 999));
   };
   // Check if two dates are the same day
-  const isSameDate = (date1: Date, date2: Date): boolean => {
+  const isSameDate = (date1: Date, date2: Date): boolean =>{
     return date1.getDate() === date2.getDate() && date1.getMonth() === date2.getMonth() && date1.getFullYear() === date2.getFullYear();
   };
   // Handle day click in calendar
   const handleDayClick = (day: any) => {
     const newDate = day.date;
     // If we haven't selected a start date or we're resetting the range
-    if (!startDate || startDate && endDate && newDate < startDate) {
+    if (!startDate || startDate && endDate && newDate< startDate) {
       setStartDate(newDate);
       setEndDate(new Date(newDate));
-      setEndDate(prev => {
+      setEndDate(prev =>{
         const date = new Date(newDate);
         date.setDate(date.getDate() + 6); // Default to 7 days
         return date;
@@ -216,7 +216,7 @@ export const ScheduleAndBudget: React.FC<ScheduleAndBudgetProps> = ({
     });
   };
   const calendarDays = generateCalendarDays();
-  return <div className="space-y-8">
+  return<div className="space-y-8">
       <h1 className="text-2xl font-bold text-gray-900 mb-2">
         Set your campaign schedule and budget
       </h1>
@@ -238,10 +238,8 @@ export const ScheduleAndBudget: React.FC<ScheduleAndBudgetProps> = ({
                 </label>
                 <div className="flex items-center border border-gray-300 rounded-md p-2 cursor-pointer" onClick={() => setShowCalendar(!showCalendar)}>
                   <Calendar className="h-5 w-5 text-gray-400 mr-2" />
-                  <span className="text-gray-900">
-                    {startDate.toLocaleDateString()} -{' '}
-                    {endDate.toLocaleDateString()}
-                  </span>
+                  <span className="text-gray-900">{startDate.toLocaleDateString()} -{' '}
+                    {endDate.toLocaleDateString()}</span>
                 </div>
               </div>
               <div>
@@ -268,22 +266,20 @@ export const ScheduleAndBudget: React.FC<ScheduleAndBudgetProps> = ({
                 </div>
                 <div className="bg-white p-3">
                   {/* Day headers */}
-                  <div className="grid grid-cols-7 mb-1">
-                    {['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'].map((day, i) => <div key={i} className="text-center text-sm font-medium text-gray-500">
+                  <div className="grid grid-cols-7 mb-1">{['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'].map((day, i) =><div key={i} className="text-center text-sm font-medium text-gray-500">
                           {day}
                         </div>)}
                   </div>
                   {/* Calendar grid */}
                   <div className="grid grid-cols-7 gap-1">
-                    {calendarDays.map((day, i) => <div key={i} onClick={() => handleDayClick(day)} className={`
+                    {calendarDays.map((day, i) => <div key={i} onClick={() =>handleDayClick(day)} className={`
                           h-9 flex items-center justify-center text-sm rounded-md cursor-pointer
                           ${!day.isCurrentMonth ? 'text-gray-400' : 'text-gray-900'}
                           ${day.isSelected ? 'bg-blue-100' : 'hover:bg-gray-100'}
                           ${day.isStart ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}
                           ${day.isEnd ? 'bg-blue-600 text-white hover:bg-blue-700' : ''}
                         `}>
-                        {day.date.getDate()}
-                      </div>)}
+                        {day.date.getDate()}</div>)}
                   </div>
                 </div>
               </div>}
@@ -292,8 +288,7 @@ export const ScheduleAndBudget: React.FC<ScheduleAndBudgetProps> = ({
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Time Zone
               </label>
-              <select value={timezone} onChange={e => setTimezone(e.target.value)} className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <option value="America/New_York">Eastern Time (ET)</option>
+              <select value={timezone} onChange={e =>setTimezone(e.target.value)} className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"><option value="America/New_York">Eastern Time (ET)</option>
                 <option value="America/Chicago">Central Time (CT)</option>
                 <option value="America/Denver">Mountain Time (MT)</option>
                 <option value="America/Los_Angeles">Pacific Time (PT)</option>
@@ -312,20 +307,16 @@ export const ScheduleAndBudget: React.FC<ScheduleAndBudgetProps> = ({
               Quick Options
             </h3>
             <div className="grid grid-cols-2 gap-3">
-              <button onClick={() => handleDurationSelect('7days')} className={`p-3 rounded-lg border text-center ${selectedDuration === '7days' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-gray-300 hover:bg-gray-50'}`}>
-                <div className="font-medium">7 days</div>
+              <button onClick={() =>handleDurationSelect('7days')} className={`p-3 rounded-lg border text-center ${selectedDuration === '7days' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-gray-300 hover:bg-gray-50'}`}><div className="font-medium">7 days</div>
                 <div className="text-sm text-gray-500">1 week campaign</div>
               </button>
-              <button onClick={() => handleDurationSelect('14days')} className={`p-3 rounded-lg border text-center ${selectedDuration === '14days' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-gray-300 hover:bg-gray-50'}`}>
-                <div className="font-medium">14 days</div>
+              <button onClick={() =>handleDurationSelect('14days')} className={`p-3 rounded-lg border text-center ${selectedDuration === '14days' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-gray-300 hover:bg-gray-50'}`}><div className="font-medium">14 days</div>
                 <div className="text-sm text-gray-500">2 week campaign</div>
               </button>
-              <button onClick={() => handleDurationSelect('30days')} className={`p-3 rounded-lg border text-center ${selectedDuration === '30days' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-gray-300 hover:bg-gray-50'}`}>
-                <div className="font-medium">30 days</div>
+              <button onClick={() =>handleDurationSelect('30days')} className={`p-3 rounded-lg border text-center ${selectedDuration === '30days' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-gray-300 hover:bg-gray-50'}`}><div className="font-medium">30 days</div>
                 <div className="text-sm text-gray-500">1 month campaign</div>
               </button>
-              <button onClick={() => handleDurationSelect('ongoing')} className={`p-3 rounded-lg border text-center ${selectedDuration === 'ongoing' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-gray-300 hover:bg-gray-50'}`}>
-                <div className="font-medium">Ongoing</div>
+              <button onClick={() =>handleDurationSelect('ongoing')} className={`p-3 rounded-lg border text-center ${selectedDuration === 'ongoing' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-gray-300 hover:bg-gray-50'}`}><div className="font-medium">Ongoing</div>
                 <div className="text-sm text-gray-500">90 day auto-renewal</div>
               </button>
             </div>
@@ -410,8 +401,7 @@ export const ScheduleAndBudget: React.FC<ScheduleAndBudgetProps> = ({
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <DollarSign className="h-5 w-5 text-gray-400" />
               </div>
-              <input type="number" min="0" placeholder="No limit" value={dailyBudgetCap} onChange={e => setDailyBudgetCap(e.target.value)} className="pl-10 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
-            </div>
+              <input type="number" min="0" placeholder="No limit" value={dailyBudgetCap} onChange={e =>setDailyBudgetCap(e.target.value)} className="pl-10 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" /></div>
             <p className="mt-1 text-sm text-gray-500">
               Pause campaigns if daily spend exceeds this amount
             </p>
@@ -425,8 +415,7 @@ export const ScheduleAndBudget: React.FC<ScheduleAndBudgetProps> = ({
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <DollarSign className="h-5 w-5 text-gray-400" />
               </div>
-              <input type="number" min="0" placeholder="No limit" value={totalBudgetCap} onChange={e => setTotalBudgetCap(e.target.value)} className="pl-10 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
-            </div>
+              <input type="number" min="0" placeholder="No limit" value={totalBudgetCap} onChange={e =>setTotalBudgetCap(e.target.value)} className="pl-10 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" /></div>
             <p className="mt-1 text-sm text-gray-500">
               Stop all campaigns when total reaches this amount
             </p>
@@ -437,19 +426,16 @@ export const ScheduleAndBudget: React.FC<ScheduleAndBudgetProps> = ({
           <h3 className="text-sm font-medium text-gray-700 mb-2">Pacing</h3>
           <div className="space-y-2">
             <label className="flex items-center">
-              <input type="radio" name="pacing" value="standard" checked={pacing === 'standard'} onChange={() => setPacing('standard')} className="h-4 w-4 text-blue-600 focus:ring-blue-500" />
-              <span className="ml-2 text-gray-700">
+              <input type="radio" name="pacing" value="standard" checked={pacing === 'standard'} onChange={() =>setPacing('standard')} className="h-4 w-4 text-blue-600 focus:ring-blue-500" /><span className="ml-2 text-gray-700">
                 Standard (even distribution)
               </span>
             </label>
             <label className="flex items-center">
-              <input type="radio" name="pacing" value="accelerated" checked={pacing === 'accelerated'} onChange={() => setPacing('accelerated')} className="h-4 w-4 text-blue-600 focus:ring-blue-500" />
-              <span className="ml-2 text-gray-700">
+              <input type="radio" name="pacing" value="accelerated" checked={pacing === 'accelerated'} onChange={() =>setPacing('accelerated')} className="h-4 w-4 text-blue-600 focus:ring-blue-500" /><span className="ml-2 text-gray-700">
                 Accelerated (show ads as quickly as possible)
               </span>
             </label>
-          </div>
-          {pacing === 'accelerated' && <div className="mt-2 p-3 bg-yellow-50 border border-yellow-200 rounded-md flex items-start">
+          </div>{pacing === 'accelerated' &&<div className="mt-2 p-3 bg-yellow-50 border border-yellow-200 rounded-md flex items-start">
               <AlertCircle className="h-5 w-5 text-yellow-500 mr-2 flex-shrink-0 mt-0.5" />
               <p className="text-sm text-yellow-700">
                 Accelerated pacing may use your daily budget more quickly and
@@ -464,9 +450,8 @@ export const ScheduleAndBudget: React.FC<ScheduleAndBudgetProps> = ({
           <h2 className="text-lg font-semibold text-gray-900">
             Advanced Scheduling
           </h2>
-          <button onClick={() => setShowAdvancedScheduling(!showAdvancedScheduling)} className="text-blue-600 hover:text-blue-800 text-sm font-medium">
-            {showAdvancedScheduling ? 'Hide options' : 'Show options'}
-          </button>
+          <button onClick={() =>setShowAdvancedScheduling(!showAdvancedScheduling)} className="text-blue-600 hover:text-blue-800 text-sm font-medium">
+            {showAdvancedScheduling ? 'Hide options' : 'Show options'}</button>
         </div>
         {showAdvancedScheduling && <div className="space-y-6">
             {/* Day Parting */}
@@ -476,8 +461,7 @@ export const ScheduleAndBudget: React.FC<ScheduleAndBudgetProps> = ({
                   Day Parting
                 </h3>
                 <label className="flex items-center">
-                  <input type="checkbox" checked={dayParting} onChange={() => setDayParting(!dayParting)} className="h-4 w-4 text-blue-600 focus:ring-blue-500 rounded" />
-                  <span className="ml-2 text-sm text-gray-700">
+                  <input type="checkbox" checked={dayParting} onChange={() =>setDayParting(!dayParting)} className="h-4 w-4 text-blue-600 focus:ring-blue-500 rounded" /><span className="ml-2 text-sm text-gray-700">
                     Enable hour targeting
                   </span>
                 </label>
@@ -492,8 +476,8 @@ export const ScheduleAndBudget: React.FC<ScheduleAndBudgetProps> = ({
                   <div className="grid grid-cols-6 md:grid-cols-12 gap-2 mt-3">
                     {Array.from({
                 length: 24
-              }).map((_, i) => <button key={i} onClick={() => toggleHour(i)} className={`p-2 rounded text-center text-sm ${activeHours[i] ? 'bg-blue-100 text-blue-800 border border-blue-300' : 'bg-gray-100 text-gray-500 border border-gray-200'}`}>
-                        {i === 0 ? '12 AM' : i < 12 ? `${i} AM` : i === 12 ? '12 PM' : `${i - 12} PM`}
+              }).map((_, i) => <button key={i} onClick={() =>toggleHour(i)} className={`p-2 rounded text-center text-sm ${activeHours[i] ? 'bg-blue-100 text-blue-800 border border-blue-300' : 'bg-gray-100 text-gray-500 border border-gray-200'}`}>
+                        {i === 0 ? '12 AM' : i< 12 ? `${i} AM` : i === 12 ? '12 PM' : `${i - 12} PM`}
                       </button>)}
                   </div>
                 </div>}
@@ -505,8 +489,7 @@ export const ScheduleAndBudget: React.FC<ScheduleAndBudgetProps> = ({
                   Weekday/Weekend Budgets
                 </h3>
                 <label className="flex items-center">
-                  <input type="checkbox" checked={weekdayWeekendDiff} onChange={() => setWeekdayWeekendDiff(!weekdayWeekendDiff)} className="h-4 w-4 text-blue-600 focus:ring-blue-500 rounded" />
-                  <span className="ml-2 text-sm text-gray-700">
+                  <input type="checkbox" checked={weekdayWeekendDiff} onChange={() =>setWeekdayWeekendDiff(!weekdayWeekendDiff)} className="h-4 w-4 text-blue-600 focus:ring-blue-500 rounded" /><span className="ml-2 text-sm text-gray-700">
                     Set different budgets
                   </span>
                 </label>
@@ -517,8 +500,7 @@ export const ScheduleAndBudget: React.FC<ScheduleAndBudgetProps> = ({
                       Weekday Budget (Mon-Fri)
                     </label>
                     <div className="flex items-center">
-                      <input type="range" min="10" max="200" value={weekdayBudget} onChange={e => setWeekdayBudget(parseInt(e.target.value))} className="flex-grow mr-3" />
-                      <span className="text-sm font-medium text-gray-900 whitespace-nowrap">
+                      <input type="range" min="10" max="200" value={weekdayBudget} onChange={e =>setWeekdayBudget(parseInt(e.target.value))} className="flex-grow mr-3" /><span className="text-sm font-medium text-gray-900 whitespace-nowrap">
                         {weekdayBudget}% of base
                       </span>
                     </div>
@@ -528,8 +510,7 @@ export const ScheduleAndBudget: React.FC<ScheduleAndBudgetProps> = ({
                       Weekend Budget (Sat-Sun)
                     </label>
                     <div className="flex items-center">
-                      <input type="range" min="10" max="200" value={weekendBudget} onChange={e => setWeekendBudget(parseInt(e.target.value))} className="flex-grow mr-3" />
-                      <span className="text-sm font-medium text-gray-900 whitespace-nowrap">
+                      <input type="range" min="10" max="200" value={weekendBudget} onChange={e =>setWeekendBudget(parseInt(e.target.value))} className="flex-grow mr-3" /><span className="text-sm font-medium text-gray-900 whitespace-nowrap">
                         {weekendBudget}% of base
                       </span>
                     </div>
@@ -543,8 +524,7 @@ export const ScheduleAndBudget: React.FC<ScheduleAndBudgetProps> = ({
                   Community-specific Schedules
                 </h3>
                 <label className="flex items-center">
-                  <input type="checkbox" checked={communitySpecificSchedules} onChange={() => setCommunitySpecificSchedules(!communitySpecificSchedules)} className="h-4 w-4 text-blue-600 focus:ring-blue-500 rounded" />
-                  <span className="ml-2 text-sm text-gray-700">
+                  <input type="checkbox" checked={communitySpecificSchedules} onChange={() =>setCommunitySpecificSchedules(!communitySpecificSchedules)} className="h-4 w-4 text-blue-600 focus:ring-blue-500 rounded" /><span className="ml-2 text-sm text-gray-700">
                     Set per-community schedules
                   </span>
                 </label>

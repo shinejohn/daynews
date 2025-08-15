@@ -12,7 +12,7 @@ export const StatusIndicator = ({
   showText = true,
   size = 'md',
   className = ''
-}: StatusIndicatorProps) => {
+}: StatusIndicatorProps) =>{
   const getStatusColor = () => {
     switch (status) {
       case 'active':
@@ -79,7 +79,7 @@ export const StatusIndicator = ({
         return 'text-gray-600';
     }
   };
-  return <div className={`flex items-center ${className}`}>
+  return<div className={`flex items-center ${className}`}>
       <div className={`${getSizeClass()} rounded-full ${getStatusColor()} mr-1.5`}></div>
       {showText && <span className={`text-sm font-medium ${getTextColor()}`}>
           {getStatusText()}

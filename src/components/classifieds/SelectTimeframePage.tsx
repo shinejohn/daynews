@@ -2,8 +2,8 @@
 // Converted from Magic Patterns
 import React, { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { ArrowLeft, ArrowRight, Calendar, Check, Info, Clock, DollarSign, AlertCircle } from 'lucide-react';
-export const SelectTimeframePage = () => {
+import { AlertCircle, ArrowLeft, ArrowRight, Calendar, Check, Clock, DollarSign, Info } from 'lucide-react';
+export const SelectTimeframePage = () =>{
   const router = useRouter();
   const pathname = usePathname();
   const {
@@ -64,14 +64,14 @@ export const SelectTimeframePage = () => {
   const calculateMonthlyPrice = () => {
     const basePrice = 10; // $10 for up to 3 communities
     const additionalCommunityPrice = 2; // $2 per additional community
-    if (selectedCommunities.length <= 3) {
+    if (selectedCommunities.length<= 3) {
       return basePrice;
     } else {
       return basePrice + (selectedCommunities.length - 3) * additionalCommunityPrice;
     }
   };
   // Calculate total price with discounts for longer durations
-  const calculateTotalPrice = () => {
+  const calculateTotalPrice = () =>{
     const monthlyPrice = calculateMonthlyPrice();
     // Apply discounts based on duration
     if (selectedDuration === 1) {
@@ -113,7 +113,7 @@ export const SelectTimeframePage = () => {
     tomorrow.setDate(tomorrow.getDate() + 1);
     return tomorrow.toISOString().split('T')[0];
   };
-  return <div className="flex-1 overflow-auto bg-gray-50">
+  return<div className="flex-1 overflow-auto bg-gray-50">
       <div className="max-w-3xl mx-auto py-8 px-4">
         <button onClick={handleBack} className="flex items-center text-news-primary mb-6 hover:underline" aria-label="Back to communities selection">
           <ArrowLeft className="h-4 w-4 mr-1" />
@@ -137,8 +137,7 @@ export const SelectTimeframePage = () => {
             </p>
             <p className="text-gray-700">
               <strong>Base Price:</strong>{' '}
-              {formatCurrency(calculateMonthlyPrice())}/month
-            </p>
+              {formatCurrency(calculateMonthlyPrice())}/month</p>
           </div>
           {/* Duration options */}
           <div className="mb-6">
@@ -175,12 +174,10 @@ export const SelectTimeframePage = () => {
                 </h3>
                 <p className="text-sm text-blue-700">
                   Your ad will run from <strong>{formatDate(startDate)}</strong>{' '}
-                  to <strong>{formatDate(endDate)}</strong>
+                  to<strong>{formatDate(endDate)}</strong>
                 </p>
-                {getDiscountPercentage() > 0 && <p className="text-sm text-blue-700 mt-1">
-                    You're saving {getDiscountPercentage()}% with your{' '}
-                    {selectedDuration}-month plan!
-                  </p>}
+                {getDiscountPercentage() > 0 && <p className="text-sm text-blue-700 mt-1">You're saving {getDiscountPercentage()}% with your{' '}
+                    {selectedDuration}-month plan!</p>}
               </div>
             </div>
           </div>
@@ -196,9 +193,7 @@ export const SelectTimeframePage = () => {
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-gray-600">Duration:</span>
-                <span className="text-gray-900">
-                  {selectedDuration} month{selectedDuration > 1 ? 's' : ''}
-                </span>
+                <span className="text-gray-900">{selectedDuration} month{selectedDuration > 1 ? 's' : ''}</span>
               </div>
               {getDiscountPercentage() > 0 && <div className="flex justify-between text-sm text-green-600">
                   <span>Discount ({getDiscountPercentage()}%):</span>
@@ -237,16 +232,13 @@ const DurationOption = ({
   onClick
 }) => {
   const totalPrice = months * monthlyPrice * (1 - discount / 100);
-  return <div onClick={onClick} className={`border rounded-lg p-4 cursor-pointer transition-all ${selected ? 'border-news-primary bg-blue-50' : 'border-gray-200 hover:border-gray-300'}`} role="radio" aria-checked={selected} tabIndex={0} onKeyPress={e => {
+  return <div onClick={onClick} className={`border rounded-lg p-4 cursor-pointer transition-all ${selected ? 'border-news-primary bg-blue-50' : 'border-gray-200 hover:border-gray-300'}`} role="radio" aria-checked={selected} tabIndex={0} onKeyPress={e =>{
     if (e.key === 'Enter' || e.key === ' ') {
       onClick();
     }
-  }}>
-      <div className="flex justify-between items-start">
+  }}><div className="flex justify-between items-start">
         <div>
-          <h4 className="font-medium text-gray-900">
-            {months} Month{months > 1 ? 's' : ''}
-          </h4>
+          <h4 className="font-medium text-gray-900">{months} Month{months > 1 ? 's' : ''}</h4>
           {discount > 0 && <span className="inline-block bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded-full mt-1">
               Save {discount}%
             </span>}

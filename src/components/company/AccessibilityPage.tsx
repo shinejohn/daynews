@@ -1,25 +1,24 @@
+'use client';
 // Converted from Magic Patterns
 import React from 'react';
 import { useLocationDetection } from '../location/LocationDetector';
-export const AccessibilityPage = () => {
+export const AccessibilityPage = () =>{
   const {
     locationData
   } = useLocationDetection();
   const city = locationData?.city || 'Clearwater';
-  return <div className="min-h-screen bg-bg-primary w-full">
+  return<div className="min-h-screen bg-bg-primary w-full">
       <main className="container mx-auto px-4 py-12">
         <h1 className="font-display text-4xl font-bold text-news-primary mb-8">
           Accessibility Statement
         </h1>
         <div className="max-w-4xl bg-white rounded-lg shadow-sm p-6 md:p-8 mb-8">
-          <p className="text-gray-600 mb-6">
-            Last Updated:{' '}
+          <p className="text-gray-600 mb-6">Last Updated:{' '}
             {new Date().toLocaleDateString('en-US', {
             month: 'long',
             day: 'numeric',
             year: 'numeric'
-          })}
-          </p>
+          })}</p>
           <section className="mb-8">
             <h2 className="font-display text-2xl font-bold text-gray-900 mb-4">
               Our Commitment
@@ -136,8 +135,7 @@ export const AccessibilityPage = () => {
             </p>
             <ul className="list-disc list-inside text-gray-700 mb-4 ml-4 space-y-2">
               <li>
-                <strong>Email:</strong>{' '}
-                <a href="mailto:accessibility@day.news" className="text-news-primary hover:underline">
+                <strong>Email:</strong>{' '}<a href="mailto:accessibility@day.news" className="text-news-primary hover:underline">
                   accessibility@day.news
                 </a>
               </li>
@@ -163,20 +161,14 @@ export const AccessibilityPage = () => {
             </p>
             <ul className="list-disc list-inside text-gray-700 mb-4 ml-4 space-y-2">
               <li>
-                <a href="https://www.w3.org/WAI/users/browsing" target="_blank" rel="noopener noreferrer" className="text-news-primary hover:underline">
-                  W3C's Web Accessibility Initiative (WAI) Better Web Browsing
-                  Tips
-                </a>
+                <a href="https://www.w3.org/WAI/users/browsing" target="_blank" rel="noopener noreferrer" className="text-news-primary hover:underline">W3C's Web Accessibility Initiative (WAI) Better Web Browsing
+                  Tips</a>
               </li>
               <li>
-                <a href="https://www.w3.org/WAI/users/inaccessible" target="_blank" rel="noopener noreferrer" className="text-news-primary hover:underline">
-                  W3C's Contacting Organizations about Inaccessible Websites
-                </a>
+                <a href="https://www.w3.org/WAI/users/inaccessible" target="_blank" rel="noopener noreferrer" className="text-news-primary hover:underline">W3C's Contacting Organizations about Inaccessible Websites</a>
               </li>
               <li>
-                <a href="https://www.w3.org/WAI/fundamentals/" target="_blank" rel="noopener noreferrer" className="text-news-primary hover:underline">
-                  W3C's Accessibility Fundamentals
-                </a>
+                <a href="https://www.w3.org/WAI/fundamentals/" target="_blank" rel="noopener noreferrer" className="text-news-primary hover:underline">W3C's Accessibility Fundamentals</a>
               </li>
             </ul>
           </section>
@@ -194,15 +186,13 @@ export const AccessibilityPage = () => {
               <li>Consult with users with disabilities</li>
               <li>Provide accessibility training to our staff</li>
             </ul>
-            <p className="text-gray-700 mb-4">
-              This statement was created on{' '}
+            <p className="text-gray-700 mb-4">This statement was created on{' '}
               {new Date().toLocaleDateString('en-US', {
               month: 'long',
               day: 'numeric',
               year: 'numeric'
             })}{' '}
-              using the W3C Accessibility Statement Generator Tool.
-            </p>
+              using the W3C Accessibility Statement Generator Tool.</p>
           </section>
         </div>
       </main>

@@ -1,9 +1,9 @@
 'use client';
 // Converted from Magic Patterns
 import React from 'react';
-import { MapPin, Calendar, ChevronRight } from 'lucide-react';
+import { Calendar, ChevronRight, MapPin } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-export const LocalEventsSection = () => {
+export const LocalEventsSection = () =>{
   const router = useRouter();
   const localEvents = [{
     id: 1,
@@ -30,7 +30,7 @@ export const LocalEventsSection = () => {
   const handleViewAllEvents = () => {
     router.push('/eventsCalendar');
   };
-  return <div className="space-y-3">
+  return<div className="space-y-3">
       {localEvents.map(event => <div key={event.id} className="bg-white rounded-md overflow-hidden shadow-sm border border-gray-200 flex cursor-pointer hover:shadow-md transition-shadow" onClick={() => handleEventClick(event.id)}>
           <div className="w-1/4">
             <img src={event.image} alt={event.title} className="w-full h-full object-cover" />

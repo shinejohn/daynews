@@ -3,9 +3,9 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase/client';
 // Removed react-router-dom import
-import { ChevronLeft, Heart, MessageSquare, Share2, Download, Flag, Calendar, MapPin, User, Tag, Edit, Trash2, Send, ThumbsUp, ThumbsDown } from 'lucide-react';
+import { Calendar, ChevronLeft, Download, Edit, Flag, Heart, MapPin, MessageSquare, Send, Share2, Tag, ThumbsDown, ThumbsUp, Trash2 } from 'lucide-react';
 import { PageHeader } from '../PageHeader';
-export const PhotoDetailPage = () => {
+export const PhotoDetailPage = () =>{
   const {
     photoId
   } = useParams();
@@ -119,7 +119,7 @@ export const PhotoDetailPage = () => {
     router.push(-1);
   };
   if (loading) {
-    return <div className="flex-1 overflow-auto bg-gray-50">
+    return<div className="flex-1 overflow-auto bg-gray-50">
         <PageHeader />
         <div className="mx-auto max-w-7xl px-4 py-6">
           <div className="flex justify-center items-center h-64">
@@ -168,13 +168,11 @@ export const PhotoDetailPage = () => {
                 <div className="flex flex-wrap items-center text-sm text-gray-500 mb-6">
                   <div className="flex items-center mr-4 mb-2">
                     <Calendar className="h-4 w-4 mr-1" />
-                    <span>
-                      {new Date(photo.date).toLocaleDateString('en-US', {
+                    <span>{new Date(photo.date).toLocaleDateString('en-US', {
                       month: 'long',
                       day: 'numeric',
                       year: 'numeric'
-                    })}
-                    </span>
+                    })}</span>
                   </div>
                   <div className="flex items-center mr-4 mb-2">
                     <MapPin className="h-4 w-4 mr-1" />
@@ -219,7 +217,7 @@ export const PhotoDetailPage = () => {
                   <div className="flex">
                     <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Your avatar" className="h-10 w-10 rounded-full mr-3" />
                     <div className="flex-1 relative">
-                      <textarea value={comment} onChange={e => setComment(e.target.value)} placeholder="Add a comment..." className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-news-primary focus:border-transparent" rows={2}></textarea>
+                      <textarea value={comment} onChange={e =>setComment(e.target.value)} placeholder="Add a comment..." className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-news-primary focus:border-transparent" rows={2}></textarea>
                       <button type="submit" disabled={!comment.trim()} className="absolute bottom-2 right-2 p-1 rounded-full bg-news-primary text-white disabled:bg-gray-300">
                         <Send className="h-4 w-4" />
                       </button>
@@ -236,13 +234,11 @@ export const PhotoDetailPage = () => {
                             <div className="font-medium text-gray-900">
                               {comment.author}
                             </div>
-                            <div className="text-xs text-gray-500">
-                              {new Date(comment.date).toLocaleDateString('en-US', {
+                            <div className="text-xs text-gray-500">{new Date(comment.date).toLocaleDateString('en-US', {
                             month: 'short',
                             day: 'numeric',
                             year: 'numeric'
-                          })}
-                            </div>
+                          })}</div>
                           </div>
                           <p className="text-gray-700 text-sm">
                             {comment.text}
@@ -329,9 +325,8 @@ export const PhotoDetailPage = () => {
                     </div>)}
                 </div>
                 <div className="mt-4 pt-3 border-t border-gray-100 text-center">
-                  <button onClick={() => router.push('/photos')} className="text-sm font-medium text-news-primary hover:text-news-primary-dark">
-                    View all photos
-                  </button>
+                  <button onClick={() =>router.push('/photos')} className="text-sm font-medium text-news-primary hover:text-news-primary-dark">
+                    View all photos</button>
                 </div>
               </div>
             </div>

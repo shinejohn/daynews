@@ -9,10 +9,17 @@
 
 const fs = require('fs');
 const path = require('path');
+const { loadConfig } = require('./load-config');
 
-// Configuration
-const MAGIC_PATTERNS_DIR = '/Users/johnshine/Dropbox/Fibonacco/Day-News/Code/magic/src/components';
-const TARGET_DIR = path.join(__dirname, '../src/components');
+// Load project configuration
+const config = loadConfig();
+
+// Configuration - Support command line args, env vars, and config file
+const MAGIC_PATTERNS_DIR = process.argv[2] || 
+                          process.env.MAGIC_PATTERNS_DIR || 
+                          path.resolve(__dirname, '..', config.paths.magicPatternsDir);
+const TARGET_DIR = process.env.TARGET_DIR || 
+                   path.resolve(__dirname, '..', config.paths.targetDir);
 
 // Track conversions
 const conversionLog = [];

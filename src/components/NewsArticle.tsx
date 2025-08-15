@@ -1,7 +1,7 @@
 'use client';
 // Converted from Magic Patterns
 import React, { useState } from 'react';
-import { MapPin, Heart, MessageSquare, BookmarkIcon, Share2Icon } from 'lucide-react';
+import { Heart, MapPin, MessageSquare, Share2Icon } from 'lucide-react';
 import { SaveModal } from './modals/SaveModal';
 import { ShareModal } from './modals/ShareModal';
 export const NewsArticle = ({
@@ -38,9 +38,7 @@ export const NewsArticle = ({
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-200">
-                <span className="text-xs font-medium">
-                  {author.split(' ').map(n => n[0]).join('')}
-                </span>
+                <span className="text-xs font-medium">{author.split(' ').map(n => n[0]).join('')}</span>
               </div>
               <div className="ml-2 text-xs">
                 <div className="font-medium">Author</div>

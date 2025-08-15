@@ -1,7 +1,7 @@
 'use client';
 // Converted from Magic Patterns
 import React from 'react';
-import { MapPin, Users, Newspaper, BellOff, Bell, List, Map as MapIcon } from 'lucide-react';
+import { Bell, BellOff, List, Map as MapIcon, MapPin, Newspaper, User, Users } from 'lucide-react';
 export const NearbyCitiesGrid = ({
   cities,
   onCitySelect,
@@ -14,12 +14,10 @@ export const NearbyCitiesGrid = ({
         <h2 className="text-xl font-bold text-gray-900">Nearby Communities</h2>
         <div className="flex items-center">
           <div className="flex border border-gray-300 rounded-md overflow-hidden">
-            <button onClick={() => onToggleMapView()} className={`flex items-center px-3 py-1.5 text-sm ${!mapView ? 'bg-news-primary text-white' : 'bg-white text-gray-700'}`}>
-              <List className="h-4 w-4 mr-1.5" />
+            <button onClick={() =>onToggleMapView()} className={`flex items-center px-3 py-1.5 text-sm ${!mapView ? 'bg-news-primary text-white' : 'bg-white text-gray-700'}`}><List className="h-4 w-4 mr-1.5" />
               <span>List</span>
             </button>
-            <button onClick={() => onToggleMapView()} className={`flex items-center px-3 py-1.5 text-sm ${mapView ? 'bg-news-primary text-white' : 'bg-white text-gray-700'}`}>
-              <MapIcon className="h-4 w-4 mr-1.5" />
+            <button onClick={() =>onToggleMapView()} className={`flex items-center px-3 py-1.5 text-sm ${mapView ? 'bg-news-primary text-white' : 'bg-white text-gray-700'}`}><MapIcon className="h-4 w-4 mr-1.5" />
               <span>Map</span>
             </button>
           </div>
@@ -64,14 +62,13 @@ export const NearbyCitiesGrid = ({
                           </div>
                         </div>
                         <div className="flex space-x-2">
-                          <button onClick={() => onCitySelect(city)} className="flex-1 bg-news-primary text-white text-xs font-medium py-1.5 rounded">
-                            View
-                          </button>
-                          <button onClick={e => {
+                          <button onClick={() =>onCitySelect(city)} className="flex-1 bg-news-primary text-white text-xs font-medium py-1.5 rounded">
+                            View</button>
+                          <button onClick={e =>{
                       e.stopPropagation();
                       onToggleFollow(city.id);
                     }} className={`p-1.5 rounded ${city.isFollowed ? 'bg-gray-100 text-gray-700' : 'bg-gray-100 text-gray-700'}`}>
-                            {city.isFollowed ? <BellOff className="h-4 w-4" /> : <Bell className="h-4 w-4" />}
+                            {city.isFollowed ?<BellOff className="h-4 w-4" /> : <Bell className="h-4 w-4" />}
                           </button>
                         </div>
                       </div>
@@ -112,11 +109,10 @@ export const NearbyCitiesGrid = ({
                   </div>
                 </div>
                 <div className="flex space-x-2">
-                  <button onClick={() => onCitySelect(city)} className="flex-1 bg-news-primary text-white font-medium py-2 rounded hover:bg-news-primary-dark transition-colors">
-                    View News
-                  </button>
-                  <button onClick={() => onToggleFollow(city.id)} className={`p-2 rounded ${city.isFollowed ? 'bg-gray-100 text-gray-700 hover:bg-gray-200' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
-                    {city.isFollowed ? <BellOff className="h-5 w-5" /> : <Bell className="h-5 w-5" />}
+                  <button onClick={() =>onCitySelect(city)} className="flex-1 bg-news-primary text-white font-medium py-2 rounded hover:bg-news-primary-dark transition-colors">
+                    View News</button>
+                  <button onClick={() =>onToggleFollow(city.id)} className={`p-2 rounded ${city.isFollowed ? 'bg-gray-100 text-gray-700 hover:bg-gray-200' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
+                    {city.isFollowed ?<BellOff className="h-5 w-5" /> : <Bell className="h-5 w-5" />}
                   </button>
                 </div>
               </div>

@@ -8,7 +8,7 @@ import { CitySearch } from './CitySearch';
 import { PopularCities } from './PopularCities';
 import { MultiCitySettings } from './MultiCitySettings';
 import { useLocationDetection } from '../location/LocationDetector';
-export const CitySelectionPage = () => {
+export const CitySelectionPage = () =>{
   const {
     locationData,
     updateLocation
@@ -210,7 +210,7 @@ export const CitySelectionPage = () => {
     setMultiCityMode(!multiCityMode);
   };
   if (loading) {
-    return <div className="flex-1 overflow-auto bg-gray-50">
+    return<div className="flex-1 overflow-auto bg-gray-50">
         <PageHeader />
         <div className="mx-auto max-w-7xl px-4 py-6">
           <div className="animate-pulse">
@@ -243,13 +243,9 @@ export const CitySelectionPage = () => {
         </div>
         {/* Request Coverage */}
         <div className="mt-12 bg-white rounded-lg shadow-sm border border-gray-200 p-6 text-center">
-          <h3 className="text-xl font-bold text-gray-900 mb-2">
-            Don't see your community?
-          </h3>
-          <p className="text-gray-600 mb-4 max-w-md mx-auto">
-            We're expanding our coverage all the time. Let us know where you'd
-            like to see Day.news next!
-          </p>
+          <h3 className="text-xl font-bold text-gray-900 mb-2">Don't see your community?</h3>
+          <p className="text-gray-600 mb-4 max-w-md mx-auto">We're expanding our coverage all the time. Let us know where you'd
+            like to see Day.news next!</p>
           <button className="bg-news-primary hover:bg-news-primary-dark text-white font-medium px-6 py-3 rounded-md transition-colors">
             Request Coverage for Your Community
           </button>

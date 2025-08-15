@@ -1,7 +1,7 @@
 'use client';
 // Converted from Magic Patterns
 import React, { useState } from 'react';
-import { Sparkles, MessageCircle, Search, CheckCircle, AlertCircle, FileText, Zap, ArrowRight, RefreshCw, ThumbsUp, X, BarChart2, Link, Send } from 'lucide-react';
+import { AlertCircle, ArrowRight, BarChart2, CheckCircle, FileText, Link, MessageCircle, RefreshCw, Search, Send, Sparkles, X, Zap } from 'lucide-react';
 export const AIAssistantPanel = ({
   headline,
   content,
@@ -11,7 +11,7 @@ export const AIAssistantPanel = ({
   aiSuggestion,
   isAiAnalyzing,
   aiScore
-}) => {
+}) =>{
   const [activeTab, setActiveTab] = useState('assistant');
   const [chatMessage, setChatMessage] = useState('');
   const [chatHistory, setChatHistory] = useState([{
@@ -40,7 +40,7 @@ export const AIAssistantPanel = ({
       }]);
     }, 1000);
   };
-  return <div className="flex flex-col h-full">
+  return<div className="flex flex-col h-full">
       <div className="border-b border-border-light p-4 flex items-center justify-between">
         <div className="flex items-center">
           <div className="h-8 w-8 bg-civic-purple-light bg-opacity-20 rounded-full flex items-center justify-center mr-3">
@@ -51,19 +51,15 @@ export const AIAssistantPanel = ({
           </h2>
         </div>
         <div className="flex space-x-2">
-          <button onClick={() => setActiveTab('assistant')} className={`p-1.5 rounded-md text-sm flex items-center ${activeTab === 'assistant' ? 'bg-civic-purple-light bg-opacity-10 text-civic-purple' : 'text-text-secondary hover:bg-bg-secondary'}`}>
-            <MessageCircle className="h-4 w-4" />
+          <button onClick={() =>setActiveTab('assistant')} className={`p-1.5 rounded-md text-sm flex items-center ${activeTab === 'assistant' ? 'bg-civic-purple-light bg-opacity-10 text-civic-purple' : 'text-text-secondary hover:bg-bg-secondary'}`}><MessageCircle className="h-4 w-4" />
           </button>
-          <button onClick={() => setActiveTab('analysis')} className={`p-1.5 rounded-md text-sm flex items-center ${activeTab === 'analysis' ? 'bg-civic-purple-light bg-opacity-10 text-civic-purple' : 'text-text-secondary hover:bg-bg-secondary'}`}>
-            <BarChart2 className="h-4 w-4" />
+          <button onClick={() =>setActiveTab('analysis')} className={`p-1.5 rounded-md text-sm flex items-center ${activeTab === 'analysis' ? 'bg-civic-purple-light bg-opacity-10 text-civic-purple' : 'text-text-secondary hover:bg-bg-secondary'}`}><BarChart2 className="h-4 w-4" />
           </button>
-          <button onClick={() => setActiveTab('research')} className={`p-1.5 rounded-md text-sm flex items-center ${activeTab === 'research' ? 'bg-civic-purple-light bg-opacity-10 text-civic-purple' : 'text-text-secondary hover:bg-bg-secondary'}`}>
-            <Search className="h-4 w-4" />
+          <button onClick={() =>setActiveTab('research')} className={`p-1.5 rounded-md text-sm flex items-center ${activeTab === 'research' ? 'bg-civic-purple-light bg-opacity-10 text-civic-purple' : 'text-text-secondary hover:bg-bg-secondary'}`}><Search className="h-4 w-4" />
           </button>
         </div>
       </div>
-      <div className="flex-1 overflow-hidden">
-        {activeTab === 'assistant' && <div className="flex flex-col h-full">
+      <div className="flex-1 overflow-hidden">{activeTab === 'assistant' &&<div className="flex flex-col h-full">
             {/* Quick actions */}
             <div className="p-4 border-b border-border-light">
               <h3 className="text-sm font-medium text-text-secondary mb-3">
@@ -114,8 +110,7 @@ export const AIAssistantPanel = ({
             <div className="flex-1 flex flex-col overflow-hidden p-4">
               <div className="flex-1 overflow-y-auto mb-4 space-y-4">
                 {chatHistory.map((message, index) => <div key={index} className={`flex ${message.role === 'assistant' ? 'justify-start' : 'justify-end'}`}>
-                    <div className={`max-w-[80%] rounded-lg p-3 ${message.role === 'assistant' ? 'bg-civic-purple-light bg-opacity-10 text-text-primary' : 'bg-news-primary-light bg-opacity-10 text-text-primary'}`}>
-                      {message.role === 'assistant' && <div className="flex items-center mb-1">
+                    <div className={`max-w-[80%] rounded-lg p-3 ${message.role === 'assistant' ? 'bg-civic-purple-light bg-opacity-10 text-text-primary' : 'bg-news-primary-light bg-opacity-10 text-text-primary'}`}>{message.role === 'assistant' &&<div className="flex items-center mb-1">
                           <Sparkles className="h-3.5 w-3.5 text-civic-purple mr-1.5" />
                           <span className="text-xs font-medium text-civic-purple">
                             AI Assistant
@@ -137,14 +132,13 @@ export const AIAssistantPanel = ({
                   </div>}
               </div>
               <div className="flex items-center">
-                <input type="text" value={chatMessage} onChange={e => setChatMessage(e.target.value)} placeholder="Ask AI for help with your story..." className="flex-1 px-3 py-2 border border-border-medium rounded-l-md text-sm focus:outline-none focus:ring-1 focus:ring-civic-purple" onKeyPress={e => e.key === 'Enter' && handleSendMessage()} />
-                <button onClick={handleSendMessage} disabled={!chatMessage.trim()} className={`px-3 py-2 rounded-r-md ${chatMessage.trim() ? 'bg-civic-purple text-white hover:bg-civic-purple-dark' : 'bg-bg-tertiary text-text-tertiary cursor-not-allowed'}`}>
+                <input type="text" value={chatMessage} onChange={e =>setChatMessage(e.target.value)} placeholder="Ask AI for help with your story..." className="flex-1 px-3 py-2 border border-border-medium rounded-l-md text-sm focus:outline-none focus:ring-1 focus:ring-civic-purple" onKeyPress={e => e.key === 'Enter' && handleSendMessage()} /><button onClick={handleSendMessage} disabled={!chatMessage.trim()} className={`px-3 py-2 rounded-r-md ${chatMessage.trim() ? 'bg-civic-purple text-white hover:bg-civic-purple-dark' : 'bg-bg-tertiary text-text-tertiary cursor-not-allowed'}`}>
                   <Send className="h-4 w-4" />
                 </button>
               </div>
             </div>
           </div>}
-        {activeTab === 'analysis' && <div className="p-4 overflow-y-auto">
+        {activeTab === 'analysis' &&<div className="p-4 overflow-y-auto">
             <h3 className="text-sm font-medium text-text-secondary mb-3">
               Content Analysis
             </h3>
@@ -220,7 +214,7 @@ export const AIAssistantPanel = ({
               </button>
             </div>
           </div>}
-        {activeTab === 'research' && <div className="p-4 overflow-y-auto">
+        {activeTab === 'research' &&<div className="p-4 overflow-y-auto">
             <h3 className="text-sm font-medium text-text-secondary mb-3">
               Research Helper
             </h3>

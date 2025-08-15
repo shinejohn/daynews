@@ -70,15 +70,33 @@ function convertToDirectIntegration(content, fileName) {
 }
 
 function addSupabaseIntegration(content, componentName) {
-  // Detect data type needed
+  // Generic data type detection based on common patterns
   let dataType = null;
   const lowerContent = content.toLowerCase();
+  const lowerComponentName = componentName.toLowerCase();
   
-  if (lowerContent.includes('classified') || lowerContent.includes('marketplace')) dataType = 'marketplace_items';
-  else if (lowerContent.includes('event')) dataType = 'events';
-  else if (lowerContent.includes('news') || lowerContent.includes('article')) dataType = 'news';
-  else if (lowerContent.includes('business')) dataType = 'businesses';
-  else if (lowerContent.includes('announcement')) dataType = 'announcements';
+  // Detect data type from multiple sources (content, component name, mock variable names)
+  const dataPatterns = [
+    { keywords: ['classified', 'marketplace', 'listing'], table: 'marketplace_items' },
+    { keywords: ['event'], table: 'events' },
+    { keywords: ['news', 'article', 'story'], table: 'news' },
+    { keywords: ['business', 'company', 'vendor'], table: 'businesses' },
+    { keywords: ['announcement', 'notice'], table: 'announcements' },
+    { keywords: ['user', 'profile', 'member'], table: 'profiles' },
+    { keywords: ['photo', 'image', 'gallery'], table: 'photos' },
+    { keywords: ['review', 'comment', 'feedback'], table: 'reviews' },
+    { keywords: ['coupon', 'deal', 'discount'], table: 'deals' },
+    { keywords: ['memorial', 'tribute', 'obituary'], table: 'memorials' }
+  ];
+  
+  for (const pattern of dataPatterns) {
+    if (pattern.keywords.some(keyword => 
+        lowerContent.includes(keyword) || 
+        lowerComponentName.includes(keyword))) {
+      dataType = pattern.table;
+      break;
+    }
+  }
   
   if (!dataType) return content;
   

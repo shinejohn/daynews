@@ -45,124 +45,60 @@ function getRouteConfig(path) {
   return { type: 'isr', revalidate: 3600 };
 }
 
+// Cache for component path discovery
+let componentPathCache = {};
+
 function getComponentPath(component) {
-  // Map components to their actual file paths within components directory
-  const componentPaths = {
-    // About section
-    'AboutUsPage': 'about/AboutUsPage',
-    
-    // Admin section
-    'AdminDashboard': 'admin/AdminDashboard',
-    'AIAgentControl': 'admin/AIAgentControl',
-    'ContentManagement': 'admin/ContentManagement',
-    'ModerationQueue': 'admin/ModerationQueue',
-    'RevenueAnalytics': 'admin/RevenueAnalytics',
-    
-    // Ads section
-    'CommunityAdsPage': 'ads/CommunityAdsPage',
-    
-    // Advertising section
-    'AdvertisingDetailPage': 'advertising/AdvertisingDetailPage',
-    
-    // Announcements section
-    'AnnouncementCreatorPage': 'announcements/AnnouncementCreatorPage',
-    'AnnouncementDetailPage': 'announcements/AnnouncementDetailPage',
-    
-    // Archive section
-    'ArchiveBrowserPage': 'archive/ArchiveBrowserPage',
-    
-    // Auth section
-    'UserRegistrationPage': 'auth/UserRegistrationPage',
-    
-    // Authors section
-    'AuthorsPage': 'authors/AuthorsPage',
-    
-    // Business section
-    'BusinessDirectoryPage': 'business/BusinessDirectoryPage',
-    
-    // City section
-    'CitySelectionPage': 'city/CitySelectionPage',
-    
-    // Classifieds section
-    'ClassifiedsPage': 'classifieds/ClassifiedsPage',
-    'ClassifiedDetailPage': 'classifieds/ClassifiedDetailPage',
-    'ConfirmationPage': 'classifieds/ConfirmationPage',
-    'PaymentPage': 'classifieds/PaymentPage',
-    'RerunAdPage': 'classifieds/RerunAdPage',
-    'SelectCommunitiesPage': 'classifieds/SelectCommunitiesPage',
-    'SelectTimeframePage': 'classifieds/SelectTimeframePage',
-    
-    // Company section
-    'AccessibilityPage': 'company/AccessibilityPage',
-    'CareersPage': 'company/CareersPage',
-    'CookiePolicyPage': 'company/CookiePolicyPage',
-    'DoNotSellPage': 'company/DoNotSellPage',
-    'EthicsPolicyPage': 'company/EthicsPolicyPage',
-    'NewsroomPage': 'company/NewsroomPage',
-    'PrivacyPolicyPage': 'company/PrivacyPolicyPage',
-    'ServicesAndPricingPage': 'company/ServicesAndPricingPage',
-    'SubscriptionOptionsPage': 'company/SubscriptionOptionsPage',
-    'TermsOfServicePage': 'company/TermsOfServicePage',
-    
-    // Contact section
-    'ContactUsPage': 'contact/ContactUsPage',
-    
-    // Coupons section
-    'CouponCreatorPage': 'coupons/CouponCreatorPage',
-    'CouponDetailPage': 'coupons/CouponDetailPage',
-    
-    // Events section
-    'EventCreatorPage': 'events/EventCreatorPage',
-    'EventDetailPage': 'events/EventDetailPage',
-    'EventsCalendarPage': 'events/EventsCalendarPage',
-    
-    // Legal section
-    'LegalNoticeCreatorPage': 'legal/LegalNoticeCreatorPage',
-    'LegalNoticeDetailPage': 'legal/LegalNoticeDetailPage',
-    'LegalNoticesListPage': 'legal/LegalNoticesListPage',
-    
-    // Life section
-    'LifePage': 'life/LifePage',
-    
-    // Memorials section
-    'MemorialDetailPage': 'memorials/MemorialDetailPage',
-    'MemorialsPage': 'memorials/MemorialsPage',
-    
-    // Opinion section
-    'OpinionPage': 'opinion/OpinionPage',
-    
-    // Photos section
-    'PhotoDetailPage': 'photos/PhotoDetailPage',
-    'PhotoGalleryPage': 'photos/PhotoGalleryPage',
-    'PhotoUploadPage': 'photos/PhotoUploadPage',
-    
-    // Search section
-    'SearchResultsPage': 'search/SearchResultsPage',
-    
-    // Sports section
-    'SportsPage': 'sports/SportsPage',
-    
-    // Trending section
-    'TrendingPage': 'trending/TrendingPage',
-    
-    // Tags section  
-    'TagPage': 'tags/TagPage',
-    
-    // Pages section
-    'EditorPage': 'pages/EditorPage',
-    
-    // Utility section
-    'PageDirectory': 'utility/PageDirectory',
-    
-    // Classifieds continued
-    'PostListingPage': 'classifieds/PostListingPage',
-    
-    // Admin continued
-    'CommunityDeploymentWizard': 'admin/CommunityDeploymentWizard'
-  };
+  // Check cache first
+  if (componentPathCache[component]) {
+    return componentPathCache[component];
+  }
   
-  // Return the path or default to the component name (for root level components)
-  return componentPaths[component] || component;
+  // Dynamically discover component path by searching the components directory
+  const componentsDir = path.join(__dirname, '..', 'src', 'components');
+  const componentPath = findComponentInDirectory(componentsDir, component);
+  
+  if (componentPath) {
+    // Convert absolute path to relative path from components directory
+    const relativePath = path.relative(componentsDir, componentPath);
+    const pathWithoutExtension = relativePath.replace('.tsx', '').replace('.jsx', '');
+    componentPathCache[component] = pathWithoutExtension.replace(/\\/g, '/');
+    return componentPathCache[component];
+  }
+  
+  // Fallback to component name (for root level components)
+  console.warn(`  ⚠️  Could not find component ${component}, using default path`);
+  componentPathCache[component] = component;
+  return component;
+}
+
+function findComponentInDirectory(dir, componentName) {
+  if (!fs.existsSync(dir)) {
+    return null;
+  }
+  
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  
+  // First pass: Look for exact file match
+  for (const entry of entries) {
+    if (entry.isFile() && 
+        (entry.name === `${componentName}.tsx` || entry.name === `${componentName}.jsx`) &&
+        !entry.name.includes('.original.')) {
+      return path.join(dir, entry.name);
+    }
+  }
+  
+  // Second pass: Search in subdirectories  
+  for (const entry of entries) {
+    if (entry.isDirectory()) {
+      const found = findComponentInDirectory(path.join(dir, entry.name), componentName);
+      if (found) {
+        return found;
+      }
+    }
+  }
+  
+  return null;
 }
 
 function generatePageContent(component, routePath) {

@@ -1,10 +1,10 @@
 'use client';
 // Converted from Magic Patterns
 import React, { useState } from 'react';
-import { MessageSquare, ChevronDown, Flag, ThumbsUp, Send } from 'lucide-react';
+import { ChevronDown, Flag, MessageSquare, Send, ThumbsUp } from 'lucide-react';
 export const ArticleComments = ({
   commentCount
-}) => {
+}) =>{
   const [sortBy, setSortBy] = useState('best');
   const [commentText, setCommentText] = useState('');
   const [comments, setComments] = useState([{
@@ -47,7 +47,7 @@ export const ArticleComments = ({
     // Clear the input
     setCommentText('');
   };
-  return <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+  return<div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
       <div className="bg-news-primary text-white px-6 py-4 flex items-center">
         <MessageSquare className="h-5 w-5 mr-2" />
         <h2 className="font-display text-xl font-bold">
@@ -82,11 +82,9 @@ export const ArticleComments = ({
       <div className="px-6 py-3 bg-gray-50 border-b border-gray-200 flex items-center">
         <div className="text-sm font-medium mr-3">Sort by:</div>
         <div className="relative">
-          <button className="flex items-center text-sm font-medium text-news-primary">
-            {sortBy === 'best' && 'Best'}
+          <button className="flex items-center text-sm font-medium text-news-primary">{sortBy === 'best' && 'Best'}
             {sortBy === 'newest' && 'Newest'}
-            {sortBy === 'oldest' && 'Oldest'}
-            <ChevronDown className="h-4 w-4 ml-1" />
+            {sortBy === 'oldest' && 'Oldest'}<ChevronDown className="h-4 w-4 ml-1" />
           </button>
           {/* Dropdown would go here */}
         </div>
@@ -139,7 +137,7 @@ export const ArticleComments = ({
                   {comment.verified && <div className="text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded-full">
                       Verified
                     </div>}
-                  {comment.author === 'You' && <div className="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">
+                  {comment.author === 'You' &&<div className="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">
                       You
                     </div>}
                 </div>

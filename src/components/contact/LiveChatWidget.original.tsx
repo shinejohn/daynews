@@ -1,10 +1,10 @@
 'use client';
 // Converted from Magic Patterns
 import React, { useEffect, useState } from 'react';
-import { X, Send, Paperclip, User, Sparkles, Phone, Maximize2, Minimize2 } from 'lucide-react';
+import { Maximize2, Minimize2, Paperclip, Phone, Send, Sparkles, User, X } from 'lucide-react';
 export const LiveChatWidget = ({
   onClose
-}) => {
+}) =>{
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
@@ -63,7 +63,7 @@ export const LiveChatWidget = ({
       handleSendMessage();
     }
   };
-  return <div className={`fixed ${isMinimized ? 'bottom-4 right-4 w-72 h-16' : 'bottom-4 right-4 w-96 h-[32rem] max-h-[calc(100vh-2rem)]'} bg-white rounded-lg shadow-xl border border-gray-200 flex flex-col z-50 transition-all duration-300`}>
+  return<div className={`fixed ${isMinimized ? 'bottom-4 right-4 w-72 h-16' : 'bottom-4 right-4 w-96 h-[32rem] max-h-[calc(100vh-2rem)]'} bg-white rounded-lg shadow-xl border border-gray-200 flex flex-col z-50 transition-all duration-300`}>
       {/* Chat Header */}
       <div className="bg-news-primary text-white p-4 rounded-t-lg flex items-center justify-between">
         <div className="flex items-center">
@@ -71,9 +71,7 @@ export const LiveChatWidget = ({
               <User className="h-5 w-5 text-news-primary" />
             </div>}
           <div>
-            <h3 className="font-bold">
-              {isMinimized ? 'Live Chat' : 'Day.News Support'}
-            </h3>
+            <h3 className="font-bold">{isMinimized ? 'Live Chat' : 'Day.News Support'}</h3>
             {!isMinimized && <div className="text-xs flex items-center">
                 <span className="h-2 w-2 bg-green-400 rounded-full mr-1"></span>
                 <span>Agent Online</span>
@@ -81,11 +79,9 @@ export const LiveChatWidget = ({
           </div>
         </div>
         <div className="flex items-center space-x-2">
-          {!isMinimized && <button onClick={() => setIsMinimized(true)} className="text-white hover:text-gray-200 transition-colors">
-              <Minimize2 className="h-4 w-4" />
+          {!isMinimized && <button onClick={() =>setIsMinimized(true)} className="text-white hover:text-gray-200 transition-colors"><Minimize2 className="h-4 w-4" />
             </button>}
-          {isMinimized && <button onClick={() => setIsMinimized(false)} className="text-white hover:text-gray-200 transition-colors">
-              <Maximize2 className="h-4 w-4" />
+          {isMinimized && <button onClick={() =>setIsMinimized(false)} className="text-white hover:text-gray-200 transition-colors"><Maximize2 className="h-4 w-4" />
             </button>}
           <button onClick={onClose} className="text-white hover:text-gray-200 transition-colors">
             <X className="h-5 w-5" />
@@ -144,7 +140,7 @@ export const LiveChatWidget = ({
                 <Paperclip className="h-5 w-5" />
               </button>
               <div className="flex-1 mx-2">
-                <textarea value={message} onChange={e => setMessage(e.target.value)} onKeyPress={handleKeyPress} placeholder="Type your message..." className="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-news-primary focus:border-news-primary resize-none" rows={1}></textarea>
+                <textarea value={message} onChange={e =>setMessage(e.target.value)} onKeyPress={handleKeyPress} placeholder="Type your message..." className="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-news-primary focus:border-news-primary resize-none" rows={1}></textarea>
               </div>
               <button onClick={handleSendMessage} className={`p-2 rounded-full ${message.trim() ? 'bg-news-primary text-white' : 'bg-gray-200 text-gray-400 cursor-not-allowed'}`} disabled={!message.trim()}>
                 <Send className="h-5 w-5" />

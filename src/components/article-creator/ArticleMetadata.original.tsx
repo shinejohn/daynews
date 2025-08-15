@@ -1,7 +1,7 @@
 'use client';
 // Converted from Magic Patterns
 import React, { useState } from 'react';
-import { Folder, Tag, MapPin, Calendar, Clock, Image, CheckCircle, AlertCircle, X, Info, ChevronDown, Plus } from 'lucide-react';
+import { AlertCircle, Calendar, CheckCircle, ChevronDown, Clock, Folder, Image, Info, MapPin, Plus, Tag, X } from 'lucide-react';
 export const ArticleMetadata = ({
   category,
   setCategory,
@@ -18,7 +18,7 @@ export const ArticleMetadata = ({
   setPublishTime,
   checklist,
   aiScore
-}) => {
+}) =>{
   const [newTag, setNewTag] = useState('');
   const handleTagSubmit = e => {
     e.preventDefault();
@@ -28,7 +28,7 @@ export const ArticleMetadata = ({
     }
   };
   const categories = ['News', 'Business', 'Politics', 'Events', 'Sports', 'Education', 'Opinion', 'Community'];
-  return <div className="space-y-4">
+  return<div className="space-y-4">
       {/* Article Details */}
       <div className="bg-white rounded-lg border border-border-light shadow-sm">
         <div className="p-4 border-b border-border-light flex items-center">
@@ -44,8 +44,8 @@ export const ArticleMetadata = ({
               Category
             </label>
             <div className="relative">
-              <select value={category} onChange={e => setCategory(e.target.value)} className="w-full px-3 py-2 border border-border-medium rounded-md text-sm appearance-none focus:outline-none focus:ring-2 focus:ring-news-primary">
-                {categories.map(cat => <option key={cat} value={cat}>
+              <select value={category} onChange={e =>setCategory(e.target.value)} className="w-full px-3 py-2 border border-border-medium rounded-md text-sm appearance-none focus:outline-none focus:ring-2 focus:ring-news-primary">
+                {categories.map(cat =><option key={cat} value={cat}>
                     {cat}
                   </option>)}
               </select>
@@ -58,8 +58,7 @@ export const ArticleMetadata = ({
               Tags
             </label>
             <form onSubmit={handleTagSubmit} className="flex mb-2">
-              <input type="text" value={newTag} onChange={e => setNewTag(e.target.value)} placeholder="Add tags..." className="flex-1 px-3 py-2 border border-border-medium rounded-l-md text-sm focus:outline-none focus:ring-2 focus:ring-news-primary" />
-              <button type="submit" className="px-3 py-2 bg-news-primary text-white rounded-r-md text-sm font-medium hover:bg-news-primary-dark">
+              <input type="text" value={newTag} onChange={e =>setNewTag(e.target.value)} placeholder="Add tags..." className="flex-1 px-3 py-2 border border-border-medium rounded-l-md text-sm focus:outline-none focus:ring-2 focus:ring-news-primary" /><button type="submit" className="px-3 py-2 bg-news-primary text-white rounded-r-md text-sm font-medium hover:bg-news-primary-dark">
                 <Plus className="h-4 w-4" />
               </button>
             </form>
@@ -67,8 +66,7 @@ export const ArticleMetadata = ({
               {tags.map(tag => <div key={tag} className="flex items-center bg-bg-secondary rounded-full px-3 py-1">
                   <Tag className="h-3 w-3 mr-1.5 text-text-tertiary" />
                   <span className="text-xs text-text-secondary">{tag}</span>
-                  <button onClick={() => handleRemoveTag(tag)} className="ml-1.5 text-text-tertiary hover:text-text-secondary">
-                    <X className="h-3 w-3" />
+                  <button onClick={() =>handleRemoveTag(tag)} className="ml-1.5 text-text-tertiary hover:text-text-secondary"><X className="h-3 w-3" />
                   </button>
                 </div>)}
               {tags.length === 0 && <div className="text-xs text-text-tertiary py-1">
@@ -82,8 +80,7 @@ export const ArticleMetadata = ({
               Location
             </label>
             <div className="relative">
-              <input type="text" value={location} onChange={e => setLocation(e.target.value)} placeholder="Add specific location..." className="w-full px-3 py-2 pl-9 border border-border-medium rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-news-primary" />
-              <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-text-tertiary" />
+              <input type="text" value={location} onChange={e =>setLocation(e.target.value)} placeholder="Add specific location..." className="w-full px-3 py-2 pl-9 border border-border-medium rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-news-primary" /><MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-text-tertiary" />
             </div>
           </div>
           {/* Publication */}
@@ -93,30 +90,24 @@ export const ArticleMetadata = ({
             </label>
             <div className="space-y-2">
               <div className="flex items-center">
-                <input type="radio" id="publish-now" name="publish-option" value="now" checked={publishOption === 'now'} onChange={() => setPublishOption('now')} className="h-4 w-4 text-news-primary focus:ring-news-primary" />
-                <label htmlFor="publish-now" className="ml-2 text-sm text-text-secondary">
+                <input type="radio" id="publish-now" name="publish-option" value="now" checked={publishOption === 'now'} onChange={() =>setPublishOption('now')} className="h-4 w-4 text-news-primary focus:ring-news-primary" /><label htmlFor="publish-now" className="ml-2 text-sm text-text-secondary">
                   Publish Now
                 </label>
               </div>
               <div className="flex items-center">
-                <input type="radio" id="publish-schedule" name="publish-option" value="schedule" checked={publishOption === 'schedule'} onChange={() => setPublishOption('schedule')} className="h-4 w-4 text-news-primary focus:ring-news-primary" />
-                <label htmlFor="publish-schedule" className="ml-2 text-sm text-text-secondary">
+                <input type="radio" id="publish-schedule" name="publish-option" value="schedule" checked={publishOption === 'schedule'} onChange={() =>setPublishOption('schedule')} className="h-4 w-4 text-news-primary focus:ring-news-primary" /><label htmlFor="publish-schedule" className="ml-2 text-sm text-text-secondary">
                   Schedule
                 </label>
-              </div>
-              {publishOption === 'schedule' && <div className="pl-6 flex space-x-2">
+              </div>{publishOption === 'schedule' &&<div className="pl-6 flex space-x-2">
                   <div className="flex-1 relative">
-                    <input type="date" value={publishDate} onChange={e => setPublishDate(e.target.value)} className="w-full px-3 py-2 pl-9 border border-border-medium rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-news-primary" />
-                    <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-text-tertiary" />
+                    <input type="date" value={publishDate} onChange={e =>setPublishDate(e.target.value)} className="w-full px-3 py-2 pl-9 border border-border-medium rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-news-primary" /><Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-text-tertiary" />
                   </div>
                   <div className="flex-1 relative">
-                    <input type="time" value={publishTime} onChange={e => setPublishTime(e.target.value)} className="w-full px-3 py-2 pl-9 border border-border-medium rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-news-primary" />
-                    <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-text-tertiary" />
+                    <input type="time" value={publishTime} onChange={e =>setPublishTime(e.target.value)} className="w-full px-3 py-2 pl-9 border border-border-medium rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-news-primary" /><Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-text-tertiary" />
                   </div>
                 </div>}
               <div className="flex items-center">
-                <input type="radio" id="publish-draft" name="publish-option" value="draft" checked={publishOption === 'draft'} onChange={() => setPublishOption('draft')} className="h-4 w-4 text-news-primary focus:ring-news-primary" />
-                <label htmlFor="publish-draft" className="ml-2 text-sm text-text-secondary">
+                <input type="radio" id="publish-draft" name="publish-option" value="draft" checked={publishOption === 'draft'} onChange={() =>setPublishOption('draft')} className="h-4 w-4 text-news-primary focus:ring-news-primary" /><label htmlFor="publish-draft" className="ml-2 text-sm text-text-secondary">
                   Save as Draft
                 </label>
               </div>

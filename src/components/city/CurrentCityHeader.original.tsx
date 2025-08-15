@@ -1,7 +1,7 @@
 'use client';
 // Converted from Magic Patterns
 import React, { useState } from 'react';
-import { MapPin, ChevronDown, ArrowRight } from 'lucide-react';
+import { ArrowRight, ChevronDown, MapPin } from 'lucide-react';
 export const CurrentCityHeader = ({
   currentCity,
   followedCities

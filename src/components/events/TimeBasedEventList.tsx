@@ -1,12 +1,12 @@
 'use client';
 // Converted from Magic Patterns
 import React, { useState } from 'react';
-import { MapPin, Calendar, Clock, DollarSign, Users, ExternalLink, ChevronRight, Navigation, Car, Bus } from 'lucide-react';
+import { Bus, Calendar, Car, ChevronRight, Clock, DollarSign, ExternalLink, MapPin, Navigation, User, Users } from 'lucide-react';
 export const TimeBasedEventList = ({
   title,
   icon,
   events
-}) => {
+}) =>{
   const [hoveredEvent, setHoveredEvent] = useState(null);
   const formatTime = timeString => {
     return new Date(timeString).toLocaleTimeString('en-US', {
@@ -28,7 +28,7 @@ export const TimeBasedEventList = ({
       return `${durationHours}h ${durationMinutes}m`;
     }
   };
-  return <div>
+  return<div>
       <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
         <span className="mr-2">{icon}</span>
         {title} Events
@@ -58,13 +58,11 @@ export const TimeBasedEventList = ({
                     </h4>
                     <div className="flex items-center text-sm text-gray-500 mt-1">
                       <Calendar className="h-4 w-4 mr-1" />
-                      <span>
-                        {new Date(event.date).toLocaleDateString('en-US', {
+                      <span>{new Date(event.date).toLocaleDateString('en-US', {
                       weekday: 'short',
                       month: 'short',
                       day: 'numeric'
-                    })}
-                      </span>
+                    })}</span>
                     </div>
                   </div>
                   <div className="mt-2 sm:mt-0 flex items-center text-sm text-gray-500">

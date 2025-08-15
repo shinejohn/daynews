@@ -198,37 +198,47 @@ if (fs.existsSync(routeMappingFile)) {
   });
 }
 
-// Helper function (copy from create-route-pages.js)
+// Helper function - Dynamic component path discovery (reusable across projects)
 function getComponentPath(component) {
-  const componentPaths = {
-    'AboutUsPage': 'about/AboutUsPage',
-    'AdminDashboard': 'admin/AdminDashboard',
-    'CommunityAdsPage': 'ads/CommunityAdsPage',
-    'AdvertisingDetailPage': 'advertising/AdvertisingDetailPage',
-    'AnnouncementCreatorPage': 'announcements/AnnouncementCreatorPage',
-    'AnnouncementDetailPage': 'announcements/AnnouncementDetailPage',
-    'ArchiveBrowserPage': 'archive/ArchiveBrowserPage',
-    'UserRegistrationPage': 'auth/UserRegistrationPage',
-    'AuthorsPage': 'authors/AuthorsPage',
-    'BusinessDirectoryPage': 'business/BusinessDirectoryPage',
-    'CitySelectionPage': 'city/CitySelectionPage',
-    'ClassifiedsPage': 'classifieds/ClassifiedsPage',
-    'ClassifiedDetailPage': 'classifieds/ClassifiedDetailPage',
-    'PostListingPage': 'classifieds/PostListingPage',
-    'AccessibilityPage': 'company/AccessibilityPage',
-    'CareersPage': 'company/CareersPage',
-    'ContactUsPage': 'contact/ContactUsPage',
-    'CouponCreatorPage': 'coupons/CouponCreatorPage',
-    'EventCreatorPage': 'events/EventCreatorPage',
-    'EventDetailPage': 'events/EventDetailPage',
-    'EventsCalendarPage': 'events/EventsCalendarPage',
-    'TagPage': 'tags/TagPage',
-    'EditorPage': 'pages/EditorPage',
-    'PageDirectory': 'utility/PageDirectory',
-    'CommunityDeploymentWizard': 'admin/CommunityDeploymentWizard'
-  };
+  const componentsDir = path.join(projectRoot, 'src', 'components');
+  const componentPath = findComponentInDirectory(componentsDir, component);
   
-  return componentPaths[component] || component;
+  if (componentPath) {
+    const relativePath = path.relative(componentsDir, componentPath);
+    const pathWithoutExtension = relativePath.replace('.tsx', '').replace('.jsx', '');
+    return pathWithoutExtension.replace(/\\/g, '/');
+  }
+  
+  return component;
+}
+
+function findComponentInDirectory(dir, componentName) {
+  if (!fs.existsSync(dir)) {
+    return null;
+  }
+  
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  
+  // Look for exact file match
+  for (const entry of entries) {
+    if (entry.isFile() && 
+        (entry.name === `${componentName}.tsx` || entry.name === `${componentName}.jsx`) &&
+        !entry.name.includes('.original.')) {
+      return path.join(dir, entry.name);
+    }
+  }
+  
+  // Search in subdirectories
+  for (const entry of entries) {
+    if (entry.isDirectory()) {
+      const found = findComponentInDirectory(path.join(dir, entry.name), componentName);
+      if (found) {
+        return found;
+      }
+    }
+  }
+  
+  return null;
 }
 
 // 4. Generate validation report

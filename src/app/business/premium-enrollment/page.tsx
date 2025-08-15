@@ -2,7 +2,7 @@
 export const revalidate = 60; // seconds
 export const dynamic = 'force-static';
 
-// import PremiumEnrollment from '@/components/PremiumEnrollment'; // Component not found
+// import { PremiumEnrollment } from '@/components/PremiumEnrollment'; // Component not found
 
 export default function Page() {
   return <div>TODO: PremiumEnrollment</div>;

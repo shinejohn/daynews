@@ -1,7 +1,7 @@
 'use client';
 // Converted from Magic Patterns
 import React from 'react';
-import { Users, Newspaper, TrendingUp, Bell, BellOff } from 'lucide-react';
+import { Bell, BellOff, Newspaper, TrendingUp, User, Users } from 'lucide-react';
 export const PopularCities = ({
   cities,
   onCitySelect,
@@ -41,11 +41,10 @@ export const PopularCities = ({
                 </div>
               </div>
               <div className="flex space-x-2">
-                <button onClick={() => onCitySelect(city)} className="flex-1 bg-news-primary text-white font-medium py-2 rounded hover:bg-news-primary-dark transition-colors">
-                  View News
-                </button>
-                <button onClick={() => onToggleFollow(city.id)} className={`p-2 rounded ${city.isFollowed ? 'bg-gray-100 text-gray-700 hover:bg-gray-200' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
-                  {city.isFollowed ? <BellOff className="h-5 w-5" /> : <Bell className="h-5 w-5" />}
+                <button onClick={() =>onCitySelect(city)} className="flex-1 bg-news-primary text-white font-medium py-2 rounded hover:bg-news-primary-dark transition-colors">
+                  View News</button>
+                <button onClick={() =>onToggleFollow(city.id)} className={`p-2 rounded ${city.isFollowed ? 'bg-gray-100 text-gray-700 hover:bg-gray-200' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
+                  {city.isFollowed ?<BellOff className="h-5 w-5" /> : <Bell className="h-5 w-5" />}
                 </button>
               </div>
             </div>

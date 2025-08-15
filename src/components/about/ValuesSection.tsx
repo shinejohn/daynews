@@ -1,25 +1,25 @@
 // Converted from Magic Patterns
 import React from 'react';
-import { Shield, EyeIcon, Zap, Heart, AlertTriangle, CheckCircle, Sparkles } from 'lucide-react';
+import { AlertTriangle, CheckCircle, Eye, EyeIcon, Heart, Shield, Sparkles, Zap } from 'lucide-react';
 export const ValuesSection = () => {
   const values = [{
     icon: <EyeIcon className="h-6 w-6 text-blue-600" />,
     title: 'Transparency',
     description: 'We clearly disclose when AI is used in content creation and explain how our technology works.'
   }, {
-    icon: <Shield className="h-6 w-6 text-blue-600" />,
+    icon:<Shield className="h-6 w-6 text-blue-600" />,
     title: 'Accuracy',
     description: 'We verify facts, provide context, and correct errors promptly to maintain trust with our readers.'
   }, {
-    icon: <Heart className="h-6 w-6 text-blue-600" />,
+    icon:<Heart className="h-6 w-6 text-blue-600" />,
     title: 'Community First',
     description: 'We prioritize stories that matter to local residents and amplify community voices.'
   }, {
-    icon: <Zap className="h-6 w-6 text-blue-600" />,
+    icon:<Zap className="h-6 w-6 text-blue-600" />,
     title: 'Innovation',
     description: 'We continuously improve our technology to better serve communities while upholding journalistic values.'
   }];
-  return <section className="py-20 bg-gray-50">
+  return<section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-display font-bold text-gray-900 mb-4">

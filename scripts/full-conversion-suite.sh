@@ -11,10 +11,10 @@ YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-# Paths
+# Paths - Make configurable via environment variables
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
-MAGIC_DIR="/Users/johnshine/Dropbox/Fibonacco/Day-News/Code/magic"
+MAGIC_DIR="${MAGIC_PATTERNS_DIR:-${PROJECT_ROOT}/../magic}"
 
 echo -e "${GREEN}🚀 Magic Patterns to Next.js Full Conversion Suite${NC}"
 echo "=================================================="
@@ -40,10 +40,28 @@ node "$SCRIPT_DIR/update-page-routes.js"
 echo -e "\n${YELLOW}Step 5: Fixing TypeScript issues...${NC}"
 bash "$SCRIPT_DIR/fix-typescript-issues.sh"
 
-# Step 6: Run tests
-echo -e "\n${YELLOW}Step 6: Running build test...${NC}"
+# Step 6: Run quality validation
+echo -e "\n${YELLOW}Step 6: Running build quality validation...${NC}"
+node "$SCRIPT_DIR/build-quality-validator.js"
+
+if [ $? -ne 0 ]; then
+    echo -e "${RED}❌ Quality validation failed - fix issues before proceeding${NC}"
+    exit 1
+fi
+
+# Step 7: Run build test
+echo -e "\n${YELLOW}Step 7: Running build test...${NC}"
 cd "$PROJECT_ROOT"
-npm run build || echo -e "${RED}Build failed - manual fixes needed${NC}"
+npm run build
+
+if [ $? -ne 0 ]; then
+    echo -e "${RED}❌ Build failed - running emergency fixes...${NC}"
+    node "$SCRIPT_DIR/clean-migration-fix.js"
+    echo -e "\n${YELLOW}Retrying build after fixes...${NC}"
+    npm run build || echo -e "${RED}Build still failing - manual intervention needed${NC}"
+else
+    echo -e "${GREEN}✅ Build successful!${NC}"
+fi
 
 echo -e "\n${GREEN}✅ Conversion complete!${NC}"
 echo ""

@@ -4,14 +4,14 @@ import { Clock, BookOpen, Bookmark, Quote, FileText, History } from 'lucide-reac
 export const HistoricalFeatures = ({
   sepiaMode,
   selectedDate
-}) => {
+}) =>{
   // Format the selected date for display
   const formattedDate = selectedDate.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric'
   });
-  return <div className={`rounded-lg shadow-md p-4 ${sepiaMode ? 'bg-amber-100 border border-amber-200' : 'bg-white border border-gray-200'}`}>
+  return<div className={`rounded-lg shadow-md p-4 ${sepiaMode ? 'bg-amber-100 border border-amber-200' : 'bg-white border border-gray-200'}`}>
       <h3 className="font-bold text-gray-900 mb-4">Historical Features</h3>
       <div className="space-y-4">
         {/* Time Machine */}

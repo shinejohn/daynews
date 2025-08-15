@@ -10,7 +10,7 @@ interface ButtonProps {
   icon?: ReactNode;
   iconPosition?: 'left' | 'right';
   className?: string;
-  onClick?: () => void;
+  onClick?: () =>void;
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
   fullWidth?: boolean;
@@ -60,7 +60,7 @@ export const Button = ({
   const getIconSpacing = () => {
     return iconPosition === 'left' ? 'mr-1.5' : 'ml-1.5';
   };
-  return <button type={type} className={`
+  return<button type={type} className={`
         ${getVariantClasses()} 
         ${getSizeClasses()} 
         ${fullWidth ? 'w-full' : ''} 
@@ -72,9 +72,8 @@ export const Button = ({
         justify-center
         ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
         ${className}
-      `} onClick={onClick} disabled={disabled}>
-      {icon && iconPosition === 'left' && <span className={getIconSpacing()}>{icon}</span>}
+      `} onClick={onClick} disabled={disabled}>{icon && iconPosition === 'left' &&<span className={getIconSpacing()}>{icon}</span>}
       {children}
-      {icon && iconPosition === 'right' && <span className={getIconSpacing()}>{icon}</span>}
+      {icon && iconPosition === 'right' &&<span className={getIconSpacing()}>{icon}</span>}
     </button>;
 };

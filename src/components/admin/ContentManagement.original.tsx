@@ -1,8 +1,8 @@
 'use client';
 // Converted from Magic Patterns
-import React, { useEffect, useState, Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Grid, Newspaper, DollarSign, Shield, Bot, BarChart, Settings, Building, Search, ChevronDown, Bell, User, Check, Clock, X, Eye, Edit, Trash2, ChevronLeft, ChevronRight, Filter, ArrowUp, ArrowDown } from 'lucide-react';
+import { ArrowDown, ArrowUp, BarChart, Bell, Bot, Building, Check, ChevronDown, ChevronLeft, ChevronRight, Clock, DollarSign, Edit, Eye, Filter, Grid, Newspaper, Search, Settings, Shield, Trash2, User, X } from 'lucide-react';
 // Sample data for the content table
 const sampleArticles = [{
   id: 1,
@@ -244,7 +244,7 @@ The Pinellas County State Attorney's Office has been provided with the audit fin
   tags: ['local-government', 'investigation', 'politics'],
   readingTime: '3 min read'
 }];
-export const ContentManagement = () => {
+export const ContentManagement = () =>{
   const router = useRouter();
   const [articles, setArticles] = useState(sampleArticles);
   const [activeFilter, setActiveFilter] = useState('all');
@@ -309,14 +309,14 @@ export const ContentManagement = () => {
     if (sortDirection === 'asc') {
       return aValue > bValue ? 1 : -1;
     } else {
-      return aValue < bValue ? 1 : -1;
+      return aValue< bValue ? 1 : -1;
     }
   });
   // Paginate articles
   const paginatedArticles = sortedArticles.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
   const totalPages = Math.ceil(sortedArticles.length / itemsPerPage);
   // Handle sort change
-  const handleSort = column => {
+  const handleSort = column =>{
     if (sortColumn === column) {
       // Toggle sort direction if clicking the same column
       setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
@@ -359,11 +359,11 @@ export const ContentManagement = () => {
   const getStatusIcon = status => {
     switch (status) {
       case 'published':
-        return <Check className="w-5 h-5 text-[#00FF88]" />;
+        return<Check className="w-5 h-5 text-[#00FF88]" />;
       case 'pending':
-        return <Clock className="w-5 h-5 text-[#FFB000]" />;
+        return<Clock className="w-5 h-5 text-[#FFB000]" />;
       case 'rejected':
-        return <X className="w-5 h-5 text-[#FF3366]" />;
+        return<X className="w-5 h-5 text-[#FF3366]" />;
       default:
         return null;
     }
@@ -382,7 +382,7 @@ export const ContentManagement = () => {
     qualityScore: articles.reduce((acc, curr) => acc + curr.qualityScore, 0) / articles.length,
     aiGenerated: articles.filter(a => a.author.type === 'ai').length / articles.length * 100
   };
-  return <div className="min-h-screen bg-[#0A0A0B] text-white relative">
+  return<div className="min-h-screen bg-[#0A0A0B] text-white relative">
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 pointer-events-none" style={{
       backgroundImage: 'linear-gradient(to right, #1A1A1F 1px, transparent 1px), linear-gradient(to bottom, #1A1A1F 1px, transparent 1px)',
@@ -393,9 +393,8 @@ export const ContentManagement = () => {
         <div className="flex items-center justify-between h-full px-6">
           <div className="font-['Space_Grotesk'] text-lg font-bold tracking-wider text-white uppercase cursor-pointer" style={{
           textShadow: '0 0 10px rgba(0,229,255,0.5)'
-        }} onClick={() => navigateTo('/admin-dashboard')}>
-            Day.News Command Center
-          </div>
+        }} onClick={() =>navigateTo('/admin-dashboard')}>
+            Day.News Command Center</div>
           <div className="flex items-center">
             <div className="flex items-center mr-8">
               <div className="w-2 h-2 bg-[#00FF88] rounded-full mr-2 animate-pulse"></div>
@@ -420,16 +419,9 @@ export const ContentManagement = () => {
       {/* Sidebar navigation */}
       <aside className="fixed top-[60px] left-0 bottom-0 w-[80px] bg-[#0F0F11] z-40 flex flex-col items-center pt-6">
         <div className="flex flex-col items-center space-y-10">
-          <NavItem icon={<Grid />} label="Dashboard" onClick={() => navigateTo('/admin-dashboard')} />
-          <NavItem icon={<Newspaper />} label="Content" active onClick={() => navigateTo('/content-management')} />
-          <NavItem icon={<DollarSign />} label="Revenue" onClick={() => navigateTo('/revenue-analytics')} />
-          <NavItem icon={<Shield />} label="Moderation" onClick={() => navigateTo('/moderation-queue')} />
-          <NavItem icon={<Bot />} label="AI Agents" onClick={() => navigateTo('/ai-agent-control')} />
-          <NavItem icon={<BarChart />} label="Analytics" onClick={() => navigateTo('/admin-dashboard')} />
-        </div>
+          <NavItem icon={<Grid />} label="Dashboard" onClick={() => navigateTo('/admin-dashboard')} /><NavItem icon={<Newspaper />} label="Content" active onClick={() => navigateTo('/content-management')} /><NavItem icon={<DollarSign />} label="Revenue" onClick={() => navigateTo('/revenue-analytics')} /><NavItem icon={<Shield />} label="Moderation" onClick={() => navigateTo('/moderation-queue')} /><NavItem icon={<Bot />} label="AI Agents" onClick={() => navigateTo('/ai-agent-control')} /><NavItem icon={<BarChart />} label="Analytics" onClick={() => navigateTo('/admin-dashboard')} /></div>
         <div className="mt-auto mb-6">
-          <NavItem icon={<Settings />} label="Settings" onClick={() => navigateTo('/admin-dashboard')} />
-        </div>
+          <NavItem icon={<Settings />} label="Settings" onClick={() => navigateTo('/admin-dashboard')} /></div>
       </aside>
       {/* Main content area */}
       <main className="pt-[60px] pl-[80px]">
@@ -447,35 +439,23 @@ export const ContentManagement = () => {
             </div>
             {/* Filter buttons */}
             <div className="flex space-x-4 mb-6">
-              <FilterButton label="All Content" active={activeFilter === 'all'} onClick={() => setActiveFilter('all')} />
-              <FilterButton label="Pending Review" active={activeFilter === 'pending'} onClick={() => setActiveFilter('pending')} count={articles.filter(a => a.status === 'pending').length} />
-              <FilterButton label="Published" active={activeFilter === 'published'} onClick={() => setActiveFilter('published')} />
-              <FilterButton label="Rejected" active={activeFilter === 'rejected'} onClick={() => setActiveFilter('rejected')} />
-            </div>
+              <FilterButton label="All Content" active={activeFilter === 'all'} onClick={() =>setActiveFilter('all')} /><FilterButton label="Pending Review" active={activeFilter === 'pending'} onClick={() =>setActiveFilter('pending')} count={articles.filter(a => a.status === 'pending').length} /><FilterButton label="Published" active={activeFilter === 'published'} onClick={() =>setActiveFilter('published')} /><FilterButton label="Rejected" active={activeFilter === 'rejected'} onClick={() =>setActiveFilter('rejected')} /></div>
             {/* Stats bar */}
             <div className="bg-[#131316] border border-[#00E5FF33] rounded-md py-3 px-6 flex items-center mb-6">
               <div className="flex items-center divide-x divide-[#00E5FF33]">
-                <div className="pr-6 font-['JetBrains_Mono'] text-sm">
-                  Today's Articles:{' '}
-                  <span className="text-white font-bold">
+                <div className="pr-6 font-['JetBrains_Mono'] text-sm">Today's Articles:{' '}<span className="text-white font-bold">
                     {stats.todayArticles.toLocaleString()}
                   </span>
                 </div>
-                <div className="px-6 font-['JetBrains_Mono'] text-sm">
-                  Pending Review:{' '}
-                  <span className="text-[#FFB000] font-bold">
+                <div className="px-6 font-['JetBrains_Mono'] text-sm">Pending Review:{' '}<span className="text-[#FFB000] font-bold">
                     {stats.pendingReview}
                   </span>
                 </div>
-                <div className="px-6 font-['JetBrains_Mono'] text-sm">
-                  Quality Score:{' '}
-                  <span className="text-[#00FF88] font-bold">
+                <div className="px-6 font-['JetBrains_Mono'] text-sm">Quality Score:{' '}<span className="text-[#00FF88] font-bold">
                     {stats.qualityScore.toFixed(1)}%
                   </span>
                 </div>
-                <div className="pl-6 font-['JetBrains_Mono'] text-sm">
-                  AI Generated:{' '}
-                  <span className="text-[#00E5FF] font-bold">
+                <div className="pl-6 font-['JetBrains_Mono'] text-sm">AI Generated:{' '}<span className="text-[#00E5FF] font-bold">
                     {stats.aiGenerated.toFixed(0)}%
                   </span>
                 </div>
@@ -489,40 +469,28 @@ export const ContentManagement = () => {
                     <th className="py-4 px-6 text-left text-xs font-['Space_Grotesk'] tracking-wider text-[#A0A0A8]">
                       STATUS
                     </th>
-                    <th className="py-4 px-6 text-left text-xs font-['Space_Grotesk'] tracking-wider text-[#A0A0A8] cursor-pointer" onClick={() => handleSort('headline')}>
-                      <div className="flex items-center">
-                        HEADLINE
-                        {sortColumn === 'headline' && (sortDirection === 'asc' ? <ArrowUp className="ml-1 w-3 h-3" /> : <ArrowDown className="ml-1 w-3 h-3" />)}
+                    <th className="py-4 px-6 text-left text-xs font-['Space_Grotesk'] tracking-wider text-[#A0A0A8] cursor-pointer" onClick={() =>handleSort('headline')}><div className="flex items-center">HEADLINE
+                        {sortColumn === 'headline' && (sortDirection === 'asc' ?<ArrowUp className="ml-1 w-3 h-3" /> : <ArrowDown className="ml-1 w-3 h-3" />)}
                       </div>
                     </th>
-                    <th className="py-4 px-6 text-left text-xs font-['Space_Grotesk'] tracking-wider text-[#A0A0A8] cursor-pointer" onClick={() => handleSort('community')}>
-                      <div className="flex items-center">
-                        COMMUNITY
-                        {sortColumn === 'community' && (sortDirection === 'asc' ? <ArrowUp className="ml-1 w-3 h-3" /> : <ArrowDown className="ml-1 w-3 h-3" />)}
+                    <th className="py-4 px-6 text-left text-xs font-['Space_Grotesk'] tracking-wider text-[#A0A0A8] cursor-pointer" onClick={() =>handleSort('community')}><div className="flex items-center">COMMUNITY
+                        {sortColumn === 'community' && (sortDirection === 'asc' ?<ArrowUp className="ml-1 w-3 h-3" /> : <ArrowDown className="ml-1 w-3 h-3" />)}
                       </div>
                     </th>
-                    <th className="py-4 px-6 text-left text-xs font-['Space_Grotesk'] tracking-wider text-[#A0A0A8] cursor-pointer" onClick={() => handleSort('author')}>
-                      <div className="flex items-center">
-                        AUTHOR
-                        {sortColumn === 'author' && (sortDirection === 'asc' ? <ArrowUp className="ml-1 w-3 h-3" /> : <ArrowDown className="ml-1 w-3 h-3" />)}
+                    <th className="py-4 px-6 text-left text-xs font-['Space_Grotesk'] tracking-wider text-[#A0A0A8] cursor-pointer" onClick={() =>handleSort('author')}><div className="flex items-center">AUTHOR
+                        {sortColumn === 'author' && (sortDirection === 'asc' ?<ArrowUp className="ml-1 w-3 h-3" /> : <ArrowDown className="ml-1 w-3 h-3" />)}
                       </div>
                     </th>
-                    <th className="py-4 px-6 text-left text-xs font-['Space_Grotesk'] tracking-wider text-[#A0A0A8] cursor-pointer" onClick={() => handleSort('qualityScore')}>
-                      <div className="flex items-center">
-                        QUALITY
-                        {sortColumn === 'qualityScore' && (sortDirection === 'asc' ? <ArrowUp className="ml-1 w-3 h-3" /> : <ArrowDown className="ml-1 w-3 h-3" />)}
+                    <th className="py-4 px-6 text-left text-xs font-['Space_Grotesk'] tracking-wider text-[#A0A0A8] cursor-pointer" onClick={() =>handleSort('qualityScore')}><div className="flex items-center">QUALITY
+                        {sortColumn === 'qualityScore' && (sortDirection === 'asc' ?<ArrowUp className="ml-1 w-3 h-3" /> : <ArrowDown className="ml-1 w-3 h-3" />)}
                       </div>
                     </th>
-                    <th className="py-4 px-6 text-left text-xs font-['Space_Grotesk'] tracking-wider text-[#A0A0A8] cursor-pointer" onClick={() => handleSort('publishedAt')}>
-                      <div className="flex items-center">
-                        PUBLISHED
-                        {sortColumn === 'publishedAt' && (sortDirection === 'asc' ? <ArrowUp className="ml-1 w-3 h-3" /> : <ArrowDown className="ml-1 w-3 h-3" />)}
+                    <th className="py-4 px-6 text-left text-xs font-['Space_Grotesk'] tracking-wider text-[#A0A0A8] cursor-pointer" onClick={() =>handleSort('publishedAt')}><div className="flex items-center">PUBLISHED
+                        {sortColumn === 'publishedAt' && (sortDirection === 'asc' ?<ArrowUp className="ml-1 w-3 h-3" /> : <ArrowDown className="ml-1 w-3 h-3" />)}
                       </div>
                     </th>
-                    <th className="py-4 px-6 text-left text-xs font-['Space_Grotesk'] tracking-wider text-[#A0A0A8] cursor-pointer" onClick={() => handleSort('metrics')}>
-                      <div className="flex items-center">
-                        METRICS
-                        {sortColumn === 'metrics' && (sortDirection === 'asc' ? <ArrowUp className="ml-1 w-3 h-3" /> : <ArrowDown className="ml-1 w-3 h-3" />)}
+                    <th className="py-4 px-6 text-left text-xs font-['Space_Grotesk'] tracking-wider text-[#A0A0A8] cursor-pointer" onClick={() =>handleSort('metrics')}><div className="flex items-center">METRICS
+                        {sortColumn === 'metrics' && (sortDirection === 'asc' ?<ArrowUp className="ml-1 w-3 h-3" /> : <ArrowDown className="ml-1 w-3 h-3" />)}
                       </div>
                     </th>
                     <th className="py-4 px-6 text-left text-xs font-['Space_Grotesk'] tracking-wider text-[#A0A0A8]">
@@ -544,8 +512,7 @@ export const ContentManagement = () => {
                         {article.community}
                       </td>
                       <td className="py-4 px-6">
-                        <div className="flex items-center">
-                          {article.author.type === 'ai' ? <span className="text-[#00E5FF]">
+                        <div className="flex items-center">{article.author.type === 'ai' ?<span className="text-[#00E5FF]">
                               AI - {article.author.name}
                             </span> : <span>{article.author.name}</span>}
                         </div>
@@ -560,8 +527,7 @@ export const ContentManagement = () => {
                       <td className="py-4 px-6 text-[#A0A0A8]">
                         {article.publishedAt}
                       </td>
-                      <td className="py-4 px-6">
-                        {article.status === 'published' ? <div className="font-['JetBrains_Mono'] text-sm">
+                      <td className="py-4 px-6">{article.status === 'published' ?<div className="font-['JetBrains_Mono'] text-sm">
                             <span className="text-[#00E5FF]">
                               {article.metrics.views}
                             </span>
@@ -599,21 +565,16 @@ export const ContentManagement = () => {
               </table>
               {/* Pagination */}
               <div className="py-4 px-6 flex items-center justify-between border-t border-[#00E5FF33]">
-                <div className="text-sm text-[#A0A0A8]">
-                  Showing{' '}
-                  <span className="font-medium text-white">
+                <div className="text-sm text-[#A0A0A8]">Showing{' '}<span className="font-medium text-white">
                     {(currentPage - 1) * itemsPerPage + 1}
                   </span>{' '}
-                  to{' '}
-                  <span className="font-medium text-white">
+                  to{' '}<span className="font-medium text-white">
                     {Math.min(currentPage * itemsPerPage, sortedArticles.length)}
                   </span>{' '}
-                  of{' '}
-                  <span className="font-medium text-white">
+                  of{' '}<span className="font-medium text-white">
                     {sortedArticles.length}
                   </span>{' '}
-                  articles
-                </div>
+                  articles</div>
                 <div className="flex space-x-2">
                   <button className={`px-3 py-1 rounded-md ${currentPage === 1 ? 'text-[#606068] cursor-not-allowed' : 'text-white hover:bg-[#00E5FF22]'}`} onClick={() => setCurrentPage(Math.max(1, currentPage - 1))} disabled={currentPage === 1}>
                     <ChevronLeft className="w-5 h-5" />
@@ -657,8 +618,7 @@ export const ContentManagement = () => {
               </button>
             </div>
             <div className="flex-grow overflow-auto p-6">
-              <div className="prose prose-invert max-w-none">
-                {selectedArticle.content.split('\n\n').map((paragraph, idx) => <p key={idx} className="mb-4 text-[#E0E0E6]">
+              <div className="prose prose-invert max-w-none">{selectedArticle.content.split('\n\n').map((paragraph, idx) =><p key={idx} className="mb-4 text-[#E0E0E6]">
                     {paragraph}
                   </p>)}
               </div>
@@ -675,8 +635,7 @@ export const ContentManagement = () => {
                   </div>
                   <div>
                     <div className="text-[#A0A0A8]">Author</div>
-                    <div className="font-medium">
-                      {selectedArticle.author.type === 'ai' ? <span className="text-[#00E5FF]">
+                    <div className="font-medium">{selectedArticle.author.type === 'ai' ?<span className="text-[#00E5FF]">
                           AI - {selectedArticle.author.name}
                         </span> : <span>{selectedArticle.author.name}</span>}
                     </div>
@@ -718,8 +677,7 @@ export const ContentManagement = () => {
                 </div>
               </div>
             </div>
-            <div className="p-6 border-t border-[#00E5FF33] flex justify-end space-x-4">
-              {selectedArticle.status === 'pending' && <>
+            <div className="p-6 border-t border-[#00E5FF33] flex justify-end space-x-4">{selectedArticle.status === 'pending' &&<>
                   <button className="px-4 py-2 bg-[#FF3366] text-white rounded-md hover:bg-[#FF3366DD] transition-colors" onClick={() => handleRejectArticle(selectedArticle.id)}>
                     Reject
                   </button>

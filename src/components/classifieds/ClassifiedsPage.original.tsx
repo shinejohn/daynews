@@ -5,7 +5,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import { SearchFilterHero } from './SearchFilterHero';
 import { ClassifiedCard } from './ClassifiedCard';
 import { SimpleHeroSection } from '../hero/SimpleHeroSection';
-export const ClassifiedsPage = () => {
+export const ClassifiedsPage = () =>{
   const router = useRouter();
   const pathname = usePathname();
   const [searchQuery, setSearchQuery] = useState('');
@@ -183,7 +183,7 @@ export const ClassifiedsPage = () => {
     const matchesSubcategory = subcategoryFilter === 'all' ? true : classified.subcategory === subcategoryFilter;
     return matchesSearch && matchesCategory && matchesSubcategory;
   });
-  return <div className="flex-1 overflow-auto bg-gray-50">
+  return<div className="flex-1 overflow-auto bg-gray-50">
       <SimpleHeroSection title="Community Classifieds" subtitle="Buy, sell, and connect with your neighbors" />
       {/* Listing created notification */}
       {listingCreated && <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4 mx-4 mt-4" role="alert">
@@ -205,13 +205,12 @@ export const ClassifiedsPage = () => {
               Try adjusting your search filters or check back later for new
               listings.
             </p>
-            <button onClick={() => {
+            <button onClick={() =>{
           setCategoryFilter('all');
           setSubcategoryFilter('all');
           setSearchQuery('');
         }} className="text-news-primary hover:underline">
-              Clear all filters
-            </button>
+              Clear all filters</button>
           </div> : <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredClassifieds.map(classified => <ClassifiedCard key={classified.id} classified={classified} />)}
           </div>}

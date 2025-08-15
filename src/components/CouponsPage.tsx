@@ -1,12 +1,11 @@
 'use client';
 // Converted from Magic Patterns
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase/client';
-import { MapPin, Mail, Bookmark, Copy, Calendar, Tag, Search, X, Filter, ChevronDown } from 'lucide-react';
-import { PageHeader } from './PageHeader';
+import { Bookmark, Calendar, ChevronDown, Copy, Filter, Mail, MapPin, Search, Tag, X } from 'lucide-react';
 import { SimpleHeroSection } from './hero/SimpleHeroSection';
 import { useRouter } from 'next/navigation';
-export const CouponsPage = () => {
+export const CouponsPage = () =>{
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -69,7 +68,7 @@ export const CouponsPage = () => {
   // Get unique categories and locations for filters
   const categories = ['All', ...new Set(coupons.map(coupon => coupon.category))];
   const locations = ['All Locations', ...new Set(coupons.map(coupon => coupon.location))];
-  return <div className="flex-1 overflow-auto bg-gray-50">
+  return<div className="flex-1 overflow-auto bg-gray-50">
       <SimpleHeroSection title="Coupons & Deals" subtitle="Save money at your favorite local businesses" />
       <div className="mx-auto max-w-7xl px-4 py-6">
         {/* Search and Filters */}
@@ -78,16 +77,14 @@ export const CouponsPage = () => {
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
             <input type="text" placeholder="Search for coupons, businesses, or codes..." className="w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" value={searchQuery} onChange={e => setSearchQuery(e.target.value)} />
-            {searchQuery && <button className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600" onClick={() => setSearchQuery('')}>
-                <X className="h-4 w-4" />
+            {searchQuery && <button className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600" onClick={() =>setSearchQuery('')}><X className="h-4 w-4" />
               </button>}
           </div>
           {/* Filters */}
           <div className="flex flex-wrap gap-3">
             {/* Location Filter */}
             <div className="relative">
-              <button className="flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm" onClick={() => setSelectedLocation(selectedLocation === 'All Locations' ? locations[1] : 'All Locations')}>
-                <MapPin className="mr-2 h-4 w-4 text-gray-500" />
+              <button className="flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm" onClick={() =>setSelectedLocation(selectedLocation === 'All Locations' ? locations[1] : 'All Locations')}><MapPin className="mr-2 h-4 w-4 text-gray-500" />
                 <span>{selectedLocation}</span>
               </button>
             </div>
@@ -108,15 +105,13 @@ export const CouponsPage = () => {
                       </button>)}
                   </div>
                 </div>}
-            </div>
-            {/* Reset Filters */}
-            {(searchQuery || selectedCategory !== 'All' || selectedLocation !== 'All Locations') && <button className="flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-600 hover:bg-gray-50" onClick={() => {
+            </div>{/* Reset Filters */}
+            {(searchQuery || selectedCategory !== 'All' || selectedLocation !== 'All Locations') &&<button className="flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-600 hover:bg-gray-50" onClick={() =>{
             setSearchQuery('');
             setSelectedCategory('All');
             setSelectedLocation('All Locations');
           }}>
-                Reset Filters
-              </button>}
+                Reset Filters</button>}
           </div>
         </div>
         {/* Featured Coupons Section */}
@@ -249,17 +244,14 @@ export const CouponsPage = () => {
                 <Search className="h-8 w-8 text-gray-400" />
               </div>
               <h3 className="mb-1 text-gray-700">No coupons found</h3>
-              <p className="mx-auto mb-6 max-w-md text-sm text-gray-500">
-                We couldn't find any coupons matching your search criteria. Try
-                adjusting your filters or check back later.
-              </p>
-              <button onClick={() => {
+              <p className="mx-auto mb-6 max-w-md text-sm text-gray-500">We couldn't find any coupons matching your search criteria. Try
+                adjusting your filters or check back later.</p>
+              <button onClick={() =>{
             setSearchQuery('');
             setSelectedCategory('All');
             setSelectedLocation('All Locations');
           }} className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700">
-                Reset Filters
-              </button>
+                Reset Filters</button>
             </div>}
         </div>
         {/* Create Coupon CTA */}
@@ -268,9 +260,8 @@ export const CouponsPage = () => {
           <p className="mb-4">
             Create and publish your own coupons to attract more customers.
           </p>
-          <button onClick={() => router.push('/couponCreator')} className="rounded-md bg-white px-5 py-2 text-sm font-medium text-blue-600 hover:bg-gray-100">
-            Create a Coupon
-          </button>
+          <button onClick={() =>router.push('/couponCreator')} className="rounded-md bg-white px-5 py-2 text-sm font-medium text-blue-600 hover:bg-gray-100">
+            Create a Coupon</button>
         </div>
       </div>
     </div>;

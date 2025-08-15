@@ -1,10 +1,10 @@
 'use client';
 // Converted from Magic Patterns
-import React from 'react';
+import React, { useState, useEffect } from 'react';;
 import { supabase } from '@/lib/supabase/client';
-import { Star, MapPin, ExternalLink } from 'lucide-react';
+import { ExternalLink, MapPin, Star } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-export const PromotedBusinesses = () => {
+export const PromotedBusinesses = () =>{
   const router = useRouter();
   // Mock promoted businesses
   const [promotedBusinesses, setPromotedBusinesses] = useState([]);
@@ -38,7 +38,7 @@ export const PromotedBusinesses = () => {
     // Navigate to the business profile page with contact section focus
     router.push(`/business/${businessId}?section=contact`);
   };
-  return <div>
+  return<div>
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-lg font-semibold text-gray-800">
           Featured Businesses
@@ -80,8 +80,7 @@ export const PromotedBusinesses = () => {
               </p>
               {business.specialOffer && <div className="bg-yellow-50 p-2 rounded-md text-xs text-yellow-800 mb-3">
                   <span className="font-medium">Special Offer:</span>{' '}
-                  {business.specialOffer}
-                </div>}
+                  {business.specialOffer}</div>}
               <div className="flex justify-between items-center">
                 <button className="text-news-primary text-sm font-medium hover:underline flex items-center" onClick={e => {
               e.stopPropagation();

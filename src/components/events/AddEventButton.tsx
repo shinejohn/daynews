@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Plus, X } from 'lucide-react';
-export const AddEventButton = () => {
+export const AddEventButton = () =>{
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const toggleOpen = () => {
@@ -13,7 +13,7 @@ export const AddEventButton = () => {
     router.push('/eventCreator');
     setIsOpen(false);
   };
-  return <div className="fixed bottom-20 right-6 z-40">
+  return<div className="fixed bottom-20 right-6 z-40">
       {/* Quick actions panel */}
       {isOpen && <div className="bg-white rounded-lg shadow-lg mb-4 overflow-hidden border border-gray-200 w-64">
           <div className="p-3 border-b border-gray-200 bg-news-primary text-white">

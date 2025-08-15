@@ -11,7 +11,7 @@ interface SocialShareProps {
   onClose?: () => void;
   className?: string;
 }
-export const SocialShare: React.FC<SocialShareProps> = ({
+export const SocialShare: React.FC<SocialShareProps>= ({
   title,
   url = window.location.href,
   description = '',
@@ -70,7 +70,7 @@ export const SocialShare: React.FC<SocialShareProps> = ({
   };
   // If displaying as a modal
   if (displayAsModal) {
-    return <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    return<div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
         <div className="bg-white rounded-lg shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
           <div className="p-6">
             <div className="flex justify-between items-start mb-6">
@@ -108,16 +108,13 @@ export const SocialShare: React.FC<SocialShareProps> = ({
                   Share via social media
                 </p>
                 <div className="flex space-x-2">
-                  <button className="flex-1 py-2 bg-[#1DA1F2] text-white rounded-md font-medium hover:bg-[#1a94df] transition-colors flex items-center justify-center" onClick={() => handleSocialShare('Twitter')}>
-                    <Twitter className="h-4 w-4 mr-1.5" />
+                  <button className="flex-1 py-2 bg-[#1DA1F2] text-white rounded-md font-medium hover:bg-[#1a94df] transition-colors flex items-center justify-center" onClick={() =>handleSocialShare('Twitter')}><Twitter className="h-4 w-4 mr-1.5" />
                     Twitter
                   </button>
-                  <button className="flex-1 py-2 bg-[#1877F2] text-white rounded-md font-medium hover:bg-[#166fe5] transition-colors flex items-center justify-center" onClick={() => handleSocialShare('Facebook')}>
-                    <Facebook className="h-4 w-4 mr-1.5" />
+                  <button className="flex-1 py-2 bg-[#1877F2] text-white rounded-md font-medium hover:bg-[#166fe5] transition-colors flex items-center justify-center" onClick={() =>handleSocialShare('Facebook')}><Facebook className="h-4 w-4 mr-1.5" />
                     Facebook
                   </button>
-                  <button className="flex-1 py-2 bg-[#0A66C2] text-white rounded-md font-medium hover:bg-[#095fb8] transition-colors flex items-center justify-center" onClick={() => handleSocialShare('LinkedIn')}>
-                    <Linkedin className="h-4 w-4 mr-1.5" />
+                  <button className="flex-1 py-2 bg-[#0A66C2] text-white rounded-md font-medium hover:bg-[#095fb8] transition-colors flex items-center justify-center" onClick={() =>handleSocialShare('LinkedIn')}><Linkedin className="h-4 w-4 mr-1.5" />
                     LinkedIn
                   </button>
                 </div>
@@ -143,40 +140,34 @@ export const SocialShare: React.FC<SocialShareProps> = ({
   return <div className={`bg-white rounded-lg shadow-sm border border-gray-200 p-6 ${className}`}>
       <h3 className="text-lg font-bold text-gray-900 mb-3">Share This</h3>
       <div className="grid grid-cols-2 gap-3">
-        <button className="flex items-center justify-center bg-blue-600 text-white py-2 px-3 rounded-md hover:bg-blue-700 transition-colors" onClick={() => handleSocialShare('Facebook')}>
-          <span className="mr-2">Facebook</span>
+        <button className="flex items-center justify-center bg-blue-600 text-white py-2 px-3 rounded-md hover:bg-blue-700 transition-colors" onClick={() =>handleSocialShare('Facebook')}><span className="mr-2">Facebook</span>
           <ExternalLink className="h-4 w-4" />
         </button>
-        <button className="flex items-center justify-center bg-blue-400 text-white py-2 px-3 rounded-md hover:bg-blue-500 transition-colors" onClick={() => handleSocialShare('Twitter')}>
-          <span className="mr-2">Twitter</span>
+        <button className="flex items-center justify-center bg-blue-400 text-white py-2 px-3 rounded-md hover:bg-blue-500 transition-colors" onClick={() =>handleSocialShare('Twitter')}><span className="mr-2">Twitter</span>
           <ExternalLink className="h-4 w-4" />
         </button>
-        <button className="flex items-center justify-center bg-green-600 text-white py-2 px-3 rounded-md hover:bg-green-700 transition-colors" onClick={() => handleSocialShare('WhatsApp')}>
-          <span className="mr-2">WhatsApp</span>
+        <button className="flex items-center justify-center bg-green-600 text-white py-2 px-3 rounded-md hover:bg-green-700 transition-colors" onClick={() =>handleSocialShare('WhatsApp')}><span className="mr-2">WhatsApp</span>
           <ExternalLink className="h-4 w-4" />
         </button>
-        <button className="flex items-center justify-center bg-blue-700 text-white py-2 px-3 rounded-md hover:bg-blue-800 transition-colors" onClick={() => handleSocialShare('LinkedIn')}>
-          <span className="mr-2">LinkedIn</span>
+        <button className="flex items-center justify-center bg-blue-700 text-white py-2 px-3 rounded-md hover:bg-blue-800 transition-colors" onClick={() =>handleSocialShare('LinkedIn')}><span className="mr-2">LinkedIn</span>
           <ExternalLink className="h-4 w-4" />
         </button>
       </div>
       <button className="w-full mt-3 flex items-center justify-center bg-gray-100 text-gray-700 py-2 px-3 rounded-md hover:bg-gray-200 transition-colors" onClick={handleCopyLink}>
-        <span className="mr-2">
-          {linkCopied ? 'Link Copied!' : 'Copy Link'}
-        </span>
+        <span className="mr-2">{linkCopied ? 'Link Copied!' : 'Copy Link'}</span>
         {linkCopied ? <Check className="h-4 w-4" /> : <LinkIcon className="h-4 w-4" />}
       </button>
     </div>;
 };
 // Button to trigger share modal
 export const ShareButton: React.FC<{
-  onClick: () => void;
+  onClick: () =>void;
   className?: string;
 }> = ({
   onClick,
   className = ''
 }) => {
-  return <button className={`flex items-center text-gray-500 hover:text-blue-600 px-3 py-1.5 rounded-md hover:bg-gray-50 border border-transparent hover:border-gray-200 ${className}`} onClick={onClick}>
+  return<button className={`flex items-center text-gray-500 hover:text-blue-600 px-3 py-1.5 rounded-md hover:bg-gray-50 border border-transparent hover:border-gray-200 ${className}`} onClick={onClick}>
       <Share2 className="h-5 w-5 mr-1.5" />
       <span>Share</span>
     </button>;

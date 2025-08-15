@@ -1,35 +1,31 @@
 // Converted from Magic Patterns
 import React from 'react';
 import { useLocationDetection } from '../location/LocationDetector';
-export const CookiePolicyPage = () => {
+export const CookiePolicyPage = () =>{
   const {
     locationData
   } = useLocationDetection();
   const city = locationData?.city || 'Clearwater';
-  return <div className="min-h-screen bg-bg-primary w-full">
+  return<div className="min-h-screen bg-bg-primary w-full">
       <main className="container mx-auto px-4 py-12">
         <h1 className="font-display text-4xl font-bold text-news-primary mb-8">
           Cookie Policy
         </h1>
         <div className="max-w-4xl bg-white rounded-lg shadow-sm p-6 md:p-8 mb-8">
-          <p className="text-gray-600 mb-6">
-            Last Updated:{' '}
+          <p className="text-gray-600 mb-6">Last Updated:{' '}
             {new Date().toLocaleDateString('en-US', {
             month: 'long',
             day: 'numeric',
             year: 'numeric'
-          })}
-          </p>
+          })}</p>
           <section className="mb-8">
             <h2 className="font-display text-2xl font-bold text-gray-900 mb-4">
               Introduction
             </h2>
-            <p className="text-gray-700 mb-4">
-              {city} Day News ("we," "our," or "us") uses cookies and similar
+            <p className="text-gray-700 mb-4">{city} Day News ("we," "our," or "us") uses cookies and similar
               technologies on our website and mobile applications. This Cookie
               Policy explains how we use cookies, what types of cookies we use,
-              and how you can control them.
-            </p>
+              and how you can control them.</p>
             <p className="text-gray-700 mb-4">
               By using our website and services, you agree to the use of cookies
               as described in this policy.
@@ -111,21 +107,18 @@ export const CookiePolicyPage = () => {
             <h2 className="font-display text-2xl font-bold text-gray-900 mb-4">
               How Long Do Cookies Stay on My Device?
             </h2>
-            <p className="text-gray-700 mb-4">
-              The length of time a cookie will remain on your device depends on
-              whether it is a "persistent" or "session" cookie:
-            </p>
+            <p className="text-gray-700 mb-4">The length of time a cookie will remain on your device depends on
+              whether it is a "persistent" or "session" cookie:</p>
             <ul className="list-disc list-inside text-gray-700 mb-4 ml-4 space-y-2">
               <li>
                 <strong>Session cookies:</strong> These cookies are temporary
                 and expire once you close your browser.
               </li>
               <li>
-                <strong>Persistent cookies:</strong> These cookies remain on
+                <strong>Persistent cookies:</strong>These cookies remain on
                 your device until they expire or you delete them. The length of
                 time they stay on your device will depend on the cookie's
-                specific purpose and can vary from minutes to years.
-              </li>
+                specific purpose and can vary from minutes to years.</li>
             </ul>
           </section>
           <section className="mb-8">
@@ -170,22 +163,18 @@ export const CookiePolicyPage = () => {
             <h3 className="font-display text-xl font-bold text-gray-800 mb-3">
               Our Cookie Consent Tool
             </h3>
-            <p className="text-gray-700 mb-4">
-              When you first visit our website, you will be presented with a
+            <p className="text-gray-700 mb-4">When you first visit our website, you will be presented with a
               cookie banner that allows you to accept or decline non-essential
               cookies. You can change your preferences at any time by clicking
-              on the "Cookie Settings" link in the footer of our website.
-            </p>
+              on the "Cookie Settings" link in the footer of our website.</p>
             <h3 className="font-display text-xl font-bold text-gray-800 mb-3">
               Do Not Track
             </h3>
-            <p className="text-gray-700 mb-4">
-              Some browsers have a "Do Not Track" feature that lets you tell
+            <p className="text-gray-700 mb-4">Some browsers have a "Do Not Track" feature that lets you tell
               websites that you do not want to have your online activities
               tracked. Currently, there is no standard for how websites should
               respond to "Do Not Track" signals, and we do not currently respond
-              to such signals.
-            </p>
+              to such signals.</p>
           </section>
           <section className="mb-8">
             <h2 className="font-display text-2xl font-bold text-gray-900 mb-4">

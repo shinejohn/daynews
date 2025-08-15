@@ -1,8 +1,8 @@
 'use client';
 // Converted from Magic Patterns
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';;
 import { supabase } from '@/lib/supabase/client';
-import { Flag, AlertTriangle, User, Clock, Calendar, Shield, CheckCircle, XCircle, Eye, EyeOff, MoreHorizontal, Filter, Search, ChevronDown, X, Calendar as CalendarIcon, Ban, AlertCircle, ThumbsDown, FileText, ArrowUpDown } from 'lucide-react';
+import { AlertCircle, AlertTriangle, ArrowUpDown, Ban as CalendarIcon, CheckCircle, ChevronDown, ClockOff, FileText, Filter, Flag, MoreHorizontal, Search, X, XCircle } from 'lucide-react';
 // Types
 interface AuthorComplaint {
   id: string;

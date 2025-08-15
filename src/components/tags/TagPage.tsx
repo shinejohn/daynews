@@ -11,7 +11,7 @@ import { TagAnalytics } from './TagAnalytics';
 // Removed tagService import - using mockdata
 export const TagPage = ({
   tagName = 'farmers-market'
-}) => {
+}) =>{
   const [isFollowing, setIsFollowing] = useState(false);
   const queryClient = useQueryClient();
   // Fetch tag data
@@ -52,7 +52,7 @@ export const TagPage = ({
   // Handle loading state
   const isLoading = isTagLoading || isContentLoading;
   if (isLoading) {
-    return <div className="flex-1 overflow-auto bg-gray-50">
+    return<div className="flex-1 overflow-auto bg-gray-50">
         <PageHeader />
         <div className="mx-auto max-w-7xl px-4 py-6">
           <div className="animate-pulse">
@@ -70,12 +70,9 @@ export const TagPage = ({
         <div className="mx-auto max-w-7xl px-4 py-6">
           <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-800">
             <h2 className="text-lg font-semibold mb-2">Error Loading Tag</h2>
-            <p>
-              {tagError ? `Failed to load tag information: ${tagError instanceof Error ? tagError.message : 'Unknown error'}` : `Failed to load tag content: ${contentError instanceof Error ? contentError.message : 'Unknown error'}`}
-            </p>
-            <button className="mt-2 px-4 py-2 bg-red-100 hover:bg-red-200 rounded-md transition-colors" onClick={() => queryClient.invalidateQueries(['tag', tagName])}>
-              Try Again
-            </button>
+            <p>{tagError ? `Failed to load tag information: ${tagError instanceof Error ? tagError.message : 'Unknown error'}` : `Failed to load tag content: ${contentError instanceof Error ? contentError.message : 'Unknown error'}`}</p>
+            <button className="mt-2 px-4 py-2 bg-red-100 hover:bg-red-200 rounded-md transition-colors" onClick={() =>queryClient.invalidateQueries(['tag', tagName])}>
+              Try Again</button>
           </div>
         </div>
       </div>;

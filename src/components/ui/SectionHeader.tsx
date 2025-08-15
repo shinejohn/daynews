@@ -4,7 +4,7 @@ import React from 'react';
 interface SectionHeaderProps {
   title: string;
   actionLabel?: string;
-  onActionClick?: () => void;
+  onActionClick?: () =>void;
   className?: string;
   underlined?: boolean;
 }
@@ -15,7 +15,7 @@ export const SectionHeader = ({
   className = '',
   underlined = true
 }: SectionHeaderProps) => {
-  return <div className={`flex items-center justify-between mb-4 ${className}`}>
+  return<div className={`flex items-center justify-between mb-4 ${className}`}>
       <h2 className={`font-display text-xl font-bold text-news-primary ${underlined ? 'border-b-2 border-news-primary inline-block' : ''}`}>
         {title}
       </h2>

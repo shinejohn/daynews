@@ -2,10 +2,10 @@
 // Converted from Magic Patterns
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { Scissors, Copy, MapPin, Calendar, ExternalLink, Tag } from 'lucide-react';
+import { Calendar, Copy, ExternalLink, MapPin, Scissors, Tag } from 'lucide-react';
 export const CouponsPreview = ({
   onViewAll
-}) => {
+}) =>{
   const router = useRouter();
   const coupons = [{
     id: 1,
@@ -46,7 +46,7 @@ export const CouponsPreview = ({
       console.error('Failed to copy code: ', err);
     });
   };
-  return <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+  return<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
       {coupons.map(coupon => <div key={coupon.id} className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => handleCouponClick(coupon.id)}>
           {/* Header with logo and discount */}
           <div className="flex items-center justify-between p-4 border-b border-gray-100">
@@ -87,18 +87,16 @@ export const CouponsPreview = ({
                 Expires: {coupon.expiry}
               </div>
               <div className="flex space-x-2">
-                <button className="text-news-primary flex items-center font-medium" onClick={e => {
+                <button className="text-news-primary flex items-center font-medium" onClick={e =>{
               e.stopPropagation();
               router.push('/couponDetail');
             }}>
-                  Details
-                  <ExternalLink className="h-3 w-3 ml-1" />
+                  Details<ExternalLink className="h-3 w-3 ml-1" />
                 </button>
-                <button className="text-gray-600 flex items-center" onClick={e => {
+                <button className="text-gray-600 flex items-center" onClick={e =>{
               e.stopPropagation();
               alert('Coupon saved!');
-            }}>
-                  <Tag className="h-3.5 w-3.5 mr-1" />
+            }}><Tag className="h-3.5 w-3.5 mr-1" />
                   Save
                 </button>
               </div>

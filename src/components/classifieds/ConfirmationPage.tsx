@@ -2,8 +2,8 @@
 // Converted from Magic Patterns
 import React, { useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { CheckCircle, Calendar, Users, Clock, ArrowRight, Printer, Download, Mail, ExternalLink } from 'lucide-react';
-export const ConfirmationPage = () => {
+import { ArrowRight, Calendar, CheckCircle, Clock, Download, ExternalLink, Mail, Printer, User, Users } from 'lucide-react';
+export const ConfirmationPage = () =>{
   const router = useRouter();
   const pathname = usePathname();
   const {
@@ -61,7 +61,7 @@ export const ConfirmationPage = () => {
   const handlePrintReceipt = () => {
     window.print();
   };
-  return <div className="flex-1 overflow-auto bg-gray-50">
+  return<div className="flex-1 overflow-auto bg-gray-50">
       <div className="max-w-3xl mx-auto py-8 px-4">
         <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
           <div className="text-center mb-8">
@@ -95,9 +95,7 @@ export const ConfirmationPage = () => {
                   <h3 className="text-sm font-medium text-gray-500 mb-1">
                     Payment Method
                   </h3>
-                  <p className="text-gray-900">
-                    {paymentMethod === 'creditCard' ? 'Credit Card' : 'PayPal'}
-                  </p>
+                  <p className="text-gray-900">{paymentMethod === 'creditCard' ? 'Credit Card' : 'PayPal'}</p>
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -118,9 +116,7 @@ export const ConfirmationPage = () => {
                   </h3>
                   <div className="flex items-center">
                     <Clock className="h-4 w-4 text-gray-400 mr-1" />
-                    <p className="text-gray-900">
-                      {duration} month{duration > 1 ? 's' : ''}
-                    </p>
+                    <p className="text-gray-900">{duration} month{duration > 1 ? 's' : ''}</p>
                   </div>
                 </div>
                 <div>
@@ -169,9 +165,7 @@ export const ConfirmationPage = () => {
               <Mail className="h-4 w-4 mr-2" />
               Email Receipt
             </button>
-          </div>
-          {/* What's next */}
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8">
+          </div>{/* What's next */}<div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8">
             <h3 className="font-medium text-blue-800 mb-2">What's Next?</h3>
             <ul className="space-y-2 text-sm text-blue-700">
               <li className="flex items-start">
@@ -186,10 +180,8 @@ export const ConfirmationPage = () => {
               </li>
               <li className="flex items-start">
                 <span className="text-blue-500 mr-2">•</span>
-                <span>
-                  You'll receive email notifications when users contact you
-                  about your ad
-                </span>
+                <span>You'll receive email notifications when users contact you
+                  about your ad</span>
               </li>
               <li className="flex items-start">
                 <span className="text-blue-500 mr-2">•</span>

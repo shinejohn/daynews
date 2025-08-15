@@ -1,9 +1,9 @@
 // Converted from Magic Patterns
 import React from 'react';
-import { MapPin, Users, Newspaper, Building, Star, Quote } from 'lucide-react';
+import { Building, MapPin, Newspaper, Quote, Star, User, Users } from 'lucide-react';
 export const CommunityImpactSection = ({
   stats
-}) => {
+}) =>{
   const testimonials = [{
     quote: "Day.News has transformed how I stay connected to what's happening in our town. The coverage is relevant and I love that I can actually contribute to the conversation.",
     author: 'Maria Rodriguez',
@@ -23,7 +23,7 @@ export const CommunityImpactSection = ({
     location: 'Palm Harbor',
     image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'
   }];
-  return <section className="py-20 bg-white">
+  return<section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-display font-bold text-gray-900 mb-4">

@@ -2,13 +2,13 @@
 // Converted from Magic Patterns
 import React, { useEffect, useState, useRef } from 'react';
 import { supabase } from '@/lib/supabase/client';
-import { MapPin, Search, ChevronDown, X, Globe } from 'lucide-react';
+import { ChevronDown, Globe, MapPin, Search, X } from 'lucide-react';
 import { useLocationDetection } from './LocationDetector';
 // Mock data for communities - in production this would come from an API
 const [popularCommunities, setPopularCommunities] = useState([]);
   const [loading, setLoading] = useState(true);
   
-  useEffect(() => {
+  useEffect(() =>{
     const fetchPopularCommunities = async () => {
       try {
         const { data, error } = await supabase
@@ -101,9 +101,8 @@ export const CommunitySelector = () => {
     setSearchQuery('');
   };
   if (!currentCommunity) return null;
-  return <div className="relative" ref={dropdownRef}>
-      <button onClick={() => setIsOpen(!isOpen)} className="flex items-center text-sm text-gray-700 hover:text-news-primary">
-        <MapPin className="h-4 w-4 mr-1 text-news-primary" />
+  return<div className="relative" ref={dropdownRef}>
+      <button onClick={() =>setIsOpen(!isOpen)} className="flex items-center text-sm text-gray-700 hover:text-news-primary"><MapPin className="h-4 w-4 mr-1 text-news-primary" />
         <span>
           {currentCommunity.name}, {currentCommunity.state}
         </span>
@@ -129,9 +128,8 @@ export const CommunitySelector = () => {
           <div className="p-3 border-b border-gray-200">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-              <input type="text" placeholder="Search communities..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)} className="w-full pl-9 pr-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-news-primary" />
-              {searchQuery && <button onClick={() => setSearchQuery('')} className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                  <X className="h-4 w-4 text-gray-400" />
+              <input type="text" placeholder="Search communities..." value={searchQuery} onChange={e =>setSearchQuery(e.target.value)} className="w-full pl-9 pr-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-news-primary" />
+              {searchQuery &&<button onClick={() =>setSearchQuery('')} className="absolute right-3 top-1/2 transform -translate-y-1/2"><X className="h-4 w-4 text-gray-400" />
                 </button>}
             </div>
           </div>
@@ -141,8 +139,7 @@ export const CommunitySelector = () => {
                   SEARCH RESULTS
                 </h4>
                 {searchResults.length > 0 ? <div className="space-y-2">
-                    {searchResults.map(community => <button key={community.id} onClick={() => handleCommunitySelect(community)} className="flex items-center w-full text-left p-2 hover:bg-gray-100 rounded-md">
-                        <MapPin className="h-4 w-4 mr-2 text-gray-400" />
+                    {searchResults.map(community => <button key={community.id} onClick={() =>handleCommunitySelect(community)} className="flex items-center w-full text-left p-2 hover:bg-gray-100 rounded-md"><MapPin className="h-4 w-4 mr-2 text-gray-400" />
                         <span className="text-sm">
                           {community.name}, {community.state}
                         </span>
@@ -160,8 +157,7 @@ export const CommunitySelector = () => {
                   POPULAR COMMUNITIES
                 </h4>
                 <div className="space-y-2">
-                  {popularCommunities.map(community => <button key={community.id} onClick={() => handleCommunitySelect(community)} className="flex items-center w-full text-left p-2 hover:bg-gray-100 rounded-md">
-                      <MapPin className="h-4 w-4 mr-2 text-gray-400" />
+                  {popularCommunities.map(community => <button key={community.id} onClick={() =>handleCommunitySelect(community)} className="flex items-center w-full text-left p-2 hover:bg-gray-100 rounded-md"><MapPin className="h-4 w-4 mr-2 text-gray-400" />
                       <span className="text-sm">
                         {community.name}, {community.state}
                       </span>

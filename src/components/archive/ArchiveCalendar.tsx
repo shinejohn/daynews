@@ -6,7 +6,7 @@ export const ArchiveCalendar = ({
   selectedDate,
   onDateSelect,
   sepiaMode
-}) => {
+}) =>{
   const [currentMonth, setCurrentMonth] = useState(new Date(selectedDate));
   const [calendarDays, setCalendarDays] = useState([]);
   const [historicalEvents, setHistoricalEvents] = useState([]);
@@ -61,7 +61,7 @@ export const ArchiveCalendar = ({
       onDateSelect(newDate);
     }
   };
-  return <div className={`rounded-lg shadow-md overflow-hidden ${sepiaMode ? 'bg-amber-100 border border-amber-200' : 'bg-white border border-gray-200'}`}>
+  return<div className={`rounded-lg shadow-md overflow-hidden ${sepiaMode ? 'bg-amber-100 border border-amber-200' : 'bg-white border border-gray-200'}`}>
       {/* Calendar header */}
       <div className="p-4 flex items-center justify-between border-b border-gray-200">
         <button onClick={previousMonth} className={`p-1 rounded-full ${sepiaMode ? 'hover:bg-amber-200' : 'hover:bg-gray-100'}`}>
@@ -77,8 +77,7 @@ export const ArchiveCalendar = ({
       {/* Calendar grid */}
       <div className="p-4">
         {/* Day of week headers */}
-        <div className="grid grid-cols-7 mb-2">
-          {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => <div key={day} className="text-center text-sm font-medium text-gray-500">
+        <div className="grid grid-cols-7 mb-2">{['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day =><div key={day} className="text-center text-sm font-medium text-gray-500">
               {day}
             </div>)}
         </div>
@@ -93,15 +92,12 @@ export const ArchiveCalendar = ({
           const isToday = day.isToday;
           // Get the story count for this day (random for demo)
           const storyCount = day.isCurrentMonth ? Math.floor(Math.random() * 10) : 0;
-          return <div key={index} onClick={() => handleDayClick(day)} className={`
+          return <div key={index} onClick={() =>handleDayClick(day)} className={`
                   h-16 p-1 relative cursor-pointer rounded-md border
                   ${day.isCurrentMonth ? isSelected ? sepiaMode ? 'bg-amber-200 border-amber-300' : 'bg-blue-100 border-blue-200' : sepiaMode ? 'bg-amber-50 border-amber-100 hover:bg-amber-100' : 'bg-white border-gray-200 hover:bg-gray-50' : sepiaMode ? 'bg-amber-50/50 text-amber-800/50 border-amber-100/50' : 'bg-gray-50 text-gray-400 border-gray-200'}
                   ${isToday ? 'ring-2 ring-red-400' : ''}
-                `}>
-                <div className="text-right text-sm">{day.day}</div>
-                {storyCount > 0 && day.isCurrentMonth && <div className={`absolute bottom-1 left-1 text-xs ${sepiaMode ? 'text-amber-800' : 'text-gray-600'}`}>
-                    {storyCount} {storyCount === 1 ? 'story' : 'stories'}
-                  </div>}
+                `}><div className="text-right text-sm">{day.day}</div>
+                {storyCount > 0 && day.isCurrentMonth && <div className={`absolute bottom-1 left-1 text-xs ${sepiaMode ? 'text-amber-800' : 'text-gray-600'}`}>{storyCount} {storyCount === 1 ? 'story' : 'stories'}</div>}
                 {hasEvent && <div className={`absolute top-1 right-1 h-2 w-2 rounded-full ${sepiaMode ? 'bg-red-800' : 'bg-red-500'}`}></div>}
               </div>;
         })}

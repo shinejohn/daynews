@@ -1,10 +1,10 @@
 'use client';
 // Converted from Magic Patterns
-import React, { useEffect, useState, memo } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { MapPin, Share2, Heart, MessageCircle, Calendar, PlusCircle, Flower, Clock, Search, Filter, ChevronDown, ExternalLink } from 'lucide-react';
+import { Calendar, ChevronDown, Clock, ExternalLink, Filter, Flower, Heart, MapPin, MessageCircle, PlusCircle, Search } from 'lucide-react';
 import { NewspaperMasthead } from '../navigation/NewspaperMasthead';
-export const MemorialsPage = () => {
+export const MemorialsPage = () =>{
   const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [activeCategory, setActiveCategory] = useState('Memorials');
@@ -117,7 +117,7 @@ export const MemorialsPage = () => {
   const navigateToAdvertisingDetail = () => {
     router.push('/advertisingDetail');
   };
-  return <div className="flex-1 overflow-auto bg-gray-50">
+  return<div className="flex-1 overflow-auto bg-gray-50">
       <div>TODO: StickyNav</div>
       <div className="container mx-auto px-4 py-6 mt-28">
         <div className="flex justify-between items-center mb-6">
@@ -227,10 +227,8 @@ export const MemorialsPage = () => {
                           <div className="flex items-center text-sm">
                             <Clock className="h-4 w-4 mr-1 text-gray-500" />
                             <span className="font-medium">Service:</span>
-                            <span className="ml-1 text-gray-600">
-                              {memorial.serviceDate} at{' '}
-                              {memorial.serviceLocation}
-                            </span>
+                            <span className="ml-1 text-gray-600">{memorial.serviceDate} at{' '}
+                              {memorial.serviceLocation}</span>
                           </div>
                         </div>
                         <div className="flex items-center justify-between">

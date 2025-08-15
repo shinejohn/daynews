@@ -1,7 +1,7 @@
 // Converted from Magic Patterns
 import React from 'react';
 import Link from 'next/link';
-import { Briefcase, MapPin, Clock, Calendar, Users, ChevronRight, Search, Filter, Star, ArrowRight } from 'lucide-react';
+import { ArrowRight, Briefcase, Calendar, ChevronRight, Clock, Filter, MapPin, Search, Star, User, Users } from 'lucide-react';
 export const CareersPage = () => {
   return <div className="min-h-screen bg-gray-50">
       <main className="container mx-auto px-4 py-8">
@@ -18,12 +18,10 @@ export const CareersPage = () => {
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
                 Make an Impact in Your Community
               </h2>
-              <p className="text-gray-600 mb-6">
-                At Day.News, we're reimagining local journalism for the digital
+              <p className="text-gray-600 mb-6">At Day.News, we're reimagining local journalism for the digital
                 age. We're looking for talented, passionate individuals who want
                 to make a difference in their communities through engaging,
-                accurate, and meaningful reporting.
-              </p>
+                accurate, and meaningful reporting.</p>
               <div className="space-y-4">
                 <div className="flex items-start">
                   <Star className="h-5 w-5 text-news-primary mr-3 mt-0.5 flex-shrink-0" />
@@ -31,10 +29,8 @@ export const CareersPage = () => {
                     <h3 className="font-medium text-gray-900">
                       Mission-Driven Organization
                     </h3>
-                    <p className="text-sm text-gray-600">
-                      We're committed to serving our communities with honest,
-                      impactful journalism.
-                    </p>
+                    <p className="text-sm text-gray-600">We're committed to serving our communities with honest,
+                      impactful journalism.</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -55,10 +51,8 @@ export const CareersPage = () => {
                     <h3 className="font-medium text-gray-900">
                       Growth Opportunities
                     </h3>
-                    <p className="text-sm text-gray-600">
-                      We invest in our team members' professional development
-                      and career advancement.
-                    </p>
+                    <p className="text-sm text-gray-600">We invest in our team members' professional development
+                      and career advancement.</p>
                   </div>
                 </div>
               </div>
@@ -137,12 +131,10 @@ export const CareersPage = () => {
                       Posted 2 days ago
                     </div>
                   </div>
-                  <p className="text-gray-600 text-sm mb-4">
-                    We're looking for a dedicated reporter to cover local news
+                  <p className="text-gray-600 text-sm mb-4">We're looking for a dedicated reporter to cover local news
                     in Clearwater and surrounding areas. The ideal candidate has
                     experience in community journalism and a passion for telling
-                    local stories.
-                  </p>
+                    local stories.</p>
                   <Link href="#" className="text-news-primary font-medium hover:text-news-primary-dark flex items-center text-sm">
                     View Job Details
                     <ChevronRight className="h-4 w-4 ml-1" />
@@ -168,12 +160,10 @@ export const CareersPage = () => {
                       Posted 1 week ago
                     </div>
                   </div>
-                  <p className="text-gray-600 text-sm mb-4">
-                    Join our team as a Community Engagement Editor to build and
+                  <p className="text-gray-600 text-sm mb-4">Join our team as a Community Engagement Editor to build and
                     nurture relationships with our readers. You'll develop
                     strategies to increase reader participation and community
-                    involvement.
-                  </p>
+                    involvement.</p>
                   <Link href="#" className="text-news-primary font-medium hover:text-news-primary-dark flex items-center text-sm">
                     View Job Details
                     <ChevronRight className="h-4 w-4 ml-1" />
@@ -208,11 +198,9 @@ export const CareersPage = () => {
                       Posted 3 days ago
                     </div>
                   </div>
-                  <p className="text-gray-600 text-sm mb-4">
-                    We're seeking a talented Front-End Developer with experience
+                  <p className="text-gray-600 text-sm mb-4">We're seeking a talented Front-End Developer with experience
                     in React and modern JavaScript frameworks to help build and
-                    maintain our digital platforms.
-                  </p>
+                    maintain our digital platforms.</p>
                   <Link href="#" className="text-news-primary font-medium hover:text-news-primary-dark flex items-center text-sm">
                     View Job Details
                     <ChevronRight className="h-4 w-4 ml-1" />
@@ -238,11 +226,9 @@ export const CareersPage = () => {
                       Posted 5 days ago
                     </div>
                   </div>
-                  <p className="text-gray-600 text-sm mb-4">
-                    We're looking for a Data Journalist who can analyze data
+                  <p className="text-gray-600 text-sm mb-4">We're looking for a Data Journalist who can analyze data
                     sets, create visualizations, and tell compelling stories
-                    with data to enhance our reporting on local issues.
-                  </p>
+                    with data to enhance our reporting on local issues.</p>
                   <Link href="#" className="text-news-primary font-medium hover:text-news-primary-dark flex items-center text-sm">
                     View Job Details
                     <ChevronRight className="h-4 w-4 ml-1" />
@@ -291,10 +277,8 @@ export const CareersPage = () => {
             </div>
           </div>
           <div className="mt-8 text-center">
-            <p className="text-gray-600 mb-4">
-              Don't see the right position? We're always looking for talented
-              individuals.
-            </p>
+            <p className="text-gray-600 mb-4">Don't see the right position? We're always looking for talented
+              individuals.</p>
             <Link href="#" className="inline-block bg-news-primary text-white px-6 py-3 rounded-md font-medium hover:bg-news-primary-dark transition-colors">
               Submit Your Resume
             </Link>
@@ -360,12 +344,10 @@ export const CareersPage = () => {
                   </p>
                 </div>
               </div>
-              <p className="text-gray-600 mb-3">
-                "Working at Day.News has given me the opportunity to tell
+              <p className="text-gray-600 mb-3">"Working at Day.News has given me the opportunity to tell
                 important stories that matter to our community. The
                 collaborative environment and commitment to journalistic
-                integrity make this a special place to work."
-              </p>
+                integrity make this a special place to work."</p>
             </div>
             <div className="bg-white rounded-lg shadow-sm p-6">
               <div className="flex items-start mb-4">
@@ -377,12 +359,10 @@ export const CareersPage = () => {
                   </p>
                 </div>
               </div>
-              <p className="text-gray-600 mb-3">
-                "I love building technology that helps deliver important news to
+              <p className="text-gray-600 mb-3">"I love building technology that helps deliver important news to
                 our community. Day.News combines the best of journalism and tech
                 innovation, and I'm proud to be part of a team that's shaping
-                the future of local news."
-              </p>
+                the future of local news."</p>
             </div>
           </div>
         </div>
@@ -507,22 +487,18 @@ export const CareersPage = () => {
                 What kind of professional development opportunities do you
                 offer?
               </h3>
-              <p className="text-gray-600">
-                We invest in our team members' growth through training programs,
+              <p className="text-gray-600">We invest in our team members' growth through training programs,
                 conference attendance, mentorship opportunities, and education
-                stipends for relevant courses and certifications.
-              </p>
+                stipends for relevant courses and certifications.</p>
             </div>
           </div>
         </div>
         {/* CTA */}
         <div className="bg-news-primary rounded-lg shadow-lg p-8 text-center text-white">
           <h2 className="text-2xl font-bold mb-4">Ready to Join Our Team?</h2>
-          <p className="text-white text-opacity-90 mb-6 max-w-2xl mx-auto">
-            Be part of a mission-driven organization that's making a difference
+          <p className="text-white text-opacity-90 mb-6 max-w-2xl mx-auto">Be part of a mission-driven organization that's making a difference
             in our community through quality journalism and innovative digital
-            experiences.
-          </p>
+            experiences.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="#" className="bg-white text-news-primary px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition-colors">
               View All Openings

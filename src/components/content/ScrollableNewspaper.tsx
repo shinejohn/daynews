@@ -13,7 +13,7 @@ import { PhotoGallerySection } from './PhotoGallerySection';
 import { MoreNewsSection } from './MoreNewsSection';
 export const ScrollableNewspaper = ({
   category = null
-}) => {
+}) =>{
   const newspaperRef = useRef(null);
   const scrollToTop = () => {
     newspaperRef.current?.scrollTo({
@@ -29,7 +29,7 @@ export const ScrollableNewspaper = ({
       });
     }
   };
-  return <div className="relative flex flex-col h-full w-full">
+  return<div className="relative flex flex-col h-full w-full">
       {/* Newspaper container with scrollbar styling */}
       <div ref={newspaperRef} className="newspaper-container flex-1 bg-gray-100 border border-gray-300 rounded-md overflow-y-auto max-h-[calc(100vh-220px)] md:max-h-[calc(100vh-200px)]" style={{
       overflowY: 'auto'
@@ -38,17 +38,13 @@ export const ScrollableNewspaper = ({
           {/* Newspaper Header */}
           <div className="text-center mb-8 pb-4 border-b-2 border-news-primary">
             <p className="text-sm text-gray-500 mb-1">Volume 98 • Issue 245</p>
-            <h1 className="font-display text-4xl md:text-5xl font-black uppercase mb-2 tracking-tight">
-              Today's Newspaper
-            </h1>
-            <p className="text-sm text-gray-600">
-              {new Date().toLocaleDateString('en-US', {
+            <h1 className="font-display text-4xl md:text-5xl font-black uppercase mb-2 tracking-tight">Today's Newspaper</h1>
+            <p className="text-sm text-gray-600">{new Date().toLocaleDateString('en-US', {
               weekday: 'long',
               month: 'long',
               day: 'numeric',
               year: 'numeric'
-            })}
-            </p>
+            })}</p>
           </div>
           {/* Front Page - Top Story */}
           <div className="mb-10">
@@ -62,9 +58,7 @@ export const ScrollableNewspaper = ({
             {/* Left Column */}
             <div className="md:col-span-4 space-y-8">
               <div>
-                <h2 className="font-display text-xl font-bold text-news-primary border-b-2 border-news-primary inline-block mb-4">
-                  Today's Essential
-                </h2>
+                <h2 className="font-display text-xl font-bold text-news-primary border-b-2 border-news-primary inline-block mb-4">Today's Essential</h2>
                 <EssentialReads category={category} />
               </div>
               <div>

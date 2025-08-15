@@ -1,7 +1,7 @@
 'use client';
 // Converted from Magic Patterns
 import React, { useEffect, useState, useRef } from 'react';
-import { MapPin, Calendar, Clock, ChevronLeft, ChevronRight, Cloud, Users, ExternalLink } from 'lucide-react';
+import { Calendar, ChevronLeft, ChevronRight, Clock, Cloud, ExternalLink, MapPin, User, Users } from 'lucide-react';
 export const FeaturedEventsCarousel = ({
   events
 }) => {
@@ -46,8 +46,7 @@ export const FeaturedEventsCarousel = ({
   return <div className="relative bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
       {/* Slide indicators */}
       <div className="absolute top-4 right-4 z-10 flex space-x-1">
-        {events.map((_, index) => <button key={index} onClick={() => setCurrentSlide(index)} className={`h-2 w-2 rounded-full ${currentSlide === index ? 'bg-white' : 'bg-white/50'}`} />)}
-      </div>
+        {events.map((_, index) => <button key={index} onClick={() =>setCurrentSlide(index)} className={`h-2 w-2 rounded-full ${currentSlide === index ? 'bg-white' : 'bg-white/50'}`} />)}</div>
       {/* Navigation arrows */}
       {events.length > 1 && <>
           <button className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-black/30 hover:bg-black/50 text-white rounded-full p-2 transition-colors" onClick={prevSlide}>
@@ -83,18 +82,15 @@ export const FeaturedEventsCarousel = ({
                 <div className="flex flex-wrap gap-4 mb-4">
                   <div className="flex items-center">
                     <Calendar className="h-5 w-5 mr-1.5" />
-                    <span>
-                      {new Date(event.date).toLocaleDateString('en-US', {
+                    <span>{new Date(event.date).toLocaleDateString('en-US', {
                     weekday: 'short',
                     month: 'short',
                     day: 'numeric'
-                  })}
-                    </span>
+                  })}</span>
                   </div>
                   <div className="flex items-center">
                     <Clock className="h-5 w-5 mr-1.5" />
-                    <span>
-                      {new Date(event.time).toLocaleTimeString('en-US', {
+                    <span>{new Date(event.time).toLocaleTimeString('en-US', {
                     hour: 'numeric',
                     minute: '2-digit'
                   })}{' '}
@@ -102,8 +98,7 @@ export const FeaturedEventsCarousel = ({
                       {new Date(event.endTime).toLocaleTimeString('en-US', {
                     hour: 'numeric',
                     minute: '2-digit'
-                  })}
-                    </span>
+                  })}</span>
                   </div>
                   <div className="flex items-center">
                     <MapPin className="h-5 w-5 mr-1.5" />

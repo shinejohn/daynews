@@ -6,7 +6,7 @@ export const TimelineNavigator = ({
   selectedDate,
   onDateSelect,
   sepiaMode
-}) => {
+}) =>{
   const [viewMode, setViewMode] = useState('decade'); // 'century', 'decade', 'year', 'month'
   const [activeYear, setActiveYear] = useState(selectedDate.getFullYear());
   const [activeMonth, setActiveMonth] = useState(selectedDate.getMonth());
@@ -18,7 +18,7 @@ export const TimelineNavigator = ({
   useEffect(() => {
     const currentCentury = Math.floor(activeYear / 100) * 100;
     const decadeList = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i< 10; i++) {
       const decadeStart = currentCentury + i * 10;
       decadeList.push({
         label: `${decadeStart}s`,
@@ -43,7 +43,7 @@ export const TimelineNavigator = ({
     setYears(yearList);
   }, [activeYear]);
   // Generate months for the year view
-  useEffect(() => {
+  useEffect(() =>{
     const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const monthList = monthNames.map((name, index) => ({
       label: name,
@@ -60,7 +60,7 @@ export const TimelineNavigator = ({
       // Generate daily activity for the selected month
       const daysInMonth = new Date(activeYear, activeMonth + 1, 0).getDate();
       const dailyActivity = [];
-      for (let i = 1; i <= daysInMonth; i++) {
+      for (let i = 1; i<= daysInMonth; i++) {
         dailyActivity.push({
           day: i,
           activity: Math.floor(Math.random() * 100)
@@ -80,7 +80,7 @@ export const TimelineNavigator = ({
     }
   }, [viewMode, activeYear, activeMonth]);
   // Handle navigation between different time periods
-  const navigatePrevious = () => {
+  const navigatePrevious = () =>{
     switch (viewMode) {
       case 'century':
         // Go to previous century
@@ -151,27 +151,24 @@ export const TimelineNavigator = ({
   const renderTimelineView = () => {
     switch (viewMode) {
       case 'century':
-        return <div className="grid grid-cols-2 gap-2">
-            {decades.map(decade => <button key={decade.value} onClick={() => handleDecadeSelect(decade.value)} className={`p-3 rounded-md text-center ${sepiaMode ? 'hover:bg-amber-200' : 'hover:bg-gray-100'} transition-colors relative`}>
-                <div className="font-medium">{decade.label}</div>
+        return<div className="grid grid-cols-2 gap-2">
+            {decades.map(decade => <button key={decade.value} onClick={() =>handleDecadeSelect(decade.value)} className={`p-3 rounded-md text-center ${sepiaMode ? 'hover:bg-amber-200' : 'hover:bg-gray-100'} transition-colors relative`}><div className="font-medium">{decade.label}</div>
                 <div className={`h-1 mt-1 rounded-full ${sepiaMode ? 'bg-amber-800' : 'bg-news-primary'} bg-opacity-60`} style={{
               width: `${decade.activityLevel}%`
             }}></div>
               </button>)}
           </div>;
       case 'decade':
-        return <div className="grid grid-cols-2 gap-2">
-            {years.map(year => <button key={year.value} onClick={() => handleYearSelect(year.value)} className={`p-3 rounded-md text-center ${sepiaMode ? 'hover:bg-amber-200' : 'hover:bg-gray-100'} transition-colors ${activeYear === year.value ? sepiaMode ? 'bg-amber-100' : 'bg-blue-50' : ''}`}>
-                <div className="font-medium">{year.label}</div>
+        return<div className="grid grid-cols-2 gap-2">
+            {years.map(year => <button key={year.value} onClick={() =>handleYearSelect(year.value)} className={`p-3 rounded-md text-center ${sepiaMode ? 'hover:bg-amber-200' : 'hover:bg-gray-100'} transition-colors ${activeYear === year.value ? sepiaMode ? 'bg-amber-100' : 'bg-blue-50' : ''}`}><div className="font-medium">{year.label}</div>
                 <div className={`h-1 mt-1 rounded-full ${sepiaMode ? 'bg-amber-800' : 'bg-news-primary'} bg-opacity-60`} style={{
               width: `${year.activityLevel}%`
             }}></div>
               </button>)}
           </div>;
       case 'year':
-        return <div className="grid grid-cols-3 gap-2">
-            {months.map(month => <button key={month.value} onClick={() => handleMonthSelect(month.value)} className={`p-2 rounded-md text-center ${sepiaMode ? 'hover:bg-amber-200' : 'hover:bg-gray-100'} transition-colors ${activeMonth === month.value ? sepiaMode ? 'bg-amber-100' : 'bg-blue-50' : ''}`}>
-                <div className="font-medium text-sm">{month.label}</div>
+        return<div className="grid grid-cols-3 gap-2">
+            {months.map(month => <button key={month.value} onClick={() =>handleMonthSelect(month.value)} className={`p-2 rounded-md text-center ${sepiaMode ? 'hover:bg-amber-200' : 'hover:bg-gray-100'} transition-colors ${activeMonth === month.value ? sepiaMode ? 'bg-amber-100' : 'bg-blue-50' : ''}`}><div className="font-medium text-sm">{month.label}</div>
                 <div className={`h-1 mt-1 rounded-full ${sepiaMode ? 'bg-amber-800' : 'bg-news-primary'} bg-opacity-60`} style={{
               width: `${month.activityLevel}%`
             }}></div>
@@ -185,7 +182,7 @@ export const TimelineNavigator = ({
         // Create array for calendar days
         const days = [];
         // Add empty cells for days before the first day of the month
-        for (let i = 0; i < firstDayOfMonth; i++) {
+        for (let i = 0; i< firstDayOfMonth; i++) {
           days.push(null);
         }
         // Add days of the month
@@ -208,8 +205,7 @@ export const TimelineNavigator = ({
               // Find activity level for this day
               const dayActivity = activityData.find(d => d.day === day);
               const activityLevel = dayActivity ? dayActivity.activity : 0;
-              return <button key={`day-${day}`} onClick={() => handleDaySelect(day)} className={`p-1 rounded-md text-center relative ${isSelected ? sepiaMode ? 'bg-amber-200' : 'bg-blue-100' : sepiaMode ? 'hover:bg-amber-100' : 'hover:bg-gray-100'}`}>
-                    <div className="text-sm">{day}</div>
+              return <button key={`day-${day}`} onClick={() =>handleDaySelect(day)} className={`p-1 rounded-md text-center relative ${isSelected ? sepiaMode ? 'bg-amber-200' : 'bg-blue-100' : sepiaMode ? 'hover:bg-amber-100' : 'hover:bg-gray-100'}`}><div className="text-sm">{day}</div>
                     {activityLevel > 0 && <div className={`h-1 mt-0.5 mx-auto rounded-full ${sepiaMode ? 'bg-amber-800' : 'bg-news-primary'} bg-opacity-60`} style={{
                   width: `${Math.min(100, activityLevel)}%`
                 }}></div>}
@@ -271,11 +267,10 @@ export const TimelineNavigator = ({
         view: 'month'
       });
     }
-    return <div className="flex items-center text-sm mb-2">
+    return<div className="flex items-center text-sm mb-2">
         {items.map((item, index) => <Fragment key={item.view}>
-            <button onClick={() => setViewMode(item.view)} className={`hover:underline ${sepiaMode ? 'text-amber-800' : 'text-news-primary'}`}>
-              {item.label}
-            </button>
+            <button onClick={() =>setViewMode(item.view)} className={`hover:underline ${sepiaMode ? 'text-amber-800' : 'text-news-primary'}`}>
+              {item.label}</button>
             {index < items.length - 1 && <span className="mx-1 text-gray-500">/</span>}
           </Fragment>)}
       </div>;
@@ -296,11 +291,10 @@ export const TimelineNavigator = ({
       </div>
       {/* Timeline visualization */}
       <div className="mb-4">
-        <div className="h-16 relative">
-          {activityData.map((item, index) => {
+        <div className="h-16 relative">{activityData.map((item, index) => {
           const key = 'day' in item ? `day-${item.day}` : `month-${item.month}`;
           const position = index / (activityData.length - 1) * 100;
-          return <div key={key} className={`absolute bottom-0 w-1 ${sepiaMode ? 'bg-amber-800' : 'bg-news-primary'} rounded-t`} style={{
+          return<div key={key} className={`absolute bottom-0 w-1 ${sepiaMode ? 'bg-amber-800' : 'bg-news-primary'} rounded-t`} style={{
             height: `${item.activity}%`,
             left: `${position}%`,
             transform: 'translateX(-50%)'
@@ -317,9 +311,8 @@ export const TimelineNavigator = ({
         </div>
         <div className="flex gap-2">
           <input type="date" className={`flex-1 px-3 py-2 border ${sepiaMode ? 'border-amber-300 bg-amber-50' : 'border-gray-300 bg-white'} rounded-md text-sm`} max={new Date().toISOString().split('T')[0]} min="1900-01-01" onChange={e => onDateSelect(new Date(e.target.value))} />
-          <button onClick={() => onDateSelect(new Date())} className={`px-3 py-2 text-sm ${sepiaMode ? 'bg-amber-200 text-amber-800 hover:bg-amber-300' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} rounded-md`}>
-            Today
-          </button>
+          <button onClick={() =>onDateSelect(new Date())} className={`px-3 py-2 text-sm ${sepiaMode ? 'bg-amber-200 text-amber-800 hover:bg-amber-300' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} rounded-md`}>
+            Today</button>
         </div>
       </div>
     </div>;

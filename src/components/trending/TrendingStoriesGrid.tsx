@@ -1,6 +1,6 @@
 // Converted from Magic Patterns
 import React from 'react';
-import { TrendingUp, ArrowUp, ArrowDown, MessageSquare, Share2, Clock, Eye, Activity } from 'lucide-react';
+import { Activity, ArrowDown, ArrowUp, Clock, Eye, MessageSquare, Share2, TrendingUp } from 'lucide-react';
 export const TrendingStoriesGrid = ({
   stories,
   timePeriod
@@ -64,8 +64,7 @@ export const TrendingStoriesGrid = ({
                         {story.viewsPerHour} views/hr
                       </div>
                     </div>
-                    <div className={`flex items-center ${story.direction === 'up' ? 'text-green-600' : 'text-red-600'} bg-gray-100 px-2 py-1 rounded-full text-xs font-medium`}>
-                      {story.direction === 'up' ? <ArrowUp className="h-3 w-3 mr-1" /> : <ArrowDown className="h-3 w-3 mr-1" />}
+                    <div className={`flex items-center ${story.direction === 'up' ? 'text-green-600' : 'text-red-600'} bg-gray-100 px-2 py-1 rounded-full text-xs font-medium`}>{story.direction === 'up' ?<ArrowUp className="h-3 w-3 mr-1" /> : <ArrowDown className="h-3 w-3 mr-1" />}
                       <span>{story.percentChange}%</span>
                     </div>
                   </div>

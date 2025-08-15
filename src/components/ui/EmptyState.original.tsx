@@ -13,7 +13,7 @@ export const EmptyState = ({
   icon = <FileText className="h-8 w-8 text-gray-400" />,
   className = ''
 }: EmptyStateProps) => {
-  return <div className={`text-center py-8 ${className}`}>
+  return<div className={`text-center py-8 ${className}`}>
       <div className="mx-auto w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
         {icon}
       </div>

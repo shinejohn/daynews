@@ -2,9 +2,9 @@
 // Converted from Magic Patterns
 import React, { useEffect, useState, useRef, createElement } from 'react';
 import { useRouter } from 'next/navigation';
-import { ArrowLeft, Calendar, FileText, Printer, Share2, Download, Copy, Gavel, Clock, AlertCircle, MapPin, ChevronRight, Users, Building, Scale, BookOpen, Check } from 'lucide-react';
+import { AlertCircle, ArrowLeft, BookOpen, Building, Calendar, Check, ChevronRight, Clock, Copy, Download, FileText, Gavel, MapPin, Printer, Scale, Share2, User, Users } from 'lucide-react';
 import { ShareModal } from '../modals/ShareModal';
-export const LegalNoticeDetailPage = () => {
+export const LegalNoticeDetailPage = () =>{
   const router = useRouter();
   const [notice, setNotice] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -124,7 +124,7 @@ Email: legal@smithassociates.com`,
     });
   };
   if (loading) {
-    return <div className="flex-1 overflow-auto bg-gray-50 p-4">
+    return<div className="flex-1 overflow-auto bg-gray-50 p-4">
         <div className="max-w-4xl mx-auto">
           <div className="animate-pulse">
             <div className="h-8 w-40 bg-gray-200 rounded mb-4"></div>
@@ -304,12 +304,10 @@ Email: legal@smithassociates.com`,
             need to publish a legal notice, you can do so through our platform.
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
-            <button onClick={() => router.push('/legalNoticeCreator')} className="bg-indigo-700 text-white px-6 py-3 rounded-md font-medium hover:bg-indigo-800 transition-colors">
-              Create a Legal Notice
-            </button>
-            <button onClick={() => router.push('/legalNoticesList')} className="border border-indigo-700 text-indigo-700 px-6 py-3 rounded-md font-medium hover:bg-indigo-50 transition-colors">
-              Browse All Legal Notices
-            </button>
+            <button onClick={() =>router.push('/legalNoticeCreator')} className="bg-indigo-700 text-white px-6 py-3 rounded-md font-medium hover:bg-indigo-800 transition-colors">
+              Create a Legal Notice</button>
+            <button onClick={() =>router.push('/legalNoticesList')} className="border border-indigo-700 text-indigo-700 px-6 py-3 rounded-md font-medium hover:bg-indigo-50 transition-colors">
+              Browse All Legal Notices</button>
           </div>
         </div>
       </div>

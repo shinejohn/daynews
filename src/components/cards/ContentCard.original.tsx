@@ -8,7 +8,7 @@ interface ContentCardProps {
   date: string;
   author?: string;
   className?: string;
-  onClick?: () => void;
+  onClick?: () =>void;
 }
 export const ContentCard = ({
   title,
@@ -19,7 +19,7 @@ export const ContentCard = ({
   className = '',
   onClick
 }: ContentCardProps) => {
-  return <div className={`flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors ${onClick ? 'cursor-pointer' : ''} ${className}`} onClick={onClick}>
+  return<div className={`flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors ${onClick ? 'cursor-pointer' : ''} ${className}`} onClick={onClick}>
       {icon && <div className="bg-white p-2 rounded-md shadow-sm mr-3">{icon}</div>}
       <div className="flex-1 min-w-0">
         <h3 className="font-medium text-gray-800 text-sm truncate">{title}</h3>

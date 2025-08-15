@@ -54,7 +54,7 @@ export const getCachedEvents = cachedQuery(
       .order('start_date' as any, { ascending: true } as any)
       .limit(20)
     if (upcoming) {
-      query = query.gte('start_date' as any, new Date().toISOString() as any as any as any)
+      query = query.gte('start_date' as any, new Date().toISOString() as any as any)
     }
     
     const { data, error } = await (query as any)
@@ -139,14 +139,14 @@ export const getCachedTrendingContent = cachedQuery(
     
     const { data: news, error: newsError } = await (supabase as any).from('news')
       .select('*')
-      .gte('created_at', yesterday.toISOString() as any)
+      .gte('created_at', yesterday.toISOString() as any
       .order('view_count' as any, { ascending: false } as any)
       .limit(10)
     if (newsError) throw newsError
     
     const { data: events, error: eventsError } = await (supabase as any).from('events')
       .select('*')
-      .gte('start_date' as any, new Date().toISOString() as any as any as any)
+      .gte('start_date' as any, new Date().toISOString() as any as any)
       .order('attendee_count' as any, { ascending: false } as any)
       .limit(5)
     if (eventsError) throw eventsError

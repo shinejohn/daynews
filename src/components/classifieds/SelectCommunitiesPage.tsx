@@ -3,8 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
-import { Info, MapPin, ChevronRight } from 'lucide-react';
-export const SelectCommunitiesPage = () => {
+import { ChevronRight, Info, User, Users } from 'lucide-react';
+export const SelectCommunitiesPage = () =>{
   const router = useRouter();
   const [selectedCommunities, setSelectedCommunities] = useState([]);
   const [availableCommunities, setAvailableCommunities] = useState([]);
@@ -86,7 +86,7 @@ export const SelectCommunitiesPage = () => {
   const calculatePrice = () => {
     const basePrice = 10; // $10 for up to 3 communities
     const additionalCommunityPrice = 2; // $2 per additional community
-    if (selectedCommunities.length <= 3) {
+    if (selectedCommunities.length<= 3) {
       return basePrice;
     } else {
       return basePrice + (selectedCommunities.length - 3) * additionalCommunityPrice;
@@ -125,12 +125,11 @@ export const SelectCommunitiesPage = () => {
           <p className="text-gray-600">Loading communities...</p>
         </div> : <>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-            {filteredCommunities.map(community => <div key={community.id} onClick={() => toggleCommunity(community.id)} className={`border rounded-lg overflow-hidden cursor-pointer transition-all ${selectedCommunities.includes(community.id) ? 'border-news-primary bg-blue-50' : 'border-gray-200 hover:border-gray-300'}`} role="checkbox" aria-checked={selectedCommunities.includes(community.id)} tabIndex={0} onKeyPress={e => {
+            {filteredCommunities.map(community => <div key={community.id} onClick={() =>toggleCommunity(community.id)} className={`border rounded-lg overflow-hidden cursor-pointer transition-all ${selectedCommunities.includes(community.id) ? 'border-news-primary bg-blue-50' : 'border-gray-200 hover:border-gray-300'}`} role="checkbox" aria-checked={selectedCommunities.includes(community.id)} tabIndex={0} onKeyPress={e => {
           if (e.key === 'Enter' || e.key === ' ') {
             toggleCommunity(community.id);
           }
-        }}>
-                <div className="flex p-4">
+        }}><div className="flex p-4">
                   <div className="w-16 h-16 rounded-md overflow-hidden mr-4 flex-shrink-0">
                     <img src={community.image} alt={`${community.name} community`} className="w-full h-full object-cover" />
                   </div>
@@ -158,9 +157,8 @@ export const SelectCommunitiesPage = () => {
               <p className="text-gray-500">
                 No communities found matching your search.
               </p>
-              <button onClick={() => setSearchQuery('')} className="text-news-primary mt-2 hover:underline" aria-label="Clear search">
-                Clear search
-              </button>
+              <button onClick={() =>setSearchQuery('')} className="text-news-primary mt-2 hover:underline" aria-label="Clear search">
+                Clear search</button>
             </div>}
         </>}
       {/* Selected communities summary */}
@@ -178,12 +176,11 @@ export const SelectCommunitiesPage = () => {
           const community = communityList.find(c => c.id === communityId);
           return community ? <div key={community.id} className="bg-gray-100 rounded-full px-3 py-1 text-sm flex items-center">
                   <span className="text-gray-800">{community.name}</span>
-                  <button onClick={e => {
+                  <button onClick={e =>{
               e.stopPropagation();
               toggleCommunity(community.id);
             }} className="ml-2 text-gray-500 hover:text-gray-700" aria-label={`Remove ${community.name} from selection`}>
-                    ✕
-                  </button>
+                    ✕</button>
                 </div> : null;
         })}
           </div> : <div className="bg-yellow-50 border border-yellow-200 rounded-md p-4 mb-4">
@@ -197,12 +194,10 @@ export const SelectCommunitiesPage = () => {
           </div>}
       </div>
       <div className="mt-8 flex justify-between">
-        <button onClick={() => router.push('/postListing')} className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
-          Back
-        </button>
-        <button onClick={() => router.push('/classifieds/select-timeframe')} className="px-4 py-2 bg-news-primary text-white rounded-md hover:bg-news-primary-dark flex items-center" disabled={selectedCommunities.length === 0}>
-          Continue
-          <ChevronRight className="ml-1 h-4 w-4" />
+        <button onClick={() =>router.push('/postListing')} className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
+          Back</button>
+        <button onClick={() =>router.push('/classifieds/select-timeframe')} className="px-4 py-2 bg-news-primary text-white rounded-md hover:bg-news-primary-dark flex items-center" disabled={selectedCommunities.length === 0}>
+          Continue<ChevronRight className="ml-1 h-4 w-4" />
         </button>
       </div>
     </div>;

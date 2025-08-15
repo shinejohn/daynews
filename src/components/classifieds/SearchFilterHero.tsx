@@ -1,7 +1,7 @@
 'use client';
 // Converted from Magic Patterns
 import React, { useEffect, useState } from 'react';
-import { Search, MapPin, PlusCircle } from 'lucide-react';
+import { MapPin, PlusCircle, Search } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 export const SearchFilterHero = ({
   searchQuery,
@@ -10,7 +10,7 @@ export const SearchFilterHero = ({
   setCategoryFilter,
   subcategoryFilter,
   setSubcategoryFilter
-}) => {
+}) =>{
   const router = useRouter();
   const [location, setLocation] = useState('Clearwater, FL');
   const [showLocationDropdown, setShowLocationDropdown] = useState(false);
@@ -224,7 +224,7 @@ export const SearchFilterHero = ({
   const handleSubcategoryChange = e => {
     setSubcategoryFilter(e.target.value);
   };
-  return <div className="bg-gradient-to-r from-news-primary to-news-primary-light rounded-xl p-6 md:p-8 shadow-md">
+  return<div className="bg-gradient-to-r from-news-primary to-news-primary-light rounded-xl p-6 md:p-8 shadow-md">
       <div className="text-center mb-6">
         <h1 className="text-2xl md:text-3xl font-bold text-black mb-2">
           Your Neighborhood Marketplace
@@ -277,8 +277,7 @@ export const SearchFilterHero = ({
         </div>
         {/* Search input */}
         <div className="relative w-full md:w-2/5">
-          <input type="text" placeholder="Search for anything..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)} className="w-full bg-white rounded-md pl-10 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50" />
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+          <input type="text" placeholder="Search for anything..." value={searchQuery} onChange={e =>setSearchQuery(e.target.value)} className="w-full bg-white rounded-md pl-10 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50" /><Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
         </div>
       </div>
       {/* Post a listing button */}

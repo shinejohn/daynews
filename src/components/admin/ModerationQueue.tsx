@@ -1,8 +1,8 @@
 'use client';
 // Converted from Magic Patterns
-import React, { useState, Component } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Grid, Newspaper, DollarSign, Shield, Bot, BarChart, Settings, Building, ChevronDown, Bell, User, Search, CheckCircle, XCircle, Flag, AlertTriangle, Filter, ChevronLeft, ChevronRight, Clock, Check, X, Eye, MessageSquare, Image, FileText, Tag, MoreHorizontal, Slash } from 'lucide-react';
+import { AlertTriangle, BarChart, Bell, Bot, Building, Check, CheckCircle, ChevronDown, ChevronLeft, ChevronRight, Clock, DollarSign, Eye, FileText, Filter, Flag, Grid, Image, MessageSquare, MoreHorizontal, Newspaper, Search, Settings, Shield, Slash, Tag, User, X, XCircle } from 'lucide-react';
 // Sample data for moderation queue
 const moderationItems = [{
   id: 1,
@@ -171,7 +171,7 @@ const moderationStats = {
   aiAccuracy: 94.2,
   avgResolutionTime: '18 min'
 };
-export const ModerationQueue = () => {
+export const ModerationQueue = () =>{
   const router = useRouter();
   const [items, setItems] = useState(moderationItems);
   const [activeFilter, setActiveFilter] = useState('all');
@@ -221,15 +221,15 @@ export const ModerationQueue = () => {
   const getTypeIcon = (type, className = 'w-5 h-5') => {
     switch (type) {
       case 'comment':
-        return <MessageSquare className={className} />;
+        return<MessageSquare className={className} />;
       case 'image':
-        return <Image className={className} />;
+        return<Image className={className} />;
       case 'article':
-        return <FileText className={className} />;
+        return<FileText className={className} />;
       case 'classified':
-        return <Tag className={className} />;
+        return<Tag className={className} />;
       case 'announcement':
-        return <AlertTriangle className={className} />;
+        return<AlertTriangle className={className} />;
       default:
         return <MessageSquare className={className} />;
     }
@@ -241,7 +241,7 @@ export const ModerationQueue = () => {
     if (score >= 60) return '#FFB000';
     return '#FF3366';
   };
-  return <div className="min-h-screen bg-[#0A0A0B] text-white relative">
+  return<div className="min-h-screen bg-[#0A0A0B] text-white relative">
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 pointer-events-none" style={{
       backgroundImage: 'linear-gradient(to right, #1A1A1F 1px, transparent 1px), linear-gradient(to bottom, #1A1A1F 1px, transparent 1px)',
@@ -252,9 +252,8 @@ export const ModerationQueue = () => {
         <div className="flex items-center justify-between h-full px-6">
           <div className="font-['Space_Grotesk'] text-lg font-bold tracking-wider text-white uppercase cursor-pointer" style={{
           textShadow: '0 0 10px rgba(0,229,255,0.5)'
-        }} onClick={() => navigateTo('/admin-dashboard')}>
-            Day.News Command Center
-          </div>
+        }} onClick={() =>navigateTo('/admin-dashboard')}>
+            Day.News Command Center</div>
           <div className="flex items-center">
             <div className="flex items-center mr-8">
               <div className="w-2 h-2 bg-[#00FF88] rounded-full mr-2 animate-pulse"></div>
@@ -279,16 +278,9 @@ export const ModerationQueue = () => {
       {/* Sidebar navigation */}
       <aside className="fixed top-[60px] left-0 bottom-0 w-[80px] bg-[#0F0F11] z-40 flex flex-col items-center pt-6">
         <div className="flex flex-col items-center space-y-10">
-          <NavItem icon={<Grid />} label="Dashboard" onClick={() => navigateTo('/admin-dashboard')} />
-          <NavItem icon={<Newspaper />} label="Content" onClick={() => navigateTo('/content-management')} />
-          <NavItem icon={<DollarSign />} label="Revenue" onClick={() => navigateTo('/revenue-analytics')} />
-          <NavItem icon={<Shield />} label="Moderation" active onClick={() => navigateTo('/moderation-queue')} />
-          <NavItem icon={<Bot />} label="AI Agents" onClick={() => navigateTo('/ai-agent-control')} />
-          <NavItem icon={<BarChart />} label="Analytics" onClick={() => navigateTo('/admin-dashboard')} />
-        </div>
+          <NavItem icon={<Grid />} label="Dashboard" onClick={() => navigateTo('/admin-dashboard')} /><NavItem icon={<Newspaper />} label="Content" onClick={() => navigateTo('/content-management')} /><NavItem icon={<DollarSign />} label="Revenue" onClick={() => navigateTo('/revenue-analytics')} /><NavItem icon={<Shield />} label="Moderation" active onClick={() => navigateTo('/moderation-queue')} /><NavItem icon={<Bot />} label="AI Agents" onClick={() => navigateTo('/ai-agent-control')} /><NavItem icon={<BarChart />} label="Analytics" onClick={() => navigateTo('/admin-dashboard')} /></div>
         <div className="mt-auto mb-6">
-          <NavItem icon={<Settings />} label="Settings" onClick={() => navigateTo('/admin-dashboard')} />
-        </div>
+          <NavItem icon={<Settings />} label="Settings" onClick={() => navigateTo('/admin-dashboard')} /></div>
       </aside>
       {/* Main content area */}
       <main className="pt-[60px] pl-[80px]">
@@ -305,21 +297,14 @@ export const ModerationQueue = () => {
           </div>
           {/* Stats bar */}
           <div className="grid grid-cols-6 gap-4 mb-6">
-            <StatCard label="Pending Review" value={moderationStats.pending} icon={<Clock className="w-5 h-5 text-[#FFB000]" />} color="#FFB000" />
-            <StatCard label="Approved" value={moderationStats.approved} icon={<Check className="w-5 h-5 text-[#00FF88]" />} color="#00FF88" />
-            <StatCard label="Rejected" value={moderationStats.rejected} icon={<X className="w-5 h-5 text-[#FF3366]" />} color="#FF3366" />
-            <StatCard label="Escalated" value={moderationStats.escalated} icon={<AlertTriangle className="w-5 h-5 text-[#FFB000]" />} color="#FFB000" />
-            <StatCard label="AI Accuracy" value={`${moderationStats.aiAccuracy}%`} icon={<Bot className="w-5 h-5 text-[#00E5FF]" />} color="#00E5FF" />
-            <StatCard label="Avg. Resolution Time" value={moderationStats.avgResolutionTime} icon={<Clock className="w-5 h-5 text-[#00E5FF]" />} color="#00E5FF" />
-          </div>
+            <StatCard label="Pending Review" value={moderationStats.pending} icon={<Clock className="w-5 h-5 text-[#FFB000]" />} color="#FFB000" /><StatCard label="Approved" value={moderationStats.approved} icon={<Check className="w-5 h-5 text-[#00FF88]" />} color="#00FF88" /><StatCard label="Rejected" value={moderationStats.rejected} icon={<X className="w-5 h-5 text-[#FF3366]" />} color="#FF3366" /><StatCard label="Escalated" value={moderationStats.escalated} icon={<AlertTriangle className="w-5 h-5 text-[#FFB000]" />} color="#FFB000" /><StatCard label="AI Accuracy" value={`${moderationStats.aiAccuracy}%`} icon={<Bot className="w-5 h-5 text-[#00E5FF]" />} color="#00E5FF" /><StatCard label="Avg. Resolution Time" value={moderationStats.avgResolutionTime} icon={<Clock className="w-5 h-5 text-[#00E5FF]" />} color="#00E5FF" /></div>
           {/* Filter tabs */}
           <div className="flex space-x-4 mb-6">
-            <FilterButton label="All Content" active={activeFilter === 'all'} onClick={() => setActiveFilter('all')} />
-            <FilterButton label="Comments" active={activeFilter === 'comment'} onClick={() => setActiveFilter('comment')} icon={<MessageSquare className="w-4 h-4 mr-1" />} />
-            <FilterButton label="Images" active={activeFilter === 'image'} onClick={() => setActiveFilter('image')} icon={<Image className="w-4 h-4 mr-1" />} />
-            <FilterButton label="Articles" active={activeFilter === 'article'} onClick={() => setActiveFilter('article')} icon={<FileText className="w-4 h-4 mr-1" />} />
-            <FilterButton label="Classifieds" active={activeFilter === 'classified'} onClick={() => setActiveFilter('classified')} icon={<Tag className="w-4 h-4 mr-1" />} />
-            <FilterButton label="Announcements" active={activeFilter === 'announcement'} onClick={() => setActiveFilter('announcement')} icon={<AlertTriangle className="w-4 h-4 mr-1" />} />
+            <FilterButton label="All Content" active={activeFilter === 'all'} onClick={() =>setActiveFilter('all')} /><FilterButton label="Comments" active={activeFilter === 'comment'} onClick={() =>setActiveFilter('comment')} icon={<MessageSquare className="w-4 h-4 mr-1" />} />
+            <FilterButton label="Images" active={activeFilter === 'image'} onClick={() =>setActiveFilter('image')} icon={<Image className="w-4 h-4 mr-1" />} />
+            <FilterButton label="Articles" active={activeFilter === 'article'} onClick={() =>setActiveFilter('article')} icon={<FileText className="w-4 h-4 mr-1" />} />
+            <FilterButton label="Classifieds" active={activeFilter === 'classified'} onClick={() =>setActiveFilter('classified')} icon={<Tag className="w-4 h-4 mr-1" />} />
+            <FilterButton label="Announcements" active={activeFilter === 'announcement'} onClick={() =>setActiveFilter('announcement')} icon={<AlertTriangle className="w-4 h-4 mr-1" />} />
           </div>
           {/* Moderation queue */}
           <div className="bg-[#131316] rounded-lg border border-[#00E5FF33] shadow-[0_0_20px_rgba(0,229,255,0.1)] backdrop-blur-sm backdrop-filter mb-6">
@@ -418,21 +403,16 @@ export const ModerationQueue = () => {
             </div>
             {/* Pagination */}
             <div className="py-4 px-6 flex items-center justify-between border-t border-[#00E5FF33]">
-              <div className="text-sm text-[#A0A0A8]">
-                Showing{' '}
-                <span className="font-medium text-white">
+              <div className="text-sm text-[#A0A0A8]">Showing{' '}<span className="font-medium text-white">
                   {(currentPage - 1) * itemsPerPage + 1}
                 </span>{' '}
-                to{' '}
-                <span className="font-medium text-white">
+                to{' '}<span className="font-medium text-white">
                   {Math.min(currentPage * itemsPerPage, filteredItems.length)}
                 </span>{' '}
-                of{' '}
-                <span className="font-medium text-white">
+                of{' '}<span className="font-medium text-white">
                   {filteredItems.length}
                 </span>{' '}
-                items
-              </div>
+                items</div>
               <div className="flex space-x-2">
                 <button className={`px-3 py-1 rounded-md ${currentPage === 1 ? 'text-[#606068] cursor-not-allowed' : 'text-white hover:bg-[#00E5FF22]'}`} onClick={() => setCurrentPage(Math.max(1, currentPage - 1))} disabled={currentPage === 1}>
                   <ChevronLeft className="w-5 h-5" />
@@ -542,9 +522,7 @@ export const ModerationQueue = () => {
             <div className="p-6 border-b border-[#00E5FF33] flex justify-between items-start">
               <div>
                 <div className="flex items-center mb-2">
-                  <div className="bg-[#1A1A1F] p-1.5 rounded-md mr-2">
-                    {getTypeIcon(selectedItem.type, 'w-4 h-4')}
-                  </div>
+                  <div className="bg-[#1A1A1F] p-1.5 rounded-md mr-2">{getTypeIcon(selectedItem.type, 'w-4 h-4')}</div>
                   <div className="text-xs font-['Space_Grotesk'] tracking-wider text-[#A0A0A8]">
                     {selectedItem.type.toUpperCase()}
                   </div>
@@ -560,8 +538,7 @@ export const ModerationQueue = () => {
                 <h3 className="text-sm font-['Space_Grotesk'] tracking-wider text-[#A0A0A8] mb-3">
                   CONTENT
                 </h3>
-                <div className="text-white">
-                  {selectedItem.type === 'image' ? <div className="bg-[#0F0F11] rounded-md p-4 flex items-center justify-center">
+                <div className="text-white">{selectedItem.type === 'image' ?<div className="bg-[#0F0F11] rounded-md p-4 flex items-center justify-center">
                       <div className="text-center">
                         <Image className="w-16 h-16 text-[#606068] mx-auto mb-2" />
                         <div className="text-sm text-[#A0A0A8]">
@@ -625,14 +602,10 @@ export const ModerationQueue = () => {
                 </h3>
                 <div className="space-y-3 text-sm">
                   {Object.entries(selectedItem.context).map(([key, value]) => <div key={key} className="flex justify-between">
-                      <div className="text-[#A0A0A8] capitalize">
-                        {key.replace(/([A-Z])/g, ' $1').trim()}
-                      </div>
+                      <div className="text-[#A0A0A8] capitalize">{key.replace(/([A-Z])/g, ' $1').trim()}</div>
                       <div className="font-medium">{value}</div>
                     </div>)}
-                </div>
-                {selectedItem.type === 'comment' && <button className="mt-4 text-[#00E5FF] text-xs flex items-center" onClick={() => navigateTo('/content-management')}>
-                    <Eye className="w-3 h-3 mr-1" />
+                </div>{selectedItem.type === 'comment' &&<button className="mt-4 text-[#00E5FF] text-xs flex items-center" onClick={() =>navigateTo('/content-management')}><Eye className="w-3 h-3 mr-1" />
                     View in Context
                   </button>}
               </div>
@@ -697,7 +670,7 @@ const StatCard = ({
   icon,
   color = 'white'
 }) => {
-  return <div className="bg-[#131316] rounded-lg p-4 border border-[#00E5FF33] shadow-[0_0_20px_rgba(0,229,255,0.1)] backdrop-blur-sm backdrop-filter">
+  return<div className="bg-[#131316] rounded-lg p-4 border border-[#00E5FF33] shadow-[0_0_20px_rgba(0,229,255,0.1)] backdrop-blur-sm backdrop-filter">
       <div className="flex justify-between items-start mb-2">
         <div className="text-xs font-['Space_Grotesk'] text-[#A0A0A8] tracking-wider">
           {label}

@@ -7,10 +7,10 @@ import { FilterSidebar } from './FilterSidebar';
 import { BusinessCard } from './BusinessCard';
 import { BusinessMap } from './BusinessMap';
 import { PromotedBusinesses } from './PromotedBusinesses';
-import { MapPin, List, Map } from 'lucide-react';
+import { List, Map, MapPin } from 'lucide-react';
 import { SimpleHeroSection } from '../hero/SimpleHeroSection';
 import { useLocationDetection } from '../location/LocationDetector';
-export const BusinessDirectoryPage = () => {
+export const BusinessDirectoryPage = () =>{
   const [viewMode, setViewMode] = useState('list'); // list or map
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -201,11 +201,11 @@ export const BusinessDirectoryPage = () => {
       return false;
     }
     // Filter by rating
-    if (filters.minRating > 0 && business.rating < filters.minRating) {
+    if (filters.minRating > 0 && business.rating< filters.minRating) {
       return false;
     }
     // Filter by distance
-    if (business.distance > filters.distance) {
+    if (business.distance >filters.distance) {
       return false;
     }
     return true;
@@ -215,7 +215,7 @@ export const BusinessDirectoryPage = () => {
     console.log('Filters updated:', filters);
     console.log('Filtered businesses:', filteredBusinesses.length);
   }, [filters]);
-  return <div className="flex-1 overflow-auto bg-gray-50">
+  return<div className="flex-1 overflow-auto bg-gray-50">
       {/* Directory-specific hero section with title */}
       <SimpleHeroSection title="Business Directory" subtitle="Support local - discover amazing right in your neighborhood" />
       {/* Directory-specific search section */}
@@ -231,12 +231,10 @@ export const BusinessDirectoryPage = () => {
       {/* View toggle */}
       <div className="container mx-auto px-4 pb-4 flex justify-end">
         <div className="inline-flex bg-white rounded-md shadow-sm border border-gray-200">
-          <button onClick={() => setViewMode('list')} className={`px-4 py-2 text-sm font-medium rounded-l-md flex items-center ${viewMode === 'list' ? 'bg-news-primary text-white' : 'bg-white text-gray-700 hover:bg-gray-50'}`}>
-            <List className="h-4 w-4 mr-1.5" />
+          <button onClick={() =>setViewMode('list')} className={`px-4 py-2 text-sm font-medium rounded-l-md flex items-center ${viewMode === 'list' ? 'bg-news-primary text-white' : 'bg-white text-gray-700 hover:bg-gray-50'}`}><List className="h-4 w-4 mr-1.5" />
             List
           </button>
-          <button onClick={() => setViewMode('map')} className={`px-4 py-2 text-sm font-medium rounded-r-md flex items-center ${viewMode === 'map' ? 'bg-news-primary text-white' : 'bg-white text-gray-700 hover:bg-gray-50'}`}>
-            <Map className="h-4 w-4 mr-1.5" />
+          <button onClick={() =>setViewMode('map')} className={`px-4 py-2 text-sm font-medium rounded-r-md flex items-center ${viewMode === 'map' ? 'bg-news-primary text-white' : 'bg-white text-gray-700 hover:bg-gray-50'}`}><Map className="h-4 w-4 mr-1.5" />
             Map
           </button>
         </div>
@@ -263,9 +261,8 @@ export const BusinessDirectoryPage = () => {
                       or $299/year (save $49)
                     </p>
                   </div>
-                  <button onClick={() => router.push('/business/create')} className="bg-news-primary text-white px-4 py-2 rounded-md text-sm">
-                    Get Started
-                  </button>
+                  <button onClick={() =>router.push('/business/create')} className="bg-news-primary text-white px-4 py-2 rounded-md text-sm">
+                    Get Started</button>
                 </div>
                 <p className="text-sm text-gray-600 mt-3">
                   Reach local customers with a premium business listing in our
@@ -282,17 +279,14 @@ export const BusinessDirectoryPage = () => {
             </div>
             {/* Results count */}
             <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-gray-800">
-                {filteredBusinesses.length}{' '}
+              <h2 className="text-lg font-semibold text-gray-800">{filteredBusinesses.length}{' '}
                 {filteredBusinesses.length === 1 ? 'Business' : 'Businesses'}{' '}
-                Found
-              </h2>
+                Found</h2>
               <div className="flex items-center text-sm text-gray-500">
                 <MapPin className="h-4 w-4 mr-1" />
                 <span>{locationData?.city || 'Clearwater'}, FL</span>
               </div>
-            </div>
-            {viewMode === 'list' /* List view */ ? <div className="space-y-6">
+            </div>{viewMode === 'list' /* List view */ ?<div className="space-y-6">
                 {filteredBusinesses.map(business => <BusinessCard key={business.id} business={business} />)}
                 {filteredBusinesses.length === 0 && <div className="bg-white rounded-lg p-8 text-center border border-gray-200">
                     <div className="text-gray-400 mb-4">
@@ -305,7 +299,7 @@ export const BusinessDirectoryPage = () => {
                       Try adjusting your filters or search criteria to see more
                       results.
                     </p>
-                    <button onClick={() => {
+                    <button onClick={() =>{
                 setFilters({
                   openNow: false,
                   deliveryAvailable: false,
@@ -317,8 +311,7 @@ export const BusinessDirectoryPage = () => {
                 setSearchQuery('');
                 setSelectedCategory(null);
               }} className="text-news-primary font-medium hover:underline">
-                      Reset all filters
-                    </button>
+                      Reset all filters</button>
                   </div>}
               </div> /* Map view */ : <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
                 <BusinessMap businesses={filteredBusinesses} />

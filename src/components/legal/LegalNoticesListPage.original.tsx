@@ -2,8 +2,8 @@
 // Converted from Magic Patterns
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Search, Filter, Calendar, FileText, ChevronDown, Gavel, ChevronRight, X, Scale, BookOpen, MapPin, Clock, AlertCircle, Plus, Download, Printer, RefreshCw } from 'lucide-react';
-export const LegalNoticesListPage = () => {
+import { AlertCircle, BookOpen, Calendar, ChevronDown, ChevronRight, Clock, Download, FileText, Filter, Gavel, Plus, Printer, RefreshCw, Scale, Search, X } from 'lucide-react';
+export const LegalNoticesListPage = () =>{
   const router = useRouter();
   const [notices, setNotices] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -102,7 +102,7 @@ export const LegalNoticesListPage = () => {
     setCurrentPage(page);
     window.scrollTo(0, 0);
   };
-  return <div className="flex-1 overflow-auto bg-gray-50 p-4">
+  return<div className="flex-1 overflow-auto bg-gray-50 p-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
@@ -123,8 +123,7 @@ export const LegalNoticesListPage = () => {
                 Create Notice
               </button>
               <div className="relative">
-                <button onClick={() => setShowFilters(!showFilters)} className="bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-50 transition-colors flex items-center">
-                  <Filter className="h-4 w-4 mr-1.5" />
+                <button onClick={() =>setShowFilters(!showFilters)} className="bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-50 transition-colors flex items-center"><Filter className="h-4 w-4 mr-1.5" />
                   Filters
                   <ChevronDown className="h-4 w-4 ml-1.5" />
                 </button>
@@ -136,8 +135,7 @@ export const LegalNoticesListPage = () => {
             <form onSubmit={handleSearch} className="flex gap-2">
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-                <input type="text" placeholder="Search by case number, address, name, or keyword..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)} className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" />
-              </div>
+                <input type="text" placeholder="Search by case number, address, name, or keyword..." value={searchQuery} onChange={e =>setSearchQuery(e.target.value)} className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" /></div>
               <button type="submit" className="bg-indigo-700 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-800 transition-colors">
                 Search
               </button>
@@ -147,8 +145,7 @@ export const LegalNoticesListPage = () => {
           {showFilters && <div className="mt-4 p-4 border border-gray-200 rounded-lg bg-gray-50">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="font-medium text-gray-900">Filter Notices</h3>
-                <button onClick={() => setShowFilters(false)} className="text-gray-500 hover:text-gray-700">
-                  <X className="h-4 w-4" />
+                <button onClick={() =>setShowFilters(false)} className="text-gray-500 hover:text-gray-700"><X className="h-4 w-4" />
                 </button>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -156,8 +153,7 @@ export const LegalNoticesListPage = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Notice Type
                   </label>
-                  <select value={filters.type} onChange={e => handleFilterChange('type', e.target.value)} className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                    <option value="">All Types</option>
+                  <select value={filters.type} onChange={e =>handleFilterChange('type', e.target.value)} className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"><option value="">All Types</option>
                     <option value="foreclosure">Foreclosure</option>
                     <option value="probate">Probate</option>
                     <option value="nameChange">Name Change</option>
@@ -169,8 +165,7 @@ export const LegalNoticesListPage = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Status
                   </label>
-                  <select value={filters.status} onChange={e => handleFilterChange('status', e.target.value)} className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                    <option value="">All Statuses</option>
+                  <select value={filters.status} onChange={e =>handleFilterChange('status', e.target.value)} className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"><option value="">All Statuses</option>
                     <option value="active">Active</option>
                     <option value="expiresSoon">Expires Soon</option>
                     <option value="expired">Expired</option>
@@ -180,8 +175,7 @@ export const LegalNoticesListPage = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Date Range
                   </label>
-                  <select value={filters.dateRange} onChange={e => handleFilterChange('dateRange', e.target.value)} className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                    <option value="all">All Dates</option>
+                  <select value={filters.dateRange} onChange={e =>handleFilterChange('dateRange', e.target.value)} className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"><option value="all">All Dates</option>
                     <option value="today">Today</option>
                     <option value="week">This Week</option>
                     <option value="month">This Month</option>
@@ -192,29 +186,26 @@ export const LegalNoticesListPage = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Location
                   </label>
-                  <input type="text" placeholder="City, zip code, or address" value={filters.location} onChange={e => handleFilterChange('location', e.target.value)} className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" />
-                </div>
+                  <input type="text" placeholder="City, zip code, or address" value={filters.location} onChange={e =>handleFilterChange('location', e.target.value)} className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" /></div>
               </div>
               <div className="flex justify-end mt-4 gap-2">
                 <button onClick={clearFilters} className="text-gray-700 hover:text-indigo-700 text-sm font-medium">
                   Clear Filters
                 </button>
-                <button onClick={() => {
+                <button onClick={() =>{
               setLoading(true);
               setTimeout(() => {
                 setLoading(false);
               }, 500);
             }} className="bg-indigo-700 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-800 transition-colors">
-                  Apply Filters
-                </button>
+                  Apply Filters</button>
               </div>
             </div>}
           {/* Sort and view options */}
           <div className="flex justify-between items-center mt-6">
             <div className="flex items-center">
               <span className="text-sm text-gray-600 mr-2">Sort by:</span>
-              <select value={sortBy} onChange={e => setSortBy(e.target.value)} className="border border-gray-300 rounded-md px-3 py-1.5 text-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                <option value="date">Date (Newest First)</option>
+              <select value={sortBy} onChange={e =>setSortBy(e.target.value)} className="border border-gray-300 rounded-md px-3 py-1.5 text-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"><option value="date">Date (Newest First)</option>
                 <option value="dateAsc">Date (Oldest First)</option>
                 <option value="type">Notice Type</option>
                 <option value="status">Status</option>
@@ -293,15 +284,12 @@ export const LegalNoticesListPage = () => {
                 {Math.min(currentPage * 20, 100)} of 100 results
               </div>
               <div className="flex items-center space-x-1">
-                <button onClick={() => handlePageChange(Math.max(1, currentPage - 1))} disabled={currentPage === 1} className={`p-2 rounded-md border ${currentPage === 1 ? 'border-gray-200 text-gray-400 cursor-not-allowed' : 'border-gray-300 text-gray-700 hover:bg-gray-50'}`}>
-                  Previous
-                </button>
-                {[...Array(totalPages)].map((_, i) => <button key={i} onClick={() => handlePageChange(i + 1)} className={`w-8 h-8 rounded-md ${currentPage === i + 1 ? 'bg-indigo-700 text-white' : 'border border-gray-300 text-gray-700 hover:bg-gray-50'}`}>
-                    {i + 1}
-                  </button>)}
-                <button onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))} disabled={currentPage === totalPages} className={`p-2 rounded-md border ${currentPage === totalPages ? 'border-gray-200 text-gray-400 cursor-not-allowed' : 'border-gray-300 text-gray-700 hover:bg-gray-50'}`}>
-                  Next
-                </button>
+                <button onClick={() =>handlePageChange(Math.max(1, currentPage - 1))} disabled={currentPage === 1} className={`p-2 rounded-md border ${currentPage === 1 ? 'border-gray-200 text-gray-400 cursor-not-allowed' : 'border-gray-300 text-gray-700 hover:bg-gray-50'}`}>
+                  Previous</button>
+                {[...Array(totalPages)].map((_, i) => <button key={i} onClick={() =>handlePageChange(i + 1)} className={`w-8 h-8 rounded-md ${currentPage === i + 1 ? 'bg-indigo-700 text-white' : 'border border-gray-300 text-gray-700 hover:bg-gray-50'}`}>
+                    {i + 1}</button>)}
+                <button onClick={() =>handlePageChange(Math.min(totalPages, currentPage + 1))} disabled={currentPage === totalPages} className={`p-2 rounded-md border ${currentPage === totalPages ? 'border-gray-200 text-gray-400 cursor-not-allowed' : 'border-gray-300 text-gray-700 hover:bg-gray-50'}`}>
+                  Next</button>
               </div>
             </div>
           </div>}

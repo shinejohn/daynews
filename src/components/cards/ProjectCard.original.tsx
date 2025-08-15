@@ -10,7 +10,7 @@ interface ProjectCardProps {
   lastUpdated: string;
   type: string;
   icon: ReactNode;
-  onViewClick?: () => void;
+  onViewClick?: () =>void;
   onEditClick?: () => void;
   className?: string;
 }
@@ -38,7 +38,7 @@ export const ProjectCard = ({
         return 'bg-yellow-100 text-yellow-800';
     }
   };
-  return <div className={`bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden ${className}`}>
+  return<div className={`bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden ${className}`}>
       <div className="h-36 overflow-hidden">
         <img src={image} alt={title} className="w-full h-full object-cover" />
       </div>

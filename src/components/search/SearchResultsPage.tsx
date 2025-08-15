@@ -2,13 +2,13 @@
 // Converted from Magic Patterns
 import React, { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase/client';
-import { Search, X, Clock, Filter, ArrowUp, ArrowDown, Calendar, User, Tag, MapPin } from 'lucide-react';
+import { ArrowDown, ArrowUp, Clock, Filter, Search, Tag, X } from 'lucide-react';
 import { PageHeader } from '../PageHeader';
 import { SearchFilters } from './SearchFilters';
 import { SearchResultCard } from './SearchResultCard';
 import { SearchSuggestions } from './SearchSuggestions';
 import { useLocationDetection } from '../location/LocationDetector';
-export const SearchResultsPage = () => {
+export const SearchResultsPage = () =>{
   const {
     locationData
   } = useLocationDetection();
@@ -93,7 +93,7 @@ export const SearchResultsPage = () => {
       setPage(1);
     }
   };
-  return <div className="flex-1 overflow-auto bg-gray-50">
+  return<div className="flex-1 overflow-auto bg-gray-50">
       <PageHeader />
       <div className="mx-auto max-w-7xl px-4 py-6">
         {/* Persistent Search Bar */}
@@ -154,13 +154,11 @@ export const SearchResultsPage = () => {
               <h2 className="text-xl font-bold text-gray-900 mb-2 sm:mb-0">
                 {loading && page === 1 ? <div className="h-7 w-48 bg-gray-200 animate-pulse rounded"></div> : <>
                     <span className="text-news-primary">{totalResults}</span>{' '}
-                    results for "{query}"
-                  </>}
+                    results for "{query}"</>}
               </h2>
               <div className="flex items-center space-x-2">
                 <span className="text-sm text-gray-500">Sort:</span>
-                <select value={sortBy} onChange={e => handleSortChange(e.target.value)} className="text-sm border border-gray-300 rounded-md px-2 py-1">
-                  <option value="relevance">Relevance</option>
+                <select value={sortBy} onChange={e =>handleSortChange(e.target.value)} className="text-sm border border-gray-300 rounded-md px-2 py-1"><option value="relevance">Relevance</option>
                   <option value="recent">Most Recent</option>
                   <option value="popular">Most Popular</option>
                 </select>
@@ -184,10 +182,8 @@ export const SearchResultsPage = () => {
                   <h3 className="text-xl font-bold text-gray-700 mb-2">
                     No results found
                   </h3>
-                  <p className="text-gray-500 max-w-md mx-auto">
-                    We couldn't find any matches for "{query}". Try different
-                    keywords or filters.
-                  </p>
+                  <p className="text-gray-500 max-w-md mx-auto">We couldn't find any matches for "{query}". Try different
+                    keywords or filters.</p>
                 </div>}
             </div>
             {/* Load More */}

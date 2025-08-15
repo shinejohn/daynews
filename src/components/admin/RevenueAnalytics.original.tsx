@@ -1,8 +1,8 @@
 'use client';
 // Converted from Magic Patterns
-import React, { useState, Component } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Grid, Newspaper, DollarSign, Shield, Bot, BarChart, Settings, Building, ChevronDown, Bell, User, Calendar, Download, TrendingUp, TrendingDown, ArrowUp, ArrowDown, HelpCircle, Layers, Users, Briefcase, Tag, CreditCard, Percent, Filter } from 'lucide-react';
+import { ArrowDown, ArrowUp, BarChart, Bell, Bot, Briefcase, Building, Calendar, ChevronDown, CreditCard, DollarSign, Download, Filter, Grid, HelpCircle, Layers, Newspaper, Percent, Settings, Shield, Tag, TrendingDown, TrendingUp, User, Users } from 'lucide-react';
 // Sample data for revenue analytics
 const revenueData = {
   overview: {
@@ -120,7 +120,7 @@ const revenueData = {
     growth: 42.5
   }]
 };
-export const RevenueAnalytics = () => {
+export const RevenueAnalytics = () =>{
   const router = useRouter();
   const [dateRange, setDateRange] = useState('This Month');
   const [activeTab, setActiveTab] = useState('overview');
@@ -140,7 +140,7 @@ export const RevenueAnalytics = () => {
   // Get growth indicator
   const getGrowthIndicator = (value, size = 5) => {
     if (value > 0) {
-      return <ArrowUp className={`text-[#00FF88] w-${size} h-${size}`} />;
+      return<ArrowUp className={`text-[#00FF88] w-${size} h-${size}`} />;
     } else if (value < 0) {
       return <ArrowDown className={`text-[#FF3366] w-${size} h-${size}`} />;
     }
@@ -149,7 +149,7 @@ export const RevenueAnalytics = () => {
   // Get growth color
   const getGrowthColor = value => {
     if (value > 0) return '#00FF88';
-    if (value < 0) return '#FF3366';
+    if (value< 0) return '#FF3366';
     return 'white';
   };
   return <div className="min-h-screen bg-[#0A0A0B] text-white relative">
@@ -163,9 +163,8 @@ export const RevenueAnalytics = () => {
         <div className="flex items-center justify-between h-full px-6">
           <div className="font-['Space_Grotesk'] text-lg font-bold tracking-wider text-white uppercase cursor-pointer" style={{
           textShadow: '0 0 10px rgba(0,229,255,0.5)'
-        }} onClick={() => navigateTo('/admin-dashboard')}>
-            Day.News Command Center
-          </div>
+        }} onClick={() =>navigateTo('/admin-dashboard')}>
+            Day.News Command Center</div>
           <div className="flex items-center">
             <div className="flex items-center mr-8">
               <div className="w-2 h-2 bg-[#00FF88] rounded-full mr-2 animate-pulse"></div>
@@ -190,16 +189,9 @@ export const RevenueAnalytics = () => {
       {/* Sidebar navigation */}
       <aside className="fixed top-[60px] left-0 bottom-0 w-[80px] bg-[#0F0F11] z-40 flex flex-col items-center pt-6">
         <div className="flex flex-col items-center space-y-10">
-          <NavItem icon={<Grid />} label="Dashboard" onClick={() => navigateTo('/admin-dashboard')} />
-          <NavItem icon={<Newspaper />} label="Content" onClick={() => navigateTo('/content-management')} />
-          <NavItem icon={<DollarSign />} label="Revenue" active onClick={() => navigateTo('/revenue-analytics')} />
-          <NavItem icon={<Shield />} label="Moderation" onClick={() => navigateTo('/moderation-queue')} />
-          <NavItem icon={<Bot />} label="AI Agents" onClick={() => navigateTo('/ai-agent-control')} />
-          <NavItem icon={<BarChart />} label="Analytics" onClick={() => navigateTo('/admin-dashboard')} />
-        </div>
+          <NavItem icon={<Grid />} label="Dashboard" onClick={() => navigateTo('/admin-dashboard')} /><NavItem icon={<Newspaper />} label="Content" onClick={() => navigateTo('/content-management')} /><NavItem icon={<DollarSign />} label="Revenue" active onClick={() => navigateTo('/revenue-analytics')} /><NavItem icon={<Shield />} label="Moderation" onClick={() => navigateTo('/moderation-queue')} /><NavItem icon={<Bot />} label="AI Agents" onClick={() => navigateTo('/ai-agent-control')} /><NavItem icon={<BarChart />} label="Analytics" onClick={() => navigateTo('/admin-dashboard')} /></div>
         <div className="mt-auto mb-6">
-          <NavItem icon={<Settings />} label="Settings" onClick={() => navigateTo('/admin-dashboard')} />
-        </div>
+          <NavItem icon={<Settings />} label="Settings" onClick={() => navigateTo('/admin-dashboard')} /></div>
       </aside>
       {/* Main content area */}
       <main className="pt-[60px] pl-[80px]">
@@ -226,13 +218,7 @@ export const RevenueAnalytics = () => {
           </div>
           {/* Revenue overview cards */}
           <div className="grid grid-cols-6 gap-4 mb-8">
-            <RevenueCard title="TOTAL REVENUE" value={formatCurrency(revenueData.overview.totalRevenue)} growth={revenueData.overview.growth} icon={<DollarSign className="w-6 h-6 text-[#00E5FF]" />} onClick={() => setActiveTab('overview')} active={activeTab === 'overview'} />
-            <RevenueCard title="SUBSCRIPTIONS" value={formatCurrency(revenueData.overview.subscriptions)} growth={18.7} icon={<Users className="w-6 h-6 text-[#00FF88]" />} onClick={() => setActiveTab('subscriptions')} active={activeTab === 'subscriptions'} />
-            <RevenueCard title="ADVERTISING" value={formatCurrency(revenueData.overview.advertising)} growth={25.4} icon={<Briefcase className="w-6 h-6 text-[#FFB000]" />} onClick={() => setActiveTab('advertising')} active={activeTab === 'advertising'} />
-            <RevenueCard title="CLASSIFIEDS" value={formatCurrency(revenueData.overview.classifieds)} growth={28.2} icon={<Tag className="w-6 h-6 text-[#FF3366]" />} onClick={() => setActiveTab('classifieds')} active={activeTab === 'classifieds'} />
-            <RevenueCard title="EVENTS" value={formatCurrency(revenueData.overview.events)} growth={42.5} icon={<Calendar className="w-6 h-6 text-[#00E5FF]" />} onClick={() => setActiveTab('events')} active={activeTab === 'events'} />
-            <RevenueCard title="COMMUNITIES" value="7 Active" growth={12.5} icon={<Building className="w-6 h-6 text-[#00FF88]" />} onClick={() => setActiveTab('communities')} active={activeTab === 'communities'} />
-          </div>
+            <RevenueCard title="TOTAL REVENUE" value={formatCurrency(revenueData.overview.totalRevenue)} growth={revenueData.overview.growth} icon={<DollarSign className="w-6 h-6 text-[#00E5FF]" />} onClick={() => setActiveTab('overview')} active={activeTab === 'overview'} /><RevenueCard title="SUBSCRIPTIONS" value={formatCurrency(revenueData.overview.subscriptions)} growth={18.7} icon={<Users className="w-6 h-6 text-[#00FF88]" />} onClick={() => setActiveTab('subscriptions')} active={activeTab === 'subscriptions'} /><RevenueCard title="ADVERTISING" value={formatCurrency(revenueData.overview.advertising)} growth={25.4} icon={<Briefcase className="w-6 h-6 text-[#FFB000]" />} onClick={() => setActiveTab('advertising')} active={activeTab === 'advertising'} /><RevenueCard title="CLASSIFIEDS" value={formatCurrency(revenueData.overview.classifieds)} growth={28.2} icon={<Tag className="w-6 h-6 text-[#FF3366]" />} onClick={() => setActiveTab('classifieds')} active={activeTab === 'classifieds'} /><RevenueCard title="EVENTS" value={formatCurrency(revenueData.overview.events)} growth={42.5} icon={<Calendar className="w-6 h-6 text-[#00E5FF]" />} onClick={() => setActiveTab('events')} active={activeTab === 'events'} /><RevenueCard title="COMMUNITIES" value="7 Active" growth={12.5} icon={<Building className="w-6 h-6 text-[#00FF88]" />} onClick={() => setActiveTab('communities')} active={activeTab === 'communities'} /></div>
           {/* Monthly revenue chart */}
           <div className="bg-[#131316] rounded-lg p-6 border border-[#00E5FF33] shadow-[0_0_20px_rgba(0,229,255,0.1)] backdrop-blur-sm backdrop-filter mb-8">
             <div className="flex justify-between items-center mb-6">
@@ -380,9 +366,8 @@ export const RevenueAnalytics = () => {
                 <h2 className="font-['Space_Grotesk'] text-lg font-bold tracking-wider">
                   COMMUNITY PERFORMANCE
                 </h2>
-                <button className="text-sm text-[#00E5FF] flex items-center" onClick={() => navigateTo('/community-deployment')}>
-                  View All Communities
-                </button>
+                <button className="text-sm text-[#00E5FF] flex items-center" onClick={() =>navigateTo('/community-deployment')}>
+                  View All Communities</button>
               </div>
               <div className="overflow-hidden">
                 <table className="w-full">
@@ -406,8 +391,7 @@ export const RevenueAnalytics = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {revenueData.communities.map((community, index) => <tr key={index} className="border-b border-[#FFFFFF11] hover:bg-[#FFFFFF11] cursor-pointer" onClick={() => navigateTo('/community-deployment')}>
-                        <td className="py-3 text-sm">{community.name}</td>
+                    {revenueData.communities.map((community, index) => <tr key={index} className="border-b border-[#FFFFFF11] hover:bg-[#FFFFFF11] cursor-pointer" onClick={() =>navigateTo('/community-deployment')}><td className="py-3 text-sm">{community.name}</td>
                         <td className="py-3 text-sm text-right font-['JetBrains_Mono']">
                           {formatCurrency(community.revenue)}
                         </td>

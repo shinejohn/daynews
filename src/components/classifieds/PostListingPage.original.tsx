@@ -1,9 +1,9 @@
 'use client';
 // Converted from Magic Patterns
-import React, { useState, memo } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { ArrowLeft, ArrowRight, Camera, X, Info, Calendar, MapPin, CheckCircle } from 'lucide-react';
-export const PostListingPage = () => {
+import { ArrowLeft, ArrowRight, Calendar, Camera, CheckCircle, Info, MapPin, X } from 'lucide-react';
+export const PostListingPage = () =>{
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -69,13 +69,13 @@ export const PostListingPage = () => {
       if (isNaN(Number(formData.price))) newErrors.price = 'Price must be a number';
     } else if (currentStep === 2) {
       if (!formData.description) newErrors.description = 'Description is required';
-      if (formData.description && formData.description.length < 20) newErrors.description = 'Description must be at least 20 characters';
+      if (formData.description && formData.description.length< 20) newErrors.description = 'Description must be at least 20 characters';
       if (!formData.location) newErrors.location = 'Location is required';
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-  const handleNext = () => {
+  const handleNext = () =>{
     if (validateStep()) {
       if (currentStep === 3) {
         // If at the last step of the initial form, proceed to community selection
@@ -213,12 +213,10 @@ export const PostListingPage = () => {
     const selectedCategory = categories.find(cat => cat.id === formData.category);
     return selectedCategory ? selectedCategory.subcategories : [];
   };
-  return <div className="flex-1 overflow-auto bg-gray-50">
+  return<div className="flex-1 overflow-auto bg-gray-50">
       <div className="max-w-3xl mx-auto py-8 px-4">
         <button onClick={handleBack} className="flex items-center text-news-primary mb-6 hover:underline" aria-label={currentStep === 1 ? 'Back to Classifieds' : 'Previous Step'}>
-          <ArrowLeft className="h-4 w-4 mr-1" />
-          {currentStep === 1 ? 'Back to Classifieds' : 'Previous Step'}
-        </button>
+          <ArrowLeft className="h-4 w-4 mr-1" />{currentStep === 1 ? 'Back to Classifieds' : 'Previous Step'}</button>
         <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
           <h1 className="text-2xl font-bold text-gray-900 mb-2">
             Post a Classified Ad
@@ -230,16 +228,13 @@ export const PostListingPage = () => {
           {/* Progress steps */}
           <div className="flex items-center mb-8">
             <div className={`w-8 h-8 rounded-full flex items-center justify-center ${currentStep >= 1 ? 'bg-news-primary text-white' : 'bg-gray-200 text-gray-500'}`}>
-              1
-            </div>
+              1</div>
             <div className={`flex-1 h-1 mx-2 ${currentStep >= 2 ? 'bg-news-primary' : 'bg-gray-200'}`}></div>
             <div className={`w-8 h-8 rounded-full flex items-center justify-center ${currentStep >= 2 ? 'bg-news-primary text-white' : 'bg-gray-200 text-gray-500'}`}>
-              2
-            </div>
+              2</div>
             <div className={`flex-1 h-1 mx-2 ${currentStep >= 3 ? 'bg-news-primary' : 'bg-gray-200'}`}></div>
             <div className={`w-8 h-8 rounded-full flex items-center justify-center ${currentStep >= 3 ? 'bg-news-primary text-white' : 'bg-gray-200 text-gray-500'}`}>
-              3
-            </div>
+              3</div>
           </div>
           {/* Step 1: Basic Information */}
           {currentStep === 1 && <div>
@@ -297,9 +292,7 @@ export const PostListingPage = () => {
                   {errors.price && <p className="mt-1 text-sm text-red-500" id="price-error">
                       {errors.price}
                     </p>}
-                  <p className="mt-1 text-xs text-gray-500">
-                    Enter 0 for free items or "price on request" items
-                  </p>
+                  <p className="mt-1 text-xs text-gray-500">Enter 0 for free items or "price on request" items</p>
                 </div>
               </div>
             </div>}
@@ -351,8 +344,7 @@ export const PostListingPage = () => {
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">
                   {formData.images.map((image, index) => <div key={index} className="relative aspect-square bg-gray-100 rounded-md overflow-hidden">
                       <img src={image.preview} alt={`Preview ${index + 1}`} className="w-full h-full object-cover" />
-                      <button type="button" onClick={() => removeImage(index)} className="absolute top-1 right-1 bg-white rounded-full p-1 shadow-md hover:bg-gray-100" aria-label="Remove image">
-                        <X className="h-4 w-4 text-gray-600" />
+                      <button type="button" onClick={() =>removeImage(index)} className="absolute top-1 right-1 bg-white rounded-full p-1 shadow-md hover:bg-gray-100" aria-label="Remove image"><X className="h-4 w-4 text-gray-600" />
                       </button>
                     </div>)}
                   {formData.images.length < 5 && <label className="aspect-square bg-gray-100 rounded-md flex flex-col items-center justify-center cursor-pointer hover:bg-gray-200 border-2 border-dashed border-gray-300">
@@ -374,19 +366,15 @@ export const PostListingPage = () => {
                   <Calendar className="h-5 w-5 mr-2 text-blue-600" />
                   Next: Select Communities & Timeframe
                 </h3>
-                <p className="text-sm text-blue-700">
-                  After completing this step, you'll select the communities
-                  where your ad will appear and choose how long it should run.
-                </p>
+                <p className="text-sm text-blue-700">After completing this step, you'll select the communities
+                  where your ad will appear and choose how long it should run.</p>
               </div>
             </div>}
           <div className="flex justify-between mt-8">
             <button onClick={handleBack} className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50" aria-label={currentStep === 1 ? 'Back to Classifieds' : 'Go back to previous step'}>
               Back
             </button>
-            <button onClick={handleNext} className="px-6 py-2 bg-news-primary text-white rounded-md hover:bg-news-primary-dark flex items-center" aria-label={currentStep === 3 ? 'Continue to Communities selection' : 'Proceed to next step'}>
-              {currentStep === 3 ? 'Continue to Communities' : 'Next Step'}
-              <ArrowRight className="ml-2 h-4 w-4" />
+            <button onClick={handleNext} className="px-6 py-2 bg-news-primary text-white rounded-md hover:bg-news-primary-dark flex items-center" aria-label={currentStep === 3 ? 'Continue to Communities selection' : 'Proceed to next step'}>{currentStep === 3 ? 'Continue to Communities' : 'Next Step'}<ArrowRight className="ml-2 h-4 w-4" />
             </button>
           </div>
         </div>

@@ -58,7 +58,7 @@ export interface SearchResponse {
 }
 
 // Helper function to calculate time filter date
-const getTimeFilterDate = (timeFilter: string): string | null => {
+const getTimeFilterDate = (timeFilter: string): string | null =>{
   const now = new Date();
   switch (timeFilter) {
     case 'today':
@@ -78,7 +78,7 @@ const getTimeFilterDate = (timeFilter: string): string | null => {
 };
 
 // Search news articles
-const searchNews = async (params: SearchParams): Promise<SearchResult[]> => {
+const searchNews = async (params: SearchParams): Promise<SearchResult[]>=> {
   if (!supabase) throw new Error('Supabase client not initialized');
 
 
@@ -130,7 +130,7 @@ const searchNews = async (params: SearchParams): Promise<SearchResult[]> => {
 };
 
 // Search events
-const searchEvents = async (params: SearchParams): Promise<SearchResult[]> => {
+const searchEvents = async (params: SearchParams): Promise<SearchResult[]>=> {
   if (!supabase) throw new Error('Supabase client not initialized');
   let query = (supabase as any.
   from('events').
@@ -173,7 +173,7 @@ const searchEvents = async (params: SearchParams): Promise<SearchResult[]> => {
 };
 
 // Search businesses
-const searchBusinesses = async (params: SearchParams): Promise<SearchResult[]> => {
+const searchBusinesses = async (params: SearchParams): Promise<SearchResult[]>=> {
   if (!supabase) throw new Error('Supabase client not initialized');
   let query = (supabase as any.
   from('businesses').
@@ -217,7 +217,7 @@ const searchBusinesses = async (params: SearchParams): Promise<SearchResult[]> =
 };
 
 // Search announcements
-const searchAnnouncements = async (params: SearchParams): Promise<SearchResult[]> => {
+const searchAnnouncements = async (params: SearchParams): Promise<SearchResult[]>=> {
   if (!supabase) throw new Error('Supabase client not initialized');
   let query = (supabase as any.
   from('announcements').

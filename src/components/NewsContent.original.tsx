@@ -1,6 +1,6 @@
 // Converted from Magic Patterns
 import React from 'react';
-import { MapPin, ThermometerIcon, Share2Icon } from 'lucide-react';
+import { MapPin, MapPinIcon, ThermometerIcon } from 'lucide-react';
 import { CategoryTabs } from './CategoryTabs';
 import { NewsArticle } from './NewsArticle';
 import { MarketplaceSection } from './MarketplaceSection';

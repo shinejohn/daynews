@@ -1,58 +1,46 @@
 'use client';
 // Converted from Magic Patterns
-import React, { useEffect, useState, memo } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { Search, Grid, Layout, FileText, User, ShoppingBag, Calendar, MessageSquare, Tag, AlertTriangle, Briefcase, Scissors, Heart, Gavel, Archive, Newspaper, Settings, Edit, CheckSquare, ChevronRight, X, Eye, MapPin, ThermometerIcon, Globe, DollarSign, Shield, Bot, BarChart, Building, Rocket } from 'lucide-react';
+import { AlertTriangle, Archive, BarChart, Bot, Briefcase, Building, Calendar, CheckSquare, ChevronRight, DollarSign, Edit, Eye, FileText, Gavel, Globe, Grid, Layout, MapPin, MessageSquare, Newspaper, Rocket, Scissors, Search, Settings, ShoppingBag, Tag, ThermometerIcon, User, X } from 'lucide-react';
 // Define page categories and their icons
 const categories = {
   main: {
     name: 'Main Pages',
-    icon: <Layout />
-  },
+    icon: <Layout />},
   user: {
     name: 'User Pages',
-    icon: <User />
-  },
+    icon:<User />},
   content: {
     name: 'Content Creation',
-    icon: <Edit />
-  },
+    icon:<Edit />},
   business: {
     name: 'Business',
-    icon: <Briefcase />
-  },
+    icon:<Briefcase />},
   advertising: {
     name: 'Advertising',
-    icon: <Globe />
-  },
+    icon:<Globe />},
   community: {
     name: 'Community',
-    icon: <MessageSquare />
-  },
+    icon:<MessageSquare />},
   marketplace: {
     name: 'Marketplace',
-    icon: <ShoppingBag />
-  },
+    icon:<ShoppingBag />},
   events: {
     name: 'Events',
-    icon: <Calendar />
-  },
+    icon:<Calendar />},
   legal: {
     name: 'Legal',
-    icon: <Gavel />
-  },
+    icon:<Gavel />},
   utility: {
     name: 'Utility',
-    icon: <Settings />
-  },
+    icon:<Settings />},
   review: {
     name: 'Review',
-    icon: <CheckSquare />
-  },
+    icon:<CheckSquare />},
   admin: {
     name: 'Admin Dashboard',
-    icon: <Grid />
-  }
+    icon:<Grid />}
 };
 // Define all pages with metadata
 const allPages = [
@@ -374,7 +362,7 @@ export const PageDirectory = () => {
     acc[category] = allPages.filter(page => page.category === category).length;
     return acc;
   }, {});
-  return <div className="min-h-screen bg-gray-50 flex flex-col">
+  return<div className="min-h-screen bg-gray-50 flex flex-col">
       {/* Community Bar */}
       <div className="bg-news-primary text-white py-2 sticky top-0 z-50">
         <div className="container mx-auto px-4 max-w-7xl">
@@ -388,14 +376,12 @@ export const PageDirectory = () => {
                 <span>78°F Sunny</span>
               </div>
               <span className="mx-2">•</span>
-              <span>
-                {new Date().toLocaleDateString('en-US', {
+              <span>{new Date().toLocaleDateString('en-US', {
                 weekday: 'long',
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric'
-              })}
-              </span>
+              })}</span>
             </div>
           </div>
         </div>
@@ -407,9 +393,7 @@ export const PageDirectory = () => {
           <h1 className="font-display text-4xl font-black uppercase tracking-tight text-news-primary">
             DAY.NEWS CLEARWATER
           </h1>
-          <p className="text-gray-600 italic mt-1">
-            "Your Community, Your News"
-          </p>
+          <p className="text-gray-600 italic mt-1">"Your Community, Your News"</p>
         </div>
       </header>
 
@@ -430,13 +414,11 @@ export const PageDirectory = () => {
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                 <input type="text" placeholder="Search pages by name, description or path..." className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-news-primary focus:border-news-primary" value={searchQuery} onChange={e => setSearchQuery(e.target.value)} />
-                {searchQuery && <button onClick={() => setSearchQuery('')} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600">
-                    <X className="h-5 w-5" />
+                {searchQuery && <button onClick={() =>setSearchQuery('')} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"><X className="h-5 w-5" />
                   </button>}
               </div>
               <div className="flex-shrink-0">
-                <select value={selectedCategory} onChange={e => setSelectedCategory(e.target.value)} className="w-full md:w-60 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-news-primary focus:border-news-primary">
-                  <option value="all">
+                <select value={selectedCategory} onChange={e =>setSelectedCategory(e.target.value)} className="w-full md:w-60 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-news-primary focus:border-news-primary"><option value="all">
                     All Categories ({allPages.length})
                   </option>
                   {Object.entries(categories).map(([key, {
@@ -459,8 +441,7 @@ export const PageDirectory = () => {
             </div>
 
             {/* Results */}
-            <div className="space-y-6">
-              {Object.entries(categories).filter(([key]) => selectedCategory === 'all' || key === selectedCategory).filter(([key]) => {
+            <div className="space-y-6">{Object.entries(categories).filter(([key]) => selectedCategory === 'all' || key === selectedCategory).filter(([key]) => {
               const pagesInCategory = filteredPages.filter(p => p.category === key);
               return pagesInCategory.length > 0;
             }).map(([key, {
@@ -468,16 +449,14 @@ export const PageDirectory = () => {
               icon
             }]) => {
               const pagesInCategory = filteredPages.filter(p => p.category === key);
-              return <div key={key} className="border border-gray-200 rounded-lg overflow-hidden">
+              return<div key={key} className="border border-gray-200 rounded-lg overflow-hidden">
                       <div className="bg-gray-50 border-b border-gray-200 px-6 py-4 flex items-center">
                         <div className="mr-2 text-news-primary">{icon}</div>
                         <h2 className="text-lg font-semibold text-gray-900">
                           {name}
                         </h2>
-                        <span className="ml-2 text-sm text-gray-500">
-                          ({pagesInCategory.length}{' '}
-                          {pagesInCategory.length === 1 ? 'page' : 'pages'})
-                        </span>
+                        <span className="ml-2 text-sm text-gray-500">({pagesInCategory.length}{' '}
+                          {pagesInCategory.length === 1 ? 'page' : 'pages'})</span>
                       </div>
                       <div className="divide-y divide-gray-200">
                         {pagesInCategory.map(page => <div key={page.path} className={`px-6 py-4 hover:bg-gray-50 transition-colors ${pathname === page.path ? 'bg-blue-50' : ''}`}>
@@ -493,8 +472,7 @@ export const PageDirectory = () => {
                                   {page.path}
                                 </p>
                               </div>
-                              <button onClick={() => handleNavigate(page.path)} className="flex items-center text-news-primary hover:text-news-primary-dark text-sm font-medium ml-4">
-                                <Eye className="h-4 w-4 mr-1" />
+                              <button onClick={() =>handleNavigate(page.path)} className="flex items-center text-news-primary hover:text-news-primary-dark text-sm font-medium ml-4"><Eye className="h-4 w-4 mr-1" />
                                 Visit
                                 <ChevronRight className="h-4 w-4 ml-1" />
                               </button>

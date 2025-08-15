@@ -1,7 +1,7 @@
 'use client';
 // Converted from Magic Patterns
 import React from 'react';
-import { MapPin, Bell } from 'lucide-react';
+import { Bell, MapPin } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 export const AnnouncementsSection = () => {
   const router = useRouter();

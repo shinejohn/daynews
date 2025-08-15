@@ -1,7 +1,7 @@
 'use client';
 // Converted from Magic Patterns
 import React from 'react';
-import { Check, X, Globe, Info } from 'lucide-react';
+import { Check, Globe, Info, X } from 'lucide-react';
 export const MultiCitySettings = ({
   isEnabled,
   onToggle,
@@ -27,11 +27,9 @@ export const MultiCitySettings = ({
       {isEnabled && <div className="mt-4 pt-4 border-t border-gray-100">
           <div className="flex items-start mb-3">
             <Info className="h-4 w-4 text-news-primary mt-0.5 mr-2 flex-shrink-0" />
-            <p className="text-xs text-gray-600">
-              With Multi-City Mode enabled, you'll see news from all your
+            <p className="text-xs text-gray-600">With Multi-City Mode enabled, you'll see news from all your
               followed communities in your feed. You can filter by community
-              using the dropdown in the navigation bar.
-            </p>
+              using the dropdown in the navigation bar.</p>
           </div>
           <div className="bg-gray-50 rounded-md p-3">
             <div className="text-sm font-medium text-gray-700 mb-2">

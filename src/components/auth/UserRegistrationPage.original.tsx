@@ -2,11 +2,11 @@
 // Converted from Magic Patterns
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Mail, Lock, User, ArrowLeft, Eye, EyeOff, CheckCircle } from 'lucide-react';
+import { ArrowLeft, CheckCircle, Eye, EyeOff, Lock, Mail } from 'lucide-react';
 import { useLocationDetection } from '../location/LocationDetector';
 export const UserRegistrationPage = ({
   onNavigate
-}) => {
+}) =>{
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
@@ -52,7 +52,7 @@ export const UserRegistrationPage = ({
     }
     if (!formData.password) {
       newErrors.password = 'Password is required';
-    } else if (formData.password.length < 8) {
+    } else if (formData.password.length< 8) {
       newErrors.password = 'Password must be at least 8 characters';
     }
     if (!formData.agreeTerms) {
@@ -61,7 +61,7 @@ export const UserRegistrationPage = ({
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-  const handleSubmit = e => {
+  const handleSubmit = e =>{
     e.preventDefault();
     if (validateForm()) {
       // In a real app, you would send the form data to your backend
@@ -70,7 +70,7 @@ export const UserRegistrationPage = ({
       router.push('/');
     }
   };
-  return <div className="flex-1 overflow-auto bg-gray-50">
+  return<div className="flex-1 overflow-auto bg-gray-50">
       <div className="max-w-md mx-auto py-12 px-4">
         {/* Header */}
         <div className="text-center mb-8">
@@ -147,13 +147,10 @@ export const UserRegistrationPage = ({
                   <input id="agreeTerms" name="agreeTerms" type="checkbox" checked={formData.agreeTerms} onChange={handleChange} className="h-4 w-4 text-news-primary border-gray-300 rounded focus:ring-news-primary" />
                 </div>
                 <div className="ml-3 text-sm">
-                  <label htmlFor="agreeTerms" className="font-medium text-gray-700">
-                    I agree to the{' '}
-                    <a href="#" className="text-news-primary hover:underline">
+                  <label htmlFor="agreeTerms" className="font-medium text-gray-700">I agree to the{' '}<a href="#" className="text-news-primary hover:underline">
                       Terms of Service
                     </a>{' '}
-                    and{' '}
-                    <a href="#" className="text-news-primary hover:underline">
+                    and{' '}<a href="#" className="text-news-primary hover:underline">
                       Privacy Policy
                     </a>
                   </label>
@@ -181,11 +178,8 @@ export const UserRegistrationPage = ({
         </div>
         {/* Sign In Link */}
         <div className="text-center">
-          <p className="text-gray-600 text-sm">
-            Already have an account?{' '}
-            <button className="text-news-primary font-medium hover:underline" onClick={() => router.push('/login')}>
-              Sign in
-            </button>
+          <p className="text-gray-600 text-sm">Already have an account?{' '}<button className="text-news-primary font-medium hover:underline" onClick={() =>router.push('/login')}>
+              Sign in</button>
           </p>
         </div>
         {/* Subscription Benefits */}

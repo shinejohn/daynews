@@ -1,15 +1,15 @@
 'use client';
 // Converted from Magic Patterns
-import React, { useEffect, useState, memo } from 'react';
+import React, { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase/client';
 // ssr-csr=ssr
 // []=yes
 // []=yes
 
 import { useRouter } from 'next/navigation';
-import { MapPin, Share2, Heart, MessageCircle, Calendar, PlusCircle, Clock, Search, Filter, ChevronDown, ExternalLink, TrendingUp, Users } from 'lucide-react';
+import { ChevronDown, Clock, ExternalLink, Filter, Search, Share2, TrendingUp, User, Users } from 'lucide-react';
 import { useLocationDetection } from '../location/LocationDetector';
-export const TrendingPage = () => {
+export const TrendingPage = () =>{
   const router = useRouter();
   const {
     locationData
@@ -67,7 +67,7 @@ export const TrendingPage = () => {
   const TrendingNowLive = ({
     topics,
     timePeriod
-  }) => <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+  }) =><div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
       <h2 className="text-xl font-bold mb-4">Trending Topics</h2>
       <div className="space-y-2">
         {topics?.map((topic, index) => <div key={index} className="flex items-center justify-between p-2 hover:bg-gray-50 rounded">
@@ -199,7 +199,7 @@ export const TrendingPage = () => {
         return 'Currently active';
     }
   };
-  return <div className="flex-1 overflow-auto bg-gray-50">
+  return<div className="flex-1 overflow-auto bg-gray-50">
       <main className="pt-4 overflow-auto">
         <div className="mx-auto max-w-7xl px-4 py-6">
           {/* Page Header */}
@@ -207,9 +207,7 @@ export const TrendingPage = () => {
             <div className="flex flex-col md:flex-row md:items-end justify-between">
               <div>
                 <h1 className="text-3xl font-bold text-gray-900 mb-2 flex items-center">
-                  <TrendingUp className="h-8 w-8 mr-2 text-news-primary" />
-                  Trending in {locationData?.city || 'Clearwater'}
-                </h1>
+                  <TrendingUp className="h-8 w-8 mr-2 text-news-primary" />Trending in {locationData?.city || 'Clearwater'}</h1>
                 <p className="text-gray-600">
                   What your neighbors are talking about right now
                 </p>
@@ -230,18 +228,14 @@ export const TrendingPage = () => {
           {/* Time Period Toggle */}
           <div className="mb-8">
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-1.5 inline-flex">
-              <button onClick={() => handleTimePeriodChange('now')} className={`px-4 py-2 text-sm font-medium rounded-md ${timePeriod === 'now' ? 'bg-news-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}>
-                Now
-              </button>
-              <button onClick={() => handleTimePeriodChange('today')} className={`px-4 py-2 text-sm font-medium rounded-md ${timePeriod === 'today' ? 'bg-news-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}>
-                Today
-              </button>
-              <button onClick={() => handleTimePeriodChange('week')} className={`px-4 py-2 text-sm font-medium rounded-md ${timePeriod === 'week' ? 'bg-news-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}>
-                This Week
-              </button>
-              <button onClick={() => handleTimePeriodChange('month')} className={`px-4 py-2 text-sm font-medium rounded-md ${timePeriod === 'month' ? 'bg-news-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}>
-                This Month
-              </button>
+              <button onClick={() =>handleTimePeriodChange('now')} className={`px-4 py-2 text-sm font-medium rounded-md ${timePeriod === 'now' ? 'bg-news-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}>
+                Now</button>
+              <button onClick={() =>handleTimePeriodChange('today')} className={`px-4 py-2 text-sm font-medium rounded-md ${timePeriod === 'today' ? 'bg-news-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}>
+                Today</button>
+              <button onClick={() =>handleTimePeriodChange('week')} className={`px-4 py-2 text-sm font-medium rounded-md ${timePeriod === 'week' ? 'bg-news-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}>
+                This Week</button>
+              <button onClick={() =>handleTimePeriodChange('month')} className={`px-4 py-2 text-sm font-medium rounded-md ${timePeriod === 'month' ? 'bg-news-primary text-white' : 'text-gray-700 hover:bg-gray-100'}`}>
+                This Month</button>
             </div>
           </div>
 

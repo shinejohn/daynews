@@ -4,7 +4,7 @@ import React, { useEffect, useRef, createElement } from 'react';
 import { MapPin } from 'lucide-react';
 export const BusinessMap = ({
   businesses
-}) => {
+}) =>{
   const mapContainerRef = useRef(null);
   // This is a placeholder for an actual map implementation
   // In a real app, you would use a library like Leaflet or Google Maps
@@ -26,8 +26,7 @@ export const BusinessMap = ({
         markerElement.style.left = `${Math.random() * 80 + 10}%`;
         markerElement.style.top = `${Math.random() * 80 + 10}%`;
         // Create marker content
-        markerElement.innerHTML = `
-          <div class="relative group">
+        markerElement.innerHTML = `<div class="relative group">
             <div class="flex items-center justify-center h-8 w-8 bg-news-primary text-white rounded-full shadow-md hover:bg-news-primary-dark">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
             </div>
@@ -37,9 +36,7 @@ export const BusinessMap = ({
                 <div class="flex items-center text-xs text-gray-500">
                   <span class="flex items-center">
                     ${Array(5).fill().map((_, i) => `
-                      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="${i < Math.floor(business.rating) ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${i < Math.floor(business.rating) ? 'text-yellow-400' : 'text-gray-300'}"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                    `).join('')}
-                    <span class="ml-1">${business.rating}</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="${i < Math.floor(business.rating) ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${i < Math.floor(business.rating) ? 'text-yellow-400' : 'text-gray-300'}"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`).join('')}<span class="ml-1">${business.rating}</span>
                   </span>
                   <span class="mx-1">•</span>
                   <span>${business.distance} mi</span>

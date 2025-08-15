@@ -2,8 +2,8 @@
 // Converted from Magic Patterns
 import React, { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { ArrowLeft, Calendar, MapPin, Clock, Share2, Heart, MessageCircle, Award, ThumbsUp, Gift, Send } from 'lucide-react';
-export const AdvertisingDetailPage = () => {
+import { ArrowLeft, Award, Calendar, Clock, Gift, Heart, MapPin, MessageCircle, Send, Share2, ThumbsUp } from 'lucide-react';
+export const AdvertisingDetailPage = () =>{
   const router = useRouter();
   const pathname = usePathname();
   const [adType, setAdType] = useState('general');
@@ -67,7 +67,7 @@ export const AdvertisingDetailPage = () => {
     router.push(-1);
   };
   if (loading) {
-    return <div className="container mx-auto px-4 py-8 flex items-center justify-center min-h-screen">
+    return<div className="container mx-auto px-4 py-8 flex items-center justify-center min-h-screen">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-news-primary mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading content...</p>
@@ -76,7 +76,7 @@ export const AdvertisingDetailPage = () => {
   }
   // Render announcement detail
   if (adType === 'announcement' && adData) {
-    return <div className="container mx-auto px-4 py-8">
+    return<div className="container mx-auto px-4 py-8">
         <button onClick={goBack} className="flex items-center text-news-primary mb-6 hover:underline">
           <ArrowLeft className="h-4 w-4 mr-1" />
           Back to Announcements
@@ -118,9 +118,7 @@ export const AdvertisingDetailPage = () => {
                 <p className="text-gray-700 mb-6 leading-relaxed">
                   {adData.content}
                 </p>
-                <div className="text-sm text-gray-600 mb-4">
-                  Posted by:{' '}
-                  <span className="font-medium">{adData.author}</span>
+                <div className="text-sm text-gray-600 mb-4">Posted by:{' '}<span className="font-medium">{adData.author}</span>
                 </div>
                 <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                   <div className="flex items-center space-x-4">
@@ -239,9 +237,7 @@ export const AdvertisingDetailPage = () => {
                 <input type="tel" className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-news-primary" placeholder="Enter your phone number" />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  I'm interested in:
-                </label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">I'm interested in:</label>
                 <select className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-news-primary">
                   <option>Business Directory Listing</option>
                   <option>Featured Announcement</option>

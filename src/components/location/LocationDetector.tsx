@@ -79,7 +79,7 @@ export const LocationDetector: React.FC<{
     loading,
     error
   };
-  return <LocationContext.Provider value={value}>
+  return<LocationContext.Provider value={value}>
       {children}
     </LocationContext.Provider>;
 };

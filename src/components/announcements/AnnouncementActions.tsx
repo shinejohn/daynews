@@ -2,7 +2,7 @@
 // Converted from Magic Patterns
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Heart, MessageCircle, Share2, ThumbsUp, Gift, Send, Bell, ExternalLink } from 'lucide-react';
+import { Bell, ExternalLink, Gift, Heart, MessageCircle, Send, Share2, ThumbsUp } from 'lucide-react';
 export interface AnnouncementActionsProps {
   id: number;
   type: string;
@@ -11,7 +11,7 @@ export interface AnnouncementActionsProps {
     comments: number;
   };
   isLiked?: boolean;
-  onLike?: (e: React.MouseEvent) => void;
+  onLike?: (e: React.MouseEvent) =>void;
   onComment?: (e: React.MouseEvent) => void;
   onShare?: (e: React.MouseEvent) => void;
   onTypeAction?: (e: React.MouseEvent) => void;
@@ -19,7 +19,7 @@ export interface AnnouncementActionsProps {
   showReadMore?: boolean;
   className?: string;
 }
-export const AnnouncementActions: React.FC<AnnouncementActionsProps> = ({
+export const AnnouncementActions: React.FC<AnnouncementActionsProps>= ({
   id,
   type,
   reactions,
@@ -107,7 +107,7 @@ export const AnnouncementActions: React.FC<AnnouncementActionsProps> = ({
   const iconSize = getIconSize();
   const textSize = getTextSize();
   const buttonPadding = getButtonPadding();
-  return <div className={`flex items-center justify-between ${className}`}>
+  return<div className={`flex items-center justify-between ${className}`}>
       <div className="flex items-center space-x-4">
         <button className={`flex items-center ${isLiked ? typeStyles.accentText : 'text-gray-500'} hover:${typeStyles.accentText}`} onClick={handleLike} aria-label="Like">
           <Heart className={`${iconSize} ${isLiked ? 'fill-current' : ''}`} />
@@ -133,28 +133,28 @@ export const AnnouncementActions: React.FC<AnnouncementActionsProps> = ({
 const getTypeActionButton = (type: string, handleAction: (e: React.MouseEvent) => void, iconSize: string, textSize: string, buttonPadding: string, typeStyles: any) => {
   switch (type) {
     case 'birth':
-      return <button className={`flex items-center text-blue-600 hover:text-blue-700 ${buttonPadding} rounded-md hover:bg-blue-50 border border-transparent hover:border-blue-200`} onClick={handleAction} aria-label="Send Congratulations">
+      return<button className={`flex items-center text-blue-600 hover:text-blue-700 ${buttonPadding} rounded-md hover:bg-blue-50 border border-transparent hover:border-blue-200`} onClick={handleAction} aria-label="Send Congratulations">
           <Gift className={iconSize} />
           <span className={textSize}>Congratulate</span>
         </button>;
     case 'wedding':
     case 'engagement':
-      return <button className={`flex items-center text-purple-600 hover:text-purple-700 ${buttonPadding} rounded-md hover:bg-purple-50 border border-transparent hover:border-purple-200`} onClick={handleAction} aria-label="Send Wishes">
+      return<button className={`flex items-center text-purple-600 hover:text-purple-700 ${buttonPadding} rounded-md hover:bg-purple-50 border border-transparent hover:border-purple-200`} onClick={handleAction} aria-label="Send Wishes">
           <Gift className={iconSize} />
           <span className={textSize}>Send Wishes</span>
         </button>;
     case 'graduation':
-      return <button className={`flex items-center text-green-600 hover:text-green-700 ${buttonPadding} rounded-md hover:bg-green-50 border border-transparent hover:border-green-200`} onClick={handleAction} aria-label="Congratulate">
+      return<button className={`flex items-center text-green-600 hover:text-green-700 ${buttonPadding} rounded-md hover:bg-green-50 border border-transparent hover:border-green-200`} onClick={handleAction} aria-label="Congratulate">
           <ThumbsUp className={iconSize} />
           <span className={textSize}>Congratulate</span>
         </button>;
     case 'obituary':
-      return <button className={`flex items-center text-gray-600 hover:text-gray-700 ${buttonPadding} rounded-md hover:bg-gray-50 border border-transparent hover:border-gray-200`} onClick={handleAction} aria-label="Send Condolences">
+      return<button className={`flex items-center text-gray-600 hover:text-gray-700 ${buttonPadding} rounded-md hover:bg-gray-50 border border-transparent hover:border-gray-200`} onClick={handleAction} aria-label="Send Condolences">
           <Send className={iconSize} />
           <span className={textSize}>Send Condolences</span>
         </button>;
     case 'celebration':
-      return <button className={`flex items-center text-yellow-600 hover:text-yellow-700 ${buttonPadding} rounded-md hover:bg-yellow-50 border border-transparent hover:border-yellow-200`} onClick={handleAction} aria-label="Send Wishes">
+      return<button className={`flex items-center text-yellow-600 hover:text-yellow-700 ${buttonPadding} rounded-md hover:bg-yellow-50 border border-transparent hover:border-yellow-200`} onClick={handleAction} aria-label="Send Wishes">
           <Bell className={iconSize} />
           <span className={textSize}>Send Wishes</span>
         </button>;

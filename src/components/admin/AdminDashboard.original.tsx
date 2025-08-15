@@ -2,12 +2,12 @@
 // Converted from Magic Patterns
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { LayoutDashboard, FileText, Users, BarChart2, Settings, LogOut, Menu, X, ChevronDown, Bell, Search, User, TrendingUp, DollarSign, Eye, ThumbsUp, MessageSquare, Flag, AlertTriangle, Shield, Calendar, Clock, BookOpen, PenTool, Mail, HelpCircle, LifeBuoy, Zap, Home } from 'lucide-react';
-export const AdminDashboard = () => {
+import { AlertTriangle, BarChart2, Bell, BookOpen, Calendar, ChevronDown, Clock, DollarSign, Eye, FileText, Flag, HelpCircle, Home, LayoutDashboard, LifeBuoy, LogOut, Mail, Menu, MessageSquare, PenTool, Search, Settings, Shield, ThumbsUp, TrendingUp, User, Users, X, Zap } from 'lucide-react';
+export const AdminDashboard = () =>{
   const router = useRouter();
   const [activeTab, setActiveTab] = useState('overview');
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  return <div className="flex h-screen bg-gray-100">
+  return<div className="flex h-screen bg-gray-100">
       {/* Sidebar */}
       <div className={`bg-white shadow-md fixed inset-y-0 left-0 z-30 w-64 transform transition-transform duration-300 ease-in-out ${showMobileMenu ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 md:static md:inset-auto md:h-screen`}>
         <div className="flex items-center justify-between h-16 px-6 border-b border-gray-200">
@@ -23,37 +23,30 @@ export const AdminDashboard = () => {
         </div>
         <div className="p-4">
           <nav className="space-y-1">
-            <button onClick={() => setActiveTab('overview')} className={`w-full flex items-center px-3 py-2 text-sm font-medium rounded-md ${activeTab === 'overview' ? 'bg-blue-50 text-blue-700' : 'text-gray-700 hover:bg-gray-100'}`}>
-              <LayoutDashboard className={`mr-3 h-5 w-5 ${activeTab === 'overview' ? 'text-blue-500' : 'text-gray-400 group-hover:text-gray-500'}`} />
+            <button onClick={() =>setActiveTab('overview')} className={`w-full flex items-center px-3 py-2 text-sm font-medium rounded-md ${activeTab === 'overview' ? 'bg-blue-50 text-blue-700' : 'text-gray-700 hover:bg-gray-100'}`}><LayoutDashboard className={`mr-3 h-5 w-5 ${activeTab === 'overview' ? 'text-blue-500' : 'text-gray-400 group-hover:text-gray-500'}`} />
               Dashboard Overview
             </button>
-            <button onClick={() => setActiveTab('content')} className={`w-full flex items-center px-3 py-2 text-sm font-medium rounded-md ${activeTab === 'content' ? 'bg-blue-50 text-blue-700' : 'text-gray-700 hover:bg-gray-100'}`}>
-              <FileText className={`mr-3 h-5 w-5 ${activeTab === 'content' ? 'text-blue-500' : 'text-gray-400 group-hover:text-gray-500'}`} />
+            <button onClick={() =>setActiveTab('content')} className={`w-full flex items-center px-3 py-2 text-sm font-medium rounded-md ${activeTab === 'content' ? 'bg-blue-50 text-blue-700' : 'text-gray-700 hover:bg-gray-100'}`}><FileText className={`mr-3 h-5 w-5 ${activeTab === 'content' ? 'text-blue-500' : 'text-gray-400 group-hover:text-gray-500'}`} />
               Content Management
             </button>
-            <button onClick={() => setActiveTab('users')} className={`w-full flex items-center px-3 py-2 text-sm font-medium rounded-md ${activeTab === 'users' ? 'bg-blue-50 text-blue-700' : 'text-gray-700 hover:bg-gray-100'}`}>
-              <Users className={`mr-3 h-5 w-5 ${activeTab === 'users' ? 'text-blue-500' : 'text-gray-400 group-hover:text-gray-500'}`} />
+            <button onClick={() =>setActiveTab('users')} className={`w-full flex items-center px-3 py-2 text-sm font-medium rounded-md ${activeTab === 'users' ? 'bg-blue-50 text-blue-700' : 'text-gray-700 hover:bg-gray-100'}`}><Users className={`mr-3 h-5 w-5 ${activeTab === 'users' ? 'text-blue-500' : 'text-gray-400 group-hover:text-gray-500'}`} />
               User Management
             </button>
-            <button onClick={() => setActiveTab('complaints')} className={`w-full flex items-center px-3 py-2 text-sm font-medium rounded-md ${activeTab === 'complaints' ? 'bg-blue-50 text-blue-700' : 'text-gray-700 hover:bg-gray-100'}`}>
-              <Flag className={`mr-3 h-5 w-5 ${activeTab === 'complaints' ? 'text-blue-500' : 'text-gray-400 group-hover:text-gray-500'}`} />
+            <button onClick={() =>setActiveTab('complaints')} className={`w-full flex items-center px-3 py-2 text-sm font-medium rounded-md ${activeTab === 'complaints' ? 'bg-blue-50 text-blue-700' : 'text-gray-700 hover:bg-gray-100'}`}><Flag className={`mr-3 h-5 w-5 ${activeTab === 'complaints' ? 'text-blue-500' : 'text-gray-400 group-hover:text-gray-500'}`} />
               Author Complaints
               <span className="ml-auto bg-red-100 text-red-800 text-xs font-medium px-2 py-0.5 rounded-full">
                 2
               </span>
             </button>
-            <button onClick={() => setActiveTab('analytics')} className={`w-full flex items-center px-3 py-2 text-sm font-medium rounded-md ${activeTab === 'analytics' ? 'bg-blue-50 text-blue-700' : 'text-gray-700 hover:bg-gray-100'}`}>
-              <BarChart2 className={`mr-3 h-5 w-5 ${activeTab === 'analytics' ? 'text-blue-500' : 'text-gray-400 group-hover:text-gray-500'}`} />
+            <button onClick={() =>setActiveTab('analytics')} className={`w-full flex items-center px-3 py-2 text-sm font-medium rounded-md ${activeTab === 'analytics' ? 'bg-blue-50 text-blue-700' : 'text-gray-700 hover:bg-gray-100'}`}><BarChart2 className={`mr-3 h-5 w-5 ${activeTab === 'analytics' ? 'text-blue-500' : 'text-gray-400 group-hover:text-gray-500'}`} />
               Analytics
             </button>
-            <button onClick={() => setActiveTab('settings')} className={`w-full flex items-center px-3 py-2 text-sm font-medium rounded-md ${activeTab === 'settings' ? 'bg-blue-50 text-blue-700' : 'text-gray-700 hover:bg-gray-100'}`}>
-              <Settings className={`mr-3 h-5 w-5 ${activeTab === 'settings' ? 'text-blue-500' : 'text-gray-400 group-hover:text-gray-500'}`} />
+            <button onClick={() =>setActiveTab('settings')} className={`w-full flex items-center px-3 py-2 text-sm font-medium rounded-md ${activeTab === 'settings' ? 'bg-blue-50 text-blue-700' : 'text-gray-700 hover:bg-gray-100'}`}><Settings className={`mr-3 h-5 w-5 ${activeTab === 'settings' ? 'text-blue-500' : 'text-gray-400 group-hover:text-gray-500'}`} />
               Settings
             </button>
           </nav>
           <div className="pt-4 mt-6 border-t border-gray-200">
-            <button onClick={() => router.push('/')} className="w-full flex items-center px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100">
-              <Home className="mr-3 h-5 w-5 text-gray-400" />
+            <button onClick={() =>router.push('/')} className="w-full flex items-center px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100"><Home className="mr-3 h-5 w-5 text-gray-400" />
               Return to Site
             </button>
             <button className="w-full flex items-center px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100">
@@ -74,14 +67,12 @@ export const AdminDashboard = () => {
                   <Menu className="h-6 w-6" />
                 </button>
                 <div className="ml-4 md:ml-0">
-                  <h1 className="text-lg font-semibold text-gray-900">
-                    {activeTab === 'overview' && 'Dashboard Overview'}
+                  <h1 className="text-lg font-semibold text-gray-900">{activeTab === 'overview' && 'Dashboard Overview'}
                     {activeTab === 'content' && 'Content Management'}
                     {activeTab === 'users' && 'User Management'}
                     {activeTab === 'complaints' && 'Author Complaints'}
                     {activeTab === 'analytics' && 'Analytics'}
-                    {activeTab === 'settings' && 'Settings'}
-                  </h1>
+                    {activeTab === 'settings' && 'Settings'}</h1>
                 </div>
               </div>
               <div className="flex items-center space-x-4">
@@ -109,9 +100,8 @@ export const AdminDashboard = () => {
           </div>
         </header>
         {/* Page Content */}
-        <main className="flex-1 overflow-y-auto bg-gray-100 p-4 sm:p-6 lg:p-8">
-          {/* Dashboard Overview */}
-          {activeTab === 'overview' && <div className="space-y-6">
+        <main className="flex-1 overflow-y-auto bg-gray-100 p-4 sm:p-6 lg:p-8">{/* Dashboard Overview */}
+          {activeTab === 'overview' &&<div className="space-y-6">
               {/* Stats Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="bg-white rounded-lg shadow p-6">
@@ -219,10 +209,8 @@ export const AdminDashboard = () => {
                           <p className="text-sm font-medium text-gray-900">
                             New article published
                           </p>
-                          <p className="text-xs text-gray-500">
-                            "City Council Approves New Downtown Development
-                            Plan"
-                          </p>
+                          <p className="text-xs text-gray-500">"City Council Approves New Downtown Development
+                            Plan"</p>
                         </div>
                       </div>
                       <p className="text-xs text-gray-500">2 hours ago</p>
@@ -274,10 +262,8 @@ export const AdminDashboard = () => {
                           <p className="text-sm font-medium text-gray-900">
                             High engagement article
                           </p>
-                          <p className="text-xs text-gray-500">
-                            "Local School District Announces New STEM Program"
-                            reached 100+ comments
-                          </p>
+                          <p className="text-xs text-gray-500">"Local School District Announces New STEM Program"
+                            reached 100+ comments</p>
                         </div>
                       </div>
                       <p className="text-xs text-gray-500">Yesterday</p>
@@ -293,9 +279,7 @@ export const AdminDashboard = () => {
                           <p className="text-sm font-medium text-gray-900">
                             Popular article
                           </p>
-                          <p className="text-xs text-gray-500">
-                            "Annual Beach Cleanup Event" reached 5,000+ views
-                          </p>
+                          <p className="text-xs text-gray-500">"Annual Beach Cleanup Event" reached 5,000+ views</p>
                         </div>
                       </div>
                       <p className="text-xs text-gray-500">Yesterday</p>
@@ -310,7 +294,7 @@ export const AdminDashboard = () => {
               </div>
             </div>}
           {/* Content Management */}
-          {activeTab === 'content' && <div className="space-y-6">
+          {activeTab === 'content' &&<div className="space-y-6">
               <h2 className="text-2xl font-bold text-gray-900">
                 Content Management
               </h2>
@@ -321,7 +305,7 @@ export const AdminDashboard = () => {
               {/* Content management components would go here */}
             </div>}
           {/* User Management */}
-          {activeTab === 'users' && <div className="space-y-6">
+          {activeTab === 'users' &&<div className="space-y-6">
               <h2 className="text-2xl font-bold text-gray-900">
                 User Management
               </h2>
@@ -331,7 +315,7 @@ export const AdminDashboard = () => {
               {/* User management components would go here */}
             </div>}
           {/* Author Complaints */}
-          {activeTab === 'complaints' && <div className="space-y-6">
+          {activeTab === 'complaints' &&<div className="space-y-6">
               <div className="flex justify-between items-center">
                 <h2 className="text-2xl font-bold text-gray-900">
                   Author Complaints
@@ -457,7 +441,7 @@ export const AdminDashboard = () => {
               </div>
             </div>}
           {/* Analytics */}
-          {activeTab === 'analytics' && <div className="space-y-6">
+          {activeTab === 'analytics' &&<div className="space-y-6">
               <h2 className="text-2xl font-bold text-gray-900">Analytics</h2>
               <p className="text-gray-600">
                 View detailed analytics and reports.
@@ -465,7 +449,7 @@ export const AdminDashboard = () => {
               {/* Analytics components would go here */}
             </div>}
           {/* Settings */}
-          {activeTab === 'settings' && <div className="space-y-6">
+          {activeTab === 'settings' &&<div className="space-y-6">
               <h2 className="text-2xl font-bold text-gray-900">Settings</h2>
               <p className="text-gray-600">
                 Configure system settings and preferences.

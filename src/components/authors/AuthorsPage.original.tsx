@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 // mockdataon=yes
 
 import { useRouter } from 'next/navigation';
-import { Search, Filter, ArrowUpDown, ChevronDown, Star, Eye, User, Calendar, MapPin, Award, Check, X, FileText, ThumbsUp, MessageSquare, Users } from 'lucide-react';
+import { ArrowUpDown, Award, Calendar, Check, ChevronDown, Eye, FileText, Filter, MapPin, MessageSquare, Search, Star, User, Users, X } from 'lucide-react';
 // Types
 interface Author {
   id: string;
@@ -109,13 +109,13 @@ export const AuthorsPage = () => {
       if (sortDirection === 'asc') {
         return valueA > valueB ? 1 : -1;
       } else {
-        return valueA < valueB ? 1 : -1;
+        return valueA< valueB ? 1 : -1;
       }
     });
     setFilteredAuthors(result);
   }, [authors, filterRole, filterTrustTier, searchQuery, sortField, sortDirection]);
   // Handle sort change
-  const handleSortChange = (field: string) => {
+  const handleSortChange = (field: string) =>{
     if (sortField === field) {
       setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
     } else {
@@ -151,7 +151,7 @@ export const AuthorsPage = () => {
     setSortField('trustScore');
     setSortDirection('desc');
   };
-  return <div className="min-h-screen bg-gray-50 flex flex-col">
+  return<div className="min-h-screen bg-gray-50 flex flex-col">
       {/* Page Header */}
       <div className="bg-white border-b border-gray-200 shadow-sm">
         <div className="container mx-auto px-4 py-6 max-w-7xl">
@@ -162,9 +162,8 @@ export const AuthorsPage = () => {
                 Meet the journalists and contributors behind our community news
               </p>
             </div>
-            <button onClick={() => router.push('/author/profile-creator')} className="px-4 py-2 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition-colors">
-              Become an Author
-            </button>
+            <button onClick={() =>router.push('/author/profile-creator')} className="px-4 py-2 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition-colors">
+              Become an Author</button>
           </div>
         </div>
       </div>
@@ -177,8 +176,7 @@ export const AuthorsPage = () => {
               <div className="relative w-full sm:w-64">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                 <input type="text" placeholder="Search authors or articles..." className="pl-10 pr-4 py-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500" value={searchQuery} onChange={e => setSearchQuery(e.target.value)} />
-                {searchQuery && <button className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600" onClick={() => setSearchQuery('')}>
-                    <X className="h-4 w-4" />
+                {searchQuery && <button className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600" onClick={() =>setSearchQuery('')}><X className="h-4 w-4" />
                   </button>}
               </div>
               {/* Role Filter */}
@@ -189,8 +187,7 @@ export const AuthorsPage = () => {
                   <ChevronDown className="h-4 w-4 ml-2 text-gray-500" />
                 </button>
                 {showRoleFilter && <div className="absolute mt-1 w-48 bg-white rounded-md shadow-lg border border-gray-200 z-40">
-                    <div className="py-1">
-                      {['All', 'Community Journalist', 'Editor', 'Contributor', 'Specialist'].map(role => <button key={role} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => {
+                    <div className="py-1">{['All', 'Community Journalist', 'Editor', 'Contributor', 'Specialist'].map(role =><button key={role} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => {
                     setFilterRole(role);
                     setShowRoleFilter(false);
                   }}>
@@ -207,8 +204,7 @@ export const AuthorsPage = () => {
                   <ChevronDown className="h-4 w-4 ml-2 text-gray-500" />
                 </button>
                 {showTrustTierFilter && <div className="absolute mt-1 w-48 bg-white rounded-md shadow-lg border border-gray-200 z-40">
-                    <div className="py-1">
-                      {['All', 'Platinum', 'Gold', 'Silver', 'Bronze'].map(tier => <button key={tier} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => {
+                    <div className="py-1">{['All', 'Platinum', 'Gold', 'Silver', 'Bronze'].map(tier =><button key={tier} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => {
                     setFilterTrustTier(tier);
                     setShowTrustTierFilter(false);
                   }}>
@@ -222,30 +218,23 @@ export const AuthorsPage = () => {
             <div className="relative">
               <button className="flex items-center px-3 py-2 border border-gray-300 rounded-md bg-white text-gray-700 hover:bg-gray-50" onClick={() => setShowSortOptions(!showSortOptions)}>
                 <ArrowUpDown className="h-4 w-4 mr-2 text-gray-500" />
-                <span className="text-sm">
-                  Sort by:{' '}
+                <span className="text-sm">Sort by:{' '}
                   {sortField.charAt(0).toUpperCase() + sortField.slice(1)}
-                  {sortDirection === 'desc' ? ' (High to Low)' : ' (Low to High)'}
-                </span>
+                  {sortDirection === 'desc' ? ' (High to Low)' : ' (Low to High)'}</span>
                 <ChevronDown className="h-4 w-4 ml-2 text-gray-500" />
               </button>
               {showSortOptions && <div className="absolute right-0 mt-1 w-48 bg-white rounded-md shadow-lg border border-gray-200 z-40">
                   <div className="py-1">
-                    <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => handleSortChange('trustScore')}>
-                      Trust Score
-                    </button>
-                    <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => handleSortChange('name')}>
-                      Name
-                    </button>
-                    <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => handleSortChange('articles')}>
-                      Articles Count
-                    </button>
-                    <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => handleSortChange('views')}>
-                      Total Views
-                    </button>
-                    <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => handleSortChange('engagement')}>
-                      Engagement
-                    </button>
+                    <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() =>handleSortChange('trustScore')}>
+                      Trust Score</button>
+                    <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() =>handleSortChange('name')}>
+                      Name</button>
+                    <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() =>handleSortChange('articles')}>
+                      Articles Count</button>
+                    <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() =>handleSortChange('views')}>
+                      Total Views</button>
+                    <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() =>handleSortChange('engagement')}>
+                      Engagement</button>
                   </div>
                 </div>}
             </div>
@@ -257,9 +246,8 @@ export const AuthorsPage = () => {
         <div className="flex justify-between items-center">
           <div className="text-sm text-gray-600">
             Showing {filteredAuthors.length} authors
-            {searchQuery && <span> matching "{searchQuery}"</span>}
-          </div>
-          {(searchQuery || filterRole !== 'All' || filterTrustTier !== 'All') && <button onClick={resetFilters} className="text-sm text-blue-600 hover:text-blue-800 font-medium">
+            {searchQuery && <span>matching "{searchQuery}"</span>}
+          </div>{(searchQuery || filterRole !== 'All' || filterTrustTier !== 'All') &&<button onClick={resetFilters} className="text-sm text-blue-600 hover:text-blue-800 font-medium">
               Reset Filters
             </button>}
         </div>
@@ -363,10 +351,8 @@ export const AuthorsPage = () => {
                         <span>{author.recentArticles[0].date}</span>
                         <span className="mx-1.5">•</span>
                         <Eye className="h-3 w-3 mr-1" />
-                        <span>
-                          {author.recentArticles[0].views.toLocaleString()}{' '}
-                          views
-                        </span>
+                        <span>{author.recentArticles[0].views.toLocaleString()}{' '}
+                          views</span>
                       </div>
                     </div>}
                   {/* View Profile Button */}

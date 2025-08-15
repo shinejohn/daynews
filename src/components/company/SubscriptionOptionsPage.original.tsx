@@ -1,7 +1,7 @@
 // Converted from Magic Patterns
 import React from 'react';
 import Link from 'next/link';
-import { Check, X, HelpCircle, Shield, Zap, Newspaper, Bell, Gift, Coffee } from 'lucide-react';
+import { Check, Coffee, Gift, HelpCircle, Newspaper, Shield, X, Zap } from 'lucide-react';
 export const SubscriptionOptionsPage = () => {
   return <div className="min-h-screen bg-gray-50">
       <main className="container mx-auto px-4 py-8">
@@ -34,9 +34,7 @@ export const SubscriptionOptionsPage = () => {
                 </button>
               </div>
               <div className="p-6">
-                <h3 className="font-medium text-gray-900 mb-4">
-                  What's included:
-                </h3>
+                <h3 className="font-medium text-gray-900 mb-4">What's included:</h3>
                 <ul className="space-y-3">
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
@@ -92,9 +90,7 @@ export const SubscriptionOptionsPage = () => {
                 </button>
               </div>
               <div className="p-6">
-                <h3 className="font-medium text-gray-900 mb-4">
-                  What's included:
-                </h3>
+                <h3 className="font-medium text-gray-900 mb-4">What's included:</h3>
                 <ul className="space-y-3">
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
@@ -149,9 +145,7 @@ export const SubscriptionOptionsPage = () => {
                 </button>
               </div>
               <div className="p-6">
-                <h3 className="font-medium text-gray-900 mb-4">
-                  What's included:
-                </h3>
+                <h3 className="font-medium text-gray-900 mb-4">What's included:</h3>
                 <ul className="space-y-3">
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
@@ -227,11 +221,9 @@ export const SubscriptionOptionsPage = () => {
                   <Zap className="h-6 w-6 text-green-600" />
                 </div>
                 <h3 className="font-bold text-gray-900 mb-2">Stay Informed</h3>
-                <p className="text-gray-600">
-                  Get unlimited access to breaking news, investigative
+                <p className="text-gray-600">Get unlimited access to breaking news, investigative
                   reporting, and analysis that helps you understand what's
-                  happening in Clearwater.
-                </p>
+                  happening in Clearwater.</p>
               </div>
               <div className="bg-white rounded-lg shadow-sm p-6">
                 <div className="bg-purple-100 rounded-full w-12 h-12 flex items-center justify-center mb-4">
@@ -514,11 +506,9 @@ export const SubscriptionOptionsPage = () => {
                 <h3 className="font-bold text-gray-900 mb-2">
                   Do you offer a free trial?
                 </h3>
-                <p className="text-gray-700">
-                  Yes, new subscribers can enjoy a 7-day free trial of our
+                <p className="text-gray-700">Yes, new subscribers can enjoy a 7-day free trial of our
                   Premium Digital plan. You can cancel anytime during the trial
-                  period and won't be charged.
-                </p>
+                  period and won't be charged.</p>
               </div>
               <div className="p-6">
                 <h3 className="font-bold text-gray-900 mb-2">

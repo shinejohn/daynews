@@ -12,8 +12,7 @@ export const AdvertisingColumn = ({
         </h2>
       </div>
       {/* Ad 1 */}
-      <div className="bg-white border border-gray-200 rounded-md overflow-hidden shadow-sm cursor-pointer hover:shadow-md transition-all" onClick={() => onAdClick && onAdClick('advertisingDetail')}>
-        <div className="p-2 bg-gray-50 text-xs text-gray-500 flex items-center justify-between">
+      <div className="bg-white border border-gray-200 rounded-md overflow-hidden shadow-sm cursor-pointer hover:shadow-md transition-all" onClick={() =>onAdClick && onAdClick('advertisingDetail')}><div className="p-2 bg-gray-50 text-xs text-gray-500 flex items-center justify-between">
           <span>SPONSORED</span>
           <ExternalLink className="h-3 w-3" />
         </div>
@@ -29,17 +28,14 @@ export const AdvertisingColumn = ({
         </div>
       </div>
       {/* Ad 2 */}
-      <div className="bg-white border border-gray-200 rounded-md overflow-hidden shadow-sm cursor-pointer hover:shadow-md transition-all" onClick={() => onAdClick && onAdClick('advertisingDetail')}>
-        <div className="p-2 bg-gray-50 text-xs text-gray-500 flex items-center justify-between">
+      <div className="bg-white border border-gray-200 rounded-md overflow-hidden shadow-sm cursor-pointer hover:shadow-md transition-all" onClick={() =>onAdClick && onAdClick('advertisingDetail')}><div className="p-2 bg-gray-50 text-xs text-gray-500 flex items-center justify-between">
           <span>SPONSORED</span>
           <ExternalLink className="h-3 w-3" />
         </div>
         <div className="p-2">
           <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Advertisement" className="w-full h-48 object-cover mb-2 rounded-sm" />
           <h3 className="text-sm font-bold mb-1">Summer Events Calendar</h3>
-          <p className="text-xs text-gray-600 mb-2">
-            Don't miss the hottest events this summer in Clearwater
-          </p>
+          <p className="text-xs text-gray-600 mb-2">Don&apos;t miss the hottest events this summer in Clearwater</p>
           <button className="w-full bg-news-primary text-white text-xs py-1 rounded-sm">
             View Calendar
           </button>

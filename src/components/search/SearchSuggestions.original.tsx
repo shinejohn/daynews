@@ -1,29 +1,29 @@
 'use client';
 // Converted from Magic Patterns
 import React from 'react';
-import { Search, Newspaper, Calendar, Store, User, Tag, TrendingUp } from 'lucide-react';
+import { Calendar, Newspaper, Search, Store, Tag, TrendingUp, User } from 'lucide-react';
 export const SearchSuggestions = ({
   onSuggestionClick
-}) => {
+}) =>{
   const popularSearches = ['farmers market', 'school board meeting', 'road construction', 'local elections', 'community events', 'property taxes', 'high school sports'];
   const categories = [{
-    icon: <Newspaper className="h-5 w-5" />,
+    icon:<Newspaper className="h-5 w-5" />,
     name: 'Local News',
     color: 'bg-blue-50 text-blue-600'
   }, {
-    icon: <Calendar className="h-5 w-5" />,
+    icon:<Calendar className="h-5 w-5" />,
     name: 'Upcoming Events',
     color: 'bg-green-50 text-green-600'
   }, {
-    icon: <Store className="h-5 w-5" />,
+    icon:<Store className="h-5 w-5" />,
     name: 'Businesses',
     color: 'bg-purple-50 text-purple-600'
   }, {
-    icon: <User className="h-5 w-5" />,
+    icon:<User className="h-5 w-5" />,
     name: 'People',
     color: 'bg-indigo-50 text-indigo-600'
   }, {
-    icon: <Tag className="h-5 w-5" />,
+    icon:<Tag className="h-5 w-5" />,
     name: 'Topics',
     color: 'bg-yellow-50 text-yellow-600'
   }];
@@ -43,7 +43,7 @@ export const SearchSuggestions = ({
     name: 'Road Construction',
     count: 8
   }];
-  return <div className="bg-white rounded-lg shadow-md border border-gray-200 p-6">
+  return<div className="bg-white rounded-lg shadow-md border border-gray-200 p-6">
       <div className="mb-8">
         <h2 className="text-lg font-bold text-gray-900 mb-4">
           Popular Searches

@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { NewspaperMasthead } from '../navigation/NewspaperMasthead';
-import { Trophy, Calendar, User, Clock, ChevronRight, Star, TrendingUp } from 'lucide-react';
+import { Calendar, ChevronRight, Clock, Star, TrendingUp, Trophy, User } from 'lucide-react';
 export const SportsPage = () => {
   return <div className="min-h-screen bg-gray-50">
       <main className="container mx-auto px-4 py-8">
@@ -173,11 +173,9 @@ export const SportsPage = () => {
                         Local Golf Course to Host PGA Tour Qualifying Event
                       </Link>
                     </h3>
-                    <p className="text-gray-600 text-sm mb-2">
-                      Clearwater's Innisbrook Resort will host a PGA Tour
+                    <p className="text-gray-600 text-sm mb-2">Clearwater's Innisbrook Resort will host a PGA Tour
                       qualifying event next month, bringing professional golfers
-                      from around the country to compete.
-                    </p>
+                      from around the country to compete.</p>
                     <div className="flex items-center text-xs text-gray-500">
                       <Clock className="h-3 w-3 mr-1" />
                       <span>3 days ago</span>
@@ -306,9 +304,7 @@ export const SportsPage = () => {
               </h2>
               <ol className="list-decimal list-inside space-y-3 pl-2">
                 <li className="text-gray-900">
-                  <Link href="#" className="hover:text-blue-600">
-                    Clearwater High School's Path to the State Championship
-                  </Link>
+                  <Link href="#" className="hover:text-blue-600">Clearwater High School's Path to the State Championship</Link>
                 </li>
                 <li className="text-gray-900">
                   <Link href="#" className="hover:text-blue-600">
@@ -321,9 +317,7 @@ export const SportsPage = () => {
                   </Link>
                 </li>
                 <li className="text-gray-900">
-                  <Link href="#" className="hover:text-blue-600">
-                    Interview with Clearwater Threshers' New Manager
-                  </Link>
+                  <Link href="#" className="hover:text-blue-600">Interview with Clearwater Threshers' New Manager</Link>
                 </li>
                 <li className="text-gray-900">
                   <Link href="#" className="hover:text-blue-600">

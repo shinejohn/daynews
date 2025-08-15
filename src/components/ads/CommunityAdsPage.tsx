@@ -7,7 +7,7 @@ import { AdCreationForm } from './AdCreationForm';
 import { TargetCommunities, Community } from './TargetCommunities';
 import { ScheduleAndBudget } from './ScheduleAndBudget';
 import { ReviewAndLaunch } from './ReviewAndLaunch';
-import { ArrowRight, ArrowLeft, Check, Clock, Calendar, Users, DollarSign, AlertCircle } from 'lucide-react';
+import { AlertCircle, ArrowLeft, ArrowRight, Calendar, Check, Clock, DollarSign, User, Users } from 'lucide-react';
 export const CommunityAdsPage = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedFormat, setSelectedFormat] = useState<string | null>(null);
@@ -87,55 +87,50 @@ export const CommunityAdsPage = () => {
             <div className="flex items-center justify-between max-w-3xl mx-auto">
               <div className="flex flex-col items-center">
                 <div className={`w-10 h-10 rounded-full ${currentStep >= 1 ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-500'} flex items-center justify-center font-semibold`}>
-                  {currentStep > 1 ? <Check className="h-5 w-5" /> : 1}
+                  {currentStep > 1 ?<Check className="h-5 w-5" /> : 1}
                 </div>
                 <span className={`mt-2 text-sm font-medium ${currentStep >= 1 ? 'text-blue-600' : 'text-gray-500'}`}>
-                  Format
-                </span>
+                  Format</span>
               </div>
               <div className="flex-1 h-1 bg-gray-200 mx-2">
                 <div className={`h-full bg-blue-600 ${currentStep >= 2 ? 'w-full' : 'w-0'} transition-all duration-300`}></div>
               </div>
               <div className="flex flex-col items-center">
                 <div className={`w-10 h-10 rounded-full ${currentStep >= 2 ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-500'} flex items-center justify-center font-semibold`}>
-                  {currentStep > 2 ? <Check className="h-5 w-5" /> : 2}
+                  {currentStep > 2 ?<Check className="h-5 w-5" /> : 2}
                 </div>
                 <span className={`mt-2 text-sm font-medium ${currentStep >= 2 ? 'text-blue-600' : 'text-gray-500'}`}>
-                  Design
-                </span>
+                  Design</span>
               </div>
               <div className="flex-1 h-1 bg-gray-200 mx-2">
                 <div className={`h-full bg-blue-600 ${currentStep >= 3 ? 'w-full' : 'w-0'} transition-all duration-300`}></div>
               </div>
               <div className="flex flex-col items-center">
                 <div className={`w-10 h-10 rounded-full ${currentStep >= 3 ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-500'} flex items-center justify-center font-semibold`}>
-                  {currentStep > 3 ? <Check className="h-5 w-5" /> : 3}
+                  {currentStep > 3 ?<Check className="h-5 w-5" /> : 3}
                 </div>
                 <span className={`mt-2 text-sm font-medium ${currentStep >= 3 ? 'text-blue-600' : 'text-gray-500'}`}>
-                  Target
-                </span>
+                  Target</span>
               </div>
               <div className="flex-1 h-1 bg-gray-200 mx-2">
                 <div className={`h-full bg-blue-600 ${currentStep >= 4 ? 'w-full' : 'w-0'} transition-all duration-300`}></div>
               </div>
               <div className="flex flex-col items-center">
                 <div className={`w-10 h-10 rounded-full ${currentStep >= 4 ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-500'} flex items-center justify-center font-semibold`}>
-                  {currentStep > 4 ? <Check className="h-5 w-5" /> : 4}
+                  {currentStep > 4 ?<Check className="h-5 w-5" /> : 4}
                 </div>
                 <span className={`mt-2 text-sm font-medium ${currentStep >= 4 ? 'text-blue-600' : 'text-gray-500'}`}>
-                  Schedule
-                </span>
+                  Schedule</span>
               </div>
               <div className="flex-1 h-1 bg-gray-200 mx-2">
                 <div className={`h-full bg-blue-600 ${currentStep >= 5 ? 'w-full' : 'w-0'} transition-all duration-300`}></div>
               </div>
               <div className="flex flex-col items-center">
                 <div className={`w-10 h-10 rounded-full ${currentStep >= 5 ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-500'} flex items-center justify-center font-semibold`}>
-                  {currentStep > 5 ? <Check className="h-5 w-5" /> : 5}
+                  {currentStep > 5 ?<Check className="h-5 w-5" /> : 5}
                 </div>
                 <span className={`mt-2 text-sm font-medium ${currentStep >= 5 ? 'text-blue-600' : 'text-gray-500'}`}>
-                  Launch
-                </span>
+                  Launch</span>
               </div>
             </div>
           </div>
@@ -199,10 +194,8 @@ export const CommunityAdsPage = () => {
                   <h3 className="font-medium text-gray-900 mb-1">
                     Campaign Schedule
                   </h3>
-                  <p className="text-sm text-gray-500">
-                    {campaignDuration} days (starting{' '}
-                    {startDate.toLocaleDateString()})
-                  </p>
+                  <p className="text-sm text-gray-500">{campaignDuration} days (starting{' '}
+                    {startDate.toLocaleDateString()})</p>
                 </div>
                 <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                   <div className="flex items-center justify-center mb-2">

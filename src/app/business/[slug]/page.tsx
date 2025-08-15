@@ -2,7 +2,7 @@
 export const revalidate = 60; // seconds
 export const dynamic = 'force-static';
 
-// import BusinessProfilePage from '@/components/BusinessProfilePage'; // Component not found
+// import { BusinessProfilePage } from '@/components/BusinessProfilePage'; // Component not found
 
 export default function Page() {
   return <div>TODO: BusinessProfilePage</div>;

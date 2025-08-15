@@ -22,7 +22,7 @@ export interface Community {
   category: string;
   size: string;
 }
-export const TargetCommunities: React.FC<TargetCommunitiesProps> = ({
+export const TargetCommunities: React.FC<TargetCommunitiesProps>= ({
   onCommunitiesChange,
   selectedCommunities
 }) => {
@@ -217,7 +217,7 @@ export const TargetCommunities: React.FC<TargetCommunitiesProps> = ({
     }
     // Apply engagement filter
     if (filters.engagement) {
-      const engagementMap: Record<string, string> = {
+      const engagementMap: Record<string, string>= {
         'Very High': 'Very High',
         High: 'High',
         Medium: 'Medium'
@@ -225,10 +225,10 @@ export const TargetCommunities: React.FC<TargetCommunitiesProps> = ({
       filtered = filtered.filter(community => community.engagementText === engagementMap[filters.engagement]);
     }
     // Apply price range filter
-    filtered = filtered.filter(community => community.price >= filters.priceRange[0] && community.price <= filters.priceRange[1]);
+    filtered = filtered.filter(community => community.price >= filters.priceRange[0] && community.price<= filters.priceRange[1]);
     setFilteredCommunities(filtered);
   }, [searchQuery, filters, communities]);
-  const toggleCommunity = (community: Community) => {
+  const toggleCommunity = (community: Community) =>{
     const isSelected = selectedCommunities.some(c => c.id === community.id);
     if (isSelected) {
       const updated = selectedCommunities.filter(c => c.id !== community.id);
@@ -260,7 +260,7 @@ export const TargetCommunities: React.FC<TargetCommunitiesProps> = ({
     const topByEngagement = [...communities].sort((a, b) => b.engagementRate - a.engagementRate).slice(0, 10);
     onCommunitiesChange([...selectedCommunities, ...topByEngagement.filter(top => !selectedCommunities.some(s => s.id === top.id))]);
   };
-  return <div className="flex flex-col lg:flex-row gap-6">
+  return<div className="flex flex-col lg:flex-row gap-6">
       {/* Left section - Search, filters, and community grid */}
       <div className="w-full lg:w-2/3">
         <h1 className="text-2xl font-bold text-gray-900 mb-2">
@@ -274,13 +274,11 @@ export const TargetCommunities: React.FC<TargetCommunitiesProps> = ({
           <div className="flex gap-2 mb-4">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-              <input type="text" placeholder="Search communities by name or topic" value={searchQuery} onChange={e => setSearchQuery(e.target.value)} className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
-              {searchQuery && <button onClick={() => setSearchQuery('')} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600">
-                  <X className="h-5 w-5" />
+              <input type="text" placeholder="Search communities by name or topic" value={searchQuery} onChange={e =>setSearchQuery(e.target.value)} className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              {searchQuery &&<button onClick={() =>setSearchQuery('')} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"><X className="h-5 w-5" />
                 </button>}
             </div>
-            <button onClick={() => setShowFilters(!showFilters)} className="flex items-center px-4 py-2.5 bg-gray-100 hover:bg-gray-200 rounded-md text-gray-700">
-              <Sliders className="h-5 w-5 mr-2" />
+            <button onClick={() =>setShowFilters(!showFilters)} className="flex items-center px-4 py-2.5 bg-gray-100 hover:bg-gray-200 rounded-md text-gray-700"><Sliders className="h-5 w-5 mr-2" />
               Filters
               {(filters.category || filters.size || filters.engagement || filters.priceRange[0] !== 5 || filters.priceRange[1] !== 100) && <span className="ml-2 bg-blue-600 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs">
                   {Object.values(filters).filter(v => v && (Array.isArray(v) ? v[0] !== 5 || v[1] !== 100 : true)).length}
@@ -301,8 +299,7 @@ export const TargetCommunities: React.FC<TargetCommunitiesProps> = ({
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Category
                   </label>
-                  <select value={filters.category} onChange={e => handleFilterChange('category', e.target.value)} className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <option value="">All Categories</option>
+                  <select value={filters.category} onChange={e =>handleFilterChange('category', e.target.value)} className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"><option value="">All Categories</option>
                     <option value="Technology">Technology</option>
                     <option value="Gaming">Gaming</option>
                     <option value="Lifestyle">Lifestyle</option>
@@ -315,8 +312,7 @@ export const TargetCommunities: React.FC<TargetCommunitiesProps> = ({
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Size
                   </label>
-                  <select value={filters.size} onChange={e => handleFilterChange('size', e.target.value)} className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <option value="">All Sizes</option>
+                  <select value={filters.size} onChange={e =>handleFilterChange('size', e.target.value)} className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"><option value="">All Sizes</option>
                     <option value="Under 10K">Under 10K</option>
                     <option value="10K-100K">10K-100K</option>
                     <option value="100K-1M">100K-1M</option>
@@ -328,8 +324,7 @@ export const TargetCommunities: React.FC<TargetCommunitiesProps> = ({
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Engagement
                   </label>
-                  <select value={filters.engagement} onChange={e => handleFilterChange('engagement', e.target.value)} className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <option value="">All Engagement Levels</option>
+                  <select value={filters.engagement} onChange={e =>handleFilterChange('engagement', e.target.value)} className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"><option value="">All Engagement Levels</option>
                     <option value="Very High">Very High</option>
                     <option value="High">High</option>
                     <option value="Medium">Medium</option>
@@ -346,8 +341,7 @@ export const TargetCommunities: React.FC<TargetCommunitiesProps> = ({
                     ${filters.priceRange[0]} - ${filters.priceRange[1]}
                   </span>
                 </div>
-                <input type="range" min="5" max="100" step="1" value={filters.priceRange[1]} onChange={e => handleFilterChange('priceRange', [filters.priceRange[0], parseInt(e.target.value)])} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" />
-                <div className="flex justify-between text-xs text-gray-500 mt-1">
+                <input type="range" min="5" max="100" step="1" value={filters.priceRange[1]} onChange={e =>handleFilterChange('priceRange', [filters.priceRange[0], parseInt(e.target.value)])} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" /><div className="flex justify-between text-xs text-gray-500 mt-1">
                   <span>$5</span>
                   <span>$100</span>
                 </div>

@@ -2,8 +2,8 @@
 // Converted from Magic Patterns
 import React, { useEffect, useState, Component } from 'react';
 import { supabase } from '@/lib/supabase/client';
-import { Link, useNavigate } from 'react-router-dom';
-import { MapPin, Phone, Mail, Globe, Clock, Star, CheckCircle, Tag, Wifi, CreditCard, Share, ThumbsUp, MessageSquare, Bookmark, ChevronLeft, ChevronRight, Utensils, Calendar, Newspaper, ArrowLeft, ExternalLink, User, ZoomIn, Camera, X, Copy, ChevronDown, ChevronUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowLeft, Bookmark, Calendar, Camera, CheckCircle, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Clock, Copy, CreditCard, ExternalLink, Globe, Mail, MapPin, MessageSquare, Newspaper, Phone, Share, Star, Tag, ThumbsUp, User, Utensils, Wifi, X, ZoomIn } from 'lucide-react';
 import { Header } from './Header';
 // Types
 interface BusinessHours {
@@ -511,7 +511,7 @@ export function BusinessProfile({
     }, 1000);
   }, [slug]);
   if (loading) {
-    return <div className="min-h-screen flex flex-col">
+    return<div className="min-h-screen flex flex-col">
         <Header />
         <main className="flex-grow flex items-center justify-center">
           <div className="text-center">
@@ -529,9 +529,7 @@ export function BusinessProfile({
             <h2 className="text-2xl font-bold text-gray-800 mb-2">
               Business Not Found
             </h2>
-            <p className="text-gray-600 mb-4">
-              We couldn't find the business you're looking for.
-            </p>
+            <p className="text-gray-600 mb-4">We couldn't find the business you're looking for.</p>
             <Link href="/explore" className="text-blue-600 hover:text-blue-800 font-medium">
               Explore Other Businesses
             </Link>
@@ -578,12 +576,12 @@ export function BusinessProfile({
     const now = new Date();
     const start = new Date(startDate);
     const end = new Date(endDate);
-    if (now < start) return 'upcoming';
+    if (now< start) return 'upcoming';
     if (now >= start && now <= end) return 'happening now';
     return 'past';
   };
   // Sort articles by publish date (most recent first)
-  const sortedArticles = business.articles ? [...business.articles].sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()) : [];
+  const sortedArticles = business.articles ? [...business.articles].sort((a, b) =>new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()) : [];
   // Sort events by start date (most recent first)
   const sortedEvents = business.events ? [...business.events].sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime()) : [];
   // Filter upcoming events
@@ -741,7 +739,7 @@ export function BusinessProfile({
     window.open(calendarUrl, '_blank');
     closeCalendarModal();
   };
-  return <div className="min-h-screen flex flex-col bg-white">
+  return<div className="min-h-screen flex flex-col bg-white">
       <Header />
       <main className="flex-grow">
         {/* Hero Section with Main Photo */}
@@ -776,10 +774,8 @@ export function BusinessProfile({
                     ({business?.reviewCount} reviews)
                   </span>
                 </div>
-                <span className="text-gray-600 mr-4">
-                  {business?.category}{' '}
-                  {business?.subcategory ? `• ${business.subcategory}` : ''}
-                </span>
+                <span className="text-gray-600 mr-4">{business?.category}{' '}
+                  {business?.subcategory ? `• ${business.subcategory}` : ''}</span>
                 <span className="text-gray-600 mr-4">
                   {business?.priceRange}
                 </span>
@@ -811,12 +807,10 @@ export function BusinessProfile({
               <div className="space-y-2">
                 <div className="flex items-start">
                   <MapPin className="w-5 h-5 text-gray-500 mr-2 mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-700">
-                    {business?.contact.address.street},{' '}
+                  <span className="text-gray-700">{business?.contact.address.street},{' '}
                     {business?.contact.address.city},{' '}
                     {business?.contact.address.state}{' '}
-                    {business?.contact.address.zipCode}
-                  </span>
+                    {business?.contact.address.zipCode}</span>
                 </div>
                 <div className="flex items-center">
                   <Phone className="w-5 h-5 text-gray-500 mr-2 flex-shrink-0" />
@@ -826,9 +820,7 @@ export function BusinessProfile({
                 </div>
                 <div className="flex items-center">
                   <Globe className="w-5 h-5 text-gray-500 mr-2 flex-shrink-0" />
-                  <a href={business?.contact.website} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                    {business?.contact.website.replace(/^https?:\/\/(www\.)?/, '')}
-                  </a>
+                  <a href={business?.contact.website} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{business?.contact.website.replace(/^https?:\/\/(www\.)?/, '')}</a>
                 </div>
               </div>
             </div>
@@ -895,36 +887,29 @@ export function BusinessProfile({
         {/* Tabs Navigation */}
         <div className="border-b border-gray-200 mb-6">
           <nav className="flex space-x-8 overflow-x-auto container mx-auto px-4">
-            <button onClick={() => setActiveTab('about')} className={`py-4 px-1 font-medium text-sm border-b-2 whitespace-nowrap ${activeTab === 'about' ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700'}`}>
-              About
-            </button>
-            <button onClick={() => setActiveTab('menu')} className={`py-4 px-1 font-medium text-sm border-b-2 whitespace-nowrap ${activeTab === 'menu' ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700'}`}>
-              Menu
-            </button>
-            <button onClick={() => setActiveTab('photos')} className={`py-4 px-1 font-medium text-sm border-b-2 whitespace-nowrap ${activeTab === 'photos' ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700'}`}>
-              Photos
-            </button>
-            <button onClick={() => setActiveTab('reviews')} className={`py-4 px-1 font-medium text-sm border-b-2 whitespace-nowrap ${activeTab === 'reviews' ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700'}`}>
-              Reviews
-            </button>
-            <button onClick={() => {
+            <button onClick={() =>setActiveTab('about')} className={`py-4 px-1 font-medium text-sm border-b-2 whitespace-nowrap ${activeTab === 'about' ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700'}`}>
+              About</button>
+            <button onClick={() =>setActiveTab('menu')} className={`py-4 px-1 font-medium text-sm border-b-2 whitespace-nowrap ${activeTab === 'menu' ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700'}`}>
+              Menu</button>
+            <button onClick={() =>setActiveTab('photos')} className={`py-4 px-1 font-medium text-sm border-b-2 whitespace-nowrap ${activeTab === 'photos' ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700'}`}>
+              Photos</button>
+            <button onClick={() =>setActiveTab('reviews')} className={`py-4 px-1 font-medium text-sm border-b-2 whitespace-nowrap ${activeTab === 'reviews' ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700'}`}>
+              Reviews</button>
+            <button onClick={() =>{
             setActiveTab('articles');
             setSelectedArticle(null);
           }} className={`py-4 px-1 font-medium text-sm border-b-2 whitespace-nowrap ${activeTab === 'articles' ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700'}`}>
-              Articles
-            </button>
-            <button onClick={() => {
+              Articles</button>
+            <button onClick={() =>{
             setActiveTab('events');
             setSelectedEvent(null);
           }} className={`py-4 px-1 font-medium text-sm border-b-2 whitespace-nowrap ${activeTab === 'events' ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700'}`}>
-              Events
-            </button>
+              Events</button>
           </nav>
         </div>
         {/* Tab Content */}
-        <div className="container mx-auto px-4 mb-12">
-          {/* About Tab */}
-          {activeTab === 'about' && <div>
+        <div className="container mx-auto px-4 mb-12">{/* About Tab */}
+          {activeTab === 'about' &&<div>
               <section className="mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
                   About {business.name}
@@ -987,7 +972,7 @@ export function BusinessProfile({
                 </section>}
             </div>}
           {/* Menu Tab */}
-          {activeTab === 'menu' && business.menu && <div>
+          {activeTab === 'menu' && business.menu &&<div>
               <div className="mb-6">
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">Menu</h2>
                 <p className="text-gray-600">
@@ -1031,7 +1016,7 @@ export function BusinessProfile({
               </p>
             </div>}
           {/* Photos Tab */}
-          {activeTab === 'photos' && <div>
+          {activeTab === 'photos' &&<div>
               <div className="mb-6">
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">
                   Photos
@@ -1070,7 +1055,7 @@ export function BusinessProfile({
               </div>
             </div>}
           {/* Reviews Tab */}
-          {activeTab === 'reviews' && business.reviews && <div>
+          {activeTab === 'reviews' && business.reviews &&<div>
               <div className="mb-6 flex flex-col md:flex-row md:items-center md:justify-between">
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900 mb-2">
@@ -1149,10 +1134,9 @@ export function BusinessProfile({
               </div>
             </div>}
           {/* Articles Tab */}
-          {activeTab === 'articles' && <div>
+          {activeTab === 'articles' &&<div>
               {selectedArticle ? <div>
-                  <button onClick={() => setSelectedArticle(null)} className="flex items-center text-blue-600 hover:text-blue-800 mb-4">
-                    <ArrowLeft className="w-4 h-4 mr-1" />
+                  <button onClick={() =>setSelectedArticle(null)} className="flex items-center text-blue-600 hover:text-blue-800 mb-4"><ArrowLeft className="w-4 h-4 mr-1" />
                     Back to all articles
                   </button>
                   <article>
@@ -1225,10 +1209,9 @@ export function BusinessProfile({
                 </div>}
             </div>}
           {/* Events Tab */}
-          {activeTab === 'events' && <div>
+          {activeTab === 'events' &&<div>
               {selectedEvent ? <div>
-                  <button onClick={() => setSelectedEvent(null)} className="flex items-center text-blue-600 hover:text-blue-800 mb-4">
-                    <ArrowLeft className="w-4 h-4 mr-1" />
+                  <button onClick={() =>setSelectedEvent(null)} className="flex items-center text-blue-600 hover:text-blue-800 mb-4"><ArrowLeft className="w-4 h-4 mr-1" />
                     Back to all events
                   </button>
                   <article>
@@ -1338,9 +1321,8 @@ export function BusinessProfile({
                           {selectedEvent.ticketUrl && <a href={selectedEvent.ticketUrl} target="_blank" rel="noopener noreferrer" className="block w-full bg-blue-600 text-white text-center py-2 rounded-md hover:bg-blue-700 transition-colors">
                               Get Tickets
                             </a>}
-                          <button onClick={() => openCalendarModal(selectedEvent)} className="block w-full border border-gray-300 text-gray-700 text-center py-2 rounded-md hover:bg-gray-50 transition-colors">
-                            Add to Calendar
-                          </button>
+                          <button onClick={() =>openCalendarModal(selectedEvent)} className="block w-full border border-gray-300 text-gray-700 text-center py-2 rounded-md hover:bg-gray-50 transition-colors">
+                            Add to Calendar</button>
                         </div>
                       </div>
                     </div>
@@ -1383,10 +1365,8 @@ export function BusinessProfile({
                               <h3 className="font-bold text-gray-900 mb-2">
                                 {event.title}
                               </h3>
-                              <p className="text-gray-600 text-sm mb-3 line-clamp-2">
-                                {event.description.split('\n')[0].substring(0, 120)}
-                                ...
-                              </p>
+                              <p className="text-gray-600 text-sm mb-3 line-clamp-2">{event.description.split('\n')[0].substring(0, 120)}
+                                ...</p>
                               <div className="flex justify-between items-center">
                                 <div className="text-sm">
                                   {event.price ? <span className="text-gray-700 font-medium">
@@ -1419,10 +1399,8 @@ export function BusinessProfile({
                               <h3 className="font-medium text-gray-900 mb-1 line-clamp-1">
                                 {event.title}
                               </h3>
-                              <p className="text-gray-600 text-sm line-clamp-2">
-                                {event.description.split('\n')[0].substring(0, 80)}
-                                ...
-                              </p>
+                              <p className="text-gray-600 text-sm line-clamp-2">{event.description.split('\n')[0].substring(0, 80)}
+                                ...</p>
                             </div>
                           </div>)}
                       </div>
@@ -1442,24 +1420,20 @@ export function BusinessProfile({
                 </button>
               </div>
               <div className="space-y-4">
-                <button onClick={() => handleShareVia('facebook')} className="flex items-center w-full p-3 bg-[#1877F2] text-white rounded-md hover:bg-opacity-90">
-                  <svg className="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                <button onClick={() =>handleShareVia('facebook')} className="flex items-center w-full p-3 bg-[#1877F2] text-white rounded-md hover:bg-opacity-90"><svg className="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12c0-5.523-4.477-10-10-10z" />
                   </svg>
                   Share on Facebook
                 </button>
-                <button onClick={() => handleShareVia('twitter')} className="flex items-center w-full p-3 bg-[#1DA1F2] text-white rounded-md hover:bg-opacity-90">
-                  <svg className="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                <button onClick={() =>handleShareVia('twitter')} className="flex items-center w-full p-3 bg-[#1DA1F2] text-white rounded-md hover:bg-opacity-90"><svg className="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
                   </svg>
                   Share on Twitter
                 </button>
-                <button onClick={() => handleShareVia('email')} className="flex items-center w-full p-3 bg-gray-800 text-white rounded-md hover:bg-opacity-90">
-                  <Mail className="w-5 h-5 mr-3" />
+                <button onClick={() =>handleShareVia('email')} className="flex items-center w-full p-3 bg-gray-800 text-white rounded-md hover:bg-opacity-90"><Mail className="w-5 h-5 mr-3" />
                   Share via Email
                 </button>
-                <button onClick={() => handleShareVia('copy')} className="flex items-center w-full p-3 bg-gray-100 text-gray-800 rounded-md hover:bg-gray-200">
-                  <Copy className="w-5 h-5 mr-3" />
+                <button onClick={() =>handleShareVia('copy')} className="flex items-center w-full p-3 bg-gray-100 text-gray-800 rounded-md hover:bg-gray-200"><Copy className="w-5 h-5 mr-3" />
                   Copy Link
                 </button>
               </div>
@@ -1502,20 +1476,16 @@ export function BusinessProfile({
                 </button>
               </div>
               <div className="space-y-4">
-                <button onClick={() => addToCalendar('google')} className="flex items-center w-full p-3 bg-blue-600 text-white rounded-md hover:bg-blue-700">
-                  <Calendar className="w-5 h-5 mr-3" />
+                <button onClick={() =>addToCalendar('google')} className="flex items-center w-full p-3 bg-blue-600 text-white rounded-md hover:bg-blue-700"><Calendar className="w-5 h-5 mr-3" />
                   Google Calendar
                 </button>
-                <button onClick={() => addToCalendar('outlook')} className="flex items-center w-full p-3 bg-blue-500 text-white rounded-md hover:bg-blue-600">
-                  <Calendar className="w-5 h-5 mr-3" />
+                <button onClick={() =>addToCalendar('outlook')} className="flex items-center w-full p-3 bg-blue-500 text-white rounded-md hover:bg-blue-600"><Calendar className="w-5 h-5 mr-3" />
                   Outlook Calendar
                 </button>
-                <button onClick={() => addToCalendar('yahoo')} className="flex items-center w-full p-3 bg-purple-600 text-white rounded-md hover:bg-purple-700">
-                  <Calendar className="w-5 h-5 mr-3" />
+                <button onClick={() =>addToCalendar('yahoo')} className="flex items-center w-full p-3 bg-purple-600 text-white rounded-md hover:bg-purple-700"><Calendar className="w-5 h-5 mr-3" />
                   Yahoo Calendar
                 </button>
-                <button onClick={() => addToCalendar('ical')} className="flex items-center w-full p-3 bg-gray-800 text-white rounded-md hover:bg-gray-900">
-                  <Calendar className="w-5 h-5 mr-3" />
+                <button onClick={() =>addToCalendar('ical')} className="flex items-center w-full p-3 bg-gray-800 text-white rounded-md hover:bg-gray-900"><Calendar className="w-5 h-5 mr-3" />
                   iCalendar (.ics file)
                 </button>
               </div>
@@ -1538,8 +1508,7 @@ export function BusinessProfile({
                     Rating
                   </label>
                   <div className="flex space-x-1">
-                    {[1, 2, 3, 4, 5].map(star => <button key={star} type="button" onClick={() => setReviewRating(star)} className="focus:outline-none">
-                        <Star className={`w-8 h-8 ${star <= reviewRating ? 'text-yellow-500 fill-current' : 'text-gray-300'}`} />
+                    {[1, 2, 3, 4, 5].map(star => <button key={star} type="button" onClick={() =>setReviewRating(star)} className="focus:outline-none"><Star className={`w-8 h-8 ${star <= reviewRating ? 'text-yellow-500 fill-current' : 'text-gray-300'}`} />
                       </button>)}
                   </div>
                 </div>
@@ -1547,12 +1516,11 @@ export function BusinessProfile({
                   <label htmlFor="review-text" className="block text-sm font-medium text-gray-700 mb-1">
                     Your Review
                   </label>
-                  <textarea id="review-text" rows={4} value={reviewText} onChange={e => setReviewText(e.target.value)} placeholder="Share your experience with this business..." className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
+                  <textarea id="review-text" rows={4} value={reviewText} onChange={e =>setReviewText(e.target.value)} placeholder="Share your experience with this business..." className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
                 </div>
                 <div className="pt-2">
-                  <button onClick={handleSubmitReview} disabled={reviewRating === 0} className={`w-full py-2 px-4 rounded-md text-white font-medium ${reviewRating > 0 ? 'bg-blue-600 hover:bg-blue-700' : 'bg-gray-400 cursor-not-allowed'}`}>
-                    Submit Review
-                  </button>
+                  <button onClick={handleSubmitReview} disabled={reviewRating === 0} className={`w-full py-2 px-4 rounded-md text-white font-medium ${reviewRating >0 ? 'bg-blue-600 hover:bg-blue-700' : 'bg-gray-400 cursor-not-allowed'}`}>
+                    Submit Review</button>
                 </div>
               </div>
             </div>

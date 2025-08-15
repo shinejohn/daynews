@@ -1,12 +1,12 @@
 'use client';
 // Converted from Magic Patterns
 import React from 'react';
-import { Clock, MapPin, Bookmark } from 'lucide-react';
+import { Bookmark, Clock, MapPin } from 'lucide-react';
 export const HeroStory = ({
   category = null,
   fullWidth = false,
   onArticleClick
-}) => {
+}) =>{
   const allStories = [{
     id: 1,
     title: 'Clearwater City Council Approves $89.2M Budget for 2025 Fiscal Year',
@@ -84,7 +84,7 @@ export const HeroStory = ({
   const filteredStories = category ? allStories.filter(story => story.category === category) : allStories;
   // Get the top story - either the first in the filtered list or the first featured story
   const topStory = filteredStories.length > 0 ? filteredStories[0] : allStories.find(story => story.featured) || allStories[0];
-  return <div className={`bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer`} onClick={onArticleClick}>
+  return<div className={`bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer`} onClick={onArticleClick}>
       <div className="relative">
         <img src={topStory.image} alt={topStory.title} className={`w-full object-cover ${fullWidth ? 'h-96' : 'h-64'}`} />
         <div className="absolute top-4 left-4">

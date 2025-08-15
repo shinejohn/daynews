@@ -1,10 +1,10 @@
 'use client';
 // Converted from Magic Patterns
-import React from 'react';
+import React, { useState, useEffect } from 'react';;
 import { supabase } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
-import { ChevronRight, Camera, User, Calendar, MapPin } from 'lucide-react';
-export const PhotoGallerySection = () => {
+import { Camera, ChevronRight, User } from 'lucide-react';
+export const PhotoGallerySection = () =>{
   const router = useRouter();
   // Mock photo gallery data
   const [photos, setPhotos] = useState([]);
@@ -36,7 +36,7 @@ export const PhotoGallerySection = () => {
   const handlePhotoClick = photoId => {
     router.push(`/photos/${photoId}`);
   };
-  return <div>
+  return<div>
       <div className="grid grid-cols-2 gap-2">
         {photos.map((photo, index) => <div key={photo.id} className="relative aspect-square rounded-md overflow-hidden group cursor-pointer" onClick={() => handlePhotoClick(photo.id)}>
             <img src={photo.imageUrl} alt={photo.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />

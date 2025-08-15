@@ -2,7 +2,7 @@
 // Converted from Magic Patterns
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { MapPin, Clock, Star, MessageCircle, Shield, Flag } from 'lucide-react';
+import { Clock, Flag, MapPin, MessageCircle, Star } from 'lucide-react';
 interface Seller {
   name: string;
   rating: number;
@@ -28,7 +28,7 @@ interface Classified {
 interface ClassifiedCardProps {
   classified: Classified;
 }
-export const ClassifiedCard: React.FC<ClassifiedCardProps> = ({
+export const ClassifiedCard: React.FC<ClassifiedCardProps>= ({
   classified
 }) => {
   const router = useRouter();
@@ -41,13 +41,13 @@ export const ClassifiedCard: React.FC<ClassifiedCardProps> = ({
       return 'Today';
     } else if (diffDays === 1) {
       return 'Yesterday';
-    } else if (diffDays < 7) {
+    } else if (diffDays< 7) {
       return `${diffDays} days ago`;
     } else {
       return date.toLocaleDateString();
     }
   };
-  const formatPrice = (price: number, priceType?: string) => {
+  const formatPrice = (price: number, priceType?: string) =>{
     if (priceType === 'Contact for pricing') return priceType;
     if (price === 0) return 'Free';
     return `$${price.toLocaleString()}`;
@@ -55,7 +55,7 @@ export const ClassifiedCard: React.FC<ClassifiedCardProps> = ({
   const handleCardClick = () => {
     router.push(`/classifiedDetail?id=${classified.id}`);
   };
-  return <div className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer" onClick={handleCardClick}>
+  return<div className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer" onClick={handleCardClick}>
       {/* Image */}
       <div className="relative h-48">
         <img src={classified.images[0]} alt={classified.title} className="w-full h-full object-cover" />
@@ -107,11 +107,10 @@ export const ClassifiedCard: React.FC<ClassifiedCardProps> = ({
             </div>
           </div>
           <div className="flex items-center space-x-2">
-            <button className="p-1.5 rounded-full text-gray-400 hover:text-gray-600 hover:bg-gray-100" onClick={e => {
+            <button className="p-1.5 rounded-full text-gray-400 hover:text-gray-600 hover:bg-gray-100" onClick={e =>{
             e.stopPropagation();
             alert('Listing reported. Our team will review it.');
-          }}>
-              <Flag className="h-4 w-4" />
+          }}><Flag className="h-4 w-4" />
             </button>
             <button className="p-1.5 rounded-full bg-news-primary text-white" onClick={e => {
             e.stopPropagation();

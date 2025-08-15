@@ -1,7 +1,7 @@
 'use client';
 // Converted from Magic Patterns
 import React, { useState } from 'react';
-import { MapPin, Calendar } from 'lucide-react';
+import { Calendar, MapPin } from 'lucide-react';
 import { AnnouncementActions } from './AnnouncementActions';
 export const AnnouncementCard = ({
   type,

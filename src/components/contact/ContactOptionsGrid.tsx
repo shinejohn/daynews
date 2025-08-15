@@ -1,7 +1,7 @@
 'use client';
 // Converted from Magic Patterns
 import React from 'react';
-import { Mail, MessageCircle, Phone, MapPin, Clock } from 'lucide-react';
+import { Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
 export const ContactOptionsGrid = ({
   onStartChat
 }) => {
@@ -18,9 +18,7 @@ export const ContactOptionsGrid = ({
             </div>
             <div className="ml-4">
               <h3 className="text-lg font-bold text-gray-900">Email Us</h3>
-              <p className="text-gray-600 mb-3">
-                Send us a message and we'll respond within 24 hours
-              </p>
+              <p className="text-gray-600 mb-3">Send us a message and we'll respond within 24 hours</p>
               <a href="mailto:contact@day.news" className="text-news-primary font-medium hover:underline">
                 contact@day.news
               </a>

@@ -1,6 +1,6 @@
 // Converted from Magic Patterns
 import React from 'react';
-import { MapPin, ThermometerIcon, Home } from 'lucide-react';
+import { Home, MapPin, ThermometerIcon } from 'lucide-react';
 export const ArticleHeader = ({
   scrolled,
   readingProgress
@@ -35,9 +35,7 @@ export const ArticleHeader = ({
           <h1 className="font-display text-3xl md:text-4xl font-black uppercase tracking-tight text-news-primary">
             Day.News Clearwater
           </h1>
-          <p className="text-sm text-gray-600 italic">
-            "Your Community, Your News"
-          </p>
+          <p className="text-sm text-gray-600 italic">"Your Community, Your News"</p>
         </div>
       </div>
       {/* Navigation bar - light gray background */}

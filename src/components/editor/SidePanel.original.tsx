@@ -5,19 +5,19 @@ import { X, List, Image, FileText, Search, Plus, Upload, Edit, Trash2, ExternalL
 export const SidePanel = ({
   onClose,
   article
-}) => {
+}) =>{
   const [activeTab, setActiveTab] = useState('outline');
   const [searchQuery, setSearchQuery] = useState('');
   const renderTabContent = () => {
     switch (activeTab) {
       case 'outline':
-        return <OutlineTab content={article?.content} />;
+        return<OutlineTab content={article?.content} />;
       case 'media':
-        return <MediaLibraryTab searchQuery={searchQuery} setSearchQuery={setSearchQuery} />;
+        return<MediaLibraryTab searchQuery={searchQuery} setSearchQuery={setSearchQuery} />;
       case 'research':
-        return <ResearchTab />;
+        return<ResearchTab />;
       case 'seo':
-        return <SeoTab article={article} />;
+        return<SeoTab article={article} />;
       default:
         return null;
     }
@@ -25,18 +25,14 @@ export const SidePanel = ({
   return <div className="w-80 border-l border-gray-200 bg-white flex flex-col h-full">
       <div className="flex items-center justify-between p-3 border-b border-gray-200">
         <div className="flex space-x-1">
-          <button onClick={() => setActiveTab('outline')} className={`px-2 py-1 text-xs rounded ${activeTab === 'outline' ? 'bg-gray-200 text-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}>
-            Outline
-          </button>
-          <button onClick={() => setActiveTab('media')} className={`px-2 py-1 text-xs rounded ${activeTab === 'media' ? 'bg-gray-200 text-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}>
-            Media
-          </button>
-          <button onClick={() => setActiveTab('research')} className={`px-2 py-1 text-xs rounded ${activeTab === 'research' ? 'bg-gray-200 text-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}>
-            Research
-          </button>
-          <button onClick={() => setActiveTab('seo')} className={`px-2 py-1 text-xs rounded ${activeTab === 'seo' ? 'bg-gray-200 text-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}>
-            SEO
-          </button>
+          <button onClick={() =>setActiveTab('outline')} className={`px-2 py-1 text-xs rounded ${activeTab === 'outline' ? 'bg-gray-200 text-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}>
+            Outline</button>
+          <button onClick={() =>setActiveTab('media')} className={`px-2 py-1 text-xs rounded ${activeTab === 'media' ? 'bg-gray-200 text-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}>
+            Media</button>
+          <button onClick={() =>setActiveTab('research')} className={`px-2 py-1 text-xs rounded ${activeTab === 'research' ? 'bg-gray-200 text-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}>
+            Research</button>
+          <button onClick={() =>setActiveTab('seo')} className={`px-2 py-1 text-xs rounded ${activeTab === 'seo' ? 'bg-gray-200 text-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}>
+            SEO</button>
         </div>
         <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
           <X className="h-4 w-4" />
@@ -64,7 +60,7 @@ const OutlineTab = ({
     // In a real app, this would scroll to the heading
     alert(`Navigating to heading: ${heading.text}`);
   };
-  return <div>
+  return<div>
       <h3 className="text-sm font-medium text-gray-700 mb-3">
         Document Outline
       </h3>
@@ -148,7 +144,7 @@ const MediaLibraryTab = ({
     e.preventDefault();
     alert(`Searching for: ${searchQuery}`);
   };
-  return <div>
+  return<div>
       <div className="flex justify-between items-center mb-3">
         <h3 className="text-sm font-medium text-gray-700">Media Library</h3>
         <div className="flex space-x-1">
@@ -186,9 +182,7 @@ const MediaLibraryTab = ({
       <div className="mt-6 pt-6 border-t border-gray-200">
         <h3 className="text-sm font-medium text-gray-700 mb-3">Stock Photos</h3>
         <div className="relative mb-4">
-          <input type="text" placeholder="Search stock photos..." className="w-full px-3 py-1.5 text-sm border border-gray-300 rounded-md" onChange={e => console.log('Stock photo search:', e.target.value)} />
-          <button className="absolute right-2 top-1.5 text-gray-500" onClick={() => alert('Searching stock photos')}>
-            <Search className="h-4 w-4" />
+          <input type="text" placeholder="Search stock photos..." className="w-full px-3 py-1.5 text-sm border border-gray-300 rounded-md" onChange={e =>console.log('Stock photo search:', e.target.value)} /><button className="absolute right-2 top-1.5 text-gray-500" onClick={() =>alert('Searching stock photos')}><Search className="h-4 w-4" />
           </button>
         </div>
       </div>
@@ -225,7 +219,7 @@ const ResearchTab = () => {
   const handleAskAI = () => {
     alert('AI Assistant would open here to help with research');
   };
-  return <div>
+  return<div>
       <h3 className="text-sm font-medium text-gray-700 mb-3">Research Notes</h3>
       <div className="mb-4">
         <textarea placeholder="Add your research notes here..." className="w-full h-32 px-3 py-2 text-sm border border-gray-300 rounded-md resize-none" value={notes} onChange={handleNotesChange}></textarea>
@@ -296,7 +290,7 @@ const SeoTab = ({
     if (sentences.length === 0) return 0;
     const avgWordsPerSentence = words.length / sentences.length;
     // Simple scale: lower is easier to read
-    if (avgWordsPerSentence < 10) return 90;
+    if (avgWordsPerSentence< 10) return 90;
     if (avgWordsPerSentence < 15) return 80;
     if (avgWordsPerSentence < 20) return 70;
     if (avgWordsPerSentence < 25) return 60;
@@ -304,7 +298,7 @@ const SeoTab = ({
   };
   const readabilityScore = calculateReadability();
   // Extract keywords (very simple implementation)
-  const extractKeywords = () => {
+  const extractKeywords = () =>{
     const commonWords = ['the', 'and', 'a', 'in', 'to', 'of', 'for', 'with', 'on', 'at', 'by', 'is', 'was', 'were'];
     const words = text.toLowerCase().split(/\W+/).filter(word => word.length > 3 && !commonWords.includes(word));
     const wordCounts = {};
@@ -323,17 +317,15 @@ const SeoTab = ({
       [item]: !checklist[item]
     });
   };
-  return <div>
+  return<div>
       <h3 className="text-sm font-medium text-gray-700 mb-3">SEO Analysis</h3>
       <div className="mb-4">
         <label className="block text-xs font-medium text-gray-600 mb-1">
           Meta Description
         </label>
         <textarea placeholder="Enter a compelling meta description..." className="w-full h-20 px-3 py-2 text-xs border border-gray-300 rounded-md resize-none" value={metaDescription} onChange={e => setMetaDescription(e.target.value)}></textarea>
-        <p className="text-xs text-gray-500 mt-1">
-          {metaDescription.length}/160 characters{' '}
-          {metaDescription.length > 160 ? '(too long)' : ''}
-        </p>
+        <p className="text-xs text-gray-500 mt-1">{metaDescription.length}/160 characters{' '}
+          {metaDescription.length > 160 ? '(too long)' : ''}</p>
       </div>
       <div className="mb-4">
         <label className="block text-xs font-medium text-gray-600 mb-1">
@@ -348,10 +340,8 @@ const SeoTab = ({
           width: `${readabilityScore}%`
         }}></div>
         </div>
-        <p className="text-xs text-gray-500 mt-1">
-          {readabilityScore >= 80 ? 'Easy to read' : readabilityScore >= 60 ? 'Moderately readable' : 'Difficult to read'}{' '}
-          ({readabilityScore}/100)
-        </p>
+        <p className="text-xs text-gray-500 mt-1">{readabilityScore >= 80 ? 'Easy to read' : readabilityScore >= 60 ? 'Moderately readable' : 'Difficult to read'}{' '}
+          ({readabilityScore}/100)</p>
       </div>
       <div className="mb-4">
         <h4 className="text-xs font-medium text-gray-600 mb-2">Top Keywords</h4>
@@ -367,30 +357,25 @@ const SeoTab = ({
         </h3>
         <ul className="space-y-2">
           <li className="flex items-start">
-            <input type="checkbox" className="mt-0.5 mr-2" checked={checklist.keyword} onChange={() => handleChecklistChange('keyword')} />
-            <span className="text-xs text-gray-700">
+            <input type="checkbox" className="mt-0.5 mr-2" checked={checklist.keyword} onChange={() =>handleChecklistChange('keyword')} /><span className="text-xs text-gray-700">
               Title contains focus keyword
             </span>
           </li>
           <li className="flex items-start">
-            <input type="checkbox" className="mt-0.5 mr-2" checked={checklist.description} onChange={() => handleChecklistChange('description')} />
-            <span className="text-xs text-gray-700">
+            <input type="checkbox" className="mt-0.5 mr-2" checked={checklist.description} onChange={() =>handleChecklistChange('description')} /><span className="text-xs text-gray-700">
               Meta description is compelling
             </span>
           </li>
           <li className="flex items-start">
-            <input type="checkbox" className="mt-0.5 mr-2" checked={checklist.url} onChange={() => handleChecklistChange('url')} />
-            <span className="text-xs text-gray-700">URL is SEO-friendly</span>
+            <input type="checkbox" className="mt-0.5 mr-2" checked={checklist.url} onChange={() =>handleChecklistChange('url')} /><span className="text-xs text-gray-700">URL is SEO-friendly</span>
           </li>
           <li className="flex items-start">
-            <input type="checkbox" className="mt-0.5 mr-2" checked={checklist.wordCount} onChange={() => handleChecklistChange('wordCount')} />
-            <span className="text-xs text-gray-700">
+            <input type="checkbox" className="mt-0.5 mr-2" checked={checklist.wordCount} onChange={() =>handleChecklistChange('wordCount')} /><span className="text-xs text-gray-700">
               Content is at least 300 words
             </span>
           </li>
           <li className="flex items-start">
-            <input type="checkbox" className="mt-0.5 mr-2" checked={checklist.images} onChange={() => handleChecklistChange('images')} />
-            <span className="text-xs text-gray-700">Images have alt text</span>
+            <input type="checkbox" className="mt-0.5 mr-2" checked={checklist.images} onChange={() =>handleChecklistChange('images')} /><span className="text-xs text-gray-700">Images have alt text</span>
           </li>
         </ul>
       </div>

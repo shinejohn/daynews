@@ -1,8 +1,8 @@
 'use client';
 // Converted from Magic Patterns
-import React, { useState, memo, Component } from 'react';
+import React, { useState, Component } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { Heart, MessageSquare, ThumbsUp, Send, LogIn, User } from 'lucide-react';
+import { Heart, LogIn, MessageSquare, Send, ThumbsUp } from 'lucide-react';
 export interface Comment {
   id: number;
   author: string;
@@ -21,7 +21,7 @@ interface CommentSectionProps {
   isLoggedIn?: boolean;
   className?: string;
 }
-export const CommentSection: React.FC<CommentSectionProps> = ({
+export const CommentSection: React.FC<CommentSectionProps>= ({
   comments = [],
   totalCount,
   itemId,
@@ -70,7 +70,7 @@ export const CommentSection: React.FC<CommentSectionProps> = ({
     const currentUrl = `${window.pathname}${window.location.search}`;
     router.push(`/register?returnUrl=${encodeURIComponent(currentUrl)}`);
   };
-  return <div className={`bg-white rounded-lg shadow-md p-6 ${className}`}>
+  return<div className={`bg-white rounded-lg shadow-md p-6 ${className}`}>
       <h3 className="text-lg font-bold text-gray-900 mb-4">
         Comments ({totalCount || comments.length})
       </h3>
@@ -122,13 +122,10 @@ export const CommentSection: React.FC<CommentSectionProps> = ({
           </button>
           {!isLoggedIn && <div className="mt-2 text-sm text-gray-500 flex items-center">
               <LogIn className="h-4 w-4 mr-1.5" />
-              <span>
-                Please{' '}
-                <button type="button" onClick={redirectToLogin} className="text-news-primary hover:underline">
+              <span>Please{' '}<button type="button" onClick={redirectToLogin} className="text-news-primary hover:underline">
                   login or register
                 </button>{' '}
-                to leave a comment
-              </span>
+                to leave a comment</span>
             </div>}
         </form>
       </div>

@@ -6,11 +6,11 @@ import React, { useEffect, useState } from 'react';
 // mockdataon=yes
 
 import { useRouter } from 'next/navigation';
-import { Search, Filter, Grid, List, MapPin, Calendar, Upload, User, Heart, MessageSquare, Plus, ChevronDown } from 'lucide-react';
+import { ChevronDown, Filter, Grid, List, MessageSquare, Plus, Search, Upload } from 'lucide-react';
 import { PageHeader } from '../PageHeader';
 import { PhotoGrid } from './PhotoGrid';
 import { PhotoList } from './PhotoList';
-export const PhotoGalleryPage = () => {
+export const PhotoGalleryPage = () =>{
   const router = useRouter();
   const [viewMode, setViewMode] = useState('grid');
   const [filterOpen, setFilterOpen] = useState(false);
@@ -153,7 +153,7 @@ export const PhotoGalleryPage = () => {
   const handleUploadClick = () => {
     router.push('/photos/upload');
   };
-  return <div className="flex-1 overflow-auto bg-gray-50">
+  return<div className="flex-1 overflow-auto bg-gray-50">
       <PageHeader />
       <div className="mx-auto max-w-7xl px-4 py-6">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
@@ -169,20 +169,16 @@ export const PhotoGalleryPage = () => {
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-6">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="relative flex-1">
-              <input type="text" placeholder="Search photos..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)} className="w-full rounded-md border border-gray-300 pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-news-primary focus:border-transparent" />
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+              <input type="text" placeholder="Search photos..." value={searchQuery} onChange={e =>setSearchQuery(e.target.value)} className="w-full rounded-md border border-gray-300 pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-news-primary focus:border-transparent" /><Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
             </div>
             <div className="flex space-x-2">
-              <button onClick={() => setFilterOpen(!filterOpen)} className="flex items-center px-4 py-2 border border-gray-300 rounded-md bg-white hover:bg-gray-50 text-sm font-medium">
-                <Filter className="h-4 w-4 mr-2" />
+              <button onClick={() =>setFilterOpen(!filterOpen)} className="flex items-center px-4 py-2 border border-gray-300 rounded-md bg-white hover:bg-gray-50 text-sm font-medium"><Filter className="h-4 w-4 mr-2" />
                 Filters
                 <ChevronDown className="h-4 w-4 ml-2" />
               </button>
-              <button onClick={() => setViewMode('grid')} className={`p-2 rounded-md ${viewMode === 'grid' ? 'bg-news-primary text-white' : 'bg-white border border-gray-300 text-gray-700'}`}>
-                <Grid className="h-5 w-5" />
+              <button onClick={() =>setViewMode('grid')} className={`p-2 rounded-md ${viewMode === 'grid' ? 'bg-news-primary text-white' : 'bg-white border border-gray-300 text-gray-700'}`}><Grid className="h-5 w-5" />
               </button>
-              <button onClick={() => setViewMode('list')} className={`p-2 rounded-md ${viewMode === 'list' ? 'bg-news-primary text-white' : 'bg-white border border-gray-300 text-gray-700'}`}>
-                <List className="h-5 w-5" />
+              <button onClick={() =>setViewMode('list')} className={`p-2 rounded-md ${viewMode === 'list' ? 'bg-news-primary text-white' : 'bg-white border border-gray-300 text-gray-700'}`}><List className="h-5 w-5" />
               </button>
             </div>
           </div>
@@ -192,8 +188,7 @@ export const PhotoGalleryPage = () => {
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Category
                 </label>
-                <select value={selectedCategory} onChange={e => setSelectedCategory(e.target.value)} className="w-full rounded-md border border-gray-300 py-2 px-3 focus:outline-none focus:ring-2 focus:ring-news-primary focus:border-transparent">
-                  <option value="All">All Categories</option>
+                <select value={selectedCategory} onChange={e =>setSelectedCategory(e.target.value)} className="w-full rounded-md border border-gray-300 py-2 px-3 focus:outline-none focus:ring-2 focus:ring-news-primary focus:border-transparent"><option value="All">All Categories</option>
                   <option value="Nature">Nature</option>
                   <option value="Events">Events</option>
                   <option value="Recreation">Recreation</option>
@@ -207,8 +202,7 @@ export const PhotoGalleryPage = () => {
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Community
                 </label>
-                <select value={selectedCommunity} onChange={e => setSelectedCommunity(e.target.value)} className="w-full rounded-md border border-gray-300 py-2 px-3 focus:outline-none focus:ring-2 focus:ring-news-primary focus:border-transparent">
-                  <option value="All">All Communities</option>
+                <select value={selectedCommunity} onChange={e =>setSelectedCommunity(e.target.value)} className="w-full rounded-md border border-gray-300 py-2 px-3 focus:outline-none focus:ring-2 focus:ring-news-primary focus:border-transparent"><option value="All">All Communities</option>
                   <option value="Clearwater">Clearwater</option>
                   <option value="Dunedin">Dunedin</option>
                   <option value="Palm Harbor">Palm Harbor</option>
@@ -219,8 +213,7 @@ export const PhotoGalleryPage = () => {
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Time Period
                 </label>
-                <select value={selectedTimeframe} onChange={e => setSelectedTimeframe(e.target.value)} className="w-full rounded-md border border-gray-300 py-2 px-3 focus:outline-none focus:ring-2 focus:ring-news-primary focus:border-transparent">
-                  <option value="All time">All time</option>
+                <select value={selectedTimeframe} onChange={e =>setSelectedTimeframe(e.target.value)} className="w-full rounded-md border border-gray-300 py-2 px-3 focus:outline-none focus:ring-2 focus:ring-news-primary focus:border-transparent"><option value="All time">All time</option>
                   <option value="Today">Today</option>
                   <option value="This week">This week</option>
                   <option value="This month">This month</option>
@@ -231,15 +224,13 @@ export const PhotoGalleryPage = () => {
         {/* Photo display */}
         {loading ? <div className="flex justify-center items-center h-64">
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-news-primary"></div>
-          </div> : filteredPhotos.length > 0 ? viewMode === 'grid' ? <PhotoGrid photos={filteredPhotos} onPhotoClick={handlePhotoClick} /> : <PhotoList photos={filteredPhotos} onPhotoClick={handlePhotoClick} /> : <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 text-center">
+          </div>: filteredPhotos.length > 0 ? viewMode === 'grid' ?<PhotoGrid photos={filteredPhotos} onPhotoClick={handlePhotoClick} /> : <PhotoList photos={filteredPhotos} onPhotoClick={handlePhotoClick} /> : <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 text-center">
             <div className="mx-auto w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
               <Search className="h-8 w-8 text-gray-400" />
             </div>
             <h3 className="text-gray-700 font-medium mb-1">No photos found</h3>
-            <p className="text-sm text-gray-500 max-w-md mx-auto mb-6">
-              We couldn't find any photos matching your search criteria. Try
-              adjusting your filters or upload a new photo.
-            </p>
+            <p className="text-sm text-gray-500 max-w-md mx-auto mb-6">We couldn't find any photos matching your search criteria. Try
+              adjusting your filters or upload a new photo.</p>
             <button onClick={handleUploadClick} className="bg-news-primary text-white px-4 py-2 rounded-md text-sm font-medium inline-flex items-center hover:bg-news-primary-dark transition-colors">
               <Plus className="h-4 w-4 mr-2" />
               Upload a Photo

@@ -15,7 +15,7 @@ interface AdFormatSelectorProps {
   selectedFormat: string | null;
   onFormatSelect: (formatId: string) => void;
 }
-export const AdFormatSelector: React.FC<AdFormatSelectorProps> = ({
+export const AdFormatSelector: React.FC<AdFormatSelectorProps>= ({
   selectedFormat,
   onFormatSelect
 }) => {
@@ -26,22 +26,21 @@ export const AdFormatSelector: React.FC<AdFormatSelectorProps> = ({
     price: '$5/day per community',
     size: 'Small (300x100px)',
     recommended: false,
-    previewImage: <div className="w-full h-24 bg-gray-100 rounded border border-gray-300 p-3 flex flex-col justify-center">
+    previewImage:<div className="w-full h-24 bg-gray-100 rounded border border-gray-300 p-3 flex flex-col justify-center">
           <div className="text-sm font-medium text-gray-800">
             Your text ad title goes here
           </div>
           <div className="text-xs text-gray-600 mt-1">
             Brief description of your product or service
           </div>
-        </div>
-  }, {
+        </div>}, {
     id: 'standard',
     name: 'Standard Card',
     description: 'Best engagement rates',
     price: '$15/day per community',
     size: 'Medium (300x250px)',
     recommended: true,
-    previewImage: <div className="w-full h-60 bg-gray-100 rounded border border-gray-300 overflow-hidden flex flex-col">
+    previewImage:<div className="w-full h-60 bg-gray-100 rounded border border-gray-300 overflow-hidden flex flex-col">
           <div className="h-32 bg-blue-100 flex items-center justify-center text-blue-400">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -56,15 +55,14 @@ export const AdFormatSelector: React.FC<AdFormatSelectorProps> = ({
               for additional information about features and benefits.
             </div>
           </div>
-        </div>
-  }, {
+        </div>}, {
     id: 'banner',
     name: 'Featured Banner',
     description: 'Maximum visibility at top of community',
     price: '$30/day per community',
     size: 'Large (728x90px desktop, 320x50px mobile)',
     recommended: false,
-    previewImage: <div className="w-full h-20 bg-gray-100 rounded border border-gray-300 p-3 flex items-center">
+    previewImage:<div className="w-full h-20 bg-gray-100 rounded border border-gray-300 p-3 flex items-center">
           <div className="h-12 w-12 bg-blue-100 rounded flex items-center justify-center text-blue-400 mr-3">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -81,15 +79,14 @@ export const AdFormatSelector: React.FC<AdFormatSelectorProps> = ({
           <button className="bg-blue-600 text-white text-xs px-2 py-1 rounded">
             Learn More
           </button>
-        </div>
-  }, {
+        </div>}, {
     id: 'premium',
     name: 'Premium Showcase',
     description: 'Sidebar placement with rich media',
     price: '$50/day per community',
     size: 'Extra Large (300x600px)',
     recommended: false,
-    previewImage: <div className="w-full h-96 bg-gray-100 rounded border border-gray-300 overflow-hidden flex flex-col">
+    previewImage:<div className="w-full h-96 bg-gray-100 rounded border border-gray-300 overflow-hidden flex flex-col">
           <div className="h-48 bg-blue-100 flex items-center justify-center text-blue-400">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -118,11 +115,11 @@ export const AdFormatSelector: React.FC<AdFormatSelectorProps> = ({
         </div>
   }];
   return <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {adFormats.map(format => <div key={format.id} onClick={() => onFormatSelect(format.id)} className={`
+      {adFormats.map(format => <div key={format.id} onClick={() =>onFormatSelect(format.id)} className={`
             border-2 rounded-lg p-5 cursor-pointer transition-all relative
             ${selectedFormat === format.id ? 'border-blue-600 bg-blue-50' : 'border-gray-200 hover:border-gray-300'}
           `}>
-          {format.recommended && <div className="absolute top-0 right-0 bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded-bl-lg rounded-tr-lg">
+          {format.recommended &&<div className="absolute top-0 right-0 bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded-bl-lg rounded-tr-lg">
               RECOMMENDED
             </div>}
           <div className="flex items-start">

@@ -1,7 +1,7 @@
 // Converted from Magic Patterns
 import React from 'react';
 import Link from 'next/link';
-import { MessageCircle, ThumbsUp, ThumbsDown, User, Clock, ChevronRight, TrendingUp, Mail, Share2 } from 'lucide-react';
+import { ChevronRight, Clock, Mail, MessageCircle, ThumbsDown, ThumbsUp, TrendingUp } from 'lucide-react';
 export const OpinionPage = () => {
   return <div className="min-h-screen bg-gray-50">
       <main className="container mx-auto px-4 py-8">
@@ -20,12 +20,10 @@ export const OpinionPage = () => {
                   Revitalizing Downtown Clearwater: A Vision for the Future
                 </Link>
               </h2>
-              <p className="text-gray-600 mb-4">
-                As our city grows, we need a comprehensive plan for downtown
+              <p className="text-gray-600 mb-4">As our city grows, we need a comprehensive plan for downtown
                 that balances development with preserving our community's
                 character. Here's what the editorial board believes should be
-                our priorities.
-              </p>
+                our priorities.</p>
               <div className="flex items-center text-sm text-gray-500 mb-4">
                 <span className="mr-4">By The Editorial Board</span>
                 <Clock className="h-4 w-4 mr-1" />
@@ -96,12 +94,10 @@ export const OpinionPage = () => {
                       </p>
                     </div>
                   </div>
-                  <p className="text-gray-600 mb-3">
-                    Clearwater's growth demands better public transit options.
+                  <p className="text-gray-600 mb-3">Clearwater's growth demands better public transit options.
                     Our current system leaves too many residents without
                     reliable transportation to work, school, and healthcare.
-                    Here's how we can fix it.
-                  </p>
+                    Here's how we can fix it.</p>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center text-sm text-gray-500">
                       <Clock className="h-4 w-4 mr-1" />
@@ -139,12 +135,10 @@ export const OpinionPage = () => {
                       </p>
                     </div>
                   </div>
-                  <p className="text-gray-600 mb-3">
-                    The recent budget cuts to our school district will have
+                  <p className="text-gray-600 mb-3">The recent budget cuts to our school district will have
                     lasting negative impacts on our children's education. We
                     need to prioritize education in our city's budget and find
-                    sustainable funding solutions.
-                  </p>
+                    sustainable funding solutions.</p>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center text-sm text-gray-500">
                       <Clock className="h-4 w-4 mr-1" />
@@ -182,11 +176,9 @@ export const OpinionPage = () => {
                       </p>
                     </div>
                   </div>
-                  <p className="text-gray-600 mb-3">
-                    As national chains continue to expand in Clearwater, we need
+                  <p className="text-gray-600 mb-3">As national chains continue to expand in Clearwater, we need
                     to remember the value that local businesses bring to our
-                    community. Here's why shopping local matters more than ever.
-                  </p>
+                    community. Here's why shopping local matters more than ever.</p>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center text-sm text-gray-500">
                       <Clock className="h-4 w-4 mr-1" />
@@ -228,33 +220,27 @@ export const OpinionPage = () => {
               </div>
               <div className="space-y-6">
                 <div className="border-l-4 border-purple-200 pl-4">
-                  <p className="text-gray-600 italic mb-2">
-                    "I was pleased to see the city council's decision to expand
+                  <p className="text-gray-600 italic mb-2">"I was pleased to see the city council's decision to expand
                     the recycling program. However, we need to address the lack
-                    of recycling in our public spaces and parks."
-                  </p>
+                    of recycling in our public spaces and parks."</p>
                   <p className="text-sm text-gray-500">
                     - Sarah Johnson, Clearwater Beach
                   </p>
                 </div>
                 <div className="border-l-4 border-purple-200 pl-4">
-                  <p className="text-gray-600 italic mb-2">
-                    "The article on affordable housing missed a key point: we
+                  <p className="text-gray-600 italic mb-2">"The article on affordable housing missed a key point: we
                     need to incentivize developers to include affordable units
                     in new projects, not just build separate 'affordable'
-                    developments."
-                  </p>
+                    developments."</p>
                   <p className="text-sm text-gray-500">
                     - Michael Chen, Downtown
                   </p>
                 </div>
                 <div className="border-l-4 border-purple-200 pl-4">
-                  <p className="text-gray-600 italic mb-2">
-                    "As a small business owner, I want to thank Day.News for
+                  <p className="text-gray-600 italic mb-2">"As a small business owner, I want to thank Day.News for
                     highlighting the challenges we face. Your recent coverage
                     has helped bring attention to issues that affect our
-                    livelihoods."
-                  </p>
+                    livelihoods."</p>
                   <p className="text-sm text-gray-500">
                     - Emily Rodriguez, North Clearwater
                   </p>
@@ -320,15 +306,11 @@ export const OpinionPage = () => {
               </h2>
               <ol className="list-decimal list-inside space-y-3 pl-2">
                 <li className="text-gray-900">
-                  <Link href="#" className="hover:text-purple-600">
-                    The Future of Clearwater's Downtown Development
-                  </Link>
+                  <Link href="#" className="hover:text-purple-600">The Future of Clearwater's Downtown Development</Link>
                   <div className="text-xs text-gray-500 ml-5">86 comments</div>
                 </li>
                 <li className="text-gray-900">
-                  <Link href="#" className="hover:text-purple-600">
-                    Should We Expand the City's Public Transportation?
-                  </Link>
+                  <Link href="#" className="hover:text-purple-600">Should We Expand the City's Public Transportation?</Link>
                   <div className="text-xs text-gray-500 ml-5">72 comments</div>
                 </li>
                 <li className="text-gray-900">
@@ -338,9 +320,7 @@ export const OpinionPage = () => {
                   <div className="text-xs text-gray-500 ml-5">65 comments</div>
                 </li>
                 <li className="text-gray-900">
-                  <Link href="#" className="hover:text-purple-600">
-                    Local Schools Face Budget Cuts: What's Next?
-                  </Link>
+                  <Link href="#" className="hover:text-purple-600">Local Schools Face Budget Cuts: What's Next?</Link>
                   <div className="text-xs text-gray-500 ml-5">58 comments</div>
                 </li>
                 <li className="text-gray-900">
@@ -357,9 +337,7 @@ export const OpinionPage = () => {
                 Weekly Poll
               </h2>
               <div className="mb-4">
-                <h3 className="font-medium text-gray-900 mb-3">
-                  What should be the top priority for Clearwater's city budget?
-                </h3>
+                <h3 className="font-medium text-gray-900 mb-3">What should be the top priority for Clearwater's city budget?</h3>
                 <div className="space-y-2">
                   <div className="flex items-center">
                     <input id="poll-1" name="poll" type="radio" className="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300" />

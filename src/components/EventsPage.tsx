@@ -1,9 +1,9 @@
 // Converted from Magic Patterns
 import React from 'react';
-import { MapPin, Calendar, Search, Filter } from 'lucide-react';
+import { Calendar, Filter, MapPin, Search } from 'lucide-react';
 import { PageHeader } from './PageHeader';
 import { EventCard } from './EventCard';
-export const EventsPage = () => {
+export const EventsPage = () =>{
   // Sample event data
   const upcomingEvents = [{
     id: 1,
@@ -36,7 +36,7 @@ export const EventsPage = () => {
     location: 'Community Playhouse',
     customImage: 'https://images.unsplash.com/photo-1507924538820-ede94a04019d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
   }];
-  return <div className="flex-1 overflow-auto bg-gray-50">
+  return<div className="flex-1 overflow-auto bg-gray-50">
       <PageHeader />
       <div className="mx-auto max-w-7xl px-4 py-6">
         <h1 className="mb-6 text-2xl font-bold text-gray-900">Events</h1>
@@ -117,8 +117,7 @@ export const EventsPage = () => {
                 Next
               </button>
             </div>
-            <div className="grid grid-cols-7 gap-1">
-              {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => <div key={day} className="p-2 text-center text-sm font-medium">
+            <div className="grid grid-cols-7 gap-1">{['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day =><div key={day} className="p-2 text-center text-sm font-medium">
                   {day}
                 </div>)}
               {Array.from({

@@ -2,7 +2,7 @@
 // Converted from Magic Patterns
 import React, { useState } from 'react';
 import { useLocationDetection } from '../location/LocationDetector';
-export const DoNotSellPage = () => {
+export const DoNotSellPage = () =>{
   const {
     locationData
   } = useLocationDetection();
@@ -34,20 +34,18 @@ export const DoNotSellPage = () => {
     console.log('Form submitted:', formData);
     setSubmitted(true);
   };
-  return <div className="min-h-screen bg-bg-primary w-full">
+  return<div className="min-h-screen bg-bg-primary w-full">
       <main className="container mx-auto px-4 py-12">
         <h1 className="font-display text-4xl font-bold text-news-primary mb-8">
           Do Not Sell My Information
         </h1>
         <div className="max-w-4xl bg-white rounded-lg shadow-sm p-6 md:p-8 mb-8">
-          <p className="text-gray-600 mb-6">
-            Last Updated:{' '}
+          <p className="text-gray-600 mb-6">Last Updated:{' '}
             {new Date().toLocaleDateString('en-US', {
             month: 'long',
             day: 'numeric',
             year: 'numeric'
-          })}
-          </p>
+          })}</p>
           <section className="mb-8">
             <h2 className="font-display text-2xl font-bold text-gray-900 mb-4">
               Your Privacy Rights
@@ -68,12 +66,10 @@ export const DoNotSellPage = () => {
             <h2 className="font-display text-2xl font-bold text-gray-900 mb-4">
               What This Means
             </h2>
-            <p className="text-gray-700 mb-4">
-              When we talk about "selling" or "sharing" personal information,
+            <p className="text-gray-700 mb-4">When we talk about "selling" or "sharing" personal information,
               we're referring to disclosing or making available personal
               information to third parties for monetary or other valuable
-              consideration, or for targeted advertising purposes.
-            </p>
+              consideration, or for targeted advertising purposes.</p>
             <p className="text-gray-700 mb-4">This may include:</p>
             <ul className="list-disc list-inside text-gray-700 mb-4 ml-4 space-y-2">
               <li>
@@ -91,11 +87,9 @@ export const DoNotSellPage = () => {
             <h2 className="font-display text-2xl font-bold text-gray-900 mb-4">
               How to Submit Your Request
             </h2>
-            <p className="text-gray-700 mb-4">
-              You can submit your "Do Not Sell My Information" request using the
+            <p className="text-gray-700 mb-4">You can submit your "Do Not Sell My Information" request using the
               form below. Alternatively, you can contact us directly using the
-              information provided at the bottom of this page.
-            </p>
+              information provided at the bottom of this page.</p>
             {submitted ? <div className="bg-green-50 border border-green-200 text-green-800 rounded-lg p-4 mt-6">
                 <h3 className="font-bold text-lg mb-2">Request Submitted</h3>
                 <p>
@@ -126,10 +120,8 @@ export const DoNotSellPage = () => {
                     Email Address*
                   </label>
                   <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-news-primary" />
-                  <p className="text-xs text-gray-500 mt-1">
-                    We'll use this to verify your identity and communicate about
-                    your request.
-                  </p>
+                  <p className="text-xs text-gray-500 mt-1">We'll use this to verify your identity and communicate about
+                    your request.</p>
                 </div>
                 <div>
                   <label htmlFor="requestType" className="block text-sm font-medium text-gray-700 mb-1">
@@ -212,10 +204,8 @@ export const DoNotSellPage = () => {
                 The right to limit the use of sensitive personal information
               </li>
             </ul>
-            <p className="text-gray-700 mb-4">
-              To learn more about these rights or to submit a different type of
-              request, please visit our{' '}
-              <a href="/privacy-policy" className="text-news-primary hover:underline">
+            <p className="text-gray-700 mb-4">To learn more about these rights or to submit a different type of
+              request, please visit our{' '}<a href="/privacy-policy" className="text-news-primary hover:underline">
                 Privacy Policy
               </a>
               .

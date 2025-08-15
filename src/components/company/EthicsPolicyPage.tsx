@@ -1,7 +1,7 @@
 // Converted from Magic Patterns
 import React from 'react';
 import Link from 'next/link';
-import { Shield, FileText, Check, AlertCircle, HelpCircle, Mail } from 'lucide-react';
+import { AlertCircle, Check, FileText, HelpCircle, Mail, Shield } from 'lucide-react';
 export const EthicsPolicyPage = () => {
   return <div className="min-h-screen bg-gray-50">
       <main className="container mx-auto px-4 py-8">
@@ -150,10 +150,8 @@ export const EthicsPolicyPage = () => {
                     other way
                   </li>
                   <li>The source has direct knowledge of the information</li>
-                  <li>
-                    The source's identity is known to editors who have assessed
-                    their reliability
-                  </li>
+                  <li>The source's identity is known to editors who have assessed
+                    their reliability</li>
                   <li>We can explain to readers why anonymity was granted</li>
                 </ul>
                 <p className="text-gray-700 mt-3">
@@ -179,11 +177,9 @@ export const EthicsPolicyPage = () => {
                     Maintain editorial independence from data analytics and
                     audience metrics
                   </li>
-                  <li>
-                    Use social media responsibly, understanding that
+                  <li>Use social media responsibly, understanding that
                     journalists' personal accounts may reflect on our
-                    organization
-                  </li>
+                    organization</li>
                   <li>
                     Avoid digital manipulation of images beyond standard
                     adjustments for clarity

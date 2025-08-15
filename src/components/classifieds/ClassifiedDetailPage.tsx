@@ -3,9 +3,9 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase/client';
 import { useRouter, usePathname } from 'next/navigation';
-import { ArrowLeft, MapPin, Clock, Share2, Heart, Flag, MessageCircle, ChevronLeft, ChevronRight, Star, Shield, Calendar, CheckCircle, AlertCircle, Eye, DollarSign, Tag, Phone, Mail } from 'lucide-react';
+import { AlertCircle, ArrowLeft, Calendar, CheckCircle, ChevronLeft, ChevronRight, Clock, DollarSign, Eye, Flag, Heart, Mail, MapPin, MessageCircle, Phone, Share2, Shield, Star, Tag } from 'lucide-react';
 import { SimpleHeroSection } from '../hero/SimpleHeroSection';
-export const ClassifiedDetailPage = () => {
+export const ClassifiedDetailPage = () =>{
   const router = useRouter();
   const pathname = usePathname();
   const [loading, setLoading] = useState(true);
@@ -16,7 +16,8 @@ export const ClassifiedDetailPage = () => {
   const [showContactInfo, setShowContactInfo] = useState(false);
   // Parse the listing ID from the URL
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
     if (id) {
       // In a real app, fetch the listing data from an API
@@ -30,7 +31,7 @@ export const ClassifiedDetailPage = () => {
     } else {
       router.push('/classifieds');
     }
-  }, [location, navigate]);
+  }, [router]);
   const getMockClassified = id => {
     // This would be replaced with an API call in a real application
     const [classifieds, setClassifieds] = useState([]);
@@ -120,7 +121,7 @@ export const ClassifiedDetailPage = () => {
     router.push(`/classifiedDetail?id=${id}`);
   };
   if (loading) {
-    return <div className="flex-1 overflow-auto bg-gray-50 flex items-center justify-center min-h-screen">
+    return<div className="flex-1 overflow-auto bg-gray-50 flex items-center justify-center min-h-screen">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-news-primary mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading listing details...</p>
@@ -134,10 +135,8 @@ export const ClassifiedDetailPage = () => {
           <h2 className="text-xl font-bold text-gray-900 mb-2">
             Listing Not Found
           </h2>
-          <p className="text-gray-600 mb-4">
-            The listing you're looking for may have been removed or is no longer
-            available.
-          </p>
+          <p className="text-gray-600 mb-4">The listing you're looking for may have been removed or is no longer
+            available.</p>
           <button onClick={handleGoBack} className="bg-news-primary text-white px-4 py-2 rounded-md hover:bg-news-primary-dark transition-colors">
             Return to Classifieds
           </button>
@@ -177,8 +176,7 @@ export const ClassifiedDetailPage = () => {
           </div>
           {/* Image thumbnails */}
           {classified.images.length > 1 && <div className="flex overflow-x-auto p-2 space-x-2 bg-gray-50">
-              {classified.images.map((image, index) => <button key={index} onClick={() => handleThumbnailClick(index)} className={`flex-shrink-0 w-20 h-20 rounded-md overflow-hidden border-2 ${currentImageIndex === index ? 'border-news-primary' : 'border-transparent'}`}>
-                  <img src={image} alt={`Thumbnail ${index + 1}`} className="w-full h-full object-cover" />
+              {classified.images.map((image, index) => <button key={index} onClick={() =>handleThumbnailClick(index)} className={`flex-shrink-0 w-20 h-20 rounded-md overflow-hidden border-2 ${currentImageIndex === index ? 'border-news-primary' : 'border-transparent'}`}><img src={image} alt={`Thumbnail ${index + 1}`} className="w-full h-full object-cover" />
                 </button>)}
             </div>}
           {/* Listing details */}
@@ -187,10 +185,8 @@ export const ClassifiedDetailPage = () => {
               <div>
                 <div className="flex items-center mb-2">
                   <Tag className="h-4 w-4 text-gray-500 mr-2" />
-                  <span className="text-sm text-gray-600">
-                    {classified.category === 'forSale' ? 'For Sale' : classified.category}{' '}
-                    &gt; {classified.subcategory}
-                  </span>
+                  <span className="text-sm text-gray-600">{classified.category === 'forSale' ? 'For Sale' : classified.category}{' '}
+                    {'>'} {classified.subcategory}</span>
                 </div>
                 <h1 className="text-2xl font-bold text-gray-900 mb-2">
                   {classified.title}
@@ -218,13 +214,12 @@ export const ClassifiedDetailPage = () => {
                   <Heart className={`h-5 w-5 mr-2 ${isFavorite ? 'fill-current' : ''}`} />
                   <span>Save</span>
                 </button>
-                <button onClick={() => {
+                <button onClick={() =>{
                 alert('Listing reported. Our team will review it.');
-              }} className="flex items-center px-4 py-2 rounded-md border border-gray-300 bg-white text-gray-700 hover:bg-gray-50">
-                  <Flag className="h-5 w-5 mr-2" />
+              }} className="flex items-center px-4 py-2 rounded-md border border-gray-300 bg-white text-gray-700 hover:bg-gray-50"><Flag className="h-5 w-5 mr-2" />
                   <span>Report</span>
                 </button>
-                <button onClick={() => {
+                <button onClick={() =>{
                 navigator.share({
                   title: classified.title,
                   text: `Check out this listing: ${classified.title}`,
@@ -232,8 +227,7 @@ export const ClassifiedDetailPage = () => {
                 }).catch(() => {
                   alert('Share functionality not supported on this browser');
                 });
-              }} className="flex items-center px-4 py-2 rounded-md border border-gray-300 bg-white text-gray-700 hover:bg-gray-50">
-                  <Share2 className="h-5 w-5 mr-2" />
+              }} className="flex items-center px-4 py-2 rounded-md border border-gray-300 bg-white text-gray-700 hover:bg-gray-50"><Share2 className="h-5 w-5 mr-2" />
                   <span>Share</span>
                 </button>
               </div>
@@ -245,9 +239,7 @@ export const ClassifiedDetailPage = () => {
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 bg-gray-50 p-4 rounded-lg">
                   {Object.entries(classified.specifications).map(([key, value]) => <div key={key} className="flex items-start">
-                        <div className="w-1/2 text-gray-600 text-sm capitalize">
-                          {key.replace(/([A-Z])/g, ' $1').trim()}:
-                        </div>
+                        <div className="w-1/2 text-gray-600 text-sm capitalize">{key.replace(/([A-Z])/g, ' $1').trim()}:</div>
                         <div className="w-1/2 text-gray-900 text-sm font-medium">
                           {value.toString()}
                         </div>
@@ -298,14 +290,10 @@ export const ClassifiedDetailPage = () => {
                         {classified.seller.rating} rating
                       </span>
                     </div>
-                    <div className="text-sm text-gray-600">
-                      Member since{' '}
-                      {new Date(classified.seller.memberSince).getFullYear()}
-                    </div>
-                    <div className="text-sm text-gray-600">
-                      Response rate: {classified.seller.responseRate}% •{' '}
-                      {classified.seller.responseTime}
-                    </div>
+                    <div className="text-sm text-gray-600">Member since{' '}
+                      {new Date(classified.seller.memberSince).getFullYear()}</div>
+                    <div className="text-sm text-gray-600">Response rate: {classified.seller.responseRate}% •{' '}
+                      {classified.seller.responseTime}</div>
                     {classified.seller.otherListings > 0 && <div className="text-sm text-news-primary mt-1">
                         <a href="#" className="hover:underline">
                           See {classified.seller.otherListings} other listings

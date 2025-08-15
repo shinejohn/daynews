@@ -5,7 +5,7 @@ import { Upload, Image, Edit, Sparkles, Tag, X } from 'lucide-react';
 export const MediaManager = ({
   mediaItems,
   handleAddMedia
-}) => {
+}) =>{
   const [showUploadModal, setShowUploadModal] = useState(false);
   const demoImages = [{
     id: 1,
@@ -25,7 +25,7 @@ export const MediaManager = ({
     handleAddMedia(image);
     setShowUploadModal(false);
   };
-  return <div className="bg-white rounded-lg border border-border-light shadow-sm">
+  return<div className="bg-white rounded-lg border border-border-light shadow-sm">
       <div className="p-4 border-b border-border-light flex items-center justify-between">
         <div className="flex items-center">
           <Image className="h-5 w-5 mr-2 text-news-primary" />

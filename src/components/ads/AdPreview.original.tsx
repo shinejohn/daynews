@@ -1,6 +1,6 @@
 // Converted from Magic Patterns
 import React from 'react';
-import { MessageSquare, Heart, Clock, User, MapPin, ExternalLink } from 'lucide-react';
+import { Clock, ExternalLink, Heart, MapPin, MessageSquare, User } from 'lucide-react';
 interface AdPreviewProps {
   adFormat: string;
   adData: {
@@ -21,12 +21,8 @@ export const AdPreview: React.FC<AdPreviewProps> = ({
       <div className="flex items-center">
         <div className="flex-1">
           <div className="text-xs text-gray-500 mb-1">Sponsored</div>
-          <h3 className="text-sm font-medium text-gray-900 line-clamp-1">
-            {adData.title || 'Your ad title'}
-          </h3>
-          <p className="text-xs text-gray-600 mt-1 line-clamp-2">
-            {adData.bodyText || 'Your ad description'}
-          </p>
+          <h3 className="text-sm font-medium text-gray-900 line-clamp-1">{adData.title || 'Your ad title'}</h3>
+          <p className="text-xs text-gray-600 mt-1 line-clamp-2">{adData.bodyText || 'Your ad description'}</p>
         </div>
         <button className="ml-3 bg-blue-600 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
           {adData.callToAction}
@@ -48,12 +44,8 @@ export const AdPreview: React.FC<AdPreviewProps> = ({
           </div>
         </div>}
       <div className="p-3">
-        <h3 className="text-sm font-medium text-gray-900 mb-1 line-clamp-2">
-          {adData.title || 'Your ad title'}
-        </h3>
-        <p className="text-xs text-gray-600 mb-3 line-clamp-3">
-          {adData.bodyText || 'Your ad description'}
-        </p>
+        <h3 className="text-sm font-medium text-gray-900 mb-1 line-clamp-2">{adData.title || 'Your ad title'}</h3>
+        <p className="text-xs text-gray-600 mb-3 line-clamp-3">{adData.bodyText || 'Your ad description'}</p>
         <button className="w-full bg-blue-600 text-white text-xs py-1.5 rounded">
           {adData.callToAction}
         </button>
@@ -69,12 +61,8 @@ export const AdPreview: React.FC<AdPreviewProps> = ({
         </div>}
       <div className="flex-1">
         <div className="text-xs text-gray-500 mb-0.5">Sponsored</div>
-        <h3 className="text-sm font-medium text-gray-900 line-clamp-1">
-          {adData.title || 'Your ad title'}
-        </h3>
-        <p className="text-xs text-gray-600 line-clamp-1">
-          {adData.bodyText || 'Your ad description'}
-        </p>
+        <h3 className="text-sm font-medium text-gray-900 line-clamp-1">{adData.title || 'Your ad title'}</h3>
+        <p className="text-xs text-gray-600 line-clamp-1">{adData.bodyText || 'Your ad description'}</p>
       </div>
       <button className="ml-3 bg-blue-600 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
         {adData.callToAction}
@@ -95,12 +83,8 @@ export const AdPreview: React.FC<AdPreviewProps> = ({
           </div>
         </div>}
       <div className="p-4">
-        <h3 className="text-base font-medium text-gray-900 mb-2 line-clamp-2">
-          {adData.title || 'Your premium ad title goes here'}
-        </h3>
-        <p className="text-sm text-gray-600 mb-4 line-clamp-4">
-          {adData.bodyText || 'A comprehensive description of your product or service with ample room for details about features, benefits, and value proposition.'}
-        </p>
+        <h3 className="text-base font-medium text-gray-900 mb-2 line-clamp-2">{adData.title || 'Your premium ad title goes here'}</h3>
+        <p className="text-sm text-gray-600 mb-4 line-clamp-4">{adData.bodyText || 'A comprehensive description of your product or service with ample room for details about features, benefits, and value proposition.'}</p>
         <div className="text-sm text-gray-600 mb-4">
           • Feature point one about your offering
           <br />
@@ -126,7 +110,7 @@ export const AdPreview: React.FC<AdPreviewProps> = ({
         return renderStandardAd();
     }
   };
-  const renderMockPost = () => <div className="bg-white rounded-lg border border-gray-200 p-4 mb-4">
+  const renderMockPost = () =><div className="bg-white rounded-lg border border-gray-200 p-4 mb-4">
       <div className="flex items-center mb-3">
         <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
           <User className="h-5 w-5 text-blue-600" />
@@ -161,8 +145,7 @@ export const AdPreview: React.FC<AdPreviewProps> = ({
       <div className={`bg-gray-100 rounded-lg overflow-hidden border border-gray-300 ${device === 'mobile' ? 'w-[320px]' : 'w-full max-w-2xl'}`}>
         {/* Mock community header */}
         <div className="bg-blue-600 text-white p-3 flex items-center justify-between">
-          <div className="font-semibold">Community Feed</div>
-          {device === 'desktop' && <div className="text-xs">
+          <div className="font-semibold">Community Feed</div>{device === 'desktop' &&<div className="text-xs">
               <span className="mr-4">Home</span>
               <span className="mr-4">Popular</span>
               <span>Notifications</span>

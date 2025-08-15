@@ -1,8 +1,8 @@
 'use client';
 // Converted from Magic Patterns
-import React, { useEffect, useState, memo, Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Grid, Newspaper, DollarSign, Shield, Bot, BarChart, Settings, Building, Search, ChevronDown, Bell, User, Activity, Zap, AlertCircle, Clock, Check, X, RefreshCw, Terminal, Cpu, HardDrive, Wifi, DollarSign as Dollar, Sliders, Eye } from 'lucide-react';
+import { Activity, AlertCircle, BarChart, Bell, Bot, Building, Check, ChevronDown, Clock, Cpu, DollarSign, DollarSign as Dollar, Eye, Grid, HardDrive, Newspaper, RefreshCw, Search, Settings, Shield, Sliders, Terminal, User, Wifi, X, Zap } from 'lucide-react';
 // Sample data for AI agents
 const aiAgents = [{
   id: 1,
@@ -401,7 +401,7 @@ const systemResources = {
     }
   }
 };
-export const AIAgentControl = () => {
+export const AIAgentControl = () =>{
   const router = useRouter();
   const [selectedAgent, setSelectedAgent] = useState(aiAgents[0].id);
   const [cpuData, setCpuData] = useState(systemResources.cpu);
@@ -465,22 +465,22 @@ export const AIAgentControl = () => {
     switch (status) {
       case 'Active':
         return {
-          icon: <Zap className="w-4 h-4" />,
+          icon:<Zap className="w-4 h-4" />,
           color: '#00FF88'
         };
       case 'Working':
         return {
-          icon: <Activity className="w-4 h-4" />,
+          icon:<Activity className="w-4 h-4" />,
           color: '#00E5FF'
         };
       case 'Idle':
         return {
-          icon: <Clock className="w-4 h-4" />,
+          icon:<Clock className="w-4 h-4" />,
           color: '#FFB000'
         };
       default:
         return {
-          icon: <AlertCircle className="w-4 h-4" />,
+          icon:<AlertCircle className="w-4 h-4" />,
           color: '#FF3366'
         };
     }
@@ -489,11 +489,11 @@ export const AIAgentControl = () => {
   const getActivityIcon = status => {
     switch (status) {
       case 'success':
-        return <Check className="w-4 h-4 text-[#00FF88]" />;
+        return<Check className="w-4 h-4 text-[#00FF88]" />;
       case 'in-progress':
-        return <RefreshCw className="w-4 h-4 text-[#00E5FF] animate-spin" />;
+        return<RefreshCw className="w-4 h-4 text-[#00E5FF] animate-spin" />;
       case 'error':
-        return <X className="w-4 h-4 text-[#FF3366]" />;
+        return<X className="w-4 h-4 text-[#FF3366]" />;
       default:
         return <Clock className="w-4 h-4 text-[#FFB000]" />;
     }
@@ -511,7 +511,7 @@ export const AIAgentControl = () => {
         return '#FFB000';
     }
   };
-  return <div className="min-h-screen bg-[#0A0A0B] text-white relative">
+  return<div className="min-h-screen bg-[#0A0A0B] text-white relative">
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 pointer-events-none" style={{
       backgroundImage: 'linear-gradient(to right, #1A1A1F 1px, transparent 1px), linear-gradient(to bottom, #1A1A1F 1px, transparent 1px)',
@@ -522,9 +522,8 @@ export const AIAgentControl = () => {
         <div className="flex items-center justify-between h-full px-6">
           <div className="font-['Space_Grotesk'] text-lg font-bold tracking-wider text-white uppercase cursor-pointer" style={{
           textShadow: '0 0 10px rgba(0,229,255,0.5)'
-        }} onClick={() => navigateTo('/admin-dashboard')}>
-            Day.News Command Center
-          </div>
+        }} onClick={() =>navigateTo('/admin-dashboard')}>
+            Day.News Command Center</div>
           <div className="flex items-center">
             <div className="flex items-center mr-8">
               <div className="w-2 h-2 bg-[#00FF88] rounded-full mr-2 animate-pulse"></div>
@@ -549,16 +548,9 @@ export const AIAgentControl = () => {
       {/* Sidebar navigation */}
       <aside className="fixed top-[60px] left-0 bottom-0 w-[80px] bg-[#0F0F11] z-40 flex flex-col items-center pt-6">
         <div className="flex flex-col items-center space-y-10">
-          <NavItem icon={<Grid />} label="Dashboard" onClick={() => navigateTo('/admin-dashboard')} />
-          <NavItem icon={<Newspaper />} label="Content" onClick={() => navigateTo('/content-management')} />
-          <NavItem icon={<DollarSign />} label="Revenue" onClick={() => navigateTo('/revenue-analytics')} />
-          <NavItem icon={<Shield />} label="Moderation" onClick={() => navigateTo('/moderation-queue')} />
-          <NavItem icon={<Bot />} label="AI Agents" active onClick={() => navigateTo('/ai-agent-control')} />
-          <NavItem icon={<BarChart />} label="Analytics" onClick={() => navigateTo('/admin-dashboard')} />
-        </div>
+          <NavItem icon={<Grid />} label="Dashboard" onClick={() => navigateTo('/admin-dashboard')} /><NavItem icon={<Newspaper />} label="Content" onClick={() => navigateTo('/content-management')} /><NavItem icon={<DollarSign />} label="Revenue" onClick={() => navigateTo('/revenue-analytics')} /><NavItem icon={<Shield />} label="Moderation" onClick={() => navigateTo('/moderation-queue')} /><NavItem icon={<Bot />} label="AI Agents" active onClick={() => navigateTo('/ai-agent-control')} /><NavItem icon={<BarChart />} label="Analytics" onClick={() => navigateTo('/admin-dashboard')} /></div>
         <div className="mt-auto mb-6">
-          <NavItem icon={<Settings />} label="Settings" onClick={() => navigateTo('/admin-dashboard')} />
-        </div>
+          <NavItem icon={<Settings />} label="Settings" onClick={() => navigateTo('/admin-dashboard')} /></div>
       </aside>
       {/* Main content area */}
       <main className="pt-[60px] pl-[80px]">
@@ -569,12 +561,11 @@ export const AIAgentControl = () => {
               AI AGENT CONTROL PANEL
             </h1>
             <div className="flex space-x-4">
-              <button className="bg-[#131316] border border-[#00E5FF33] rounded-md py-2 px-4 flex items-center text-white hover:bg-[#1A1A1F] transition-colors" onClick={() => {
+              <button className="bg-[#131316] border border-[#00E5FF33] rounded-md py-2 px-4 flex items-center text-white hover:bg-[#1A1A1F] transition-colors" onClick={() =>{
               // Refresh agents - in a real app this would reload data
               // For demo, just show a console message
               console.log('Refreshing agents');
-            }}>
-                <RefreshCw className="w-4 h-4 mr-2 text-[#00E5FF]" />
+            }}><RefreshCw className="w-4 h-4 mr-2 text-[#00E5FF]" />
                 <span>Refresh Agents</span>
               </button>
               <button className="bg-[#131316] border border-[#00FF8833] rounded-md py-2 px-4 flex items-center text-white hover:bg-[#1A1A1F] transition-colors" onClick={handleDeployNewAgent}>
@@ -707,10 +698,8 @@ export const AIAgentControl = () => {
                     </h3>
                     <div className="bg-[#1A1A1F] rounded-md p-4">
                       <div className="grid grid-cols-2 gap-4">
-                        <MetricCard label="Articles Written" value={agent.metrics.articlesWritten.toLocaleString()} icon={<Newspaper className="w-4 h-4" />} color="#00E5FF" />
-                        <MetricCard label="Quality Score" value={`${agent.metrics.avgQualityScore}%`} icon={<Check className="w-4 h-4" />} color={getPerformanceColor(agent.metrics.avgQualityScore)} />
-                        <MetricCard label="Response Time" value={agent.metrics.responseTime} icon={<Clock className="w-4 h-4" />} color="#FFB000" />
-                        <MetricCard label="Error Rate" value={`${agent.metrics.errorRate}%`} icon={<AlertCircle className="w-4 h-4" />} color={agent.metrics.errorRate < 1 ? '#00FF88' : agent.metrics.errorRate < 2 ? '#FFB000' : '#FF3366'} />
+                        <MetricCard label="Articles Written" value={agent.metrics.articlesWritten.toLocaleString()} icon={<Newspaper className="w-4 h-4" />} color="#00E5FF" /><MetricCard label="Quality Score" value={`${agent.metrics.avgQualityScore}%`} icon={<Check className="w-4 h-4" />} color={getPerformanceColor(agent.metrics.avgQualityScore)} />
+                        <MetricCard label="Response Time" value={agent.metrics.responseTime} icon={<Clock className="w-4 h-4" />} color="#FFB000" /><MetricCard label="Error Rate" value={`${agent.metrics.errorRate}%`} icon={<AlertCircle className="w-4 h-4" />} color={agent.metrics.errorRate < 1 ? '#00FF88' : agent.metrics.errorRate < 2 ? '#FFB000' : '#FF3366'} />
                         <MetricCard label="Accuracy" value={`${agent.metrics.accuracy}%`} icon={<Check className="w-4 h-4" />} color={getPerformanceColor(agent.metrics.accuracy)} />
                         <MetricCard label="Resource Usage" value={`${agent.metrics.resourceUsage}%`} icon={<Cpu className="w-4 h-4" />} color={agent.metrics.resourceUsage < 40 ? '#00FF88' : agent.metrics.resourceUsage < 60 ? '#FFB000' : '#FF3366'} />
                       </div>
@@ -833,8 +822,7 @@ export const AIAgentControl = () => {
                         {agent.description}
                       </p>
                       <div className="mt-4 flex space-x-2">
-                        <button className="px-3 py-1.5 bg-[#00E5FF22] text-[#00E5FF] rounded-md text-xs flex items-center hover:bg-[#00E5FF33] transition-colors" onClick={() => navigateTo('/content-management')}>
-                          <Eye className="w-3 h-3 mr-1" />
+                        <button className="px-3 py-1.5 bg-[#00E5FF22] text-[#00E5FF] rounded-md text-xs flex items-center hover:bg-[#00E5FF33] transition-colors" onClick={() =>navigateTo('/content-management')}><Eye className="w-3 h-3 mr-1" />
                           View Full Profile
                         </button>
                         <button className="px-3 py-1.5 bg-[#00FF8822] text-[#00FF88] rounded-md text-xs flex items-center hover:bg-[#00FF8833] transition-colors" onClick={() => handleRetrainAgent(agent.id)}>
@@ -887,15 +875,13 @@ export const AIAgentControl = () => {
                       {/* Area under the line */}
                       <path d={`
                           M0,${100 - cpuData[0] / 100 * 100}
-                          ${cpuData.map((value, i) => `L${i},${100 - value / 100 * 100}`).join(' ')}
+                          ${cpuData.map((value, i) =>`L${i},${100 - value / 100 * 100}`).join(' ')}
                           L${cpuData.length - 1},100 L0,100 Z
                         `} fill="url(#cpuGradient)" />
-                      {/* Line */}
-                      <path d={`
+                      {/* Line */}<path d={`
                           M0,${100 - cpuData[0] / 100 * 100}
-                          ${cpuData.map((value, i) => `L${i},${100 - value / 100 * 100}`).join(' ')}
-                        `} stroke="#00E5FF" strokeWidth="2" fill="none" />
-                    </svg>
+                          ${cpuData.map((value, i) =>`L${i},${100 - value / 100 * 100}`).join(' ')}
+                        `} stroke="#00E5FF" strokeWidth="2" fill="none" /></svg>
                   </div>
                 </div>
                 <div className="mt-2 text-xs text-[#A0A0A8] flex justify-between">
@@ -934,15 +920,13 @@ export const AIAgentControl = () => {
                       {/* Area under the line */}
                       <path d={`
                           M0,${100 - memoryData[0] / 100 * 100}
-                          ${memoryData.map((value, i) => `L${i},${100 - value / 100 * 100}`).join(' ')}
+                          ${memoryData.map((value, i) =>`L${i},${100 - value / 100 * 100}`).join(' ')}
                           L${memoryData.length - 1},100 L0,100 Z
                         `} fill="url(#memoryGradient)" />
-                      {/* Line */}
-                      <path d={`
+                      {/* Line */}<path d={`
                           M0,${100 - memoryData[0] / 100 * 100}
-                          ${memoryData.map((value, i) => `L${i},${100 - value / 100 * 100}`).join(' ')}
-                        `} stroke="#00FF88" strokeWidth="2" fill="none" />
-                    </svg>
+                          ${memoryData.map((value, i) =>`L${i},${100 - value / 100 * 100}`).join(' ')}
+                        `} stroke="#00FF88" strokeWidth="2" fill="none" /></svg>
                   </div>
                 </div>
                 <div className="mt-2 text-xs text-[#A0A0A8] flex justify-between">
@@ -1109,7 +1093,7 @@ const MetricCard = ({
   icon,
   color = 'white'
 }) => {
-  return <div className="bg-[#131316] rounded-md p-3">
+  return<div className="bg-[#131316] rounded-md p-3">
       <div className="flex justify-between items-start mb-1">
         <div className="text-xs text-[#A0A0A8]">{label}</div>
         <div style={{

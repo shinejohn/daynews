@@ -1,11 +1,11 @@
 'use client';
 // Converted from Magic Patterns
 import React from 'react';
-import { FileText, Calendar, ChevronRight, Gavel, Scale } from 'lucide-react';
+import { Calendar, ChevronRight, FileText, Gavel, Scale } from 'lucide-react';
 export const LegalNoticesPreview = ({
   onViewAll,
   onNoticeClick
-}) => {
+}) =>{
   // Mock data for legal notices
   const notices = [{
     id: 1,
@@ -48,7 +48,7 @@ export const LegalNoticesPreview = ({
     expiryDate: 'Aug 30, 2024',
     preview: 'Company: Clearwater Innovations LLC'
   }];
-  return <div className="bg-white shadow-sm rounded-lg border border-gray-200 p-6">
+  return<div className="bg-white shadow-sm rounded-lg border border-gray-200 p-6">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center">
           <Gavel className="h-5 w-5 text-indigo-700 mr-2" />
@@ -94,9 +94,7 @@ export const LegalNoticesPreview = ({
         <div className="flex items-center justify-between">
           <div className="flex items-center text-sm text-gray-600">
             <Scale className="h-4 w-4 mr-2 text-indigo-700" />
-            <p>
-              Need to publish a legal notice?{' '}
-              <a href="/legalNoticeCreator" className="text-indigo-700 hover:underline">
+            <p>Need to publish a legal notice?{' '}<a href="/legalNoticeCreator" className="text-indigo-700 hover:underline">
                 Create one here
               </a>
             </p>

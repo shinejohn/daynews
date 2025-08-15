@@ -1,7 +1,7 @@
 'use client';
 // Converted from Magic Patterns
 import React, { useState } from 'react';
-import { Flag, AlertTriangle, User, Clock, Calendar, Shield, CheckCircle, XCircle, Eye, EyeOff, MoreHorizontal, Filter, Search, ChevronDown, X, Calendar as CalendarIcon, Ban, AlertCircle, ThumbsDown, FileText, ArrowUpDown } from 'lucide-react';
+import { AlertCircle, AlertTriangle, ArrowUpDown, Ban, Calendar, Calendar as CalendarIcon, CheckCircle, ChevronDown, ClockOff, FileText, Filter, Flag, MoreHorizontal, Search, User, X, XCircle } from 'lucide-react';
 // Types
 interface AuthorComplaint {
   id: string;
@@ -64,11 +64,11 @@ export const AuthorComplaintsManagement = () => {
     if (sortDirection === 'asc') {
       return valueA > valueB ? 1 : -1;
     } else {
-      return valueA < valueB ? 1 : -1;
+      return valueA< valueB ? 1 : -1;
     }
   });
   // Handle taking action on a complaint
-  const handleTakeAction = (complaint: AuthorComplaint) => {
+  const handleTakeAction = (complaint: AuthorComplaint) =>{
     setSelectedComplaint(complaint);
     setShowActionModal(true);
   };
@@ -115,7 +115,7 @@ export const AuthorComplaintsManagement = () => {
         return 'bg-gray-100 text-gray-800';
     }
   };
-  return <div className="space-y-6">
+  return<div className="space-y-6">
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold text-gray-900">Author Complaints</h2>
         <div className="flex items-center space-x-2">
@@ -131,20 +131,16 @@ export const AuthorComplaintsManagement = () => {
           <div className="relative">
             <button className="flex items-center px-3 py-2 border border-gray-300 rounded-md bg-white text-gray-700 hover:bg-gray-50" onClick={() => setShowStatusDropdown(!showStatusDropdown)}>
               <Filter className="h-4 w-4 mr-2 text-gray-500" />
-              <span className="text-sm">
-                Status:{' '}
-                {filterStatus === 'all' ? 'All' : filterStatus.charAt(0).toUpperCase() + filterStatus.slice(1)}
-              </span>
+              <span className="text-sm">Status:{' '}
+                {filterStatus === 'all' ? 'All' : filterStatus.charAt(0).toUpperCase() + filterStatus.slice(1)}</span>
               <ChevronDown className="h-4 w-4 ml-2 text-gray-500" />
             </button>
             {showStatusDropdown && <div className="absolute mt-1 w-48 bg-white rounded-md shadow-lg border border-gray-200 z-40">
-                <div className="py-1">
-                  {['all', 'pending', 'reviewing', 'resolved', 'dismissed'].map(status => <button key={status} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => {
+                <div className="py-1">{['all', 'pending', 'reviewing', 'resolved', 'dismissed'].map(status =><button key={status} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() =>{
                 setFilterStatus(status);
                 setShowStatusDropdown(false);
               }}>
-                        {status === 'all' ? 'All' : status.charAt(0).toUpperCase() + status.slice(1)}
-                      </button>)}
+                        {status === 'all' ? 'All' : status.charAt(0).toUpperCase() + status.slice(1)}</button>)}
                 </div>
               </div>}
           </div>
@@ -152,43 +148,37 @@ export const AuthorComplaintsManagement = () => {
           <div className="relative">
             <button className="flex items-center px-3 py-2 border border-gray-300 rounded-md bg-white text-gray-700 hover:bg-gray-50" onClick={() => setShowSortDropdown(!showSortDropdown)}>
               <ArrowUpDown className="h-4 w-4 mr-2 text-gray-500" />
-              <span className="text-sm">
-                Sort:{' '}
-                {sortField === 'dateReported' ? 'Date' : sortField === 'authorName' ? 'Author' : sortField === 'reportReason' ? 'Reason' : 'Status'}
-              </span>
+              <span className="text-sm">Sort:{' '}
+                {sortField === 'dateReported' ? 'Date' : sortField === 'authorName' ? 'Author' : sortField === 'reportReason' ? 'Reason' : 'Status'}</span>
               <ChevronDown className="h-4 w-4 ml-2 text-gray-500" />
             </button>
             {showSortDropdown && <div className="absolute mt-1 w-48 bg-white rounded-md shadow-lg border border-gray-200 z-40">
                 <div className="py-1">
-                  <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => {
+                  <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() =>{
                 setSortField('dateReported');
                 setSortDirection(sortField === 'dateReported' ? sortDirection === 'desc' ? 'asc' : 'desc' : 'desc');
                 setShowSortDropdown(false);
               }}>
                     Date{' '}
-                    {sortField === 'dateReported' && (sortDirection === 'desc' ? '(Newest)' : '(Oldest)')}
-                  </button>
-                  <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => {
+                    {sortField === 'dateReported' && (sortDirection === 'desc' ? '(Newest)' : '(Oldest)')}</button>
+                  <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() =>{
                 setSortField('authorName');
                 setSortDirection(sortField === 'authorName' ? sortDirection === 'desc' ? 'asc' : 'desc' : 'asc');
                 setShowSortDropdown(false);
               }}>
-                    Author Name
-                  </button>
-                  <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => {
+                    Author Name</button>
+                  <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() =>{
                 setSortField('reportReason');
                 setSortDirection(sortField === 'reportReason' ? sortDirection === 'desc' ? 'asc' : 'desc' : 'asc');
                 setShowSortDropdown(false);
               }}>
-                    Report Reason
-                  </button>
-                  <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() => {
+                    Report Reason</button>
+                  <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={() =>{
                 setSortField('status');
                 setSortDirection(sortField === 'status' ? sortDirection === 'desc' ? 'asc' : 'desc' : 'asc');
                 setShowSortDropdown(false);
               }}>
-                    Status
-                  </button>
+                    Status</button>
                 </div>
               </div>}
           </div>
@@ -197,8 +187,7 @@ export const AuthorComplaintsManagement = () => {
         <div className="relative w-full sm:w-64">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
           <input type="text" placeholder="Search complaints..." className="pl-10 pr-4 py-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500" value={searchQuery} onChange={e => setSearchQuery(e.target.value)} />
-          {searchQuery && <button className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600" onClick={() => setSearchQuery('')}>
-              <X className="h-4 w-4" />
+          {searchQuery && <button className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600" onClick={() =>setSearchQuery('')}><X className="h-4 w-4" />
             </button>}
         </div>
       </div>
@@ -240,12 +229,9 @@ export const AuthorComplaintsManagement = () => {
                     <div className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusBadgeColor(complaint.status)}`}>
                       {complaint.status.charAt(0).toUpperCase() + complaint.status.slice(1)}
                     </div>
-                    <button onClick={() => handleViewDetails(complaint)} className="px-2 py-1 text-xs border border-gray-300 rounded text-gray-700 hover:bg-gray-50">
-                      View Details
-                    </button>
-                    {(complaint.status === 'pending' || complaint.status === 'reviewing') && <button onClick={() => handleTakeAction(complaint)} className="px-2 py-1 text-xs bg-blue-600 rounded text-white hover:bg-blue-700">
-                        Take Action
-                      </button>}
+                    <button onClick={() =>handleViewDetails(complaint)} className="px-2 py-1 text-xs border border-gray-300 rounded text-gray-700 hover:bg-gray-50">
+                      View Details</button>{(complaint.status === 'pending' || complaint.status === 'reviewing') &&<button onClick={() =>handleTakeAction(complaint)} className="px-2 py-1 text-xs bg-blue-600 rounded text-white hover:bg-blue-700">
+                        Take Action</button>}
                   </div>
                 </div>
               </div>)}
@@ -254,15 +240,11 @@ export const AuthorComplaintsManagement = () => {
             <h3 className="text-lg font-medium text-gray-900 mb-2">
               No complaints found
             </h3>
-            <p className="text-gray-600 mb-4">
-              {searchQuery || filterStatus !== 'all' ? 'No complaints match your current filters. Try adjusting your search or filter criteria.' : 'There are no author complaints at this time.'}
-            </p>
-            {(searchQuery || filterStatus !== 'all') && <button onClick={() => {
+            <p className="text-gray-600 mb-4">{searchQuery || filterStatus !== 'all' ? 'No complaints match your current filters. Try adjusting your search or filter criteria.' : 'There are no author complaints at this time.'}</p>{(searchQuery || filterStatus !== 'all') &&<button onClick={() =>{
           setSearchQuery('');
           setFilterStatus('all');
         }} className="text-blue-600 font-medium text-sm hover:text-blue-800">
-                Clear all filters
-              </button>}
+                Clear all filters</button>}
           </div>}
       </div>
       {/* Complaint Details Modal */}
@@ -273,8 +255,7 @@ export const AuthorComplaintsManagement = () => {
                 <h2 className="text-xl font-semibold text-gray-900">
                   Complaint Details
                 </h2>
-                <button onClick={() => setShowDetailsModal(false)} className="text-gray-400 hover:text-gray-500">
-                  <X className="h-5 w-5" />
+                <button onClick={() =>setShowDetailsModal(false)} className="text-gray-400 hover:text-gray-500"><X className="h-5 w-5" />
                 </button>
               </div>
               <div className="mb-6 p-4 bg-gray-50 rounded-lg flex items-center">
@@ -344,21 +325,18 @@ export const AuthorComplaintsManagement = () => {
                     </div>
                   </div>
                 </div>
-              </div>
-              {/* Action Taken (if resolved) */}
-              {selectedComplaint.status === 'resolved' && <div className="mb-6">
+              </div>{/* Action Taken (if resolved) */}
+              {selectedComplaint.status === 'resolved' &&<div className="mb-6">
                   <h3 className="text-sm font-medium text-gray-700 mb-2">
                     Action Taken
                   </h3>
                   <div className="bg-white border border-gray-200 rounded-lg divide-y divide-gray-200">
                     <div className="px-4 py-3">
                       <div className="text-xs text-gray-500">Action</div>
-                      <div className="text-sm font-medium text-gray-900">
-                        {selectedComplaint.actionTaken === 'dismiss' && 'Dismissed - No action needed'}
+                      <div className="text-sm font-medium text-gray-900">{selectedComplaint.actionTaken === 'dismiss' && 'Dismissed - No action needed'}
                         {selectedComplaint.actionTaken === 'warning' && 'Warning issued to author'}
                         {selectedComplaint.actionTaken === 'tempban' && `Temporary ban (${selectedComplaint.banDuration})`}
-                        {selectedComplaint.actionTaken === 'permban' && 'Permanent ban from publishing'}
-                      </div>
+                        {selectedComplaint.actionTaken === 'permban' && 'Permanent ban from publishing'}</div>
                     </div>
                     {selectedComplaint.notes && <div className="px-4 py-3">
                         <div className="text-xs text-gray-500">Admin Notes</div>
@@ -368,16 +346,13 @@ export const AuthorComplaintsManagement = () => {
                       </div>}
                   </div>
                 </div>}
-              <div className="flex justify-between pt-4 border-t border-gray-200">
-                {(selectedComplaint.status === 'pending' || selectedComplaint.status === 'reviewing') && <button onClick={() => {
+              <div className="flex justify-between pt-4 border-t border-gray-200">{(selectedComplaint.status === 'pending' || selectedComplaint.status === 'reviewing') &&<button onClick={() =>{
               setShowDetailsModal(false);
               handleTakeAction(selectedComplaint);
             }} className="px-4 py-2 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition-colors">
-                    Take Action
-                  </button>}
-                <button onClick={() => setShowDetailsModal(false)} className={`px-4 py-2 ${selectedComplaint.status === 'pending' || selectedComplaint.status === 'reviewing' ? 'bg-gray-100 text-gray-700 hover:bg-gray-200' : 'bg-blue-600 text-white hover:bg-blue-700'} rounded-md font-medium transition-colors ml-auto`}>
-                  Close
-                </button>
+                    Take Action</button>}
+                <button onClick={() =>setShowDetailsModal(false)} className={`px-4 py-2 ${selectedComplaint.status === 'pending' || selectedComplaint.status === 'reviewing' ? 'bg-gray-100 text-gray-700 hover:bg-gray-200' : 'bg-blue-600 text-white hover:bg-blue-700'} rounded-md font-medium transition-colors ml-auto`}>
+                  Close</button>
               </div>
             </div>
           </div>
@@ -390,8 +365,7 @@ export const AuthorComplaintsManagement = () => {
                 <h2 className="text-xl font-semibold text-gray-900">
                   Take Action
                 </h2>
-                <button onClick={() => setShowActionModal(false)} className="text-gray-400 hover:text-gray-500">
-                  <X className="h-5 w-5" />
+                <button onClick={() =>setShowActionModal(false)} className="text-gray-400 hover:text-gray-500"><X className="h-5 w-5" />
                 </button>
               </div>
               <div className="mb-6 p-4 bg-gray-50 rounded-lg flex items-center">
@@ -410,8 +384,7 @@ export const AuthorComplaintsManagement = () => {
                   Select action to take:
                 </h3>
                 <div className="space-y-3">
-                  <button onClick={() => handleSubmitAction('dismiss')} className="w-full flex items-center justify-between p-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-                    <div className="flex items-center">
+                  <button onClick={() =>handleSubmitAction('dismiss')} className="w-full flex items-center justify-between p-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"><div className="flex items-center">
                       <div className="bg-gray-100 p-2 rounded-full mr-3">
                         <CheckCircle className="h-5 w-5 text-gray-600" />
                       </div>
@@ -425,8 +398,7 @@ export const AuthorComplaintsManagement = () => {
                       </div>
                     </div>
                   </button>
-                  <button onClick={() => handleSubmitAction('warning')} className="w-full flex items-center justify-between p-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-                    <div className="flex items-center">
+                  <button onClick={() =>handleSubmitAction('warning')} className="w-full flex items-center justify-between p-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"><div className="flex items-center">
                       <div className="bg-yellow-100 p-2 rounded-full mr-3">
                         <AlertTriangle className="h-5 w-5 text-yellow-600" />
                       </div>
@@ -441,8 +413,7 @@ export const AuthorComplaintsManagement = () => {
                     </div>
                   </button>
                   <div className="w-full border border-gray-300 rounded-lg overflow-hidden">
-                    <button onClick={() => handleSubmitAction('tempban')} className="w-full flex items-center justify-between p-3 hover:bg-gray-50 transition-colors">
-                      <div className="flex items-center">
+                    <button onClick={() =>handleSubmitAction('tempban')} className="w-full flex items-center justify-between p-3 hover:bg-gray-50 transition-colors"><div className="flex items-center">
                         <div className="bg-orange-100 p-2 rounded-full mr-3">
                           <Clock className="h-5 w-5 text-orange-600" />
                         </div>
@@ -460,8 +431,7 @@ export const AuthorComplaintsManagement = () => {
                       <label className="block text-sm font-medium text-gray-700 mb-1">
                         Ban duration
                       </label>
-                      <select value={banDuration} onChange={e => setBanDuration(e.target.value)} className="w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-sm">
-                        <option value="1day">1 day</option>
+                      <select value={banDuration} onChange={e =>setBanDuration(e.target.value)} className="w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-sm"><option value="1day">1 day</option>
                         <option value="3days">3 days</option>
                         <option value="7days">7 days</option>
                         <option value="14days">14 days</option>
@@ -470,8 +440,7 @@ export const AuthorComplaintsManagement = () => {
                       </select>
                     </div>
                   </div>
-                  <button onClick={() => handleSubmitAction('permban')} className="w-full flex items-center justify-between p-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-                    <div className="flex items-center">
+                  <button onClick={() =>handleSubmitAction('permban')} className="w-full flex items-center justify-between p-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"><div className="flex items-center">
                       <div className="bg-red-100 p-2 rounded-full mr-3">
                         <Ban className="h-5 w-5 text-red-600" />
                       </div>
@@ -491,12 +460,11 @@ export const AuthorComplaintsManagement = () => {
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Notes (optional)
                 </label>
-                <textarea value={actionNotes} onChange={e => setActionNotes(e.target.value)} className="w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500" rows={3} placeholder="Add any additional notes about this action..."></textarea>
+                <textarea value={actionNotes} onChange={e =>setActionNotes(e.target.value)} className="w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500" rows={3} placeholder="Add any additional notes about this action..."></textarea>
               </div>
               <div className="flex justify-end space-x-3 pt-4 border-t border-gray-200">
-                <button onClick={() => setShowActionModal(false)} className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md font-medium hover:bg-gray-50">
-                  Cancel
-                </button>
+                <button onClick={() =>setShowActionModal(false)} className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md font-medium hover:bg-gray-50">
+                  Cancel</button>
               </div>
             </div>
           </div>

@@ -3,10 +3,10 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase/client';
 import { useRouter, usePathname } from 'next/navigation';
-import { ArrowLeft, Calendar, MapPin, Heart, MessageCircle, Award, ThumbsUp, Gift, ExternalLink, Clock } from 'lucide-react';
+import { ArrowLeft, Award, Calendar, Clock, ExternalLink, Gift, Heart, MapPin, MessageCircle, ThumbsUp } from 'lucide-react';
 import { CommentSection, Comment } from '../common/CommentSection';
 import { SocialShare, ShareButton } from '../common/SocialShare';
-export const AnnouncementDetailPage = () => {
+export const AnnouncementDetailPage = () =>{
   const router = useRouter();
   const pathname = usePathname();
   const [announcement, setAnnouncement] = useState(null);
@@ -20,14 +20,15 @@ export const AnnouncementDetailPage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   // Check if we're returning from login
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     // Parse query parameters
-    const params = new URLSearchParams(location.search);
+    const params = new URLSearchParams(window.location.search);
     const returnFromLogin = params.get('returnFromLogin');
     if (returnFromLogin === 'true') {
       // In a real app, we would check if the user is now authenticated
       setIsLoggedIn(true);
       // Remove the returnFromLogin parameter from the URL
-      const newParams = new URLSearchParams(location.search);
+      const newParams = new URLSearchParams(window.location.search);
       newParams.delete('returnFromLogin');
       // Update the URL without the returnFromLogin parameter
       const newUrl = `${pathname}${newParams.toString() ? `?${newParams.toString()}` : ''}`;
@@ -40,10 +41,11 @@ export const AnnouncementDetailPage = () => {
         }
       }, 500);
     }
-  }, [location]);
+  }, []);
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     // Parse query parameters
-    const params = new URLSearchParams(location.search);
+    const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
     if (!id) {
       router.push('/announcements');
@@ -114,7 +116,7 @@ export const AnnouncementDetailPage = () => {
       }]);
       setLoading(false);
     }, 800);
-  }, [location, navigate]);
+  }, [router]);
   const goBack = () => {
     router.push('/announcements');
   };
@@ -178,7 +180,7 @@ export const AnnouncementDetailPage = () => {
     router.push('/announcementCreator');
   };
   if (loading) {
-    return <div className="flex-1 overflow-auto bg-gray-50">
+    return<div className="flex-1 overflow-auto bg-gray-50">
         <div className="container mx-auto px-4 py-8 flex items-center justify-center min-h-[50vh]">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-news-primary mx-auto"></div>
@@ -194,10 +196,8 @@ export const AnnouncementDetailPage = () => {
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
               Announcement Not Found
             </h2>
-            <p className="text-gray-600 mb-6">
-              The announcement you're looking for doesn't exist or has been
-              removed.
-            </p>
+            <p className="text-gray-600 mb-6">The announcement you're looking for doesn't exist or has been
+              removed.</p>
             <button onClick={goBack} className="bg-news-primary text-white px-4 py-2 rounded-md hover:bg-news-primary-dark transition-colors">
               Return to Announcements
             </button>
@@ -229,7 +229,7 @@ export const AnnouncementDetailPage = () => {
     }
   };
   const typeStyles = getTypeStyles(announcement.type);
-  return <div className="flex-1 overflow-auto bg-gray-50">
+  return<div className="flex-1 overflow-auto bg-gray-50">
       <div className="container mx-auto px-4 py-6">
         <button onClick={goBack} className="flex items-center text-news-primary mb-6 hover:underline">
           <ArrowLeft className="h-4 w-4 mr-1" />
@@ -275,8 +275,7 @@ export const AnnouncementDetailPage = () => {
                         <Clock className="h-4 w-4 mr-1" />
                         <span>Ceremony: {announcement.ceremony}</span>
                       </div>
-                    </div>
-                    {announcement.content.split('\n\n').map((paragraph, idx) => <p key={idx} className="text-gray-700 mb-4 leading-relaxed">
+                    </div>{announcement.content.split('\n\n').map((paragraph, idx) =><p key={idx} className="text-gray-700 mb-4 leading-relaxed">
                           {paragraph}
                         </p>)}
                     {announcement.achievements && announcement.achievements.length > 0 && <div className="mt-4 mb-6">
@@ -287,9 +286,7 @@ export const AnnouncementDetailPage = () => {
                             {announcement.achievements.map((achievement, idx) => <li key={idx}>{achievement}</li>)}
                           </ul>
                         </div>}
-                    <div className="text-sm text-gray-600 mb-4">
-                      Posted by:{' '}
-                      <span className="font-medium">{announcement.author}</span>
+                    <div className="text-sm text-gray-600 mb-4">Posted by:{' '}<span className="font-medium">{announcement.author}</span>
                     </div>
                     <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                       <div className="flex items-center space-x-4">
@@ -297,8 +294,7 @@ export const AnnouncementDetailPage = () => {
                           <Heart className={`h-5 w-5 mr-1 ${liked ? 'fill-current' : ''}`} />
                           <span>{likesCount}</span>
                         </button>
-                        <button className="flex items-center text-gray-500 hover:text-news-primary" onClick={() => document.getElementById('comment-section').focus()}>
-                          <MessageCircle className="h-5 w-5 mr-1" />
+                        <button className="flex items-center text-gray-500 hover:text-news-primary" onClick={() =>document.getElementById('comment-section').focus()}><MessageCircle className="h-5 w-5 mr-1" />
                           <span>{announcement.reactions.comments}</span>
                         </button>
                       </div>

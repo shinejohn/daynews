@@ -1,10 +1,10 @@
 // Converted from Magic Patterns
 import React from 'react';
 import { Newspaper, DollarSign, Wrench, CreditCard } from 'lucide-react';
-export const DepartmentDirectory = () => {
+export const DepartmentDirectory = () =>{
   const departments = [{
     name: 'Editorial',
-    icon: <Newspaper className="h-5 w-5 text-blue-600" />,
+    icon:<Newspaper className="h-5 w-5 text-blue-600" />,
     description: 'For news tips, corrections, and editorial inquiries',
     email: 'editorial@day.news',
     phone: '(800) 555-1235',
@@ -12,7 +12,7 @@ export const DepartmentDirectory = () => {
     title: 'Head of Journalism'
   }, {
     name: 'Advertising',
-    icon: <DollarSign className="h-5 w-5 text-green-600" />,
+    icon:<DollarSign className="h-5 w-5 text-green-600" />,
     description: 'For advertising opportunities and partnerships',
     email: 'ads@day.news',
     phone: '(800) 555-1236',
@@ -20,7 +20,7 @@ export const DepartmentDirectory = () => {
     title: 'Business Development'
   }, {
     name: 'Technical Support',
-    icon: <Wrench className="h-5 w-5 text-purple-600" />,
+    icon:<Wrench className="h-5 w-5 text-purple-600" />,
     description: 'For website issues, app problems, and login help',
     email: 'support@day.news',
     phone: '(800) 555-1237',
@@ -28,14 +28,14 @@ export const DepartmentDirectory = () => {
     title: 'Chief Technology Officer'
   }, {
     name: 'Billing & Subscriptions',
-    icon: <CreditCard className="h-5 w-5 text-yellow-600" />,
+    icon:<CreditCard className="h-5 w-5 text-yellow-600" />,
     description: 'For subscription management and payment questions',
     email: 'billing@day.news',
     phone: '(800) 555-1238',
     contactPerson: 'Jennifer Park',
     title: 'Customer Relations Manager'
   }];
-  return <section className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+  return<section className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
       <div className="bg-news-primary text-white px-6 py-4">
         <h2 className="text-xl font-bold">Department Directory</h2>
         <p className="text-sm text-white text-opacity-80">
@@ -70,8 +70,7 @@ export const DepartmentDirectory = () => {
                   </div>
                   <div className="text-gray-700">
                     <span className="font-medium">Contact:</span>{' '}
-                    {dept.contactPerson}, {dept.title}
-                  </div>
+                    {dept.contactPerson}, {dept.title}</div>
                 </div>
               </div>
             </div>

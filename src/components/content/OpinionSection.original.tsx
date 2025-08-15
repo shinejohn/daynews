@@ -5,12 +5,12 @@ import { useRouter } from 'next/navigation';
 import { ChevronRight } from 'lucide-react';
 export const OpinionSection = ({
   onArticleClick
-}) => {
+}) =>{
   const router = useRouter();
   const handleViewAllOpinions = () => {
     router.push('/trending?category=opinion');
   };
-  return <div className="space-y-4">
+  return<div className="space-y-4">
       <div className="bg-white rounded-md overflow-hidden shadow-sm border border-gray-200 cursor-pointer hover:shadow-md transition-shadow" onClick={onArticleClick}>
         <div className="p-3">
           <div className="text-xs text-gray-500 mb-1">EDITORIAL</div>
