@@ -16,7 +16,8 @@ export default defineConfig({
     manifest: true,
     rollupOptions: {
       input: '/src/entry/entry-client.tsx'
-    }
+    },
+    outDir: 'dist'
   },
   ssr: {
     noExternal: ['react-router-dom']

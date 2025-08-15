@@ -16,5 +16,5 @@ RUN npx vite build
 # Expose port
 EXPOSE ${PORT:-3001}
 
-# Start simple server
-CMD ["node", "server/simple-server.js"]
+# Start ultra simple server (no complex imports)
+CMD ["node", "server/ultra-simple.js"]
