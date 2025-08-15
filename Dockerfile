@@ -1,0 +1,26 @@
+# Use Node.js 18 Alpine for smaller image
+FROM node:18-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm ci --production=false
+
+# Copy source code
+COPY . .
+
+# Build the application
+RUN npm run build:prod
+
+# Create cache directory
+RUN mkdir -p cache
+
+# Expose port
+EXPOSE ${PORT:-3001}
+
+# Start the application
+CMD ["node", "server/server-enhanced.js"]
