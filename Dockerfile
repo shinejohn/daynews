@@ -13,8 +13,11 @@ RUN npm ci --production=false
 # Copy source code
 COPY . .
 
-# Build the application
-RUN npm run build:prod
+# Build the application (run commands directly instead of script)
+RUN npm run build:client && npm run build:server && \
+    cp -r server dist/ && \
+    cp package*.json dist/ && \
+    mkdir -p dist/cache
 
 # Create cache directory
 RUN mkdir -p cache
