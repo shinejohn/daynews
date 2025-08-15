@@ -1,0 +1,20 @@
+# Simple Dockerfile that works
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Copy and install deps
+COPY package*.json ./
+RUN npm ci --omit=dev
+
+# Copy everything
+COPY . .
+
+# Build
+RUN npm run build
+
+# Expose port
+EXPOSE ${PORT:-3001}
+
+# Start simple server
+CMD ["node", "server/simple-server.js"]
