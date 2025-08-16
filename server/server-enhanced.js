@@ -236,7 +236,7 @@ async function createServer() {
   })
   
   // Start server
-  app.listen(port, () => {
+  app.listen(port, '0.0.0.0', () => {
     console.log(`
 🚀 Enhanced ISR Server running at http://localhost:${port}
 📊 Environment: ${process.env.NODE_ENV || 'development'}
