@@ -43,7 +43,6 @@
     "validate": "node scripts/validate-deployment.js",
     "validate:fix": "node scripts/fix-route-config-syntax.js && node scripts/fix-route-patterns.js",
     "test:frontend": "NODE_OPTIONS='--experimental-vm-modules' npx jest tests/frontend/",
-    "prebuild": "node scripts/validate-deployment.js || true",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist .vite cache",
     "clean:all": "npm run clean && rm -rf node_modules package-lock.json"
